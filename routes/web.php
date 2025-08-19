@@ -17,6 +17,14 @@ Route::get('register', function () {
     return view('pages.register');
 })->name('pages.register');
 
+Route::get('/home', function () {
+    return view('pages.home');
+});
+
+Route::get('in-play', function () {
+    return view('pages/in-play');
+});
+
 
 Route::post('login', [AuthController::class,'login'])->name('login')->withoutMiddleware([VerifyCsrfToken::class]);
 
