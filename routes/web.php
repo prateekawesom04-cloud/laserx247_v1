@@ -1,7 +1,37 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ApiCallController;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 
 Route::get('/', function () {
-    return view('master');
+    return view('pages.index');
+})->name('index');
+
+Route::get('login', function () {
+    return view('pages.login');
+})->name('pages.login');
+
+Route::get('register', function () {
+    return view('pages.register');
+})->name('pages.register');
+
+
+Route::post('login', [AuthController::class,'login'])->name('login')->withoutMiddleware([VerifyCsrfToken::class]);
+
+Route::post('register', [AuthController::class,'register'])->name('register')->withoutMiddleware([VerifyCsrfToken::class]);
+
+
+
+
+// testing part
+
+Route::get('callApi/{apiName}',[ApiCallController::class,'callApi']);
+
+Route::middleware('auth_middleware')->group(function(){
+    Route::get('test', function(){
+        return 'testing routes';
+    });
+    
 });
