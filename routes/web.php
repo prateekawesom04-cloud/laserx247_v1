@@ -26,6 +26,12 @@ Route::get('/cricket', function () {
 Route::get('/football', function () {
     return view('pages.football');
 });
-Route::get('/footer', function () {
-    return view('mobile.footer');
+Route::get('/tennis', function () {
+    return view('pages.tennis');
+});
+Route::get('/casino', function () {
+    return view('pages.casino');
+});
+Route::get('/sports-book', function () {
+    return view('pages.sports-book');
 });

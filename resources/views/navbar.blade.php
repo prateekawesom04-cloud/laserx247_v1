@@ -7,9 +7,9 @@
         <a class="nav-link text-white py-1 px-2" href="multi-market">Multi Market</a>
         <a class="nav-link text-white py-1 px-2" href="cricket">Cricket</a>
         <a class="nav-link text-white py-1 px-2" href="football">Football</a>
-        <a class="nav-link text-white py-1 px-2" href="javascript:void(0)">Tennis</a>
-        <a class="nav-link text-white py-1 px-2" href="javascript:void(0)">Casino</a>
-        <a class="nav-link text-white fw-bold py-1 px-2" href="javascript:void(0)">Sports Book</a>
+        <a class="nav-link text-white py-1 px-2" href="tennis">Tennis</a>
+        <a class="nav-link text-white py-1 px-2" href="casino">Casino</a>
+        <a class="nav-link text-white fw-bold py-1 px-2" href="sports-book">Sports Book</a>
         <a class="nav-link text-white py-1 px-2" href="javascript:void(0)">Horse Racing</a>
         <a class="nav-link text-white py-1 px-2" href="javascript:void(0)">Greyhound Racing</a>
         <a class="nav-link text-white py-1 px-2" href="javascript:void(0)">Binary</a>
