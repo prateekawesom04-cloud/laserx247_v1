@@ -52,6 +52,8 @@ Route::post('login', [AuthController::class,'login'])->name('login')->withoutMid
 
 Route::post('register', [AuthController::class,'register'])->name('register')->withoutMiddleware([VerifyCsrfToken::class]);
 
+Route::post('forgetPassword', [AuthController::class,'forgetPassword'])->name('forgetPassword')->withoutMiddleware([VerifyCsrfToken::class]);
+
 
 
 
@@ -66,3 +68,6 @@ Route::middleware('auth_middleware')->group(function(){
     });
     
 });
+
+
+// @if(!session()->has('user_session'))

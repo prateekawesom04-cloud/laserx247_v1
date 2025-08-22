@@ -56,6 +56,34 @@ class AuthController extends Controller
         
     }
 
+    public function forgetPassword(Request $request){
+        
+        $rules = [
+            'phone' => 'required|numeric|digits:10',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|same:password',
+        ];
+        
+        $validator = Validator::make($request->all(), $rules);
+        $errors = [];
+        if($validator->fails()){
+            foreach ($validator->errors()->messages() as $key => $value) {
+                $errors[] = $value[0];
+            }
+            return response()->json($errors);
+        } else{
+            $user = User::where([
+                'phone'=>$request->phone
+            ])->first();
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return redirect()->route('pages.login');
+            
+        }
+
+    }
+    
     public function getOtp($phone){
 
         $otp = random_int(100000, 999999);
