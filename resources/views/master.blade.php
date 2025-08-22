@@ -5,6 +5,7 @@
 <body>
     @include('header')
     @include('navbar')
+    @include('marquee')
     @yield('body')
     @include('footer')
     @include('js')
