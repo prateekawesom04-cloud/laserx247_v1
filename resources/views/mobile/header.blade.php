@@ -1,5 +1,5 @@
 <!-- Header -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 py-1">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 py-2">
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="#">

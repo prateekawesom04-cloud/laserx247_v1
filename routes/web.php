@@ -25,9 +25,24 @@ Route::get('home', function () {
     return view('pages.home');
 });
 
-Route::get('in-play', function () {
-    return view('pages/in-play');
+
+Route::get('/in-play', function () {
+    return view('pages.in-play');
 });
+Route::get('/multi-market', function () {
+    return view('pages.multi-market');
+});
+Route::get('/cricket', function () {
+    return view('pages.cricket');
+});
+Route::get('/football', function () {
+    return view('pages.football');
+});
+
+
+
+
+
 
 Route::get('demoLogin', [AuthController::class,'demoLogin'])->name('demoLogin');
 
