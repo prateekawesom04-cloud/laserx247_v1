@@ -17,7 +17,7 @@
 
       <!-- Collapsible Content -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
-        
+        @if(session()->has('user_session'))
         <!-- Logged In Info (Hidden by Default, Show After Login) -->
         <div class="d-none d-lg-flex align-items-center me-3" id="loggedInInfo">
           <span class="me-3 text-white">Bal 0 Exp 0</span>
@@ -63,11 +63,11 @@
             </ul>
           </div>
         </div>
-
+        @endif
         <!-- Desktop Auth -->
         <div class="d-none d-lg-flex align-items-center">
+          <a href="sign-up" class="btn btn-danger">Register</a>
           <a href="login" class="btn btn-danger me-2">Log In</a>
-          <a href="sign-up" class="btn btn-danger">Sign Up</a>
         </div>
 
         <!-- Mobile Auth -->

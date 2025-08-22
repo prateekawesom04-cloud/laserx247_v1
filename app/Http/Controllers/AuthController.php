@@ -16,11 +16,11 @@ class AuthController extends Controller
         // dd('request',$request);
         // return response()->json($request);
         $user = User::where([
-            'email'=>$request->email
+            'phone'=>$request->phone
         ])->first();
 
         if(!empty($user) && Hash::check($request->password,$user->password)){
-            Session::put(['user_session'=>$user->id]);
+            Session::put(['user_session'=>$user->id.'_user_'.$user->user_id]);
             return redirect()->route('index')->with(['login'=>1]);
         } else{
             return redirect()->route('index')->with(['login'=>0]);
@@ -29,8 +29,9 @@ class AuthController extends Controller
 
     public function register(Request $request){
         $rules = [
-            'name' => 'required|string|min:3|max:255',
-            'email' => 'required|unique:users|email',
+            'phone' => 'required|numeric|digits:10',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|same:password',
         ];
         
         $validator = Validator::make($request->all(), $rules);
@@ -39,21 +40,46 @@ class AuthController extends Controller
             foreach ($validator->errors()->messages() as $key => $value) {
                 $errors[] = $value[0];
             }
-            return $errors;
-            // return redirect()->route('index');
+            return response()->json($errors);
         } else{
             $user = new User;
-            $user->name = $request->name;
-            $user->email = $request->email;
+            $user->phone = $request->phone;
+            $user->user_id = $request->phone.'_'.date("Y_m_d");
             $user->password = Hash::make($request->password);
             $user->save();
 
             // return True;
-            Session::put(['user_session'=>$user->id.'_user_'.$user->email]);
-            return redirect()->route('index')->with(['login'=>'1']);
+            Session::put(['user_session'=>$user->id.'_user_'.$user->user_id]);
+            return redirect()->route('index');
             
         }
         
+    }
+
+    public function getOtp($phone){
+
+        $otp = random_int(100000, 999999);
+
+        session('user_otp',$otp);
+        session('otp_expiry_time',time() + (5 * 60));
+        return $otp;
+
+    }
+
+    public function verifyOtp($otp){
+
+        if (time() < session('otp_expiry_time')){
+            if($otp == session('user_otp')){
+                return True;
+            }
+        }
+        return False;
+        
+    }
+
+    public function demoLogin(){
+        Session::put(['user_session'=>'demo_user']);
+        return redirect()->route('index');
     }
 
     public function validateData($data) {

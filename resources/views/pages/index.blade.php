@@ -80,6 +80,7 @@
   </div>
 </section>
 
+@if(!session()->has('user_session'))
 <!-- Recent Games -->
 <section class="container my-3" style="width:100%;">
   <div class="bg-dark text-white py-2">RECENT GAMES</div>
@@ -102,6 +103,33 @@
     </div>
   </div>
 </section>
+@endif
+
+@if(session()->has('user_session'))
+{{-- after login --}}
+<!-- My Favourite -->
+<section class="container my-3" style="width:100%;">
+  <div class="bg-dark text-white py-2">RECENT GAMES</div>
+  <div class="row g-2 mt-2">
+    <div class="col-6 col-md-3">
+      <img src="{{ asset('images/gmx_pilotcup.jpg') }}" alt="Pilot Cup" class="img-fluid w-100">
+      <div class="bg-dark text-white py-1">Pilot Cup</div>
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="{{ asset('images/evo_crazytime.webp') }}" alt="Crazy Time" class="img-fluid w-100">
+      <div class="bg-dark text-white py-1">Crazy Time</div>
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="{{ asset('images/andar_bahar_228000.webp') }}" alt="Andar Bahar" class="img-fluid w-100">
+      <div class="bg-dark text-white py-1">Andar Bahar</div>
+    </div>
+    <div class="col-6 col-md-3">
+      <img src="{{ asset('images/dt_mac88.webp') }}" alt="Dragon Tiger" class="img-fluid w-100">
+      <div class="bg-dark text-white py-1">Dragon Tiger</div>
+    </div>
+  </div>
+</section>
+@endif
 
 <!-- Our Provider -->
 <section class="container my-3" style="width:90%;">
@@ -125,5 +153,7 @@
     </div>
   </div>
 </section>
+
+
 
 @endsection
