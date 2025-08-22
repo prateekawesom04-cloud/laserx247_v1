@@ -1,3 +1,1 @@
-<script>
-    
-</script>
+js.blade.php
