@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->string('image');
-            $table->boolean('is_active');
+            $table->string('game_uid');
+            $table->string('launch_url');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
