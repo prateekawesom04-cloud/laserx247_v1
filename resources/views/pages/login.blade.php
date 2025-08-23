@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('css')}}/style.css">
+    <link rel="stylesheet" href="{{asset('css')}}/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
 
@@ -33,72 +34,74 @@
 
                     <!-- Right side (Form) -->
                     <div class="col-12 col-md-7 bg-transparent p-4 text-white">
+                        <form id="LoginForm"> 
 
-                        <!-- Tabs -->
-                        <div class="d-flex mb-3 gap-2">
-                            <button type="button" class="btn btn-light flex-fill fw-bold" aria-pressed="false">Phone</button>
-                            <button type="button" class="btn btn-primary flex-fill fw-bold" aria-pressed="true">User ID</button>
-                        </div>
-
-                        <!-- Phone -->
-                        <div class="mb-3 text-start">
-                            <div class="input-group">
-                                <span class="input-group-text bg-white text-dark border-0"><i class="bi bi-phone"></i>
-                                    +91</span>
-                                <input type="text" class="form-control border-0" placeholder="Enter Phone Number" />
+                            <!-- Tabs -->
+                            <div class="d-flex mb-3 gap-2">
+                                <button type="button" class="btn btn-light flex-fill fw-bold" aria-pressed="false">Phone</button>
+                                <button type="button" class="btn btn-primary flex-fill fw-bold" aria-pressed="true">User ID</button>
                             </div>
-                        </div>
 
-                        <!-- Radio -->
-                        <div class="d-flex gap-3 mb-3 flex-wrap">
-                            <div>
-                                <input type="radio" name="loginType" id="passwordOption" checked />
-                                <label for="passwordOption" class="ms-1">Password</label>
+                            <!-- Phone -->
+                            <div class="mb-3 text-start">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white text-dark border-0"><i class="bi bi-phone"></i>
+                                        +91</span>
+                                    <input type="text" class="form-control border-0" name="phone" placeholder="Enter Phone Number" />
+                                </div>
                             </div>
-                            <div>
-                                <input type="radio" name="loginType" id="otpOption" />
-                                <label for="otpOption" class="ms-1">OTP</label>
+
+                            <!-- Radio -->
+                            <div class="d-flex gap-3 mb-3 flex-wrap">
+                                <div>
+                                    <input type="radio" name="loginType" id="passwordOption" checked />
+                                    <label for="passwordOption" class="ms-1">Password</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="loginType" id="otpOption" />
+                                    <label for="otpOption" class="ms-1">OTP</label>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Password -->
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <span class="input-group-text bg-white text-dark border-0"><i
-                                        class="bi bi-lock"></i></span>
-                                <input type="password" class="form-control border-0" placeholder="Enter Password" />
+                            <!-- Password -->
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white text-dark border-0"><i
+                                            class="bi bi-lock"></i></span>
+                                    <input type="password" class="form-control border-0" name="password" placeholder="Enter Password" />
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Forgot -->
-                        <div class="text-end mb-3">
-                            <a href="javascript:void(0)" class="text-info small">Forgot Password?</a>
-                        </div>
+                            <!-- Forgot -->
+                            <div class="text-end mb-3">
+                                <a href="forgot-page" class="text-info small">Forgot Password?</a>
+                            </div>
 
-                        <!-- Buttons -->
-                        <div class="d-flex gap-2 mb-3 flex-wrap">
-                            <a href="javascript:void(0)" class="btn btn-dark flex-grow-1 fw-bold">Login</a>
-                            <a href="javascript:void(0)" class="btn btn-info flex-grow-1 fw-bold">Log In With Demo ID</a>
-                        </div>
+                            <!-- Buttons -->
+                            <div class="d-flex gap-2 mb-3 flex-wrap">
+                                <button type="submit" class="btn btn-dark flex-grow-1 fw-bold">Login</button>
+                                <button type="button" class="btn btn-info flex-grow-1 fw-bold">Log In With Demo ID</button>
+                            </div>
 
-                        <!-- WhatsApp -->
-                        <p class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</p>
-                        <a href="javascript:void(0)" class="btn btn-success w-100 mb-3">📱 Whatsapp Now</a>
+                            <!-- WhatsApp -->
+                            <p class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</p>
+                            <a href="javascript:void(0)" class="btn btn-success w-100 mb-3">📱 Whatsapp Now</a>
 
-                        <!-- Social login -->
-                        <p class="text-center small mb-2">Or Login With</p>
-                        <div class="d-flex justify-content-center gap-3 mb-3 flex-wrap">
-                            <a href="javascript:void(0)" class="btn btn-primary"><i class="bi bi-telegram"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-danger"><i class="bi bi-instagram"></i></a>
-                            <a href="javascript:void(0)" class="btn btn-info"><i class="bi bi-facebook"></i></a>
-                        </div>
+                            <!-- Social login -->
+                            <p class="text-center small mb-2">Or Login With</p>
+                            <div class="d-flex justify-content-center gap-3 mb-3 flex-wrap">
+                                <a href="javascript:void(0)" class="btn btn-primary"><i class="bi bi-telegram"></i></a>
+                                <a href="javascript:void(0)" class="btn btn-danger"><i class="bi bi-instagram"></i></a>
+                                <a href="javascript:void(0)" class="btn btn-info"><i class="bi bi-facebook"></i></a>
+                            </div>
 
-                        <!-- Signup -->
-                        <div class="text-center small">
-                            Don’t have an account? <a href="#" class="fw-bold text-info">Sign UP</a>
-                        </div>
+                            <!-- Register -->
+                            <div class="text-center small">
+                                Don’t have an account? <a href="#" class="fw-bold text-info">Register</a>
+                            </div>
 
-                    </div>
+                        </form>
+                    </div> <!-- End of Right Side -->
                 </div>
             </div>
         </div>
