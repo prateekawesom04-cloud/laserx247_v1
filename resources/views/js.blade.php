@@ -115,7 +115,7 @@
 
     function loadGames(sectionClass){
         if($(`.${sectionClass}`).length == 1){
-            let provider = sectionClass.slice(sectionClass.indexOf('_') + 1);
+            let provider = sectionClass.slice(sectionClass.indexOf('--') + 1);
             
             callApi('get','gameList',{'provider': provider},gameList);
         }
