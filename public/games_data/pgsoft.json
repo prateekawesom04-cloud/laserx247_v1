@@ -1,0 +1,860 @@
+{
+  "mahjong_ways": {
+    "title": "Mahjong Ways",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Mahjong-Ways_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=1189baca156e1bbbecc3b26651a63565",
+    "providerId": "1189baca156e1bbbecc3b26651a63565"
+  },
+  "mahjong_ways_2": {
+    "title": "Mahjong Ways 2",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Mahjong-Ways2_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=ba2adf72179e1ead9e3dae8f0a7d4c07",
+    "providerId": "ba2adf72179e1ead9e3dae8f0a7d4c07"
+  },
+  "treasures_of_aztec": {
+    "title": "Treasures of Aztec",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Treasures-of-Aztec_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=2fa9a84d096d6ff0bab53f81b79876c8",
+    "providerId": "2fa9a84d096d6ff0bab53f81b79876c8"
+  },
+  "leprechaun_riches": {
+    "title": "Leprechaun Riches",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Leprechaun-Riches_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=fb2a2ac51303c0a0801dbe6a72d936f7",
+    "providerId": "fb2a2ac51303c0a0801dbe6a72d936f7"
+  },
+  "lucky_neko": {
+    "title": "Lucky Neko",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Lucky-Neko_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=e1b4c6b95746d519228744771f15fe4b",
+    "providerId": "e1b4c6b95746d519228744771f15fe4b"
+  },
+  "captain's_bounty": {
+    "title": "Captain's Bounty",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Captains-Bounty_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=cd29b9906a852ce26b53b6d6d81037d4",
+    "providerId": "cd29b9906a852ce26b53b6d6d81037d4"
+  },
+  "queen_of_bounty": {
+    "title": "Queen of Bounty",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Queen-of-Bounty_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=83a6890cf84e4c5a6bacf96d5355d472",
+    "providerId": "83a6890cf84e4c5a6bacf96d5355d472"
+  },
+  "wild_bandito": {
+    "title": "Wild Bandito",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Wild-Bandito_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=95fc290bb05c07b5aad1a054eba4dcc4",
+    "providerId": "95fc290bb05c07b5aad1a054eba4dcc4"
+  },
+  "ways_of_the_qilin": {
+    "title": "Ways of the Qilin",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Ways-of-the-Qilin_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=fedfca553a97a791a3a41c4f1e3bff58",
+    "providerId": "fedfca553a97a791a3a41c4f1e3bff58"
+  },
+  "dragon_hatch": {
+    "title": "Dragon Hatch",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Dragon-Hatch_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=4afef91d3addb9ce5107abaf3342b9a5",
+    "providerId": "4afef91d3addb9ce5107abaf3342b9a5"
+  },
+  "double_fortune": {
+    "title": "Double Fortune",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Double-Fortune_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=3810e528e0abb8ce1cd7ddc2ece005c0",
+    "providerId": "3810e528e0abb8ce1cd7ddc2ece005c0"
+  },
+  "the_great_icescape": {
+    "title": "The Great Icescape",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/The-Great-Icescape_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=99f07ed2226f37e22570325fc1c078f2",
+    "providerId": "99f07ed2226f37e22570325fc1c078f2"
+  },
+  "caishen_wins": {
+    "title": "Caishen Wins",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Caishen-Wins_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=82a810ba99a5fb3e23fc514afebd6314",
+    "providerId": "82a810ba99a5fb3e23fc514afebd6314"
+  },
+  "ganesha_fortune": {
+    "title": "Ganesha Fortune",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Ganesha-Fortune_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=c4b57c6dcfac5c8a31b9174523103c8c",
+    "providerId": "c4b57c6dcfac5c8a31b9174523103c8c"
+  },
+  "dreams_of_macau": {
+    "title": "Dreams of Macau",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Dreams-of-Macau_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=0ef82ebe6f819619f53b83e218b9452c",
+    "providerId": "0ef82ebe6f819619f53b83e218b9452c"
+  },
+  "fortune_ox": {
+    "title": "Fortune Ox",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Fortune-Ox_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=8db4eb6d781f915eebab2a26133db0e9",
+    "providerId": "8db4eb6d781f915eebab2a26133db0e9"
+  },
+  "wild_bounty_showdown": {
+    "title": "Wild Bounty Showdown",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Wild-Bounty-Showdown_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=c98bb64436826fe9a2c62955ff70cba9",
+    "providerId": "c98bb64436826fe9a2c62955ff70cba9"
+  },
+  "prosperity_fortune_tree": {
+    "title": "Prosperity Fortune Tree",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Prosperity-Fortune-Tree_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=0da0fda6981138234f03cb665984c07e",
+    "providerId": "0da0fda6981138234f03cb665984c07e"
+  },
+  "diner_delights": {
+    "title": "Diner Delights",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Diner-Delights_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=7e6298970ad1c3c983e495be86833dee",
+    "providerId": "7e6298970ad1c3c983e495be86833dee"
+  },
+  "egypt's_book_of_mystery": {
+    "title": "Egypt's Book of Mystery",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Egypts-Book-of-Mystery_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=1babfc499be7bc670f11695e8668b59d",
+    "providerId": "1babfc499be7bc670f11695e8668b59d"
+  },
+  "phoenix_rises": {
+    "title": "Phoenix Rises",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Phoenix-Rises_app-icon_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=21c55c4cd28bb1ebf465fcfaf413477c",
+    "providerId": "21c55c4cd28bb1ebf465fcfaf413477c"
+  },
+  "wild_fireworks": {
+    "title": "Wild Fireworks",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Wild-Fireworks_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=fb8888b2dec33fe9d28996376580b410",
+    "providerId": "fb8888b2dec33fe9d28996376580b410"
+  },
+  "thai_river_wonders": {
+    "title": "Thai River Wonders",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Thai-River-Wonders_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=fcc6918b79eddf49984d4f5f650c8ded",
+    "providerId": "fcc6918b79eddf49984d4f5f650c8ded"
+  },
+  "bali_vacation": {
+    "title": "Bali Vacation",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Bali-Vacation_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=c79544b2cf7a3326c85f6ab5bdf53d25",
+    "providerId": "c79544b2cf7a3326c85f6ab5bdf53d25"
+  },
+  "crypto_gold": {
+    "title": "Crypto Gold",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Crypto-Gold_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=b1e11902cecf38023f2916569c32040a",
+    "providerId": "b1e11902cecf38023f2916569c32040a"
+  },
+  "jurassic_kingdom": {
+    "title": "Jurassic Kingdom",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Jurassic-Kingdom_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=4eef5090166a6889956a630321713366",
+    "providerId": "4eef5090166a6889956a630321713366"
+  },
+  "cocktail_nights": {
+    "title": "Cocktail Nights",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Cocktail-Nights_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=5bea5667515cb7a31f6f07dc3caa13b1",
+    "providerId": "5bea5667515cb7a31f6f07dc3caa13b1"
+  },
+  "fortune_tiger": {
+    "title": "Fortune Tiger",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Fortune-Tiger_app-icon_rounded.png",
+    "link": "/launchHomeGame?providerId=9a8482565ce343ad3ea7fc4bc42cb043",
+    "providerId": "9a8482565ce343ad3ea7fc4bc42cb043"
+  },
+  "speed_winner": {
+    "title": "Speed Winner",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Speed-Winner_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=386a9d8e184d9bc7c7aca32a8a5db686",
+    "providerId": "386a9d8e184d9bc7c7aca32a8a5db686"
+  },
+  "legend_of_perseus": {
+    "title": "Legend of Perseus",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Legend-of-Perseus_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=6e37f6e1b6042c2147866c4d86206979",
+    "providerId": "6e37f6e1b6042c2147866c4d86206979"
+  },
+  "honey_trap_of_diao_chan": {
+    "title": "Honey Trap of Diao Chan",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Honey-Trap-of-Diao-Chan_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=cd0cc7e653b42133d57145d5505d4e96",
+    "providerId": "cd0cc7e653b42133d57145d5505d4e96"
+  },
+  "fortune_gods": {
+    "title": "Fortune Gods",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Fortune-Gods_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=d3aad7ca1486eb3f145e2c43f38b559c",
+    "providerId": "d3aad7ca1486eb3f145e2c43f38b559c"
+  },
+  "win_win_won": {
+    "title": "Win Win Won",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Win-Win-Won_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=43862cc768882dff441a60b26dcec1c0",
+    "providerId": "43862cc768882dff441a60b26dcec1c0"
+  },
+  "medusa_ii": {
+    "title": "Medusa II",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Medusa-II_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=1c6d773d6a616d74e2573343a5dcecc3",
+    "providerId": "1c6d773d6a616d74e2573343a5dcecc3"
+  },
+  "tree_of_fortune": {
+    "title": "Tree of Fortune",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Tree-of-Fortune_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=e7d7e8396619459db2c178ed72f81049",
+    "providerId": "e7d7e8396619459db2c178ed72f81049"
+  },
+  "medusa": {
+    "title": "Medusa",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Medusa_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=dcc55631d793ad44be98d21c99f7e361",
+    "providerId": "dcc55631d793ad44be98d21c99f7e361"
+  },
+  "plushie_frenzy": {
+    "title": "Plushie Frenzy",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Plushie-Frenzy_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=b34c5e632cdc53fc67f1a5eec5758af7",
+    "providerId": "b34c5e632cdc53fc67f1a5eec5758af7"
+  },
+  "gem_saviour": {
+    "title": "Gem Saviour",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Gem-Saviour_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=9e795df6bdf093a144e714fd35afbb7a",
+    "providerId": "9e795df6bdf093a144e714fd35afbb7a"
+  },
+  "hood_vs_wolf": {
+    "title": "Hood vs Wolf",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Hood-vs-Wolf_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=222ce90a04a2246eecd5216454f9792f",
+    "providerId": "222ce90a04a2246eecd5216454f9792f"
+  },
+  "hotpot": {
+    "title": "Hotpot",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Hotpot_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=2fea77daa52fd607ed0abe816e4dc7c7",
+    "providerId": "2fea77daa52fd607ed0abe816e4dc7c7"
+  },
+  "dragon_legend": {
+    "title": "Dragon Legend",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Dragon-Legend_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=b990b58ed9e1aa341b3164f49bcb1517",
+    "providerId": "b990b58ed9e1aa341b3164f49bcb1517"
+  },
+  "mr._hallow-win": {
+    "title": "Mr. Hallow-Win",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/MrHallow-Win_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=12e94577c713a431ef7765394bb9be2f",
+    "providerId": "12e94577c713a431ef7765394bb9be2f"
+  },
+  "legend_of_hou_yi": {
+    "title": "Legend of Hou Yi",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Legend-of-Hou-Yi_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=1ed6fe92243975f73c944342119a1336",
+    "providerId": "1ed6fe92243975f73c944342119a1336"
+  },
+  "prosperity_lion": {
+    "title": "Prosperity Lion",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Prosperity-Lion_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=1fcb23fa9fac3ca32e20adfe90028de3",
+    "providerId": "1fcb23fa9fac3ca32e20adfe90028de3"
+  },
+  "hip_hop_panda": {
+    "title": "Hip Hop Panda",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Hip-Hop-Panda_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=5fdbd55ac67eea146b93939ee060cd54",
+    "providerId": "5fdbd55ac67eea146b93939ee060cd54"
+  },
+  "santa's_gift_rush": {
+    "title": "Santa's Gift Rush",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Santas-Gift-Rush_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=864edc20e589a738c632f8a49a2e02a3",
+    "providerId": "864edc20e589a738c632f8a49a2e02a3"
+  },
+  "baccarat_deluxe": {
+    "title": "Baccarat Deluxe",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Baccarat-Deluxe_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=22c3b8df172b40ac24a7e9c909e0e50e",
+    "providerId": "22c3b8df172b40ac24a7e9c909e0e50e"
+  },
+  "gem_saviour_sword": {
+    "title": "Gem Saviour Sword",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Gem-Saviour-Sword_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=4bbb563e9cf0211a3433beeebe70f35b",
+    "providerId": "4bbb563e9cf0211a3433beeebe70f35b"
+  },
+  "piggy_gold": {
+    "title": "Piggy Gold",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Piggy-Gold_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=a9d874dd5305212b09845fc88f72e02d",
+    "providerId": "a9d874dd5305212b09845fc88f72e02d"
+  },
+  "symbols_of_egypt": {
+    "title": "Symbols of Egypt",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Symbols-of-Egypt_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=0c7c636333c3c0807d2da26e1f0c8cd1",
+    "providerId": "0c7c636333c3c0807d2da26e1f0c8cd1"
+  },
+  "emperor's_favour": {
+    "title": "Emperor's Favour",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Emperors-Favour_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=12766ca09f503fec11f391199fce5e24",
+    "providerId": "12766ca09f503fec11f391199fce5e24"
+  },
+  "ganesha_gold": {
+    "title": "Ganesha Gold",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Ganesha-Gold_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=8dcea650a5a4d96530a77e6df8f61923",
+    "providerId": "8dcea650a5a4d96530a77e6df8f61923"
+  },
+  "jungle_delight": {
+    "title": "Jungle Delight",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Jungle-Delight_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=232e8e0c74f9bb16ab676e5ed49d72b4",
+    "providerId": "232e8e0c74f9bb16ab676e5ed49d72b4"
+  },
+  "journey_to_the_wealth": {
+    "title": "Journey to the Wealth",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Journey-to-the-Wealth_Icon_Rounded_1024.png",
+    "link": "/launchHomeGame?providerId=139f7ae7151a8bd388511bd8b7ce0c40",
+    "providerId": "139f7ae7151a8bd388511bd8b7ce0c40"
+  },
+  "flirting_scholar": {
+    "title": "Flirting Scholar",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Flirting-Scholar_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=0c884fde76cbc187f2797c4f76532220",
+    "providerId": "0c884fde76cbc187f2797c4f76532220"
+  },
+  "ninja_vs_samurai": {
+    "title": "Ninja vs Samurai",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Ninja-vs-Samurai_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=2eb712d4bb30e4594032ebf1464618b1",
+    "providerId": "2eb712d4bb30e4594032ebf1464618b1"
+  },
+  "muay_thai_champion": {
+    "title": "Muay Thai Champion",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Muay-Thai-Champion_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=82127ece1232c6762c81fedb73c99756",
+    "providerId": "82127ece1232c6762c81fedb73c99756"
+  },
+  "dragon_tiger_luck": {
+    "title": "Dragon Tiger Luck",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Dragon-Tiger-Luck_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=3d3dd6e2fd819832528108e0af197c43",
+    "providerId": "3d3dd6e2fd819832528108e0af197c43"
+  },
+  "fortune_mouse": {
+    "title": "Fortune Mouse",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Fortune-Mouse_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=8e5a4dd7da06fb68165d13f8bcd06328",
+    "providerId": "8e5a4dd7da06fb68165d13f8bcd06328"
+  },
+  "reel_love": {
+    "title": "Reel Love",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Reel-Love_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=813138051d990c0c21fb78015b14cbef",
+    "providerId": "813138051d990c0c21fb78015b14cbef"
+  },
+  "gem_saviour_conquest": {
+    "title": "Gem Saviour Conquest",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Gem-Saviour-Conquest_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=07d9e7940f430557447cb19692ae4409",
+    "providerId": "07d9e7940f430557447cb19692ae4409"
+  },
+  "shaolin_soccer": {
+    "title": "Shaolin Soccer",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Shaolin-Soccer_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=da483088a7f719026e93ba95c5547a8c",
+    "providerId": "da483088a7f719026e93ba95c5547a8c"
+  },
+  "candy_burst": {
+    "title": "Candy Burst",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Candy-Burst_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=27237d7e8d9b183c92fa9f6ab9832edc",
+    "providerId": "27237d7e8d9b183c92fa9f6ab9832edc"
+  },
+  "bikini_paradise": {
+    "title": "Bikini Paradise",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Bikini-Paradise_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=18f7f3fdda3e951989731b7204572a8f",
+    "providerId": "18f7f3fdda3e951989731b7204572a8f"
+  },
+  "genie's_3_wishes": {
+    "title": "Genie's 3 Wishes",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Genies-3-Wishes_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=16e34863dada5465919b289f83c494a1",
+    "providerId": "16e34863dada5465919b289f83c494a1"
+  },
+  "circus_delight": {
+    "title": "Circus Delight",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Circus-Delight_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=5a11d239f4368b4ec21d31e5979d85cf",
+    "providerId": "5a11d239f4368b4ec21d31e5979d85cf"
+  },
+  "secrets_of_cleopatra": {
+    "title": "Secrets of Cleopatra",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Secrets-of-Cleopatra_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=7028ed373d5bffeeb22fa90c4066bd9e",
+    "providerId": "7028ed373d5bffeeb22fa90c4066bd9e"
+  },
+  "vampire's_charm": {
+    "title": "Vampire's Charm",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Vampires-Charm_app-icon_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=8912f36ea0ca97fc6911fc21b3be6f6a",
+    "providerId": "8912f36ea0ca97fc6911fc21b3be6f6a"
+  },
+  "jewels_of_prosperity": {
+    "title": "Jewels of Prosperity",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Jewels-of-Prosperity_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=f55a666db274fcf210dd69801ae7e87a",
+    "providerId": "f55a666db274fcf210dd69801ae7e87a"
+  },
+  "jack_frost's_winter": {
+    "title": "Jack Frost's Winter",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Jack-Frosts-Winter_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=0a8772ad753cfce2c03c0599ad60c74c",
+    "providerId": "0a8772ad753cfce2c03c0599ad60c74c"
+  },
+  "galactic_gems": {
+    "title": "Galactic Gems",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Galactic-Gems_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=5d26d9ec03d3bc031e49abd5b0ffbdda",
+    "providerId": "5d26d9ec03d3bc031e49abd5b0ffbdda"
+  },
+  "guardians_of_ice_and_fire": {
+    "title": "Guardians of Ice and Fire",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Guardians-of-Ice-and-Fire_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=4e2f6b7602035730e0e8ee89675a417c",
+    "providerId": "4e2f6b7602035730e0e8ee89675a417c"
+  },
+  "opera_dynasty": {
+    "title": "Opera Dynasty",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Opera-Dynasty_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=c9ec6bce856aafad85f7de5405f7b1c3",
+    "providerId": "c9ec6bce856aafad85f7de5405f7b1c3"
+  },
+  "majestic_treasures": {
+    "title": "Majestic Treasures",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Majestic-Treasures_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=894240c0ef08d5c2e29b231013e1514d",
+    "providerId": "894240c0ef08d5c2e29b231013e1514d"
+  },
+  "candy_bonanza": {
+    "title": "Candy Bonanza",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Candy-Bonanza-icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=bbe2320adc5c506e7e56a2d24d96a252",
+    "providerId": "bbe2320adc5c506e7e56a2d24d96a252"
+  },
+  "heist_stakes": {
+    "title": "Heist Stakes",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Heist-Stakes_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=a4a67f1259cabed59e338e30149ceb0f",
+    "providerId": "a4a67f1259cabed59e338e30149ceb0f"
+  },
+  "rise_of_apollo": {
+    "title": "Rise of Apollo",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Rise-of-Apollo_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=3da7ee034052b8cb90c6ca060652ded4",
+    "providerId": "3da7ee034052b8cb90c6ca060652ded4"
+  },
+  "mermaid_riches": {
+    "title": "Mermaid Riches",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Mermaid-Riches-icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=a9d7a5af417a94caf554170e6b345e57",
+    "providerId": "a9d7a5af417a94caf554170e6b345e57"
+  },
+  "raider_jane's_crypt_of_fortune": {
+    "title": "Raider Jane's Crypt of Fortune",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Raider-Janes-Crypt-of-Fortune_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=24d8e1dbc5cface0907f5a21ecd56753",
+    "providerId": "24d8e1dbc5cface0907f5a21ecd56753"
+  },
+  "supermarket_spree": {
+    "title": "Supermarket Spree",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Supermarket-Spree_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=7ef03497fc0b21c34b137e85b1e409cd",
+    "providerId": "7ef03497fc0b21c34b137e85b1e409cd"
+  },
+  "buffalo_win": {
+    "title": "Buffalo Win",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Buffalo-Win_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=2818a7add6e10b2ec5f938d7ae0efb04",
+    "providerId": "2818a7add6e10b2ec5f938d7ae0efb04"
+  },
+  "legendary_monkey_king": {
+    "title": "Legendary Monkey King",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Legendary-Monkey-King_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=5cdeba2ab48d6ba345b1a4de8e2776b5",
+    "providerId": "5cdeba2ab48d6ba345b1a4de8e2776b5"
+  },
+  "spirited_wonders": {
+    "title": "Spirited Wonders",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Spirited-Wonders_app-icon_rounded.png",
+    "link": "/launchHomeGame?providerId=87a05c81af5635bed41765bfd076ee15",
+    "providerId": "87a05c81af5635bed41765bfd076ee15"
+  },
+  "emoji_riches": {
+    "title": "Emoji Riches",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Emoji-Riches_app-Icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=101ca3ff83b149dcf3439309e9b32142",
+    "providerId": "101ca3ff83b149dcf3439309e9b32142"
+  },
+  "mask_carnival": {
+    "title": "Mask Carnival",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Mask-Carnival_app-icon_rounded.png",
+    "link": "/launchHomeGame?providerId=adf297c2666c69b3abc3b61618d593b8",
+    "providerId": "adf297c2666c69b3abc3b61618d593b8"
+  },
+  "oriental_prosperity": {
+    "title": "Oriental Prosperity",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Oriental-Prosperity_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=23b43b58e11aadb1f27fd05ba41e9819",
+    "providerId": "23b43b58e11aadb1f27fd05ba41e9819"
+  },
+  "garuda_gems": {
+    "title": "Garuda Gems",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Garuda-Gems_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=aa609892f551de2053e92427dc4ae17f",
+    "providerId": "aa609892f551de2053e92427dc4ae17f"
+  },
+  "destiny_of_sun_&_moon": {
+    "title": "Destiny of Sun & Moon",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Destiny-of-Sun-and-Moon_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=617ca04ffcffbc543a1a30cacdac98fa",
+    "providerId": "617ca04ffcffbc543a1a30cacdac98fa"
+  },
+  "butterfly_blossom": {
+    "title": "Butterfly Blossom",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Butterfly-Blossom_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=116989bb267a72035bd01818c5496126",
+    "providerId": "116989bb267a72035bd01818c5496126"
+  },
+  "rooster_rumble": {
+    "title": "Rooster Rumble",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Rooster-Rumble_app-icon_rounded.png",
+    "link": "/launchHomeGame?providerId=5c371d9fca6109c954de93ac7986c5db",
+    "providerId": "5c371d9fca6109c954de93ac7986c5db"
+  },
+  "the_queen's_banquet": {
+    "title": "The Queen's Banquet",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/The-Queens-Banquet_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=1b317b5f8bf2ca0cc609307810407426",
+    "providerId": "1b317b5f8bf2ca0cc609307810407426"
+  },
+  "battleground_royale": {
+    "title": "Battleground Royale",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Battleground-Royale_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=e9f92f6edc2dac2d08bc345ee036260c",
+    "providerId": "e9f92f6edc2dac2d08bc345ee036260c"
+  },
+  "win_win_fish_prawn_crab": {
+    "title": "Win Win Fish Prawn Crab",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Win-Win-Fish-Prawn-Crab_rounded_1024.png",
+    "link": "/launchHomeGame?providerId=9b344f0b2a9bda427684be60597d2fc6",
+    "providerId": "9b344f0b2a9bda427684be60597d2fc6"
+  },
+  "lucky_piggy": {
+    "title": "Lucky Piggy",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Lucky-Piggy_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=66fadac68ed45e23def86c06cc811820",
+    "providerId": "66fadac68ed45e23def86c06cc811820"
+  },
+  "wild_coaster": {
+    "title": "Wild Coaster",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Wild-Coaster_app-icon_rounded.png",
+    "link": "/launchHomeGame?providerId=a06f1a154698243bf2484853d38e5fbb",
+    "providerId": "a06f1a154698243bf2484853d38e5fbb"
+  },
+  "totem_wonders": {
+    "title": "Totem Wonders",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Totem-Wonders_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=a03c6e7a918132b50f9caa297df1752d",
+    "providerId": "a03c6e7a918132b50f9caa297df1752d"
+  },
+  "alchemy_gold": {
+    "title": "Alchemy Gold",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Alchemy-Gold_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=9860c865264dcacad1ef37176cdefc1a",
+    "providerId": "9860c865264dcacad1ef37176cdefc1a"
+  },
+  "asgardian_rising": {
+    "title": "Asgardian Rising",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Asgardian-Rising_appicon_rounded.png",
+    "link": "/launchHomeGame?providerId=08d92dc2ca14f42c681b44297386d600",
+    "providerId": "08d92dc2ca14f42c681b44297386d600"
+  },
+  "midas_fortune": {
+    "title": "Midas Fortune",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Midas-Fortune_appicon_rounded.png",
+    "link": "/launchHomeGame?providerId=a2fd6b0cadc8fefccfb0d063b1f81d85",
+    "providerId": "a2fd6b0cadc8fefccfb0d063b1f81d85"
+  },
+  "fortune_rabbit": {
+    "title": "Fortune Rabbit",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Fortune-Rabbit_appicon_rounded.png",
+    "link": "/launchHomeGame?providerId=e175cdd3215a02f5539cc8354a149b75",
+    "providerId": "e175cdd3215a02f5539cc8354a149b75"
+  },
+  "rave_party_fever": {
+    "title": "Rave Party Fever",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Rave-Party-Fever_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=901aa1b709a937f6a04baddb98a8d1d3",
+    "providerId": "901aa1b709a937f6a04baddb98a8d1d3"
+  },
+  "hawaiian_tiki": {
+    "title": "Hawaiian Tiki",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Hawaiian-Tiki_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=35d6743ae5d73a3359f143cbb44ede09",
+    "providerId": "35d6743ae5d73a3359f143cbb44ede09"
+  },
+  "bakery_bonanza": {
+    "title": "Bakery Bonanza",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Bakery-Bonanza_app-Icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=d0fe7aa2f7ed5778190b1e60d94e6773",
+    "providerId": "d0fe7aa2f7ed5778190b1e60d94e6773"
+  },
+  "songkran_splash": {
+    "title": "Songkran Splash",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Songkran-Splash_appicon_rounded.png",
+    "link": "/launchHomeGame?providerId=894b1c7609629cf9b3d127d9dbaa372c",
+    "providerId": "894b1c7609629cf9b3d127d9dbaa372c"
+  },
+  "mystical_spirits": {
+    "title": "Mystical Spirits",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Mystical-Spirits_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=3b2d4d1ae24b1c3ad29556a6cf875f11",
+    "providerId": "3b2d4d1ae24b1c3ad29556a6cf875f11"
+  },
+  "super_golf_drive": {
+    "title": "Super Golf Drive",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Super-Golf-Drive_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=d37dde2adb52e0ea708c0ccd6877b1b3",
+    "providerId": "d37dde2adb52e0ea708c0ccd6877b1b3"
+  },
+  "lucky_clover_lady": {
+    "title": "Lucky Clover Lady",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Lucky-Clover-Lady_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=288f290554746bb32322a79b96ecdcbb",
+    "providerId": "288f290554746bb32322a79b96ecdcbb"
+  },
+  "fruity_candy": {
+    "title": "Fruity Candy",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Fruity-Candy_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=9f2c89ae5b7c0894c9ee9e223e3fd9d8",
+    "providerId": "9f2c89ae5b7c0894c9ee9e223e3fd9d8"
+  },
+  "cruise_royale": {
+    "title": "Cruise Royale",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Cruise-Royale_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=8489d662ccc07a2e9677729f76e26ae8",
+    "providerId": "8489d662ccc07a2e9677729f76e26ae8"
+  },
+  "safari_wilds": {
+    "title": "Safari Wilds",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Safari-Wilds_appicon_rounded.png",
+    "link": "/launchHomeGame?providerId=97c6f05ef6a0a34cad10d5e00edc909c",
+    "providerId": "97c6f05ef6a0a34cad10d5e00edc909c"
+  },
+  "gladiator's_glory": {
+    "title": "Gladiator's Glory",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Gladiators-Glory_appicon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=2454dc7cfdc651b7318950453bc3f617",
+    "providerId": "2454dc7cfdc651b7318950453bc3f617"
+  },
+  "ninja_racoon_frenzy": {
+    "title": "Ninja Racoon Frenzy",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Ninja-Racoon-Frenzy_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=6d1937d2e7f87306333443c99ac2c03f",
+    "providerId": "6d1937d2e7f87306333443c99ac2c03f"
+  },
+  "ultimate_striker": {
+    "title": "Ultimate Striker",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Ultimate-Striker_appicon_rounded.png",
+    "link": "/launchHomeGame?providerId=4415d83cd9c74299814c1473db83bf7f",
+    "providerId": "4415d83cd9c74299814c1473db83bf7f"
+  },
+  "wild_heist_cashout": {
+    "title": "Wild Heist Cashout",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Wild-Heist-Cashout_appicon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=028bd89b2120e880bcf1968c37277460",
+    "providerId": "028bd89b2120e880bcf1968c37277460"
+  },
+  "forge_of_wealth": {
+    "title": "Forge of Wealth",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Forge-of-Wealth_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=f8ec50fc2ef996e6c182fd2fe59a16fa",
+    "providerId": "f8ec50fc2ef996e6c182fd2fe59a16fa"
+  },
+  "mafia_mayhem": {
+    "title": "Mafia Mayhem",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Mafia-Mayhem_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=c7b3016c70a06ddbb2355a3aee4179d0",
+    "providerId": "c7b3016c70a06ddbb2355a3aee4179d0"
+  },
+  "werewolf_hunt": {
+    "title": "Werewolf Hunt",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Werewolfs-Hunt_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=2ac70bee7b47c172381e55f7e644d92e",
+    "providerId": "2ac70bee7b47c172381e55f7e644d92e"
+  },
+  "tsar_treasures": {
+    "title": "Tsar Treasures",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Tsar-Treasures_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=1eb6a959aadf0491f4a648762d8d262a",
+    "providerId": "1eb6a959aadf0491f4a648762d8d262a"
+  },
+  "fortune_dragon": {
+    "title": "Fortune Dragon",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Fortune-Dragon_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=c5435a8a73707a3a8bb4fe8baaaef3d2",
+    "providerId": "c5435a8a73707a3a8bb4fe8baaaef3d2"
+  },
+  "dragon_hatch_2": {
+    "title": "Dragon Hatch 2",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Dragon-Hatch2_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=910f25689073d17680be453d7ed90ce2",
+    "providerId": "910f25689073d17680be453d7ed90ce2"
+  },
+  "gemstones_gold": {
+    "title": "Gemstones Gold",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Gemstones-Gold_appicon_rounded.png",
+    "link": "/launchHomeGame?providerId=877c9b2ec1c5e0505129315948f9bbfa",
+    "providerId": "877c9b2ec1c5e0505129315948f9bbfa"
+  },
+  "cash_mania": {
+    "title": "Cash Mania",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Cash-Mania_appicon_rounded.png",
+    "link": "/launchHomeGame?providerId=c8bbb41367b3971ed3467c2f0c2627a4",
+    "providerId": "c8bbb41367b3971ed3467c2f0c2627a4"
+  },
+  "wild_ape_#3258": {
+    "title": "Wild Ape #3258",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Wild-Ape_rounded.png",
+    "link": "/launchHomeGame?providerId=9b93cb0dc46d847864c87ed42a3428bb",
+    "providerId": "9b93cb0dc46d847864c87ed42a3428bb"
+  },
+  "pinata_wins": {
+    "title": "Pinata Wins",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Pinata-Wins_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=f08cc025e23ee049b570517867c74be0",
+    "providerId": "f08cc025e23ee049b570517867c74be0"
+  },
+  "mystic_potion": {
+    "title": "Mystic Potion",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Mystic-Potion.png",
+    "link": "/launchHomeGame?providerId=e61bde75d590e943d2c5c6d432b29b46",
+    "providerId": "e61bde75d590e943d2c5c6d432b29b46"
+  },
+  "anubis_wrath": {
+    "title": "Anubis Wrath",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/Anubis-Wrath.png",
+    "link": "/launchHomeGame?providerId=c268154a85669eea35aa46387834ac76",
+    "providerId": "c268154a85669eea35aa46387834ac76"
+  },
+  "chicky_run": {
+    "title": "Chicky Run",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/chicky-run_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=c3e600005f72f1d1cabe758e206daf57",
+    "providerId": "c3e600005f72f1d1cabe758e206daf57"
+  },
+  "zombie_outbreak": {
+    "title": "Zombie Outbreak",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/zombie-outbreaks_appicon_rounded.png",
+    "link": "/launchHomeGame?providerId=83b6eceea77859c14426b05480b96c34",
+    "providerId": "83b6eceea77859c14426b05480b96c34"
+  },
+  "futebol_fever": {
+    "title": "Futebol Fever",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/futebol-fever_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=314afef87ff2974867234ac317b37f4c",
+    "providerId": "314afef87ff2974867234ac317b37f4c"
+  },
+  "shark_bounty": {
+    "title": "Shark Bounty",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/shark-hunter_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=42cf824884f8ecdaf39862c9a15bf1f1",
+    "providerId": "42cf824884f8ecdaf39862c9a15bf1f1"
+  },
+  "yakuza_honor": {
+    "title": "Yakuza Honor",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/yakuza-honor_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=e4772d4ef1de4217915c678d0d1722a8",
+    "providerId": "e4772d4ef1de4217915c678d0d1722a8"
+  },
+  "wings_of_iguazu": {
+    "title": "Wings of Iguazu",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/pg/wings-of-iguazu_icon_1024_rounded.png",
+    "link": "/launchHomeGame?providerId=6ae667b26f908e5ebe8976ca334fd472",
+    "providerId": "6ae667b26f908e5ebe8976ca334fd472"
+  },
+  "three_crazy_piggies": {
+    "title": "Three Crazy Piggies",
+    "img": "https://iili.io/FEllm5F.png",
+    "link": "/launchHomeGame?providerId=a197ff914cb04283a02da3b65d8ba705",
+    "providerId": "a197ff914cb04283a02da3b65d8ba705"
+  },
+  "oishi_delights": {
+    "title": "Oishi Delights",
+    "img": "https://iili.io/FEl4YYP.png",
+    "link": "/launchHomeGame?providerId=5af319aeb42d316100789fa1670ed869",
+    "providerId": "5af319aeb42d316100789fa1670ed869"
+  },
+  "museum_mystery": {
+    "title": "Museum Mystery",
+    "img": "https://iili.io/FElDBaf.png",
+    "link": "/launchHomeGame?providerId=cb3400447555dbb09ec2fb222e5ae083",
+    "providerId": "cb3400447555dbb09ec2fb222e5ae083"
+  },
+  "rio_fantasia": {
+    "title": "Rio Fantasia",
+    "img": "https://iili.io/FE0P5ut.png",
+    "link": "/launchHomeGame?providerId=dc242e2abfe13435226e9dbe8865c2ed",
+    "providerId": "dc242e2abfe13435226e9dbe8865c2ed"
+  },
+  "geisha's_revenge": {
+    "title": "Geisha's Revenge",
+    "img": "https://iili.io/FE19ZfS.png",
+    "link": "/launchHomeGame?providerId=9d9019d51ed9300035a4160d187b2a29",
+    "providerId": "9d9019d51ed9300035a4160d187b2a29"
+  },
+  "fortune_snake": {
+    "title": "Fortune Snake",
+    "img": "https://iili.io/FE13lF2.png",
+    "link": "/launchHomeGame?providerId=557babad95070382c94d184090133a72",
+    "providerId": "557babad95070382c94d184090133a72"
+  },
+  "incan_wonders": {
+    "title": "Incan Wonders",
+    "img": "https://iili.io/FE1r822.png",
+    "link": "/launchHomeGame?providerId=b769cb768fa25699ddb695933bde781a",
+    "providerId": "b769cb768fa25699ddb695933bde781a"
+  },
+  "mr._treasure’s_fortune": {
+    "title": "Mr. Treasure’s Fortune",
+    "img": "https://iili.io/FE1NqxV.png",
+    "link": "/launchHomeGame?providerId=8004c0cdbe396264d035b7a4aba58021",
+    "providerId": "8004c0cdbe396264d035b7a4aba58021"
+  },
+  "graffiti_rush": {
+    "title": "Graffiti Rush",
+    "img": "https://iili.io/FE1ZFoP.png",
+    "link": "/launchHomeGame?providerId=bfe3d243abaa1cc4b23d66909fbf6beb",
+    "providerId": "bfe3d243abaa1cc4b23d66909fbf6beb"
+  },
+  "doomsday_rampage": {
+    "title": "Doomsday Rampage",
+    "img": "https://iili.io/FE1bP19.png",
+    "link": "/launchHomeGame?providerId=52c57d366518d7b6e38e51ca20272584",
+    "providerId": "52c57d366518d7b6e38e51ca20272584"
+  },
+  "knockout_riches": {
+    "title": "Knockout Riches",
+    "img": "https://iili.io/FEEHdnR.png",
+    "link": "/launchHomeGame?providerId=0f5374a4766f204a6420120dcfecd9e2",
+    "providerId": "0f5374a4766f204a6420120dcfecd9e2"
+  }
+}

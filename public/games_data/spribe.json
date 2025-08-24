@@ -1,0 +1,68 @@
+{
+  "aviator": {
+    "title": "Aviator",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/spribe/Aviator.png",
+    "link": "/launchHomeGame?providerId=a04d1f3eb8ccec8a4823bdf18e3f0e84",
+    "providerId": "a04d1f3eb8ccec8a4823bdf18e3f0e84"
+  },
+  "dice": {
+    "title": "Dice",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/spribe/Dice.png",
+    "link": "/launchHomeGame?providerId=8a87aae7a3624d284306e9c6fe1b3e9c",
+    "providerId": "8a87aae7a3624d284306e9c6fe1b3e9c"
+  },
+  "goal": {
+    "title": "Goal",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/spribe/Goal.png",
+    "link": "/launchHomeGame?providerId=c68a515f0b3b10eec96cf6d33299f4e2",
+    "providerId": "c68a515f0b3b10eec96cf6d33299f4e2"
+  },
+  "hi_lo": {
+    "title": "Hi Lo",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/spribe/Hi-Lo.png",
+    "link": "/launchHomeGame?providerId=a669c993b0e1f1b7da100fcf95516bdf",
+    "providerId": "a669c993b0e1f1b7da100fcf95516bdf"
+  },
+  "hotline": {
+    "title": "Hotline",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/spribe/Hotline.png",
+    "link": "/launchHomeGame?providerId=b31720b3cd65d917a1a96ef61a72b672",
+    "providerId": "b31720b3cd65d917a1a96ef61a72b672"
+  },
+  "keno": {
+    "title": "Keno",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/spribe/Keno.png",
+    "link": "/launchHomeGame?providerId=c311eb4bbba03b105d150504931f2479",
+    "providerId": "c311eb4bbba03b105d150504931f2479"
+  },
+  "mines": {
+    "title": "Mines",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/spribe/Mines.png",
+    "link": "/launchHomeGame?providerId=5c4a12fb0a9b296d9b0d5f9e1cd41d65",
+    "providerId": "5c4a12fb0a9b296d9b0d5f9e1cd41d65"
+  },
+  "mini_roulette": {
+    "title": "Mini Roulette",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/spribe/Mini-Roulette.png",
+    "link": "/launchHomeGame?providerId=9dc7ac6155c5a19c1cc204853e426367",
+    "providerId": "9dc7ac6155c5a19c1cc204853e426367"
+  },
+  "plinko": {
+    "title": "Plinko",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/spribe/Plinko.png",
+    "link": "/launchHomeGame?providerId=6ab7a4fe5161936012d6b06143918223",
+    "providerId": "6ab7a4fe5161936012d6b06143918223"
+  },
+  "balloon": {
+    "title": "Balloon",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/spribe/balloon.png",
+    "link": "/launchHomeGame?providerId=de88f202c5a8beeaccabbd944f8acfbf",
+    "providerId": "de88f202c5a8beeaccabbd944f8acfbf"
+  },
+  "keno_80": {
+    "title": "Keno 80",
+    "img": "https://huidu-bucket.s3.ap-southeast-1.amazonaws.com/api/spribe/keno80.png",
+    "link": "/launchHomeGame?providerId=7a762edbe411ebc9be416870a734bd03",
+    "providerId": "7a762edbe411ebc9be416870a734bd03"
+  }
+}

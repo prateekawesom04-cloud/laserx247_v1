@@ -91,8 +91,8 @@ class AuthController extends Controller
             ])->first();
             $user->password = Hash::make($request->password);
             $user->save();
-
-            return redirect()->route('pages.login');
+            
+            return True;
             
         }
 
@@ -121,7 +121,7 @@ class AuthController extends Controller
 
     public function demoLogin(){
         Session::put(['user_session'=>'demo_user']);
-        return redirect()->route('index');
+        return True;
     }
 
     public function validateData($data) {

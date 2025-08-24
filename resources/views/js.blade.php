@@ -1,22 +1,26 @@
 <script>
 
-    function callApi(type=null, url=null, data=null, brforetry=null, action=null, catchError=null){
-        if(type.tpLowerCase() != 'get'){
+    function callApi(type=null, url=null, data=null, action=null, beforeAction=null, catchError=null){
+        // if(type.tpLowerCase() != 'get'){
             $.ajax({
                 type: type,
                 url: `{{ url('/') }}/${url}`,
                 data: data,
                 beforeSend: ()=>{
-                    brforetry();
+                    if(beforeAction) beforeAction();
                 },
                 success: (response)=>{
-                    action(response);
+                    if(action) {
+                        action(response);
+                    } else {
+                        return response;
+                    }
                 },
                 error: (error)=>{
-                    catchError(error);
+                    if(catchError) catchError();
                 }
             });
-        }
+        // }
     }
 
 // Register User start
@@ -35,7 +39,7 @@
 
         if(!phone.match(phoneRegex)){
             return false;
-        } elseif(password.length < 6 || password != confirm_password){
+        } else if(password.length < 6 || password != confirm_password){
             return false;
         } else {
             callApi('post','register',data,register_loginResponse);
@@ -58,7 +62,7 @@
 
         if(!phone.match(phoneRegex)){
             return false;
-        } elseif(password.length < 6){
+        } else if(password.length < 6){
             return false;
         } else {
             callApi('post','login',data,register_loginResponse);
@@ -91,6 +95,28 @@
         } else if(formType == 'login'){
             loginUser();
         }
+    });
+
+    function gameList(data){
+        
+        $('.new_game_list').html('');
+
+        Object.entries (data).forEach((value,key) => {
+            console.log('key--',value[0]);
+            console.log('value--',value[1].title);
+            $('.new_game_list').append(`
+                <div class="col-6 col-md-3">
+                    <img src="${value[1].img}" alt="${value[1].title}" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">${value[1].title}</div>
+                </div>
+            `);
+            
+        });
+        
+    }
+
+    $(document).ready(function(){
+        callApi('get','gameList?provider=jilli',{'provider': 'jilli'},gameList);
     });
 
 
