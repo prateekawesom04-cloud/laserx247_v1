@@ -102,8 +102,6 @@
         $('.new_game_list').html('');
 
         Object.entries (data).forEach((value,key) => {
-            console.log('key--',value[0]);
-            console.log('value--',value[1].title);
             $('.new_game_list').append(`
                 <div class="col-6 col-md-3">
                     <img src="${value[1].img}" alt="${value[1].title}" class="img-fluid w-100">
@@ -115,8 +113,18 @@
         
     }
 
+    function loadGames(sectionClass){
+        if($(`.${sectionClass}`).length == 1){
+            let provider = sectionClass.slice(sectionClass.indexOf('_') + 1);
+            
+            callApi('get','gameList',{'provider': provider},gameList);
+        }
+    }
+
     $(document).ready(function(){
-        callApi('get','gameList?provider=jilli',{'provider': 'jilli'},gameList);
+        console.log("$('.new_game_list').length",$('.new_game_list').length);
+        
+        callApi('get','gameList',{'provider': 'jilli'},gameList);
     });
 
 
