@@ -36,7 +36,6 @@ Route::get('home', function () {
     return view('pages.home');
 });
 
-
 Route::get('/in-play', function () {
     return view('pages.in-play');
 });

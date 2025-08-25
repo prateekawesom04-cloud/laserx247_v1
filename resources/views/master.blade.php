@@ -5,10 +5,12 @@
 <body>
     @include('header')
     @include('navbar')
-    @include('marquee')
     @yield('body')
     @include('footer')
     @include('js')
+    <div class="loader" style="display: none !important;">
+        Loading...
+    </div>
 </body>
 
 </html>

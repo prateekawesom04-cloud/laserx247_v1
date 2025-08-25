@@ -128,4 +128,22 @@
     });
 
 
+
+
+    
+// ===============
+// Front-end part 
+// ===============
+
+
+// Loader function
+function showLoader() {
+        const loader = document.querySelector('.loader');
+        if (loader) loader.style.display = 'block';
+    }
+
+    function hideLoader() {
+        const loader = document.querySelector('.loader');
+        if (loader) loader.style.display = 'none';
+    }
 </script>

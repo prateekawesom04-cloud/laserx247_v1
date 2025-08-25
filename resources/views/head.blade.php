@@ -6,5 +6,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
     
     <link rel="stylesheet" href="{{asset('css')}}/style.css">
+    <link rel="stylesheet" href="{{asset('css')}}/bootstrap.min.css">
     <script src="{{asset('js')}}/jquery-3.7.1.min.js"></script>
 </head>
