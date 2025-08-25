@@ -19,11 +19,20 @@ class AuthController extends Controller
             'phone'=>$request->phone
         ])->first();
 
-        if(!empty($user) && Hash::check($request->password,$user->password)){
+        if(empty($user)){
+            return response()->json([
+                'error'=> 'User not found',
+                'error_code'=> '104'
+            ]);
+        }
+        if(Hash::check($request->password,$user->password)){
             Session::put(['user_session'=>$user->id.'_user_'.$user->user_id]);
-            return redirect()->route('index')->with(['login'=>1]);
+            return True;
         } else{
-            return redirect()->route('index')->with(['login'=>0]);
+            return response()->json([
+                'error'=> 'Wrong Password',
+                'error_code'=> '105'
+            ]);
         }
     }
 
@@ -40,7 +49,12 @@ class AuthController extends Controller
             foreach ($validator->errors()->messages() as $key => $value) {
                 $errors[] = $value[0];
             }
-            return response()->json($errors);
+            return response()->json([
+                'error'=> $errors[0],
+                'error_code'=> '105'
+            ]);
+            
+            // return response()->json($errors);
         } else{
             $user = new User;
             $user->phone = $request->phone;
@@ -48,9 +62,9 @@ class AuthController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
 
-            // return True;
             Session::put(['user_session'=>$user->id.'_user_'.$user->user_id]);
-            return redirect()->route('index');
+            return True;
+            // return redirect()->route('index');
             
         }
         
@@ -77,13 +91,13 @@ class AuthController extends Controller
             ])->first();
             $user->password = Hash::make($request->password);
             $user->save();
-
-            return redirect()->route('pages.login');
+            
+            return True;
             
         }
 
     }
-    
+
     public function getOtp($phone){
 
         $otp = random_int(100000, 999999);
@@ -107,7 +121,7 @@ class AuthController extends Controller
 
     public function demoLogin(){
         Session::put(['user_session'=>'demo_user']);
-        return redirect()->route('index');
+        return True;
     }
 
     public function validateData($data) {

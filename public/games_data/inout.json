@@ -1,0 +1,14 @@
+{
+  "chicken_road": {
+    "title": "Chicken Road",
+    "img": "chicken_road.jpg",
+    "link": "/launchHomeGame?providerId=2126c5c458316ba1f2df65b387b60408",
+    "providerId": "2126c5c458316ba1f2df65b387b60408"
+  },
+  "chicken_road_2": {
+    "title": "Chicken Road 2",
+    "img": "chicken_road_2.jpg",
+    "link": "/launchHomeGame?providerId=562b299961b0ec40f252a832453c67b0",
+    "providerId": "562b299961b0ec40f252a832453c67b0"
+  }
+}

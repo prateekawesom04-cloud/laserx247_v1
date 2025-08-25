@@ -2,14 +2,25 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GamesController;
 use App\Http\Controllers\ApiCallController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Support\Facades\View;
+
+
+// Route::get('/{slug}', function ($slug) {
+//     if(View::exists('pages.'.$slug)){
+//         return view('pages.'.$slug);
+//     } else{
+//         return redirect($slug);
+//     }
+// });
 
 Route::get('/', function () {
     return view('pages.index');
 })->name('index');
 
-Route::get('/removeSession', function () {
+Route::get('removeSession', function () {
     Session::forget('user_session');
 });
 
@@ -48,11 +59,16 @@ Route::get('/sports-book', function () {
 });
 
 
+// Games
+
+
+Route::get('gameList', [GamesController::class,'gameList'])->name('gameList');
 
 
 
 
 Route::get('demoLogin', [AuthController::class,'demoLogin'])->name('demoLogin');
+
 
 // POST requests
 
