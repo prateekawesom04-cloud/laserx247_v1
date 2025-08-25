@@ -30,4 +30,16 @@ function showLoader() {
         const loader = document.querySelector('.loader');
         if (loader) loader.style.display = 'none';
     }
+// Header panel
+$(document).ready(function() {
+    $('#myAccountBtn').on('click', function(e) {
+        e.preventDefault();
+        console.log("My Account clicked!");
+        try {
+            new bootstrap.Offcanvas(document.getElementById('accountPanel')).show();
+        } catch (error) {
+            console.log("Error:", error);
+        }
+    });
+});
 </script>
