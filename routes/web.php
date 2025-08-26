@@ -32,6 +32,10 @@ Route::get('register', function () {
     return view('pages.register');
 })->name('pages.register');
 
+Route::get('forgot-page', function () {
+    return view('pages.forgot-page');
+});
+
 Route::get('home', function () {
     return view('pages.home');
 });
@@ -65,6 +69,12 @@ Route::get('/deposit-withdrawal', function () {
 });
 Route::get('/wallet', function () {
     return view('account_pages.wallet');
+});
+Route::get('/statements', function () {
+    return view('account_pages.statements');
+});
+Route::get('/change_password', function () {
+    return view('account_pages.change_password');
 });
 // Games
 
