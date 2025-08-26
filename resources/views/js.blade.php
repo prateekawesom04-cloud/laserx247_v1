@@ -158,4 +158,62 @@ $(document).ready(function() {
         }
     });
 });
+// for deposit-withdrawal page
+// Elements
+        const depositRadio = document.getElementById('deposit');
+        const withdrawalRadio = document.getElementById('withdrawal');
+        const depositSection = document.getElementById('depositSection');
+        const withdrawalSection = document.getElementById('withdrawalSection');
+        const depositAmount = document.getElementById('depositAmount');
+
+        // Switch sections
+        function switchSection() {
+            if (depositRadio.checked) {
+                depositSection.classList.remove('inactive');
+                withdrawalSection.classList.remove('active');
+            } else {
+                depositSection.classList.add('inactive');
+                withdrawalSection.classList.add('active');
+            }
+        }
+
+        // Event listeners
+        [depositRadio, withdrawalRadio].forEach(radio => 
+            radio.addEventListener('change', switchSection)
+        );
+
+        // Amount buttons
+        document.querySelectorAll('.amount-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                depositAmount.value = this.dataset.amount;
+            });
+        });
+
+        // Input validation
+        depositAmount.addEventListener('input', function() {
+            document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('active'));
+            this.classList.toggle('is-invalid', this.value < 100 || this.value > 50000);
+        });
+
+        // Button actions
+        document.querySelector('.btn-submit').onclick = () => {
+            const amount = depositAmount.value;
+            alert(amount >= 100 && amount <= 50000 
+                ? `Deposit request for ₹${amount} submitted!` 
+                : 'Enter valid amount (100-50000)');
+        };
+
+        document.querySelector('.btn-success').onclick = () => 
+            alert('Add Account functionality');
+
+        document.querySelector('.btn-edit').onclick = () => 
+            alert('Edit Stake functionality');
+
+        document.querySelector('.back-btn').onclick = () => 
+            confirm('Go back?') && window.history.back();
+
+        // Initialize
+        switchSection();
 </script>
