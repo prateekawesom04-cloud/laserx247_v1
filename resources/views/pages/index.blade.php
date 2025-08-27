@@ -9,73 +9,85 @@
 
 @extends('master')
 @section('body')
+    <!-- News Bar + Banner -->
+    <div class="container-fluid px-0">
+        <div class="container px-2 my-2">
+            <!-- News Bar -->
+            <div class="text-white d-flex align-items-center w-100 px-2" style="background:#000;">
+                <span class="me-2"><i class="fas fa-microphone text-warning"></i></span>
+                <strong class="me-2">News:</strong>
+                <marquee class="flex-grow-1">
+                    🔥 Breaking News: Welcome to Laser247 - Your Ultimate Sports Betting Destination! &nbsp;&nbsp;&nbsp;
+                    🔥 Enjoy Fast Deposits, Secure Betting & 24/7 Live Games!
+                </marquee>
+            </div>
 
-<!-- News Bar + Banner -->
-<div class="container-fluid px-0">
-    <div class="container px-2 my-2">
-        <!-- News Bar -->
-        <div class="text-white d-flex align-items-center w-100 px-2" style="background:#000;">
-            <span class="me-2"><i class="fas fa-microphone text-warning"></i></span>
-            <strong class="me-2">News:</strong>
-            <marquee class="flex-grow-1">
-                🔥 Breaking News: Welcome to Laser247 - Your Ultimate Sports Betting Destination! &nbsp;&nbsp;&nbsp;
-                🔥 Enjoy Fast Deposits, Secure Betting & 24/7 Live Games!
-            </marquee>
-        </div>
-
-        <!-- Main Banner -->
-        <div class="p-0">
-            <img src="{{ asset('images/slider1.gif') }}" class="img-fluid d-block w-100" alt="Popular Events">
+            <!-- Main Banner -->
+            <div class="p-0">
+                <img src="{{ asset('images/slider1.gif') }}" class="img-fluid d-block w-100" alt="Popular Events">
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Sports & Sports Book -->
-<div class="container-fluid px-0">
-    <div class="container px-2 my-2">
-        <div class="row g-2">
-            <!-- Sports -->
-            <div class="col-md-6 position-relative">
-                <img src="{{ asset('images/banner-sport1.png') }}" alt="Sports" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Sports</div>
-                <div class="position-absolute top-0 end-0 bg-dark bg-opacity-75 text-white p-2 rounded overflow-auto"
-                    style="max-height:200px; width:150px;">
-                    <div class="fw-bold text-danger mb-1">(🔴) LIVE</div>
-                    <ul class="list-unstyled small mb-0">
-                        <li class="d-flex justify-content-between border-bottom">Cricket <span>23</span></li>
-                        <li class="d-flex justify-content-between border-bottom">Football <span>14</span></li>
-                        <li class="d-flex justify-content-between border-bottom">Tennis <span>12</span></li>
-                        <li class="d-flex justify-content-between border-bottom">Casino <span>0</span></li>
-                        <li class="d-flex justify-content-between border-bottom">Sports Book <span>0</span></li>
-                        <li class="d-flex justify-content-between border-bottom">Horse Racing <span>0</span></li>
-                        <li class="d-flex justify-content-between border-bottom">Greyhound Racing <span>0</span></li>
-                        <li class="d-flex justify-content-between border-bottom">Binary <span>1</span></li>
-                        <li class="d-flex justify-content-between border-bottom">Kabaddi <span>0</span></li>
-                        <li class="d-flex justify-content-between">Politics <span>0</span></li>
-                    </ul>
+    <!-- Sports & Sports Book -->
+    <div class="container-fluid px-0">
+        <div class="container px-2 my-2">
+            <div class="row g-2">
+                <!-- Sports -->
+                <div class="col-md-6 position-relative">
+                    <img src="{{ asset('images/banner-sport1.png') }}" alt="Sports" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Sports</div>
+                    <div class="position-absolute top-0 end-0 bg-dark bg-opacity-75 text-white p-2 rounded overflow-auto"
+                        style="max-height:200px; width:150px;">
+                        <div class="fw-bold text-danger mb-1">(🔴) LIVE</div>
+                        <ul class="list-unstyled small mb-0">
+                            <li class="d-flex justify-content-between border-bottom">Cricket <span>23</span></li>
+                            <li class="d-flex justify-content-between border-bottom">Football <span>14</span></li>
+                            <li class="d-flex justify-content-between border-bottom">Tennis <span>12</span></li>
+                            <li class="d-flex justify-content-between border-bottom">Casino <span>0</span></li>
+                            <li class="d-flex justify-content-between border-bottom">Sports Book <span>0</span></li>
+                            <li class="d-flex justify-content-between border-bottom">Horse Racing <span>0</span></li>
+                            <li class="d-flex justify-content-between border-bottom">Greyhound Racing <span>0</span></li>
+                            <li class="d-flex justify-content-between border-bottom">Binary <span>1</span></li>
+                            <li class="d-flex justify-content-between border-bottom">Kabaddi <span>0</span></li>
+                            <li class="d-flex justify-content-between">Politics <span>0</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sports Book -->
+                <div class="col-md-6">
+                    <img src="{{ asset('images/sportbook.png') }}" alt="Sports Book" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Sports Book</div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Sports Book -->
-            <div class="col-md-6">
-                <img src="{{ asset('images/sportbook.png') }}" alt="Sports Book" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Sports Book</div>
+    <!-- Aviator & Mines -->
+    <div class="container-fluid px-0">
+        <div class="container px-2 my-2">
+            <div class="row g-2">
+                <div class="col-md-6">
+                    <img src="{{ asset('images/aviator-730-280.gif') }}" alt="Aviator" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Aviator</div>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{ asset('images/evoplay-730-280.gif') }}" alt="Mines" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Mines</div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- Aviator & Mines -->
-<div class="container-fluid px-0">
-    <div class="container px-2 my-2">
-        <div class="row g-2">
-            <div class="col-md-6">
-                <img src="{{ asset('images/aviator-730-280.gif') }}" alt="Aviator" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Aviator</div>
+    <!-- Provider -->
+    <div class="container-fluid px-0">
+        <div class="container px-2 my-3">
+            <div class="bg-dark text-white py-2 px-3 d-flex justify-content-between align-items-center">
+                <div>Provider</div>
+                <a href="javascript:void(0)" class="btn btn-sm btn-outline-light">View All</a>
             </div>
-            <div class="col-md-6">
-                <img src="{{ asset('images/evoplay-730-280.gif') }}" alt="Mines" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Mines</div>
+            <div class="row g-2 mt-2 new_game_list">
+
             </div>
         </div>
     </div>
@@ -107,60 +119,59 @@
         @endforeach
         
     </div>
-</div>
 
-<!-- Recent Games -->
-<div class="container-fluid px-0">
-    <div class="container px-2 my-3">
-        <div class="bg-dark text-white py-2">RECENT GAMES</div>
-        <div class="row g-2 mt-2">
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/gmx_pilotcup.jpg') }}" alt="Pilot Cup" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Pilot Cup</div>
-            </div>
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/evo_crazytime.webp') }}" alt="Crazy Time" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Crazy Time</div>
-            </div>
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/andar_bahar_228000.webp') }}" alt="Andar Bahar" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Andar Bahar</div>
-            </div>
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/dt_mac88.webp') }}" alt="Dragon Tiger" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Dragon Tiger</div>
+    <!-- Recent Games -->
+    <div class="container-fluid px-0">
+        <div class="container px-2 my-3">
+            <div class="bg-dark text-white py-2">RECENT GAMES</div>
+            <div class="row g-2 mt-2">
+                <div class="col-6 col-md-3">
+                    <img src="{{ asset('images/gmx_pilotcup.jpg') }}" alt="Pilot Cup" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Pilot Cup</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="{{ asset('images/evo_crazytime.webp') }}" alt="Crazy Time" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Crazy Time</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="{{ asset('images/andar_bahar_228000.webp') }}" alt="Andar Bahar" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Andar Bahar</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="{{ asset('images/dt_mac88.webp') }}" alt="Dragon Tiger" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Dragon Tiger</div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Our Provider -->
-<div class="container-fluid px-0">
-    <div class="container px-2 my-3">
-        <div class="bg-dark text-white py-2">OUR PROVIDER</div>
-        <div class="row g-2 mt-2">
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/creed.webp') }}" alt="Creed" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Creed</div>
-            </div>
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/mac88.webp') }}" alt="Mac" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Mac Excite</div>
-            </div>
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/mac88_cp.webp') }}" alt="Mac88" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Mac88</div>
-            </div>
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/fungames.webp') }}" alt="Fun Game" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Fun Game</div>
+    <!-- Our Provider -->
+    <div class="container-fluid px-0">
+        <div class="container px-2 my-3">
+            <div class="bg-dark text-white py-2">OUR PROVIDER</div>
+            <div class="row g-2 mt-2">
+                <div class="col-6 col-md-3">
+                    <img src="{{ asset('images/creed.webp') }}" alt="Creed" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Creed</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="{{ asset('images/mac88.webp') }}" alt="Mac" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Mac Excite</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="{{ asset('images/mac88_cp.webp') }}" alt="Mac88" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Mac88</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="{{ asset('images/fungames.webp') }}" alt="Fun Game" class="img-fluid w-100">
+                    <div class="bg-dark text-white py-1">Fun Game</div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- License Info -->
-<div class="container-sm w-50 my-3">
+    <!-- License Info -->
+    <div class="container-sm w-50 my-3">
         <div class="row border rounded p-2 align-items-center">
             <!-- Left Image -->
             <div class="col-3 text-center border-end">
@@ -182,5 +193,4 @@
     <p class="fs-7 mb-1 container-sm w-50 text-center"style="font-size: 0.75rem;">
         Our website works best in the newest and last prior version of these browsers: Google Chrome. Firefox
     </p>
-
 @endsection

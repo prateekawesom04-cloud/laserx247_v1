@@ -31,7 +31,7 @@
                   +91
                 </span>
                 <input type="text" class="form-control border-start-0" name="phone" placeholder="Enter Phone Number" />
-                <button type="button" class="btn btn-dark">Get OTP</button>
+                <button type="button" class="btn btn-info text-white">Get OTP</button>
               </div>
 
               <!-- OTP -->
@@ -69,8 +69,8 @@
 
               <!-- Footer Links -->
               <div class="text-center">
-                <small>Remember Your Password? <a href="#" class="text-info fw-bold">Login</a></small><br />
-                <a href="#" class="text-white fw-bold small">Create New Account</a>
+                <small>Remember Your Password? <a href="login" class="text-info fw-bold">Login</a></small><br />
+                <a href="register" class="text-white fw-bold small">Create New Account</a>
               </div>
 
             </form>

@@ -32,6 +32,10 @@ Route::get('register', function () {
     return view('pages.register');
 })->name('pages.register');
 
+Route::get('forgot-page', function () {
+    return view('pages.forgot-page');
+});
+
 Route::get('home', function () {
     return view('pages.home');
 });
@@ -57,8 +61,21 @@ Route::get('/casino', function () {
 Route::get('/sports-book', function () {
     return view('pages.sports-book');
 });
-
-
+Route::get('/providers_games', function () {
+    return view('pages.providers_games');
+});
+Route::get('/deposit-withdrawal', function () {
+    return view('account_pages.deposit-withdrawal');
+});
+Route::get('/wallet', function () {
+    return view('account_pages.wallet');
+});
+Route::get('/statements', function () {
+    return view('account_pages.statements');
+});
+Route::get('/change_password', function () {
+    return view('account_pages.change_password');
+});
 // Games
 
 
