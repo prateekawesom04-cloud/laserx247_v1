@@ -96,15 +96,17 @@
         }
     });
 
-    function gameList(data) {
+    function gameList(data){
+        
+        $(`.game_list[data-provider=${data.provider}]`).html('');
 
-        $('.new_game_list').html('');
-
-        Object.entries(data).forEach((value, key) => {
-            $('.new_game_list').append(`
+        Object.entries(data.games).forEach((value,key) => {
+            $(`.game_list[data-provider=${data.provider}]`).append(`
                 <div class="col-6 col-md-3">
+                    <a href='javascript:void(0)' class="launch_game d-block" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
                     <img src="${value[1].img}" alt="${value[1].title}" class="img-fluid w-100">
                     <div class="bg-dark text-white py-1">${value[1].title}</div>
+                    </a>
                 </div>
             `);
 
@@ -115,28 +117,43 @@
     function loadGames(sectionClass) {
         if ($(`.${sectionClass}`).length == 1) {
             let provider = sectionClass.slice(sectionClass.indexOf('--') + 1);
-
-            callApi('get', 'gameList', {
-                'provider': provider
-            }, gameList);
         }
     }
 
-    $(document).ready(function() {
-        console.log("$('.new_game_list').length", $('.new_game_list').length);
+    function launchGame(data){
+        console.log('data---',"https://colourforge.in?"+data);
+        
+        window.location.href = `https://colourforge.in?${data}`;
+    }
 
-        callApi('get', 'gameList', {
-            'provider': 'jilli'
-        }, gameList);
+    $(document).ready(function(){
+        console.log("$('.new_game_list').length",$('.new_game_list').length);
+        
+            @foreach ($providers as $provider)
+            callApi('get','gameList',{'provider': "{{ strtolower(explode('provider=',$provider->link)[1]) }}"},gameList);
+            @endforeach
+   
+    });
+
+
+// ============
+// Launch Games
+
+    $('body').on('click','.launch_game',function(e){
+        let data ={};
+        
+        data.game_id = $(this).attr('data-game_id');
+        // data.game_link = $(this).attr('data-game_link');
+            
+        callApi('post','launchGame',data,launchGame);
     });
 
 
 
 
-
-    // ===============
-    // Front-end part 
-    // ===============
+// ===============
+// Front-end part 
+// ===============
 
 
     // Loader function
