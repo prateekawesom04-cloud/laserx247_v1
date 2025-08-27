@@ -61,8 +61,8 @@ Route::get('/casino', function () {
 Route::get('/sports-book', function () {
     return view('pages.sports-book');
 });
-Route::get('/providers_games', function () {
-    return view('pages.providers_games');
+Route::get('/providers_tab', function () {
+    return view('pages.providers_tab');
 });
 Route::get('/deposit-withdrawal', function () {
     return view('account_pages.deposit-withdrawal');
