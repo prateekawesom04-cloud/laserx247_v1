@@ -1,3 +1,12 @@
+
+<?php
+
+    $providers = Storage::disk('local')->get('games_data/providers.json');
+    
+    $providers = json_decode($providers);
+
+?>
+
 @extends('master')
 @section('body')
 
@@ -76,24 +85,27 @@
 <div class="container-fluid px-0">
     <div class="container px-2 my-3">
         <div class="bg-dark text-white py-2">NEW LAUNCH</div>
-        <div class="row g-2 mt-2 new_game_list">
+        <div class="row g-2 mt-2">
             <div class="col-6 col-md-3">
                 <img src="{{ asset('images/luckylase2.webp') }}" alt="Lucky Lace 2" class="img-fluid w-100">
                 <div class="bg-dark text-white py-1">Lucky Lace 2</div>
             </div>
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/chicken-road-cross.webp') }}" alt="Chicken Road Cross" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Chicken Road Cross</div>
-            </div>
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/stairpong.webp') }}" alt="Stair Pong" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Stair Pong</div>
-            </div>
+        </div>
+
+        @foreach ($providers as $provider)
+        <div class="bg-dark text-white py-2 px-3 d-flex justify-content-between align-items-center mt-4">
+                        <div>{{ $provider->title }}</div>
+                        <a href="{{ url('providers_games') }}/{{ strtolower(explode('provider=',$provider->link)[1]) }}" class="btn btn-sm btn-outline-light">View All</a>
+                    </div>
+        <div class="row g-2 mt-2 game_list" data-provider='{{ strtolower(explode('provider=',$provider->link)[1]) }}'>
             <div class="col-6 col-md-3">
                 <img src="{{ asset('images/rps.webp') }}" alt="Rock Paper Scissors" class="img-fluid w-100">
                 <div class="bg-dark text-white py-1">Rock Paper Scissors</div>
             </div>
         </div>
+            
+        @endforeach
+        
     </div>
 </div>
 

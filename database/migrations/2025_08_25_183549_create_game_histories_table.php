@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('game_histories', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('user_ip');
             $table->string('game_uid');
-            $table->string('image');
-            $table->string('launch_url');
-            $table->boolean('status')->default(true);
+            $table->string('game_round');
+            $table->float('bet_amount');
+            $table->float('win_amount');
+            $table->float('wallet_before');
+            $table->float('wallet_after');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('game_histories');
     }
 };
