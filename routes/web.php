@@ -76,6 +76,18 @@ Route::get('/statements', function () {
 Route::get('/change_password', function () {
     return view('account_pages.change_password');
 });
+Route::get('/profile', function () {
+    return view('account_pages.profile');
+});
+Route::get('/profit_loss', function () {
+    return view('account_pages.profit_loss');
+});
+Route::get('/refer_rewards', function () {
+    return view('account_pages.refer_rewards');
+});
+Route::get('/unsettled_bets', function () {
+    return view('account_pages.unsettled_bets');
+});
 // Games
 
 

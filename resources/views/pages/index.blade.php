@@ -1,9 +1,8 @@
-
 <?php
 
-    $providers = Storage::disk('local')->get('games_data/providers.json');
-    
-    $providers = json_decode($providers);
+$providers = Storage::disk('local')->get('games_data/providers.json');
+
+$providers = json_decode($providers);
 
 ?>
 
@@ -79,118 +78,63 @@
             </div>
         </div>
     </div>
-    <!-- Provider -->
+    </div>
+
+    <!-- New Launch -->
     <div class="container-fluid px-0">
         <div class="container px-2 my-3">
-            <div class="bg-dark text-white py-2 px-3 d-flex justify-content-between align-items-center">
-                <div>Provider</div>
-                <a href="javascript:void(0)" class="btn btn-sm btn-outline-light">View All</a>
-            </div>
-            <div class="row g-2 mt-2 new_game_list">
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- New Launch -->
-<div class="container-fluid px-0">
-    <div class="container px-2 my-3">
-        <div class="bg-dark text-white py-2">NEW LAUNCH</div>
-        <div class="row g-2 mt-2">
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/luckylase2.webp') }}" alt="Lucky Lace 2" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Lucky Lace 2</div>
-            </div>
-        </div>
-
-        @foreach ($providers as $provider)
-        <div class="bg-dark text-white py-2 px-3 d-flex justify-content-between align-items-center mt-4">
-                        <div>{{ $provider->title }}</div>
-                        <a href="{{ url('providers_games') }}/{{ strtolower(explode('provider=',$provider->link)[1]) }}" class="btn btn-sm btn-outline-light">View All</a>
+            @foreach ($providers as $provider)
+                <div class="bg-dark text-white py-2 px-3 d-flex justify-content-between align-items-center mt-4">
+                    <div>{{ $provider->title }}</div>
+                    <a href="{{ url('providers_games') }}/{{ strtolower(explode('provider=', $provider->link)[1]) }}"
+                        class="btn btn-sm btn-outline-light">View All</a>
+                </div>
+                <div class="row g-2 mt-2 game_list"
+                    data-provider='{{ strtolower(explode('provider=', $provider->link)[1]) }}'>
+                    <div class="col-6 col-md-3">
+                        <img src="{{ asset('images/rps.webp') }}" alt="Rock Paper Scissors" class="img-fluid w-100">
+                        <div class="bg-dark text-white py-1">Rock Paper Scissors</div>
                     </div>
-        <div class="row g-2 mt-2 game_list" data-provider='{{ strtolower(explode('provider=',$provider->link)[1]) }}'>
-            <div class="col-6 col-md-3">
-                <img src="{{ asset('images/rps.webp') }}" alt="Rock Paper Scissors" class="img-fluid w-100">
-                <div class="bg-dark text-white py-1">Rock Paper Scissors</div>
-            </div>
-        </div>
-            
-        @endforeach
-        
-    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <a class="btn btn-primary btn-sm load-more-btn">Load More</a>
+                </div>
+            @endforeach
 
-    <!-- Recent Games -->
-    <div class="container-fluid px-0">
-        <div class="container px-2 my-3">
-            <div class="bg-dark text-white py-2">RECENT GAMES</div>
-            <div class="row g-2 mt-2">
-                <div class="col-6 col-md-3">
-                    <img src="{{ asset('images/gmx_pilotcup.jpg') }}" alt="Pilot Cup" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Pilot Cup</div>
+        </div>
+
+        <!-- License Info -->
+        <div class="container-sm w-50 my-3">
+            <div class="row border rounded p-2 align-items-center">
+                <!-- Left Image -->
+                <div class="col-3 text-center border-end">
+                    <img src="{{ asset('images/gc.png') }}" alt="GC Logo" class="img-fluid" style="max-height:50px;">
                 </div>
-                <div class="col-6 col-md-3">
-                    <img src="{{ asset('images/evo_crazytime.webp') }}" alt="Crazy Time" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Crazy Time</div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <img src="{{ asset('images/andar_bahar_228000.webp') }}" alt="Andar Bahar" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Andar Bahar</div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <img src="{{ asset('images/dt_mac88.webp') }}" alt="Dragon Tiger" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Dragon Tiger</div>
+
+                <!-- Right Image + Text -->
+                <div class="col-9 d-flex align-items-center">
+                    <img src="{{ asset('images/lice.png') }}" alt="License Logo" class="img-fluid me-2"
+                        style="max-height:50px;">
+                    <p class="mb-0 fs-7"style="font-size: 0.75rem;">
+                        LaserX247 is the trading name of Sports Target B.V., a company incorporated and regulated in Curaçao
+                        under company number 148053 with its registered office at Fransche Bloemweg 4, Willemstad, Curaçao.
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Our Provider -->
-    <div class="container-fluid px-0">
-        <div class="container px-2 my-3">
-            <div class="bg-dark text-white py-2">OUR PROVIDER</div>
-            <div class="row g-2 mt-2">
-                <div class="col-6 col-md-3">
-                    <img src="{{ asset('images/creed.webp') }}" alt="Creed" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Creed</div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <img src="{{ asset('images/mac88.webp') }}" alt="Mac" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Mac Excite</div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <img src="{{ asset('images/mac88_cp.webp') }}" alt="Mac88" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Mac88</div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <img src="{{ asset('images/fungames.webp') }}" alt="Fun Game" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Fun Game</div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <p class="fs-7 mb-1 container-sm w-50 text-center"style="font-size: 0.75rem;">
+            Our website works best in the newest and last prior version of these browsers: Google Chrome. Firefox
+        </p>
+        <script>
+            $(document).ready(function() {
 
-    <!-- License Info -->
-    <div class="container-sm w-50 my-3">
-        <div class="row border rounded p-2 align-items-center">
-            <!-- Left Image -->
-            <div class="col-3 text-center border-end">
-                <img src="{{ asset('images/gc.png') }}" alt="GC Logo" class="img-fluid" style="max-height:50px;">
-            </div>
+                @foreach ($providers as $provider)
+                    callApi('get', 'gameList', {
+                        'provider': "{{ strtolower(explode('provider=', $provider->link)[1]) }}"
+                    }, gameList);
+                @endforeach
 
-            <!-- Right Image + Text -->
-            <div class="col-9 d-flex align-items-center">
-                <img src="{{ asset('images/lice.png') }}" alt="License Logo" class="img-fluid me-2"
-                    style="max-height:50px;">
-                <p class="mb-0 fs-7"style="font-size: 0.75rem;">
-                    LaserX247 is the trading name of Sports Target B.V., a company incorporated and regulated in Curaçao
-                    under company number 148053 with its registered office at Fransche Bloemweg 4, Willemstad, Curaçao.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <p class="fs-7 mb-1 container-sm w-50 text-center"style="font-size: 0.75rem;">
-        Our website works best in the newest and last prior version of these browsers: Google Chrome. Firefox
-    </p>
-@endsection
+            });
+        </script>
+    @endsection

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>Register Page</title>
-    <link rel="stylesheet" href="{{asset('css')}}/style.css">
-    <link rel="stylesheet" href="{{asset('css')}}/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css') }}/style.css">
+    <link rel="stylesheet" href="{{ asset('css') }}/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
 
@@ -26,7 +26,7 @@
 
                     <!-- Right side with form -->
                     <div class="col-md-7 p-4 text-white" style="background: #0a2345;">
-                        <form id="RegisterForm"> 
+                        <form id="RegisterForm">
                             <!-- Phone -->
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-white border-end-0">
@@ -53,7 +53,8 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-lock"></i>
                                 </span>
-                                <input type="password" class="form-control" name="password" placeholder="Enter Password" />
+                                <input type="password" class="form-control" name="password"
+                                    placeholder="Enter Password" />
                             </div>
 
                             <!-- Confirm Password -->

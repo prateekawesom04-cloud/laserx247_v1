@@ -5,7 +5,7 @@
         <!-- Header -->
         <div class="header text-white p-3 d-flex justify-content-between align-items-center rounded-top">
             <button class="back-btn text-white px-2 py-1 rounded" style="font-size: 10px;">BACK</button>
-            <div class="balance-info px-2 py-1 rounded-pill" style="font-size: 14px;">Account Statement</div>
+            <div class="balance-info px-2 py-1 rounded-pill" style="font-size: 14px;">Profit/Loss</div>
         </div>
 
         <!-- Filter Form -->
@@ -47,14 +47,18 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-submit text-white w-100" style="font-size: 11px;">Get Statement</button>
+                        <button type="submit" class="btn btn-submit text-white w-100" style="font-size: 11px;">Get Profit/Loss</button>
                     </div>
                 </div>
             </form>
         </div>
+        <div class="d-flex justify-content-between align-items-center px-3 py-2" style="background-color: #1d2125; color: white; font-size: 14px;">
+    <div class="balance-info">Profit/Loss</div>
+    <div class="total-pl">Total P/L: ₹ 0.00</div>
+</div>
 
         <!-- Table Section -->
-        <div class="table-container rounded">
+        <div class="table-container">
             <div class="table-wrapper">
                 <div class="table-header text-white text-center py-0" style="font-size: 10px;">
                     <div class="row g-1 mx-0">
@@ -63,14 +67,12 @@
                         <div class="col">AMOUNT</div>
                         <div class="col">COMMISSION</div>
                         <div class="col">TOTAL</div>
-                        <div class="col">BALANCE</div>
-                        <div class="col">DESCRIPTION</div>
-                        <div class="col">DETAILS</div>
+                        <div class="col">EVENT</div>
                     </div>
                 </div>
                 <div class="table-content">
-                    <div class="text-center py-3 text-muted fst-italic" style="font-size: 11px;">No Data Found</div>
-                </div>
+    <div class="text-center py-3 text-muted fst-italic" style="font-size: 11px;">No Data Found</div>
+</div>
             </div>
         </div>
     </div>
