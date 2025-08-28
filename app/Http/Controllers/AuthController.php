@@ -139,7 +139,7 @@ class AuthController extends Controller
     // Additional authentication functions
 
     
-	public function generate_jwt($headers, $payload, $secret = 'bdgshonuuncensored') {
+	public function generate_jwt($headers, $payload, $secret = 'testing_jwt') {
 		$headers_encoded = base64url_encode(json_encode($headers));
 		
 		$payload_encoded = base64url_encode(json_encode($payload));
@@ -152,7 +152,7 @@ class AuthController extends Controller
 		return $jwt;
 	}
 
-    public function is_jwt_valid($jwt, $secret = 'bdgshonuuncensored') {
+    public function is_jwt_valid($jwt, $secret = 'testing_jwt') {
 		
 		$res = [
 			'status' => '',
@@ -202,5 +202,16 @@ class AuthController extends Controller
         $iv = substr($key, 0, 16);
 		$output = openssl_decrypt(base64_decode($string), $cipher, $key, 0, $iv);
         return $output;
+    }
+
+    public function md5_sign($data, $key,$unset=[]) {
+        ksort($data);
+        foreach ($unset as $value){
+            unset($data[$value]);
+        }
+        $string = http_build_query($data);
+        $string = urldecode($string); 
+        $string = trim($string) . "&key=" . $key;
+        return strtoupper(md5($string));
     }
 }
