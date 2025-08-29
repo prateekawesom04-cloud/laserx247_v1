@@ -34,7 +34,7 @@
                                 </span>
                                 <input type="text" class="form-control border-start-0" name="phone"
                                     placeholder="Enter Phone Number" />
-                                <button class="btn btn-dark" type="button">Get OTP</button>
+                                <a class="btn btn-dark" type="button">Get OTP</a>
                             </div>
 
                             <!-- OTP -->
@@ -70,12 +70,12 @@
                             </div>
 
                             <!-- Register -->
-                            <button type="submit" class="btn btn-dark w-100 mb-3">Register</button>
+                            <a type="submit" class="btn btn-dark w-100 mb-3">Register</a>
 
                             <div class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</div>
 
                             <!-- WhatsApp -->
-                            <button type="button" class="btn btn-success w-100 mb-3">📱 WhatsApp Now</button>
+                            <a type="button" class="btn btn-success w-100 mb-3">📱 WhatsApp Now</a>
 
                             <!-- Login -->
                             <div class="text-center small">

@@ -3,7 +3,7 @@
 @section('sports_body')
     <div class="fs-6">
 
-        <!-- Centered Buttons -->
+        <!-- Centered as -->
         <div class="container-fluid text-center py-2 bg-info bg-gradient d-flex justify-content-center flex-wrap gap-2">
             <a href="javascript:void(0)" class="btn btn-dark btn-sm px-4 me-2">EXCHANGE</a>
             <a href="javascript:void(0)" class="btn btn-light btn-sm px-4">SPORTSBOOK</a>
@@ -16,7 +16,7 @@
         <!-- Left side -->
         <h5 class="mb-0 text-white">Highlights</h5>
         
-        <!-- Right side - Small Buttons -->
+        <!-- Right side - Small as -->
         <div class="d-flex gap-1 flex-wrap justify-content-end">
             <a href="javascript:void(0)" class="btn btn-success btn-xs px-1 py-1 text-nowrap">+ LIVE</a>
             <a href="javascript:void(0)" class="btn btn-info btn-xs px-1 py-1 text-nowrap">+ VIRTUAL</a>
@@ -117,13 +117,13 @@
                                         <small class="text-muted">08/05/2025 06:30</small>
                                     </div>
                                 </td>
-                                <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                        class="btn btn-danger btn-sm">-</button></td>
-                                <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                        class="btn btn-danger btn-sm">-</button></td>
-                                <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                        class="btn btn-danger btn-sm">-</button></td>
-                                <td><button class="btn btn-outline-secondary btn-sm">⚙</button></td>
+                                <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                        class="btn btn-danger btn-sm">-</a></td>
+                                <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                        class="btn btn-danger btn-sm">-</a></td>
+                                <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                        class="btn btn-danger btn-sm">-</a></td>
+                                <td><a class="btn btn-outline-secondary btn-sm">⚙</a></td>
                             </tr>
 
                             <!-- Match 2 -->
@@ -138,13 +138,13 @@
                                         <small class="text-muted">05/08/2025 23:00</small>
                                     </div>
                                 </td>
-                                <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                        class="btn btn-danger btn-sm">-</button></td>
-                                <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                        class="btn btn-danger btn-sm">-</button></td>
-                                <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                        class="btn btn-danger btn-sm">-</button></td>
-                                <td><button class="btn btn-outline-secondary btn-sm">⚙</button></td>
+                                <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                        class="btn btn-danger btn-sm">-</a></td>
+                                <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                        class="btn btn-danger btn-sm">-</a></td>
+                                <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                        class="btn btn-danger btn-sm">-</a></td>
+                                <td><a class="btn btn-outline-secondary btn-sm">⚙</a></td>
                             </tr>
 
                             <!-- Match 3 -->
@@ -159,13 +159,13 @@
                                         <small class="text-muted">15/08/2025 01:00</small>
                                     </div>
                                 </td>
-                                <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                        class="btn btn-danger btn-sm">-</button></td>
-                                <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                        class="btn btn-danger btn-sm">-</button></td>
-                                <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                        class="btn btn-danger btn-sm">-</button></td>
-                                <td><button class="btn btn-outline-secondary btn-sm">⚙</button></td>
+                                <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                        class="btn btn-danger btn-sm">-</a></td>
+                                <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                        class="btn btn-danger btn-sm">-</a></td>
+                                <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                        class="btn btn-danger btn-sm">-</a></td>
+                                <td><a class="btn btn-outline-secondary btn-sm">⚙</a></td>
                             </tr>
                         </tbody>
                     </table>

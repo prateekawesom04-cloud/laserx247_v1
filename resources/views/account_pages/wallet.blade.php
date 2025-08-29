@@ -4,7 +4,7 @@
     <div class="wallet-main-container bg-white rounded shadow">
         <!-- Header -->
         <div class="wallet-header text-white p-3 d-flex justify-content-between align-items-center rounded-top">
-            <button class="wallet-back-btn text-white px-2 py-1 rounded" style="font-size: 10px;">BACK</button>
+            <a class="wallet-back-btn text-white px-2 py-1 rounded" style="font-size: 10px;">BACK</a>
             <div class="wallet-balance-info px-2 py-1" style="font-size: 14px;">Min: 100 Max: 50000</div>
         </div>
 
@@ -16,21 +16,21 @@
                 max="50000" style="font-size: 12px;" />
 
             <div class="row g-2 mb-3">
-                <div class="col-6"><button class="wallet-amount-btn btn text-white w-100" data-amount="300"
-                        style="font-size: 12px;">300</button></div>
-                <div class="col-6"><button class="wallet-amount-btn btn text-white w-100" data-amount="500"
-                        style="font-size: 12px;">500</button></div>
-                <div class="col-6"><button class="wallet-amount-btn btn text-white w-100" data-amount="1000"
-                        style="font-size: 12px;">1000</button></div>
-                <div class="col-6"><button class="wallet-amount-btn btn text-white w-100" data-amount="2000"
-                        style="font-size: 12px;">2000</button></div>
+                <div class="col-6"><a class="wallet-amount-btn btn text-white w-100" data-amount="300"
+                        style="font-size: 12px;">300</a></div>
+                <div class="col-6"><a class="wallet-amount-btn btn text-white w-100" data-amount="500"
+                        style="font-size: 12px;">500</a></div>
+                <div class="col-6"><a class="wallet-amount-btn btn text-white w-100" data-amount="1000"
+                        style="font-size: 12px;">1000</a></div>
+                <div class="col-6"><a class="wallet-amount-btn btn text-white w-100" data-amount="2000"
+                        style="font-size: 12px;">2000</a></div>
             </div>
 
             <div class="row g-2 mb-3">
-                <div class="col-6"><button class="wallet-btn-edit btn text-white w-100" id="walletEditStakeBtn"
-                        style="font-size: 11px;">📝 Edit Stake</button></div>
-                <div class="col-6"><button class="wallet-btn-submit btn text-white w-100"
-                        style="font-size: 11px;">SUBMIT</button></div>
+                <div class="col-6"><a class="wallet-btn-edit btn text-white w-100" id="walletEditStakeBtn"
+                        style="font-size: 11px;">📝 Edit Stake</a></div>
+                <div class="col-6"><a class="wallet-btn-submit btn text-white w-100"
+                        style="font-size: 11px;">SUBMIT</a></div>
             </div>
 
             <!-- Table -->
@@ -67,19 +67,19 @@
                 min="100" max="50000" style="font-size: 13px;" />
 
             <div class="row g-2 mb-3">
-                <div class="col-6"><button class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
-                        data-modal-amount="300">300</button></div>
-                <div class="col-6"><button class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
-                        data-modal-amount="500">500</button></div>
-                <div class="col-6"><button class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
-                        data-modal-amount="1000">1000</button></div>
-                <div class="col-6"><button class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
-                        data-modal-amount="2000">2000</button></div>
+                <div class="col-6"><a class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
+                        data-modal-amount="300">300</a></div>
+                <div class="col-6"><a class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
+                        data-modal-amount="500">500</a></div>
+                <div class="col-6"><a class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
+                        data-modal-amount="1000">1000</a></div>
+                <div class="col-6"><a class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
+                        data-modal-amount="2000">2000</a></div>
             </div>
 
             <div class="d-flex justify-content-between">
-                <button class="btn btn-light w-50 me-2" id="walletCancelModalBtn">Cancel</button>
-                <button class="btn btn-dark w-50" id="walletSaveModalBtn">Save</button>
+                <a class="btn btn-light w-50 me-2" id="walletCancelModalBtn">Cancel</a>
+                <a class="btn btn-dark w-50" id="walletSaveModalBtn">Save</a>
             </div>
         </div>
     </div>

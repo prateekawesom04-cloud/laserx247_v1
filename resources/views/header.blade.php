@@ -3,10 +3,10 @@
         <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40" />
         <div class="d-flex ms-auto align-items-center">
             <!-- Notification Bell Icon -->
-            <button class="btn p-0 me-3 text-white fs-5" data-bs-toggle="offcanvas" data-bs-target="#notificationPanel"
+            <a class="btn p-0 me-3 text-white fs-5" data-bs-toggle="offcanvas" data-bs-target="#notificationPanel"
                 aria-controls="notificationPanel">
                 <i class="fas fa-bell"></i>
-            </button>
+            </a>
 
             <a href="login" class="btn btn-outline-dark btn-sm me-2">Login</a>
             <a href="register" class="btn btn-outline-dark btn-sm me-2">Register</a>
@@ -21,16 +21,16 @@
     aria-labelledby="notificationPanelLabel">
     <div class="offcanvas-header bg-primary text-white">
         <h5 class="offcanvas-title fw-bold" id="notificationPanelLabel">Notifications</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
+        <a type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></a>
     </div>
     <div class="offcanvas-body p-3 bg-light">
         <!-- Tabs -->
         <div class="btn-group w-100 mb-4" role="group">
-            <button type="button" class="btn btn-outline-primary active">All</button>
-            <button type="button" class="btn btn-outline-primary">Bonus Claim</button>
-            <button type="button" class="btn btn-outline-primary">Deposit</button>
-            <button type="button" class="btn btn-outline-primary">Withdrawal</button>
+            <a type="button" class="btn btn-outline-primary active">All</a>
+            <a type="button" class="btn btn-outline-primary">Bonus Claim</a>
+            <a type="button" class="btn btn-outline-primary">Deposit</a>
+            <a type="button" class="btn btn-outline-primary">Withdrawal</a>
         </div>
 
         <!-- Empty State -->
@@ -54,8 +54,8 @@
                 Last Login: <span class="fst-italic fs-7">1756100089</span>
             </small>
         </div>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
+        <a type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></a>
     </div>
 
     <!-- Body -->

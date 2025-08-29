@@ -39,13 +39,13 @@
                                     <small class="text-muted">08/05/2025 06:30</small>
                                 </div>
                             </td>
-                            <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                    class="btn btn-danger btn-sm">-</button></td>
-                            <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                    class="btn btn-danger btn-sm">-</button></td>
-                            <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                    class="btn btn-danger btn-sm">-</button></td>
-                            <td><button class="btn btn-outline-secondary btn-sm">⚙</button></td>
+                            <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                    class="btn btn-danger btn-sm">-</a></td>
+                            <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                    class="btn btn-danger btn-sm">-</a></td>
+                            <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                    class="btn btn-danger btn-sm">-</a></td>
+                            <td><a class="btn btn-outline-secondary btn-sm">⚙</a></td>
                         </tr>
                     </tbody>
                 </table>

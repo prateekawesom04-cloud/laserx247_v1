@@ -4,7 +4,7 @@
     <div class="main-container bg-white rounded shadow">
         <!-- Header -->
         <div class="header text-white p-3 d-flex justify-content-between align-items-center rounded-top">
-            <button class="back-btn text-white px-2 py-1 rounded" style="font-size: 10px;">BACK</button>
+            <a class="back-btn text-white px-2 py-1 rounded" style="font-size: 10px;">BACK</a>
             <div class="balance-info px-2 py-1 rounded-pill" style="font-size: 14px;">Profit/Loss</div>
         </div>
 
@@ -63,9 +63,9 @@
 
                     </div>
                     <div class="col-md-6">
-                        <button type="submit" class="btn btn-submit text-white w-100" style="font-size: 11px;">
+                        <a type="submit" class="btn btn-submit text-white w-100" style="font-size: 11px;">
                             Get Profit/Loss
-                        </button>
+                        </a>
                     </div>
                 </div>
 

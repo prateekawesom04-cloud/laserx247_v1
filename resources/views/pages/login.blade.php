@@ -38,8 +38,8 @@
 
                             <!-- Tabs -->
                             <div class="d-flex mb-3 gap-2">
-                                <button type="button" class="btn btn-light flex-fill fw-bold" aria-pressed="false">Phone</button>
-                                <button type="button" class="btn btn-primary flex-fill fw-bold" aria-pressed="true">User ID</button>
+                                <a type="button" class="btn btn-light flex-fill fw-bold" aria-pressed="false">Phone</a>
+                                <a type="button" class="btn btn-primary flex-fill fw-bold" aria-pressed="true">User ID</a>
                             </div>
 
                             <!-- Phone -->
@@ -79,8 +79,8 @@
 
                             <!-- Buttons -->
                             <div class="d-flex gap-2 mb-3 flex-wrap">
-                                <button type="submit" class="btn btn-dark flex-grow-1 fw-bold">Login</button>
-                                <button type="button" class="btn btn-info flex-grow-1 fw-bold">Log In With Demo ID</button>
+                                <a type="submit" class="btn btn-dark flex-grow-1 fw-bold">Login</a>
+                                <a type="button" class="btn btn-info flex-grow-1 fw-bold">Log In With Demo ID</a>
                             </div>
 
                             <!-- WhatsApp -->

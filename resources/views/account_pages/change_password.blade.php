@@ -37,18 +37,18 @@
                 <div class="input-group">
                     <input type="password" class="form-control" placeholder="Confirm New Password" id="confirmPassword"
                         style="font-size: 12px;">
-                    <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('confirmPassword')"
-                        style="font-size: 12px;">👁️</button>
+                    <a class="btn btn-outline-secondary" type="button" onclick="togglePassword('confirmPassword')"
+                        style="font-size: 12px;">👁️</a>
                 </div>
             </div>
 
             <!-- Buttons -->
             <div class="row g-2">
                 <div class="col-6">
-                    <button type="reset" class="btn btn-edit text-white w-100" style="font-size: 11px;">📝 Reset</button>
+                    <a type="reset" class="btn btn-edit text-white w-100" style="font-size: 11px;">📝 Reset</a>
                 </div>
                 <div class="col-6">
-                    <button type="submit" class="btn btn-submit text-white w-100" style="font-size: 11px;">CHANGE</button>
+                    <a type="submit" class="btn btn-submit text-white w-100" style="font-size: 11px;">CHANGE</a>
                 </div>
             </div>
         </div>

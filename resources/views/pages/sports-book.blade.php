@@ -5,28 +5,28 @@
         <div class="sidebar">
             <!-- Top Buttons Grid (1 row, 3 columns) -->
             <div class="top-buttons">
-                <button class="nav-btn active">
+                <a class="nav-btn active">
                     📅<br><small>Events</small>
-                </button>
-                <button class="nav-btn">
+                </a>
+                <a class="nav-btn">
                     ▶<br><small>Live</small>
-                </button>
-                <button class="nav-btn">
+                </a>
+                <a class="nav-btn">
                     ★<br><small>Favourite</small>
-                </button>
+                </a>
             </div>
 
             <!-- Second Row -->
             <div class="second-buttons">
-                <button class="nav-btn">
+                <a class="nav-btn">
                     🔄<br><small>My Bets</small>
-                </button>
-                <button class="nav-btn">
+                </a>
+                <a class="nav-btn">
                     📊<br><small>Results</small>
-                </button>
-                <button class="nav-btn">
+                </a>
+                <a class="nav-btn">
                     🔍<br><small>Search</small>
-                </button>
+                </a>
             </div>
 
             <div class="all-sports-title">ALL SPORTS</div>
@@ -119,51 +119,51 @@
                             style="height: 200px; object-fit: cover;">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#cricketCarousel" data-bs-slide="prev">
+                <a class="carousel-control-prev" type="button" data-bs-target="#cricketCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#cricketCarousel" data-bs-slide="next">
+                </a>
+                <a class="carousel-control-next" type="button" data-bs-target="#cricketCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
-                </button>
+                </a>
             </div>
 
 
             <!-- Tabs -->
             <div class="sports-tabs">
-                <button class="tab-btn">
+                <a class="tab-btn">
                     ★
-                </button>
-                <button class="tab-btn active">
+                </a>
+                <a class="tab-btn active">
                     🏏 Cricket
                     <span class="count active-count">30</span>
-                </button>
-                <button class="tab-btn">
+                </a>
+                <a class="tab-btn">
                     ⚽ Soccer
                     <span class="count">892</span>
-                </button>
-                <button class="tab-btn">
+                </a>
+                <a class="tab-btn">
                     🎾 Tennis
                     <span class="count">110</span>
-                </button>
-                <button class="tab-btn">
+                </a>
+                <a class="tab-btn">
                     🎮 Simulated Reality League
                     <span class="count">55</span>
-                </button>
-                <button class="tab-btn">
+                </a>
+                <a class="tab-btn">
                     🏈 American Football
                     <span class="count">4</span>
-                </button>
-                <button class="tab-btn">
+                </a>
+                <a class="tab-btn">
                     🏸 Badminton
                     <span class="count">46</span>
-                </button>
-                <button class="tab-btn">
+                </a>
+                <a class="tab-btn">
                     ⚾ Baseball
                     <span class="count">26</span>
-                </button>
-                <button class="tab-btn">
+                </a>
+                <a class="tab-btn">
                     🏀 Basketball
-                </button>
+                </a>
             </div>
             <!-- Live Events Section -->
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -194,7 +194,7 @@
                                     <span class="text-danger">Mumbai</span>
                                 </div>
                             </div>
-                            <button class="fav-btn">☆</button>
+                            <a class="fav-btn">☆</a>
                         </div>
                     </div>
 
@@ -208,9 +208,9 @@
                     <div class="col-md-4">
                         <div class="score-title text-center mb-1">1x2</div>
                         <div class="d-flex gap-2">
-                            <button class="locked-btn">🔒</button>
-                            <button class="locked-btn">🔒</button>
-                            <button class="locked-btn">🔒</button>
+                            <a class="locked-btn">🔒</a>
+                            <a class="locked-btn">🔒</a>
+                            <a class="locked-btn">🔒</a>
                         </div>
                     </div>
                 </div>
@@ -244,7 +244,7 @@
                                     <span class="text-danger">Mumbai</span>
                                 </div>
                             </div>
-                            <button class="fav-btn">☆</button>
+                            <a class="fav-btn">☆</a>
                         </div>
                     </div>
 
@@ -258,9 +258,9 @@
                     <div class="col-md-4">
                         <div class="score-title text-center mb-1">1x2</div>
                         <div class="d-flex gap-2">
-                            <button class="locked-btn">🔒</button>
-                            <button class="locked-btn">🔒</button>
-                            <button class="locked-btn">🔒</button>
+                            <a class="locked-btn">🔒</a>
+                            <a class="locked-btn">🔒</a>
+                            <a class="locked-btn">🔒</a>
                         </div>
                     </div>
                 </div>
@@ -297,7 +297,7 @@
                                 </div>
 
                             </div>
-                            <button class="fav-btn">☆</button>
+                            <a class="fav-btn">☆</a>
                         </div>
                     </div>
 
@@ -311,9 +311,9 @@
                     <div class="col-md-4">
                         <div class="score-title text-center mb-1">1x2</div>
                         <div class="d-flex gap-2">
-                            <button class="locked-btn">2.24</button>
-                            <button class="locked-btn">🔒</button>
-                            <button class="locked-btn">1.61</button>
+                            <a class="locked-btn">2.24</a>
+                            <a class="locked-btn">🔒</a>
+                            <a class="locked-btn">1.61</a>
                         </div>
                     </div>
                 </div>

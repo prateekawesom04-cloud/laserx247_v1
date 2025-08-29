@@ -5,7 +5,7 @@
         <!-- Left side -->
         <h6 class="mb-0 text-white">Football</h6>
 
-        <!-- Right side - Equal Width Small Buttons -->
+        <!-- Right side - Equal Width Small buttons -->
         <div class="d-flex gap-1">
             <a href="javascript:void(0)" class="btn btn-success btn-sm px-2 py-1 flex-fill text-nowrap">+ LIVE</a>
             <a href="javascript:void(0)" class="btn btn-info btn-sm px-2 py-1 flex-fill text-nowrap">+ VIRTUAL</a>
@@ -39,13 +39,13 @@
                                     <small class="text-muted">08/05/2025 06:30</small>
                                 </div>
                             </td>
-                            <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                    class="btn btn-danger btn-sm">-</button></td>
-                            <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                    class="btn btn-danger btn-sm">-</button></td>
-                            <td><button class="btn btn-info btn-sm me-2">-</button><button
-                                    class="btn btn-danger btn-sm">-</button></td>
-                            <td><button class="btn btn-outline-secondary btn-sm">⚙</button></td>
+                            <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                    class="btn btn-danger btn-sm">-</a></td>
+                            <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                    class="btn btn-danger btn-sm">-</a></td>
+                            <td><a class="btn btn-info btn-sm me-2">-</a><a
+                                    class="btn btn-danger btn-sm">-</a></td>
+                            <td><a class="btn btn-outline-secondary btn-sm">⚙</a></td>
                         </tr>
                     </tbody>
                 </table>

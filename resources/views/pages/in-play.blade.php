@@ -1,10 +1,11 @@
 @extends('master')
+
 @section('body')
     <div class="container-fluid px-0">
         <div class="row gx-0">
 
             <!-- Left Side: Carousel + Tabs -->
-            <div class="col-md-9">
+            <div class="col-12 col-md-9">
 
                 <!-- Carousel Banner Section -->
                 <section class="mt-1">
@@ -12,12 +13,12 @@
 
                         <!-- Indicators -->
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
-                                aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
+                            <a type="a" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></a>
+                            <a type="a" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+                                aria-label="Slide 2"></a>
+                            <a type="a" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+                                aria-label="Slide 3"></a>
                         </div>
 
                         <!-- Carousel Items -->
@@ -63,8 +64,8 @@
                 </div>
             </div>
 
-            <!-- Right Side: Open Bets -->
-            <div class="col-md-3 border-start">
+            <!-- Right Side: Open Bets (Hidden on small screens) -->
+            <div class="col-md-3 border-start d-none d-md-block">
                 <div class="bg-dark text-white p-2 fw-bold">Open Bets</div>
                 <div class="p-3" style="height: 100%;">
                    
