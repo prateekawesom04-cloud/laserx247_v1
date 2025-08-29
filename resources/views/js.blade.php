@@ -120,11 +120,6 @@
         }
     }
 
-    function launchGame(data){
-        
-        window.location.href = data;
-    }
-
     $(document).ready(function(){
         
             @foreach ($providers as $provider)
@@ -136,6 +131,11 @@
 
 // ============
 // Launch Games
+
+    function launchGame(data){
+        
+        window.location.href = data;
+    }
 
     $('body').on('click','.launch_game',function(e){
         let data ={};
