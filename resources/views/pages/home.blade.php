@@ -4,20 +4,20 @@
     <div class="fs-6">
 
         <!-- Centered Buttons -->
-        <div class="container-fluid text-center py-2 bg-info bg-gradient">
+        <div class="container-fluid text-center py-2 bg-info bg-gradient d-flex justify-content-center flex-wrap gap-2">
             <a href="javascript:void(0)" class="btn btn-dark btn-sm px-4 me-2">EXCHANGE</a>
             <a href="javascript:void(0)" class="btn btn-light btn-sm px-4">SPORTSBOOK</a>
         </div>
 
         <!-- Highlights Section -->
-        <section class="container-fluid bg-light py-2">
+        <section class="container-fluid bg-light py-2 px-0">
             <!-- Header -->
            <div class="d-flex justify-content-between align-items-center mb-2 px-2 bg-dark py-1">
         <!-- Left side -->
         <h5 class="mb-0 text-white">Highlights</h5>
         
         <!-- Right side - Small Buttons -->
-        <div class="d-flex gap-1">
+        <div class="d-flex gap-1 flex-wrap justify-content-end">
             <a href="javascript:void(0)" class="btn btn-success btn-xs px-1 py-1 text-nowrap">+ LIVE</a>
             <a href="javascript:void(0)" class="btn btn-info btn-xs px-1 py-1 text-nowrap">+ VIRTUAL</a>
             <a href="javascript:void(0)" class="btn btn-warning btn-xs px-1 py-1 text-nowrap">+ PREMIUM</a>

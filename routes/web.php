@@ -91,6 +91,9 @@ Route::get('/unsettled_bets', function () {
 Route::get('/favourite', function () {
     return view('account_pages.favourite');
 });
+Route::get('/market_analysis', function () {
+    return view('account_pages.market_analysis');
+});
 // Games
 
 

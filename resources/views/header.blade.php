@@ -87,7 +87,7 @@
             <a href="unsettled_bets" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-tasks me-3 text-dark"></i> <span class="fw-semibold">Unsettled Bets</span>
             </a>
-            <a href="#" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            <a href="market_analysis" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-chart-pie me-3 text-danger"></i> <span class="fw-semibold">Market Analysis</span>
             </a>
             <a href="change_password"
