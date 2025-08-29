@@ -1,5 +1,5 @@
 <?php
-
+    
     $providers = Storage::disk('local')->get('games_data/providers.json');
     
     $providers = json_decode($providers);

@@ -121,20 +121,7 @@
         }
     }
 
-    function launchGame(data){
-        console.log('data---',"https://colourforge.in?"+data);
         
-        window.location.href = `https://colourforge.in?${data}`;
-    }
-
-    $(document).ready(function(){
-        console.log("$('.new_game_list').length",$('.new_game_list').length);
-        
-            @foreach ($providers as $provider)
-            callApi('get','gameList',{'provider': "{{ strtolower(explode('provider=',$provider->link)[1]) }}"},gameList);
-            @endforeach
-   
-    });
 
 
 // ============
