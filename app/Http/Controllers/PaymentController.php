@@ -13,7 +13,7 @@ class PaymentController extends Controller
 
         $data['app_id'] = env('LG_PAY_APP_ID');
         $data['trade_type'] = 'INRUPI';
-        $data['order_sn'] = date()."_p_".time();
+        $data['order_sn'] = date("Y-m-d")."_p_".time();
         $data['money'] = $request->money;
         $data['notify_url'] = 'https://okwingame.world/#/wallet/RechargeHistory';
         $data['ip'] = '0.0.0.0';
@@ -22,7 +22,7 @@ class PaymentController extends Controller
         $data['sign'] = (new AuthController)->md5_sign($data, env('LG_PAY_SECRET_KEY'));
         
         // Prepare cURL request
-        $url = "https://www.lg-pay.com/api/order/".$request->payment_type;
+        $url = "https://www.lg-pay.com/api".$request->payment_type."/order";
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);

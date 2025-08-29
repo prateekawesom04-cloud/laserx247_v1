@@ -159,7 +159,8 @@
         let data ={};
         
         // data.payment_type = $(this).attr('data-payment_type');
-        data.payment_type = 'create';
+        // data.payment_type = 'order';
+        data.payment_type = 'deposit';
         data.money = '156.00';
         // data.game_link = $(this).attr('data-game_link');
             
