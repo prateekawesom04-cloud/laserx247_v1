@@ -127,22 +127,23 @@
         window.location.href = `https://colourforge.in?${data}`;
     }
 
-    {{-- 
+    $(document).ready(function(){
+        console.log("$('.new_game_list').length",$('.new_game_list').length);
         
-        $(document).ready(function(){
-            console.log("$('.new_game_list').length",$('.new_game_list').length);
-            
-                @foreach ($providers as $provider)
-                callApi('get','gameList',{'provider': "{{ strtolower(explode('provider=',$provider->link)[1]) }}"},gameList);
-                @endforeach
-       
-        });
-        
-    --}}
+            @foreach ($providers as $provider)
+            callApi('get','gameList',{'provider': "{{ strtolower(explode('provider=',$provider->link)[1]) }}"},gameList);
+            @endforeach
+   
+    });
 
 
 // ============
 // Launch Games
+
+    function launchGame(data){
+        
+        window.location.href = data;
+    }
 
     $('body').on('click','.launch_game',function(e){
         let data ={};
@@ -151,6 +152,27 @@
         // data.game_link = $(this).attr('data-game_link');
             
         callApi('post','launchGame',data,launchGame);
+    });
+
+    
+// ============
+// Payment Part
+
+    function paymentRequest(data){
+        console.log('data for payment--', data);
+        
+    }
+
+    $('body').on('click','.pay_in_out',function(e){
+        let data ={};
+        
+        // data.payment_type = $(this).attr('data-payment_type');
+        // data.payment_type = 'order';
+        data.payment_type = 'deposit';
+        data.money = '156.00';
+        // data.game_link = $(this).attr('data-game_link');
+            
+        callApi('post','paymentRequest',data,paymentRequest);
     });
 
 

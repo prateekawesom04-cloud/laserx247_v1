@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GamesController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ApiCallController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\View;
@@ -113,7 +114,11 @@ Route::post('register', [AuthController::class,'register'])->name('register')->w
 
 Route::post('forgetPassword', [AuthController::class,'forgetPassword'])->name('forgetPassword')->withoutMiddleware([VerifyCsrfToken::class]);
 
-Route::post('launchGame', [GamesController::class,'launchGame'])->name('launchGame')->withoutMiddleware([VerifyCsrfToken::class]);
+Route::get('launchGame', [GamesController::class,'launchGame'])->name('launchGame')->withoutMiddleware([VerifyCsrfToken::class]);
+
+Route::post('paymentRequest', [PaymentController::class,'paymentRequest'])->name('paymentRequest')->withoutMiddleware([VerifyCsrfToken::class]);
+
+Route::post('paymentCallback', [PaymentController::class,'paymentCallback'])->name('paymentCallback')->withoutMiddleware([VerifyCsrfToken::class]);
 
 
 

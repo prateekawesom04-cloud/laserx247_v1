@@ -1,4 +1,4 @@
-@extends('master')
+@extends('super-master')
 @section('body')
     <div class="container-fluid">
         <div class="layout-container">

@@ -1,12 +1,11 @@
 <?php
 
-$providers = Storage::disk('local')->get('games_data/providers.json');
-
-$providers = json_decode($providers);
+    $providers = Storage::disk('local')->get('games_data/providers.json');
+    
+    $providers = json_decode($providers);
 
 ?>
-
-@extends('master')
+@extends('super-master')
 @section('body')
     <!-- News Bar + Banner -->
     <div class="container-fluid px-0">
