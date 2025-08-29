@@ -1,73 +1,103 @@
-<nav class="navbar navbar-dark bg-dark px-3 py-2">
+<nav class="navbar px-3 py-2" style="background: linear-gradient(to right, #070047, #0052a1, #00c2ff);">
     <div class="container-fluid">
-        <img src="{{ asset('images/logo.png') }}" alt="Logo" height="35" />
+        <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40" />
         <div class="d-flex ms-auto align-items-center">
             <!-- Notification Bell Icon -->
-            <button class="btn p-0 me-3" data-bs-toggle="offcanvas" data-bs-target="#notificationPanel"
-                aria-controls="notificationPanel" style="color: white; font-size: 20px;">
+            <button class="btn p-0 me-3 text-white fs-5" data-bs-toggle="offcanvas" data-bs-target="#notificationPanel"
+                aria-controls="notificationPanel">
                 <i class="fas fa-bell"></i>
             </button>
 
-            <a href="login" class="btn btn-outline-danger btn-sm me-2">Login</a>
-            <a href="register" class="btn btn-outline-danger btn-sm me-2">Register</a>
-            <a href="#" class="btn btn-outline-danger btn-sm" data-bs-toggle="offcanvas"
+            <a href="login" class="btn btn-outline-dark btn-sm me-2">Login</a>
+            <a href="register" class="btn btn-outline-dark btn-sm me-2">Register</a>
+            <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="offcanvas"
                 data-bs-target="#accountPanel" aria-controls="accountPanel">My Account</a>
         </div>
     </div>
 </nav>
 
-<!-- 🔔 Notification Offcanvas Panel -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="notificationPanel" aria-labelledby="notificationPanelLabel">
-    <div class="offcanvas-header border-bottom">
-        <h5 class="offcanvas-title" id="notificationPanelLabel">Notifications</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<!-- Notification Offcanvas Panel -->
+<div class="offcanvas offcanvas-end fst-italic" tabindex="-1" id="notificationPanel"
+    aria-labelledby="notificationPanelLabel">
+    <div class="offcanvas-header bg-primary text-white">
+        <h5 class="offcanvas-title fw-bold" id="notificationPanelLabel">Notifications</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
-
+    <div class="offcanvas-body p-3 bg-light">
         <!-- Tabs -->
         <div class="btn-group w-100 mb-4" role="group">
-            <button type="button" class="btn btn-outline-secondary active">All</button>
-            <button type="button" class="btn btn-outline-secondary">Promo</button>
-            <button type="button" class="btn btn-outline-secondary">Sports</button>
-            <button type="button" class="btn btn-outline-secondary">Casino</button>
-            <button type="button" class="btn btn-outline-secondary">Account</button>
+            <button type="button" class="btn btn-outline-primary active">All</button>
+            <button type="button" class="btn btn-outline-primary">Bonus Claim</button>
+            <button type="button" class="btn btn-outline-primary">Deposit</button>
+            <button type="button" class="btn btn-outline-primary">Withdrawal</button>
         </div>
 
         <!-- Empty State -->
         <div class="text-center text-muted mt-5">
-            <i class="fas fa-bell fa-3x mb-3"></i>
-            <h6>Notification center is empty</h6>
-            <p class="small">Please refresh the page, and maybe we will surprise you</p>
+            <i class="fas fa-bell fa-3x mb-3 text-primary"></i>
+            <h6 class="fw-semibold">Notification center is empty</h6>
+            <p class="small fst-italic">Please refresh the page, and maybe we will surprise you</p>
         </div>
-
     </div>
 </div>
 
-<!-- Account Offcanvas  -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="accountPanel" aria-labelledby="accountPanelLabel">
+<!-- Account Offcanvas -->
+<div class="offcanvas offcanvas-end fst-italic" tabindex="-1" id="accountPanel" aria-labelledby="accountPanelLabel">
+    <!-- Header -->
     <div class="offcanvas-header bg-primary text-white">
         <div>
-            <h5 class="mb-0" id="accountPanelLabel">12faf4cf3444</h5>
-            <small class="account-info">Last Login: 1756100089</small>
+            <h5 class="mb-0 fw-bold fs-6" id="accountPanelLabel">
+                Account ID: <span class="text-warning fs-6">12faf4cf3444</span>
+            </h5>
+            <small class="d-block mt-1 text-white-50 fs-7">
+                Last Login: <span class="fst-italic fs-7">1756100089</span>
+            </small>
         </div>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
             aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body p-0 bg-light">
+
+    <!-- Body -->
+    <div class="offcanvas-body p-3 bg-light">
         <div class="list-group list-group-flush">
-            <a href="javascript:void(0)" class="menu-item"><i class="fas fa-user me-2"></i> Profile</a>
-            <a href="wallet" class="menu-item"><i class="fas fa-wallet me-2"></i> Wallet</a>
-            <a href="deposit-withdrawal" class="menu-item"><i class="fas fa-plus-circle me-2 text-success"></i>
-                Deposit/Withdrawal</a>
-            <a href="javascript:void(0)" class="menu-item"><i class="fas fa-balance-scale me-2"></i> Profit/Loss</a>
-            <a href="javascript:void(0)" class="menu-item"><i class="fas fa-star me-2"></i> Favourite</a>
-            <a href="javascript:void(0)" class="menu-item"><i class="fas fa-user-friends me-2"></i> Refer And Earn</a>
-            <a href="statements" class="menu-item"><i class="fas fa-file-alt me-2"></i> Account Statement</a>
-            <a href="javascript:void(0)" class="menu-item"><i class="fas fa-tasks me-2"></i> Unsettled Bets</a>
-            <a href="javascript:void(0)" class="menu-item"><i class="fas fa-chart-pie me-2"></i> Market Analysis</a>
-            <a href="change_password" class="menu-item"><i class="fas fa-key me-2"></i> Change Password</a>
-            <a href="javascript:void(0)" class="menu-item text-danger"><i class="fas fa-sign-out-alt me-2"></i>
-                Logout</a>
+            <a href="profile" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-user me-3 text-primary"></i> <span class="fw-semibold">Profile</span>
+            </a>
+            <a href="wallet" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-wallet me-3 text-success"></i> <span class="fw-semibold">Wallet</span>
+            </a>
+            <a href="deposit-withdrawal"
+                class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-plus-circle me-3 text-success"></i> <span class="fw-semibold">Deposit /
+                    Withdrawal</span>
+            </a>
+            <a href="profit_loss" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-balance-scale me-3 text-info"></i> <span class="fw-semibold">Profit / Loss</span>
+            </a>
+            <a href="favourite" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-star me-3 text-warning"></i> <span class="fw-semibold">Favourite</span>
+            </a>
+            <a href="refer_rewards" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-user-friends me-3 text-secondary"></i> <span class="fw-semibold">Refer and Earn</span>
+            </a>
+            <a href="statements" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-file-alt me-3 text-primary"></i> <span class="fw-semibold">Account Statement</span>
+            </a>
+            <a href="unsettled_bets" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-tasks me-3 text-dark"></i> <span class="fw-semibold">Unsettled Bets</span>
+            </a>
+            <a href="market_analysis" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-chart-pie me-3 text-danger"></i> <span class="fw-semibold">Market Analysis</span>
+            </a>
+            <a href="change_password"
+                class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-key me-3 text-warning"></i> <span class="fw-semibold">Change Password</span>
+            </a>
+            <a href="#"
+                class="list-group-item list-group-item-action d-flex align-items-center text-danger fs-6">
+                <i class="fas fa-sign-out-alt me-3"></i> <span class="fw-semibold">Logout</span>
+            </a>
         </div>
     </div>
 </div>

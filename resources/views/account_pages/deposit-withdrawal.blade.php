@@ -1,31 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Portal</title>
-    <!-- Custom CSS file link -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">   
-    <!-- Include head file -->
-    @include('head')
-</head>
-<body>
+@extends('master')
+
+@section('body')
     <div class="main-container bg-white rounded shadow">
         <!-- Header -->
         <div class="header text-white p-3 d-flex justify-content-between align-items-center rounded-top">
             <button class="back-btn text-white px-2 py-1 rounded" style="font-size: 10px;">BACK</button>
-            <div class="balance-info px-2 py-1 rounded-pill" style="font-size: 10px;">Min: 100 Max: 50000</div>
+            <div class="balance-info px-2 py-1 rounded-pill" style="font-size: 14px;">Min: 100 Max: 50000</div>
         </div>
 
         <!-- Radio Section -->
         <div class="radio-section p-3 border-bottom">
             <div class="d-flex justify-content-center gap-4">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transaction_type" id="deposit" value="deposit" checked>
+                    <input class="form-check-input" type="radio" name="transaction_type" id="deposit" value="deposit"
+                        checked>
                     <label class="form-check-label fw-medium" for="deposit" style="font-size: 13px;">Deposit</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transaction_type" id="withdrawal" value="withdrawal">
+                    <input class="form-check-input" type="radio" name="transaction_type" id="withdrawal"
+                        value="withdrawal">
                     <label class="form-check-label fw-medium" for="withdrawal" style="font-size: 13px;">Withdrawal</label>
                 </div>
             </div>
@@ -34,19 +27,26 @@
         <!-- Deposit Section -->
         <div class="p-3 deposit-section" id="depositSection">
             <h6 class="fw-semibold text-dark mb-3" style="font-size: 13px;">Enter Deposit Amount</h6>
-            
-            <input type="number" class="form-control mb-3" id="depositAmount" placeholder="Enter amount..." min="100" max="50000" style="font-size: 12px;">
+
+            <input type="number" class="form-control mb-3" id="depositAmount" placeholder="Enter amount..." min="100"
+                max="50000" style="font-size: 12px;">
 
             <div class="row g-2 mb-3">
-                <div class="col-6"><button class="amount-btn btn text-white w-100" data-amount="300" style="font-size: 12px;">300</button></div>
-                <div class="col-6"><button class="amount-btn btn text-white w-100" data-amount="500" style="font-size: 12px;">500</button></div>
-                <div class="col-6"><button class="amount-btn btn text-white w-100" data-amount="1000" style="font-size: 12px;">1000</button></div>
-                <div class="col-6"><button class="amount-btn btn text-white w-100" data-amount="2000" style="font-size: 12px;">2000</button></div>
+                <div class="col-6"><button class="amount-btn btn text-white w-100" data-amount="300"
+                        style="font-size: 12px;">300</button></div>
+                <div class="col-6"><button class="amount-btn btn text-white w-100" data-amount="500"
+                        style="font-size: 12px;">500</button></div>
+                <div class="col-6"><button class="amount-btn btn text-white w-100" data-amount="1000"
+                        style="font-size: 12px;">1000</button></div>
+                <div class="col-6"><button class="amount-btn btn text-white w-100" data-amount="2000"
+                        style="font-size: 12px;">2000</button></div>
             </div>
 
             <div class="row g-2 mb-3">
-                <div class="col-6"><button class="btn btn-edit text-white w-100" style="font-size: 11px;">📝 Edit Stake</button></div>
-                <div class="col-6"><button class="btn btn-submit text-white w-100" style="font-size: 11px;">SUBMIT</button></div>
+                <div class="col-6"><button class="btn btn-edit text-white w-100" style="font-size: 11px;">📝 Edit
+                        Stake</button></div>
+                <div class="col-6"><button class="btn btn-submit text-white w-100" style="font-size: 11px;">SUBMIT</button>
+                </div>
             </div>
 
             <div class="table-container rounded">
@@ -98,8 +98,4 @@
             </div>
         </div>
     </div>
-
-    <!-- JS file include -->
-    @include('js')
-</body>
-</html>
+@endsection

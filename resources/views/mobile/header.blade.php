@@ -1,5 +1,5 @@
 <!-- Header -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 py-2">
+<nav class="navbar navbar-expand-lg px-3 py-2"style="background: linear-gradient(to right, #070047, #0052a1, #00c2ff);">
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="#">

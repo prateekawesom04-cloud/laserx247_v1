@@ -1,33 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('master')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wallet</title>
-
-    <!-- ✅ Common + Wallet-specific CSS -->
-    <!-- Custom CSS file link -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- Include head file -->
-    @include('head')
-</head>
-
-<body>
-
+@section('body')
     <div class="wallet-main-container bg-white rounded shadow">
         <!-- Header -->
         <div class="wallet-header text-white p-3 d-flex justify-content-between align-items-center rounded-top">
             <button class="wallet-back-btn text-white px-2 py-1 rounded" style="font-size: 10px;">BACK</button>
-            <div class="wallet-balance-info px-2 py-1 rounded-pill" style="font-size: 10px;">Min: 100 Max: 50000</div>
+            <div class="wallet-balance-info px-2 py-1" style="font-size: 14px;">Min: 100 Max: 50000</div>
         </div>
 
         <!-- Wallet Section -->
         <div class="p-3">
             <h6 class="fw-semibold text-dark mb-3" style="font-size: 13px;">Enter Deposit Amount</h6>
 
-            <input type="number" class="form-control mb-3" id="walletAmount" placeholder="Enter amount..."
-                min="100" max="50000" style="font-size: 12px;" />
+            <input type="number" class="form-control mb-3" id="walletAmount" placeholder="Enter amount..." min="100"
+                max="50000" style="font-size: 12px;" />
 
             <div class="row g-2 mb-3">
                 <div class="col-6"><button class="wallet-amount-btn btn text-white w-100" data-amount="300"
@@ -77,8 +63,8 @@
         <div style="background:white; padding:20px; border-radius:8px; max-width:350px; width:90%;">
             <h6 class="fw-semibold mb-3" style="font-size:14px;">Edit Stake Amount</h6>
 
-            <input type="number" class="form-control mb-3" id="walletModalInputAmount"
-                placeholder="Enter custom amount..." min="100" max="50000" style="font-size: 13px;" />
+            <input type="number" class="form-control mb-3" id="walletModalInputAmount" placeholder="Enter custom amount..."
+                min="100" max="50000" style="font-size: 13px;" />
 
             <div class="row g-2 mb-3">
                 <div class="col-6"><button class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
@@ -97,9 +83,4 @@
             </div>
         </div>
     </div>
-    <!-- ✅ Common + Wallet JS -->
-    @include('js')
-
-</body>
-
-</html>
+@endsection

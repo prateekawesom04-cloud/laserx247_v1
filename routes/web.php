@@ -62,8 +62,8 @@ Route::get('/casino', function () {
 Route::get('/sports-book', function () {
     return view('pages.sports-book');
 });
-Route::get('/providers_games', function () {
-    return view('pages.providers_games');
+Route::get('/providers_tab', function () {
+    return view('pages.providers_tab');
 });
 Route::get('/deposit-withdrawal', function () {
     return view('account_pages.deposit-withdrawal');
@@ -76,6 +76,24 @@ Route::get('/statements', function () {
 });
 Route::get('/change_password', function () {
     return view('account_pages.change_password');
+});
+Route::get('/profile', function () {
+    return view('account_pages.profile');
+});
+Route::get('/profit_loss', function () {
+    return view('account_pages.profit_loss');
+});
+Route::get('/refer_rewards', function () {
+    return view('account_pages.refer_rewards');
+});
+Route::get('/unsettled_bets', function () {
+    return view('account_pages.unsettled_bets');
+});
+Route::get('/favourite', function () {
+    return view('account_pages.favourite');
+});
+Route::get('/market_analysis', function () {
+    return view('account_pages.market_analysis');
 });
 // Games
 

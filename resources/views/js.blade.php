@@ -113,6 +113,7 @@
         });
 
     }
+    
 
     function loadGames(sectionClass) {
         if ($(`.${sectionClass}`).length == 1) {
@@ -120,13 +121,7 @@
         }
     }
 
-    $(document).ready(function(){
         
-            @foreach ($providers as $provider)
-            callApi('get','gameList',{'provider': "{{ strtolower(explode('provider=',$provider->link)[1]) }}"},gameList);
-            @endforeach
-   
-    });
 
 
 // ============
