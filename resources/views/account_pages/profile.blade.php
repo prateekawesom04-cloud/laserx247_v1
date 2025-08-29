@@ -5,7 +5,9 @@
         <!-- Header -->
 
         <div class="header text-white p-3 text-center rounded-top" style="background-color: #007bff;">
-            <div class="balance-info" style="font-size: 18px;">My Profile</div>
+            <div class="balance-info" style="font-size: 18px;">
+                <i class="fas fa-user me-2"></i> My Profile
+            </div>
         </div>
         <!-- Profile Section -->
         <div class="p-3">

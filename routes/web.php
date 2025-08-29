@@ -88,6 +88,9 @@ Route::get('/refer_rewards', function () {
 Route::get('/unsettled_bets', function () {
     return view('account_pages.unsettled_bets');
 });
+Route::get('/favourite', function () {
+    return view('account_pages.favourite');
+});
 // Games
 
 

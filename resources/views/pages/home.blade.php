@@ -12,19 +12,18 @@
         <!-- Highlights Section -->
         <section class="container-fluid bg-light py-2">
             <!-- Header -->
-            <div class="d-flex justify-content-between align-items-center mb-2 px-2 bg-dark py-1">
-                <!-- Left side -->
-                <h5 class="mb-0 text-white">Highlights</h5>
-
-                <!-- Right side - Small Buttons -->
-                <div class="d-flex gap-1">
-                    <a href="javascript:void(0)" class="btn btn-success btn-sm px-2 py-1 flex-fill text-nowrap">+ LIVE</a>
-                    <a href="javascript:void(0)" class="btn btn-info btn-sm px-2 py-1 flex-fill text-nowrap">+ VIRTUAL</a>
-                    <a href="javascript:void(0)" class="btn btn-warning btn-sm px-2 py-1 flex-fill text-nowrap">+
-                        PREMIUM</a>
-                    <a href="javascript:void(0)" class="btn btn-danger btn-sm px-2 py-1 flex-fill text-nowrap">♦ VIEW BY</a>
-                </div>
-            </div>
+           <div class="d-flex justify-content-between align-items-center mb-2 px-2 bg-dark py-1">
+        <!-- Left side -->
+        <h5 class="mb-0 text-white">Highlights</h5>
+        
+        <!-- Right side - Small Buttons -->
+        <div class="d-flex gap-1">
+            <a href="javascript:void(0)" class="btn btn-success btn-xs px-1 py-1 text-nowrap">+ LIVE</a>
+            <a href="javascript:void(0)" class="btn btn-info btn-xs px-1 py-1 text-nowrap">+ VIRTUAL</a>
+            <a href="javascript:void(0)" class="btn btn-warning btn-xs px-1 py-1 text-nowrap">+ PREMIUM</a>
+            <a href="javascript:void(0)" class="btn btn-danger btn-xs px-1 py-1 text-nowrap">♦ VIEW BY</a>
+        </div>
+    </div>
 
             <!-- Sports Tabs-->
             <div class="px-0 mb-3">

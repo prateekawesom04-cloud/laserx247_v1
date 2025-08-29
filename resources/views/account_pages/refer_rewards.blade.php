@@ -56,9 +56,9 @@
 
         <!-- Note -->
         <div style="font-weight: 600; font-size: 15px;">
-    <span style="font-size: 18px;">Note :</span><br>
-    Referral apply on every wallet deposit. Maximum bonus you can receive for Referral Bonus is.
-</div>
+            <span style="font-size: 18px;">Note :</span><br>
+            Referral apply on every wallet deposit. Maximum bonus you can receive for Referral Bonus is.
+        </div>
 
     </div>
 @endsection

@@ -95,7 +95,7 @@
                 <i class="fas fa-key me-3 text-warning"></i> <span class="fw-semibold">Change Password</span>
             </a>
             <a href="#"
-                class="list-group-item list-group-item-action d-flex align-items-center text-danger fs-7">
+                class="list-group-item list-group-item-action d-flex align-items-center text-danger fs-6">
                 <i class="fas fa-sign-out-alt me-3"></i> <span class="fw-semibold">Logout</span>
             </a>
         </div>
