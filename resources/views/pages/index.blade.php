@@ -1,8 +1,8 @@
 <?php
-    
-    $providers = Storage::disk('local')->get('games_data/providers.json');
-    
-    $providers = json_decode($providers);
+
+$providers = Storage::disk('local')->get('games_data/providers.json');
+
+$providers = json_decode($providers);
 
 ?>
 @extends('super-master')
@@ -103,18 +103,19 @@
         </div>
 
         <!-- License Info -->
-        <div class="container-sm w-50 my-3">
-            <div class="row border rounded p-2 align-items-center">
+        <div class="container-sm my-3">
+            <div class="row border rounded p-2 align-items-center flex-column flex-md-row text-center text-md-start">
+
                 <!-- Left Image -->
-                <div class="col-3 text-center border-end">
+                <div class="col-md-3 col-12 mb-2 mb-md-0 border-end border-md-end-1 border-end-0">
                     <img src="{{ asset('images/gc.png') }}" alt="GC Logo" class="img-fluid" style="max-height:50px;">
                 </div>
 
                 <!-- Right Image + Text -->
-                <div class="col-9 d-flex align-items-center">
-                    <img src="{{ asset('images/lice.png') }}" alt="License Logo" class="img-fluid me-2"
-                        style="max-height:50px;">
-                    <p class="mb-0 fs-7"style="font-size: 0.75rem;">
+                <div class="col-md-9 col-12 d-flex flex-column flex-md-row align-items-center text-center text-md-start">
+                    <img src="{{ asset('images/lice.png') }}" alt="License Logo"
+                        class="img-fluid me-0 me-md-2 mb-2 mb-md-0" style="max-height:50px;">
+                    <p class="mb-0" style="font-size: 0.75rem;">
                         LaserX247 is the trading name of Sports Target B.V., a company incorporated and regulated in Curaçao
                         under company number 148053 with its registered office at Fransche Bloemweg 4, Willemstad, Curaçao.
                     </p>
@@ -122,9 +123,11 @@
             </div>
         </div>
 
-        <p class="fs-7 mb-1 container-sm w-50 text-center"style="font-size: 0.75rem;">
+        <!-- Browser Info -->
+        <p class="mb-1 container-sm text-center" style="font-size: 0.75rem;">
             Our website works best in the newest and last prior version of these browsers: Google Chrome. Firefox
         </p>
+
         <script>
             $(document).ready(function() {
 
