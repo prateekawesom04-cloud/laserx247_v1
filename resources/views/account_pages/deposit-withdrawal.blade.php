@@ -104,7 +104,9 @@
 @section('js')
     <script>
         function paymentRequest(response) {
-            console.log('paymentRequest-----', response);
+            response = JSON.parse(response);
+            
+            window.location.href = response.data['pay_url'];
         }
 
         $('a.btn-submit').click(function(e) {
