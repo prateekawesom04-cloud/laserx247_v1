@@ -22,7 +22,7 @@ class PaymentController extends Controller
         // ])->first();
         
         $transaction = new Transaction();
-        $transaction->user_uid = session('user_id');
+        $transaction->user_uid = '121';
         $transaction->order_sn = $data['order_sn'];
         $transaction->transfer_amount = $data['money'];
         $transaction->ip = $request->ip();
@@ -53,7 +53,7 @@ class PaymentController extends Controller
         $data['sign'] = (new AuthController)->md5_sign($data, env('LG_PAY_SECRET_KEY'));
         
     
-        $url = "https://www.lg-pay.com/api/".$request->payment_type."/order";
+        $url = "https://www.lg-pay.com/api/".($request->payment_type) ? 'deposit' : 'create'."/order";
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
