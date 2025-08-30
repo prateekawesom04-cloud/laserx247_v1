@@ -404,15 +404,25 @@ body {
 .amount-btn.active {
     background: #00bcd4;
     border-color: #00bcd4;
+    color: black !important; /* force text color to black on hover/active */
 }
 
+/* Submit buttons */
 .btn-edit {
     background: #00bcd4;
+    color: white;
 }
 
 .btn-submit {
     background: #4caf50;
+    color: white;
 }
+
+.btn-edit:hover,
+.btn-submit:hover {
+    color: black !important;
+}
+
 
 /* homw and all Table Styles */
 .table-container {
