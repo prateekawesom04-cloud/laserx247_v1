@@ -96,11 +96,11 @@
         }
     });
 
-    function gameList(data){
-        
+    function gameList(data) {
+
         $(`.game_list[data-provider=${data.provider}]`).html('');
 
-        Object.entries(data.games).forEach((value,key) => {
+        Object.entries(data.games).forEach((value, key) => {
             $(`.game_list[data-provider=${data.provider}]`).append(`
                 <div class="col-6 col-md-3">
                     <a href='javascript:void(0)' class="launch_game d-block" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
@@ -113,7 +113,7 @@
         });
 
     }
-    
+
 
     function loadGames(sectionClass) {
         if ($(`.${sectionClass}`).length == 1) {
@@ -121,53 +121,53 @@
         }
     }
 
-        
 
 
-// ============
-// Launch Games
 
-    function launchGame(data){
-        
+    // ============
+    // Launch Games
+
+    function launchGame(data) {
+
         window.location.href = data;
     }
 
-    $('body').on('click','.launch_game',function(e){
-        let data ={};
-        
+    $('body').on('click', '.launch_game', function(e) {
+        let data = {};
+
         data.game_id = $(this).attr('data-game_id');
         // data.game_link = $(this).attr('data-game_link');
-            
-        callApi('post','launchGame',data,launchGame);
+
+        callApi('post', 'launchGame', data, launchGame);
     });
 
-    
-// ============
-// Payment Part
 
-    function paymentRequest(data){
+    // ============
+    // Payment Part
+
+    function paymentRequest(data) {
         console.log('data for payment--', data);
-        
+
     }
 
-    $('body').on('click','.pay_in_out',function(e){
-        let data ={};
-        
+    $('body').on('click', '.pay_in_out', function(e) {
+        let data = {};
+
         // data.payment_type = $(this).attr('data-payment_type');
         // data.payment_type = 'order';
         data.payment_type = 'deposit';
         data.money = '156.00';
         // data.game_link = $(this).attr('data-game_link');
-            
-        callApi('post','paymentRequest',data,paymentRequest);
+
+        callApi('post', 'paymentRequest', data, paymentRequest);
     });
 
 
 
 
-// ===============
-// Front-end part 
-// ===============
+    // ===============
+    // Front-end part 
+    // ===============
 
 
     // Loader function
@@ -193,63 +193,74 @@
         });
     });
     // for deposit-withdrawal page
-    // Elements
+    // Restrict input to numbers only
     const depositRadio = document.getElementById('deposit');
-    const withdrawalRadio = document.getElementById('withdrawal');
+    const createRadio = document.getElementById('create');
     const depositSection = document.getElementById('depositSection');
     const withdrawalSection = document.getElementById('withdrawalSection');
     const depositAmount = document.getElementById('depositAmount');
+    const balanceInfo = document.getElementById('balanceInfo');
 
-    // Switch sections
+    let minAmount = 200;
+    let maxAmount = 50000;
+
+    // Update UI and validation limits
     function switchSection() {
         if (depositRadio.checked) {
-            depositSection.classList.remove('inactive');
-            withdrawalSection.classList.remove('active');
+            minAmount = 500;
+            balanceInfo.innerText = `Min: ${minAmount} Max: ${maxAmount}`;
         } else {
-            depositSection.classList.add('inactive');
-            withdrawalSection.classList.add('active');
+            minAmount = 200;
+            balanceInfo.innerText = `Min: ${minAmount} Max: ${maxAmount}`;
         }
+
+        depositSection.classList.remove('inactive');
+        withdrawalSection.classList.remove('active');
     }
 
-    // Event listeners
-    [depositRadio, withdrawalRadio].forEach(radio =>
+    // Handle radio change
+    [depositRadio, createRadio].forEach(radio =>
         radio.addEventListener('change', switchSection)
     );
 
-    // Amount buttons
+    // Input only numbers
+    depositAmount.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '');
+
+        document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('active'));
+
+        const amount = parseInt(this.value, 10);
+        if (isNaN(amount) || amount < minAmount || amount > maxAmount) {
+            this.classList.add('is-invalid');
+        } else {
+            this.classList.remove('is-invalid');
+        }
+    });
+
+    // Amount buttons click
     document.querySelectorAll('.amount-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             depositAmount.value = this.dataset.amount;
+            depositAmount.classList.remove('is-invalid');
         });
     });
 
-    // Input validation
-    depositAmount.addEventListener('input', function() {
-        document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('active'));
-        this.classList.toggle('is-invalid', this.value < 100 || this.value > 50000);
-    });
-
-    // Button actions
+    // Submit button (no alert)
     document.querySelector('.btn-submit').onclick = () => {
-        const amount = depositAmount.value;
-        alert(amount >= 100 && amount <= 50000 ?
-            `Deposit request for ₹${amount} submitted!` :
-            'Enter valid amount (100-50000)');
+        const amount = parseInt(depositAmount.value, 10);
+        if (isNaN(amount) || amount < minAmount || amount > maxAmount) {
+            depositAmount.classList.add('is-invalid');
+        } else {
+            depositAmount.classList.remove('is-invalid');
+            console.log(`Valid amount: ₹${amount}`);
+        }
     };
 
-    document.querySelector('.btn-success').onclick = () =>
-        alert('Add Account functionality');
-
-    document.querySelector('.btn-edit').onclick = () =>
-        alert('Edit Stake functionality');
-
-    document.querySelector('.back-btn').onclick = () =>
-        confirm('Go back?') && window.history.back();
-
-    // Initialize
+    // Initialize on load
     switchSection();
+
     // for wallet page
     document.addEventListener('DOMContentLoaded', function() {
         const walletEditBtn = document.getElementById('walletEditStakeBtn');
