@@ -22,7 +22,7 @@
 
                     <!-- Left side -->
                     <div
-                        class="col-12 col-md-5 d-flex flex-column align-items-center justify-content-center text-center p-4 text-white"
+                        class="col-12 col-md-5 d-flex flex-column align-items-center justify-content-center text-center p-4 text-white d-none d-md-block"
                         style="background: linear-gradient(180deg, #001f4d, #0a2345);">
                         <h2 class="fw-bold mb-3 text-uppercase fs-4 fs-md-3 fs-lg-2">
                             <span class="text-primary">GAME</span><span class="text-white">WIN</span><span
@@ -85,19 +85,19 @@
 
                             <!-- WhatsApp -->
                             <p class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</p>
-                            <a href="javascript:void(0)" class="btn btn-success w-100 mb-3">📱 Whatsapp Now</a>
+                            <a href="https://web.whatsapp.com/" class="btn btn-success w-100 mb-3">📱 Whatsapp Now</a>
 
                             <!-- Social login -->
                             <p class="text-center small mb-2">Or Login With</p>
                             <div class="d-flex justify-content-center gap-3 mb-3 flex-wrap">
-                                <a href="javascript:void(0)" class="btn btn-primary"><i class="bi bi-telegram"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-danger"><i class="bi bi-instagram"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-info"><i class="bi bi-facebook"></i></a>
+                                <a href="https://web.telegram.org/k/" class="btn btn-primary"><i class="bi bi-telegram"></i></a>
+                                <a href="https://www.instagram.com/" class="btn btn-danger"><i class="bi bi-instagram"></i></a>
+                                <a href="https://www.facebook.com/" class="btn btn-info"><i class="bi bi-facebook"></i></a>
                             </div>
 
                             <!-- Register -->
                             <div class="text-center small">
-                                Don’t have an account? <a href="#" class="fw-bold text-info">Register</a>
+                                Don’t have an account? <a href="register" class="fw-bold text-info">Register</a>
                             </div>
 
                         </form>
