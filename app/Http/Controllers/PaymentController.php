@@ -52,8 +52,10 @@ class PaymentController extends Controller
 
         $data['sign'] = (new AuthController)->md5_sign($data, env('LG_PAY_SECRET_KEY'));
         
-    
-        $url = "https://www.lg-pay.com/api/".($request->payment_type) ? 'deposit' : 'create'."/order";
+        $payment_type = ($request->payment_type==1) ? 'deposit' : 'create';
+        
+        $url = "https://www.lg-pay.com/api/".$payment_type."/order";
+
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
