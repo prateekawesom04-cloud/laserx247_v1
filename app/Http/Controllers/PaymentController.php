@@ -52,7 +52,7 @@ class PaymentController extends Controller
 
         $data['sign'] = (new AuthController)->md5_sign($data, env('LG_PAY_SECRET_KEY'));
         
-        $payment_type = ($request->payment_type==1) ? 'deposit' : 'create';
+        $payment_type = ($request->payment_type==1) ? 'deposit' : 'order';
         
         $url = "https://www.lg-pay.com/api/".$payment_type."/order";
 
