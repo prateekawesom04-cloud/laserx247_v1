@@ -105,8 +105,9 @@
     <script>
         function paymentRequest(response) {
             response = JSON.parse(response);
+            console.log("response.data['pay_url']---",response.data['pay_url']);
             
-            window.location.href = response.data['pay_url'];
+            (response.data['pay_url']) ? window.location.href = response.data['pay_url'] : alert('issue');
         }
 
         $('a.btn-submit').click(function(e) {
