@@ -2,16 +2,21 @@
     <div class="container-fluid">
         <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40" />
         <div class="d-flex ms-auto align-items-center">
+
+            @if(session('user_session'))
             <!-- Notification Bell Icon -->
             <button class="btn p-0 me-3 text-white fs-5" data-bs-toggle="offcanvas" data-bs-target="#notificationPanel"
                 aria-controls="notificationPanel">
                 <i class="fas fa-bell"></i>
             </button>
-
-            <a href="login" class="btn btn-outline-dark btn-sm me-2">Login</a>
-            <a href="register" class="btn btn-outline-dark btn-sm me-2">Register</a>
             <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="offcanvas"
                 data-bs-target="#accountPanel" aria-controls="accountPanel">My Account</a>
+            @else
+
+                <a href="login" class="btn btn-outline-dark btn-sm me-2">Login</a>
+                <a href="register" class="btn btn-outline-dark btn-sm me-2">Register</a>
+
+            @endif
         </div>
     </div>
 </nav>
