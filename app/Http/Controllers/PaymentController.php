@@ -16,7 +16,6 @@ class PaymentController extends Controller
         $data['order_sn'] = date("Y-m-d")."_p_".time();
         $data['money'] = $request->money;
         $data['notify_url'] = url('/').'/paymentCallback';
-        dd($data['notify_url']);
         // $user = User::where([
         //     'user_uid'=>session('user_uid')
         // ])->first();
@@ -54,8 +53,8 @@ class PaymentController extends Controller
         
         $payment_type = ($request->payment_type==1) ? 'deposit' : 'order';
         
-        $url = "https://www.lg-pay.com/api/".$payment_type."/order";
-
+        $url = "https://www.lg-pay.com/api/".$payment_type."/create";
+        
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
