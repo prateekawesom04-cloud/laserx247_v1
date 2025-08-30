@@ -4,25 +4,56 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
+use App\Models\Transaction;
 
 class PaymentController extends Controller
 {
     //
     public function paymentRequest(Request $request){
+        
         $data = [];
-
         $data['app_id'] = env('LG_PAY_APP_ID');
-        $data['trade_type'] = 'INRUPI';
         $data['order_sn'] = date("Y-m-d")."_p_".time();
         $data['money'] = $request->money;
-        $data['notify_url'] = 'https://okwingame.world/#/wallet/RechargeHistory';
-        $data['ip'] = '0.0.0.0';
-        $data['remark'] = "remark001";
+        $data['notify_url'] = url('/').'/paymentCallback';
+
+        // $user = User::where([
+        //     'user_uid'=>session('user_uid')
+        // ])->first();
+        
+        $transaction = new Transaction();
+        $transaction->user_uid = session('user_id');
+        $transaction->order_sn = $data['order_sn'];
+        $transaction->transfer_amount = $data['money'];
+        $transaction->ip = $request->ip();
+        $transaction->status = 2;
+        $transaction->payment_type = $request->payment_type;
+        $transaction->currency = "INR";
+        $transaction->remark = "remark001";
+        $transaction->save();
+
+
+        // if(session('user_uid')){}
+        
+
+        if($request->payment_type == 0){
+
+            $data['trade_type'] = 'INRUPI';
+            $data['ip'] = $request->ip();
+            $data['remark'] = "remark001";
+        
+        } elseif ($request->payment_type == 1) {
+
+            $data['currency'] = $request->currency;
+            
+        } else{
+            return False;
+        }
 
         $data['sign'] = (new AuthController)->md5_sign($data, env('LG_PAY_SECRET_KEY'));
         
-        // Prepare cURL request
-        $url = "https://www.lg-pay.com/api".$request->payment_type."/order";
+    
+        $url = "https://www.lg-pay.com/api/".$request->payment_type."/order";
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -46,12 +77,28 @@ class PaymentController extends Controller
     }
 
     public function paymentCallback(Request $request){
-        $post_sign = $_POST['sign'];
-        $sign = md5_sign($_POST,env('LG_PAY_SECRET_KEY'),['sign']);
-        if($sign == $post_sign){
-            
 
-            return $request->all();
+        $data =[];
+
+        $data['order_sn'] = $request->order_sn;
+        $data['money'] = $request->money;
+        $data['status'] = $request->status;
+        $data['pay_time'] = $request->pay_time;
+        $data['msg'] = $request->msg;
+        $data['remark'] = $request->remark;
+
+        // $model = YourModel::findOrFail($id);
+        // $model->fill(request()->all());
+        // $model->save();
+
+        $sign = md5_sign($data,env('LG_PAY_SECRET_KEY'));
+        if($sign == $request->sign){
+            $transaction = Transaction::where('order_sn',$request->order_sn);
+
+            $transaction->transfer_amount = $request->money;
+            $transaction->status = $request->status;
+            $transaction->save();
+
         }
     }
 
