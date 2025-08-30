@@ -2,7 +2,7 @@
 @section('body')
     <!-- Sidebar -->
     <div class="d-flex" style="font-family: Calibri, 'Trebuchet MS'; min-height: 100vh;">
-        <aside class="bg-light border p-2" style="width:250px; font-family: Calibri, 'Trebuchet MS';">
+        <aside class="bg-light border p-2 d-none d-md-block" style="width:250px; font-family: Calibri, 'Trebuchet MS';">
             <div class="accordion" id="sportsAccordion">
 
                 <!-- Cricket -->
@@ -204,7 +204,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Match 1 -->
             <div>

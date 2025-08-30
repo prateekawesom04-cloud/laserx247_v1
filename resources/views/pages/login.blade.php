@@ -101,7 +101,7 @@
                             </div>
 
                         </form>
-                    </div> <!-- End of Right Side -->
+                    </div> 
                 </div>
             </div>
         </div>

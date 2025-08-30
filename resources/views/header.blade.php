@@ -8,9 +8,9 @@
                 <i class="fas fa-bell"></i>
             </a>
 
-            <a href="login" class="btn btn-outline-dark btn-sm me-2">Login</a>
-            <a href="register" class="btn btn-outline-dark btn-sm me-2">Register</a>
-            <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="offcanvas"
+            <a href="login" class="btn btn-outline-light btn-sm me-2 fw-bold">Login</a>
+            <a href="register" class="btn btn-outline-light btn-sm me-2 fw-bold">Register</a>
+            <a href="#" class="btn btn-outline-light btn-sm fw-bold" data-bs-toggle="offcanvas"
                 data-bs-target="#accountPanel" aria-controls="accountPanel">My Account</a>
         </div>
     </div>
