@@ -16,13 +16,12 @@ class PaymentController extends Controller
         $data['order_sn'] = date("Y-m-d")."_p_".time();
         $data['money'] = $request->money;
         $data['notify_url'] = url('/').'/paymentCallback';
-
         // $user = User::where([
         //     'user_uid'=>session('user_uid')
         // ])->first();
         
         $transaction = new Transaction();
-        $transaction->user_uid = session('user_id');
+        $transaction->user_uid = '121';
         $transaction->order_sn = $data['order_sn'];
         $transaction->transfer_amount = $data['money'];
         $transaction->ip = $request->ip();
@@ -52,17 +51,23 @@ class PaymentController extends Controller
 
         $data['sign'] = (new AuthController)->md5_sign($data, env('LG_PAY_SECRET_KEY'));
         
-    
-        $url = "https://www.lg-pay.com/api/".$request->payment_type."/order";
+        $payment_type = ($request->payment_type==1) ? 'deposit' : 'order';
+        
+        $url = "https://www.lg-pay.com/api/".$payment_type."/create";
+        
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             "Content-Type: application/x-www-form-urlencoded"
         ]);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_DEFAULT);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 120);
 
         $response = curl_exec($ch);
 
