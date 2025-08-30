@@ -11,6 +11,8 @@
     <div class="loader" style="display: none !important;">
         Loading...
     </div>
+
+    @yield('js')
 </body>
 
 </html>

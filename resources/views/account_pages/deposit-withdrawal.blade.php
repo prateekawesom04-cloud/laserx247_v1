@@ -12,14 +12,14 @@
         <div class="radio-section p-3 border-bottom">
             <div class="d-flex justify-content-center gap-4">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transaction_type" id="deposit" value="deposit"
-                        checked>
-                    <label class="form-check-label fw-medium" for="deposit" style="font-size: 13px;">Deposit</label>
+                    <input class="form-check-input" type="radio" name="transaction_type" id="create"
+                        value="0">
+                    <label class="form-check-label fw-medium" for="create" style="font-size: 13px;">Create</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transaction_type" id="withdrawal"
-                        value="withdrawal">
-                    <label class="form-check-label fw-medium" for="withdrawal" style="font-size: 13px;">Withdrawal</label>
+                    <input class="form-check-input" type="radio" name="transaction_type" id="deposit" value="1"
+                        checked>
+                    <label class="form-check-label fw-medium" for="deposit" style="font-size: 13px;">Deposit</label>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
             <div class="row g-2 mb-3">
                 <div class="col-6"><button class="btn btn-edit text-white w-100" style="font-size: 11px;">📝 Edit
                         Stake</button></div>
-                <div class="col-6"><button class="btn btn-submit text-white w-100" style="font-size: 11px;">SUBMIT</button>
+                <div class="col-6"><a href="javascript:void(0)" class="btn btn-submit text-white w-100" style="font-size: 11px;">SUBMIT</button>
                 </div>
             </div>
 
@@ -98,4 +98,34 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+<script>
+
+    function paymentRequest(response){
+        console.log('paymentRequest-----',response);
+    }
+
+    $('a.btn-submit').click(function(e){
+        let data = {};
+
+        data.payment_type = $('input[type=radio]:checked').val();
+        // data.payment_type = 'create';
+        if($('#depositAmount').val() > 100){
+            data.money = $('#depositAmount').val()*100;
+            callApi('post', 'paymentRequest', data, paymentRequest);
+        } else{
+            if(data.payment_type == 0){
+
+                alert('Please Enter Amount more than 100');
+                
+            } else{
+                
+                alert('Please Enter Amount more than 500');
+
+            }
+        }
+    });
+</script>
 @endsection
