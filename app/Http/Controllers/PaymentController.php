@@ -16,7 +16,7 @@ class PaymentController extends Controller
         $data['order_sn'] = date("Y-m-d")."_p_".time();
         $data['money'] = $request->money;
         $data['notify_url'] = url('/').'/paymentCallback';
-
+        dd($data['notify_url']);
         // $user = User::where([
         //     'user_uid'=>session('user_uid')
         // ])->first();
@@ -59,12 +59,16 @@ class PaymentController extends Controller
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             "Content-Type: application/x-www-form-urlencoded"
         ]);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_DEFAULT);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 120);
 
         $response = curl_exec($ch);
 
