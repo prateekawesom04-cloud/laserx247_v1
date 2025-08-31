@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css') }}/style.css">
     <link rel="stylesheet" href="{{ asset('css') }}/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <script src="{{asset('js')}}/jquery-3.7.1.min.js"></script>
 </head>
 
 <body class="vh-100 d-flex align-items-center justify-content-center"
@@ -34,7 +35,7 @@
                                 </span>
                                 <input type="text" class="form-control border-start-0" name="phone"
                                     placeholder="Enter Phone Number" />
-                                <a class="btn btn-dark" type="button">Get OTP</a>
+                                <a class="btn btn-dark getOtp" type="button">Get OTP</a>
                             </div>
 
                             <!-- OTP -->
@@ -70,7 +71,7 @@
                             </div>
 
                             <!-- Register -->
-                            <a type="submit" class="btn btn-dark w-100 mb-3">Register</a>
+                            <a class="btn btn-dark w-100 mb-3 registerUser">Register</a>
 
                             <div class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</div>
 
@@ -88,6 +89,38 @@
             </div>
         </div>
     </div>
+    @include('js')
+    <script>
+
+        $('input[name=password]').keypress(function(e){
+            e.preventDefault();
+            if(!testLocalStorage('user_otp')) {
+                $(this).val('');
+                return false;
+            }
+        });
+
+        $('input[name=otp]').keypress(function(e){
+            e.preventDefault();
+            let data={};
+            data.otp = $(this).val();
+            data.phone = $('input[name=phone]').val();
+            
+            if($(this).val().length==6) {
+                callApi('get','verifyOtp',data,verifyOtp);
+            }
+        });
+
+        $('a.getOtp').click(function(e) {
+            let data={};
+            data.phone = $('input[name=phone]').val();
+            callApi('get','sendOtp',data,sendOtp);
+        });
+    
+        $('a.registerUser').click(function(e) {
+            registerUser();
+        });
+    </script>
 </body>
 
 </html>

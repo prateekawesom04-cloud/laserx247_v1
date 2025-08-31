@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('css')}}/style.css">
     <link rel="stylesheet" href="{{asset('css')}}/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <script src="{{asset('js')}}/jquery-3.7.1.min.js"></script>
 </head>
 
 <body class="vh-100 d-flex align-items-center justify-content-center"
@@ -79,8 +80,8 @@
 
                             <!-- Buttons -->
                             <div class="d-flex gap-2 mb-3 flex-wrap">
-                                <a type="submit" class="btn btn-dark flex-grow-1 fw-bold">Login</a>
-                                <a type="button" class="btn btn-info flex-grow-1 fw-bold">Log In With Demo ID</a>
+                                <a href="javascript:void(0)" class="btn btn-dark flex-grow-1 fw-bold loginUser">Login</a>
+                                <a href="{{ url('demoLogin') }}" class="btn btn-info flex-grow-1 fw-bold">Log In With Demo ID</a>
                             </div>
 
                             <!-- WhatsApp -->
@@ -106,6 +107,12 @@
             </div>
         </div>
     </div>
+@include('js')
+    <script>
+        $('a.loginUser').click(function(e) {
+            loginUser();
+        });
+    </script>
 </body>
 
 </html>

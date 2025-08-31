@@ -121,6 +121,11 @@ Route::post('paymentRequest', [PaymentController::class,'paymentRequest'])->name
 Route::post('paymentCallback', [PaymentController::class,'paymentCallback'])->name('paymentCallback')->withoutMiddleware([VerifyCsrfToken::class]);
 
 
+// Api Calls
+
+Route::get('sendOtp', [AuthController::class,'sendOtp'])->name('sendOtp');
+
+Route::get('verifyOtp', [AuthController::class,'verifyOtp'])->name('verifyOtp');
 
 
 

@@ -105,21 +105,24 @@ class AuthController extends Controller
 
         $otp = random_int(100000, 999999);
 
-        session('user_otp',$otp);
+        session('user_otp_'.$phone,$otp);
         session('otp_expiry_time',time() + (5 * 60));
         return $otp;
-
+    
     }
 
-    public function verifyOtp($otp){
+    public function verifyOtp(Request $request){
 
         if (time() < session('otp_expiry_time')){
-            if($otp == session('user_otp')){
-                return True;
+            if($request->otp == session('user_otp_'.$request->phone)){
+                return response()->json([
+                    'otp'=> $request->otp
+                ]);
             }
         }
-        return False;
-        
+        return response()->json([
+            'error'=> 'otp expired'
+        ]);
     }
 
     public function demoLogin(){
@@ -214,4 +217,51 @@ class AuthController extends Controller
         $string = trim($string) . "&key=" . $key;
         return strtoupper(md5($string));
     }
+
+    public function sendOtp(Request $request){
+
+        $otp = random_int(100000, 999999);
+
+        session('user_otp_'.$request->phone,$otp);
+        session('otp_expiry_time',time() + (5 * 60));
+
+        $data = [
+            // 'APIKey'=>env('SMS_API_KEY'),
+            'user'=>'awesomecart',
+            'password'=>'Awesomecart@612',
+            'senderid'=>'WEBSMS',
+            'channel'=>'Trans',
+            'DCS'=>0,
+            'flashsms'=>0,
+            'number'=>$request->phone,
+            'text'=>'your otp for registration in 69exchange.in is'.session('user_otp'),
+            'route'=>'VC-P'
+        ];
+
+        $string = http_build_query($data);
+
+        $smsUrl = "http://bulksms.actinnsol.com/api/mt/SendSMS?".$string;
+
+        $ch = curl_init();
+        
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $smsUrl, 
+            CURLOPT_RETURNTRANSFER => 1, 
+            CURLOPT_POST => 1,
+            CURLOPT_SSL_VERIFYHOST=>false,
+            CURLOPT_SSL_VERIFYPEER=>false,
+            CURLOPT_TIMEOUT=> 120
+        ]);
+
+        $response = curl_exec($ch);
+        
+        if (curl_errno($ch)) {
+            return curl_error($ch);
+        } 
+
+        curl_close($ch);
+
+        return $response;
+    }
+
 }

@@ -22,12 +22,33 @@
         // }
     }
 
+    function testLocalStorage(key=null) {
+        if(!localStorage.getItem(key)){
+            alert(`Please set ${key} first`);
+            return false;
+        }
+        return true;
+    }
+
+    function sendOtp(response){
+        console.log('response--',response);
+    }
+
+    function verifyOtp(response){
+        if(response.otp){
+            localStorage.setItem('user_otp',response.otp);
+        } else{
+            alert(response.error);
+        }
+    }
+
     // Register User start
 
     function registerUser() {
+        if(!testLocalStorage('user_otp')) return false;
         let phoneRegex = '/^\d{10}$/';
-        let phone = $('input[name=phone]');
-        let password = $('input[name=password]');
+        let phone = $('input[name=phone]').val();
+        let password = $('input[name=password]').val();
         let confirm_password = $('input[name=confirm_password]');
 
         let data = {
@@ -35,10 +56,11 @@
             password: password,
             confirm_password: confirm_password
         }
-
-        if (!phone.match(phoneRegex)) {
-            return false;
-        } else if (password.length < 6 || password != confirm_password) {
+        
+        // if (!phone.match(phoneRegex)) {
+        //     return false;
+        // } else 
+        if (password.length < 6 || password != confirm_password) {
             return false;
         } else {
             callApi('post', 'register', data, register_loginResponse);
@@ -51,17 +73,20 @@
 
     function loginUser() {
         let phoneRegex = '/^\d{10}$/';
-        let phone = $('input[name=phone]');
-        let password = $('input[name=password]');
+        let phone = $('input[name=phone]').val();
+        let password = $('input[name=password]').val();
 
         let data = {
             phone: phone,
             password: password
         }
 
-        if (!phone.match(phoneRegex)) {
-            return false;
-        } else if (password.length < 6) {
+        // if (!phone.match(phoneRegex)) {
+        //     alert('Please Enter Correct Phone Number');
+        //     return false;
+        // } else 
+        if (password.length < 6) {
+            alert('Please Enter Minimum 6 digit password');
             return false;
         } else {
             callApi('post', 'login', data, register_loginResponse);
@@ -71,7 +96,7 @@
     // Login User End
 
     function register_loginResponse(response) {
-        if (response == True) {
+        if (response == true) {
             window.location.href = "/";
         } else {
             alert(response.error);
@@ -85,16 +110,6 @@
     // $('a[data-formtype=login]').click(function(e){
     //     loginUser();
     // });
-
-    $('a').click(function(e) {
-        let formType = $(this).data('formType');
-
-        if (formType == 'register') {
-            registerUser();
-        } else if (formType == 'login') {
-            loginUser();
-        }
-    });
 
     function gameList(data){
         
