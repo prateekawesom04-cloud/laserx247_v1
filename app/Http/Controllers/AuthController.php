@@ -222,19 +222,19 @@ class AuthController extends Controller
 
         $otp = random_int(100000, 999999);
 
-        session('user_otp_'.$request->phone,$otp);
-        session('otp_expiry_time',time() + (5 * 60));
+        Session::put('user_otp_'.$request->phone,$otp);
+        Session::put('otp_expiry_time',time() + (5 * 60));
 
         $data = [
-            // 'APIKey'=>env('SMS_API_KEY'),
-            'user'=>'awesomecart',
-            'password'=>'Awesomecart@612',
+            'APIKey'=>env('SMS_API_KEY'),
+            // 'user'=>'awesomecart',
+            // 'password'=>'Awesomecart@612',
             'senderid'=>'AWSMCT',
             'channel'=>'Trans',
             'DCS'=>0,
             'flashsms'=>0,
             'number'=>$request->phone,
-            'text'=>'your otp for registration in 69exchange.in is'.session('user_otp'),
+            'text'=>'Your OTP is '.session('user_otp_'.$request->phone).'. This code is valid for the next 10 min. Please enter it on the website/app for login AWESOMCART. Regards, AWSMCT',
             'route'=>'2',
             'peid'=>'1701169875173062064',
             'DLTTemplateId'=>'1707174046951830675'
@@ -246,21 +246,12 @@ class AuthController extends Controller
 
         $ch = curl_init();
         
-        curl_setopt_array($ch, [
-            CURLOPT_URL => $smsUrl, 
-            CURLOPT_RETURNTRANSFER => 1, 
-            CURLOPT_POST => 1,
-            CURLOPT_SSL_VERIFYHOST=>false,
-            CURLOPT_SSL_VERIFYPEER=>false,
-            CURLOPT_TIMEOUT=> 120
-        ]);
-
+        curl_setopt($ch, CURLOPT_URL, $smsUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
-        
         if (curl_errno($ch)) {
-            return curl_error($ch);
-        } 
-
+            echo 'cURL Error: ' . curl_error($ch);
+        }
         curl_close($ch);
 
         return $response;
