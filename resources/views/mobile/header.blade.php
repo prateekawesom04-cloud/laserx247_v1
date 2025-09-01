@@ -7,9 +7,15 @@
         </a>
 
         <!-- Right-aligned buttons -->
-        <div class="d-lg-flex ms-auto">
-            <a href="login" class="btn btn-outline-danger btn-sm me-2">Login</a>
-            <a href="register" class="btn btn-outline-danger btn-sm">Register</a>
-        </div>
+       <div class="d-flex justify-content-center gap-2 d-lg-none mt-2">
+    <a href="login" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
+        Login
+    </a>
+    <a href="register" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
+        Register
+    </a>
+</div>
+
+
     </div>
 </nav>

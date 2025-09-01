@@ -1,4 +1,4 @@
-@extends('master')
+@extends('super-master')
 @section('body')
     <!-- Sidebar -->
     <div class="d-flex" style="font-family: Calibri, 'Trebuchet MS'; min-height: 100vh;">

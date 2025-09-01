@@ -4,6 +4,7 @@
 
 <body>
    @include('mobile.header')
+   @include('account-sidebar')
    @yield('body')
    @include('mobile.footer')
    @include('js')
