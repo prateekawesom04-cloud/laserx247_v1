@@ -17,10 +17,11 @@ class GamesController extends Controller
         // $games = json_decode($games);
 
         $games = json_decode($games, true);
-        $games = array_slice($games, 0, 6);
+        $games = array_slice($games, $request->game_index*6, 6);
         return response()->json([
             'provider'=> $request->provider,
-            'games'=> $games
+            'games'=> $games,
+            'game_index'=>$request->game_index+1
         ]);
     }
 
