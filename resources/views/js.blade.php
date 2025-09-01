@@ -24,22 +24,18 @@
 
     function testLocalStorage(key=null) {
         if(!localStorage.getItem(key)){
-            alert(`Please verify ${key} first`);
+            alert(`First get ${key}`);
             return false;
         }
         return true;
     }
 
-    function sendOtp(response){
-        console.log('response--',response);
+    function getOtp(response){
+        localStorage.setItem('user_otp',response.phone);
     }
 
     function verifyOtp(response){
-        if(response.otp){
-            localStorage.setItem('user_otp',response.otp);
-        } else{
-            alert(response.error);
-        }
+        alert(response.error);
     }
 
 

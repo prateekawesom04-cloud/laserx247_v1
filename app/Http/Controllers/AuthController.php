@@ -63,6 +63,7 @@ class AuthController extends Controller
             $user->phone = $request->phone;
             $user->user_uid = $request->phone.'_'.date("Y_m_d");
             $user->password = Hash::make($request->password);
+            $user->referral_code = 'no';
             $user->save();
 
             Session::put(['user_session'=>$user->id.'_user_'.$user->user_uid]);
@@ -101,22 +102,27 @@ class AuthController extends Controller
 
     }
 
-    public function getOtp($phone){
+    // public function getOtp($phone){
 
-        $otp = random_int(100000, 999999);
+    //     $otp = random_int(100000, 999999);
 
-        session('user_otp_'.$phone,$otp);
-        session('otp_expiry_time',time() + (5 * 60));
-        return $otp;
+    //     session('user_otp_'.$phone,$otp);
+    //     session('otp_expiry_time',time() + (5 * 60));
+    //     return $otp;
     
-    }
+    // }
 
     public function verifyOtp(Request $request){
 
         if (time() < session('otp_expiry_time')){
-            if($request->otp == session('user_otp_'.$request->phone)){
+            if($request->otp == Session::get('user_otp_'.$request->phone)){
                 return response()->json([
-                    'otp'=> $request->otp
+                    'error'=> 'otp matched',
+                    'err_code'=>101
+                ]);
+            } else{
+                return response()->json([
+                    'error'=> 'otp mismatched'
                 ]);
             }
         }
@@ -218,7 +224,7 @@ class AuthController extends Controller
         return strtoupper(md5($string));
     }
 
-    public function sendOtp(Request $request){
+    public function getOtp(Request $request){
 
         $otp = random_int(100000, 999999);
 
@@ -234,7 +240,7 @@ class AuthController extends Controller
             'DCS'=>0,
             'flashsms'=>0,
             'number'=>$request->phone,
-            'text'=>'Your OTP is '.session('user_otp_'.$request->phone).'. This code is valid for the next 10 min. Please enter it on the website/app for login AWESOMCART. Regards, AWSMCT',
+            'text'=>'Your OTP is '.$otp.'. This code is valid for the next 10 min. Please enter it on the website/app for login AWESOMCART. Regards, AWSMCT',
             'route'=>'2',
             'peid'=>'1701169875173062064',
             'DLTTemplateId'=>'1707174046951830675'
@@ -254,7 +260,10 @@ class AuthController extends Controller
         }
         curl_close($ch);
 
-        return $response;
+        return response()->json([
+            'phone'=>$request->phone,
+            'smsResponse'=>$response
+        ]);
     }
 
 }

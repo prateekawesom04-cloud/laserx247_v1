@@ -123,7 +123,7 @@ Route::post('paymentCallback', [PaymentController::class,'paymentCallback'])->na
 
 // Api Calls
 
-Route::get('sendOtp', [AuthController::class,'sendOtp'])->name('sendOtp');
+Route::get('getOtp', [AuthController::class,'getOtp'])->name('getOtp');
 
 Route::get('verifyOtp', [AuthController::class,'verifyOtp'])->name('verifyOtp');
 

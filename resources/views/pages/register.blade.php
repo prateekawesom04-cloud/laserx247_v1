@@ -99,17 +99,19 @@
         </div>
     </div>
     @include('js')
-    
+
     <script>
 
     // Register User start
 
     function registerUser() {
+
         if(!testLocalStorage('user_otp')) return false;
+
         let phoneRegex = '/^\d{10}$/';
         let phone = $('input[name=phone]').val();
         let password = $('input[name=password]').val();
-        let confirm_password = $('input[name=confirm_password]');
+        let confirm_password = $('input[name=confirm_password]').val();
 
         let data = {
             phone: phone,
@@ -120,9 +122,15 @@
         // if (!phone.match(phoneRegex)) {
         //     return false;
         // } else 
-        if (password.length < 6 || password != confirm_password) {
+        
+        if (password.length < 6) {
+            alert('Please enter strong password');
             return false;
-        } else {
+        } else if(password != confirm_password){
+            alert('please confirm correct password');
+            return false;
+        }
+        else {
             callApi('post', 'register', data, register_loginResponse);
         }
     }
@@ -130,7 +138,7 @@
     // Register User End
 
         $('input[name=password]').keypress(function(e){
-            e.preventDefault();
+            
             if(!testLocalStorage('user_otp')) {
                 $(this).val('');
                 return false;
@@ -138,12 +146,15 @@
         });
 
         $('input[name=otp]').keypress(function(e){
-            e.preventDefault();
-            let data={};
-            data.otp = $(this).val();
-            data.phone = $('input[name=phone]').val();
-            
-            if($(this).val().length==6) {
+            if(!testLocalStorage('user_otp')) {
+                return false;
+            }
+
+            if($(this).val().length==5) {
+                let data={};
+                data.otp = $(this).val()+e.key;
+                data.phone = $('input[name=phone]').val();
+                
                 callApi('get','verifyOtp',data,verifyOtp);
             }
         });
@@ -151,7 +162,7 @@
         $('a.getOtp').click(function(e) {
             let data={};
             data.phone = $('input[name=phone]').val();
-            callApi('get','sendOtp',data,sendOtp);
+            callApi('get','getOtp',data,getOtp);
         });
     
         $('a.registerUser').click(function(e) {
