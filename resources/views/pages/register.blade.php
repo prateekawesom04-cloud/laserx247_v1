@@ -99,61 +99,98 @@
         </div>
     </div>
     @include('js')
+
     <script>
-       let data = {
-    phone: '',
-    otp: '',
-    otpTimer: null,
-    otpTimeLeft: 60
-};
+        function startOtpCountdown(button) {
+            let data = {
+                phone: $('input[name=phone]').val(),
+                otp: '',
+                otpTimer: null,
+                otpTimeLeft: 60
+            };
 
-function startOtpTimer(button) {
-    data.otpTimeLeft = 60;
-    $(button).prop('disabled', true).text(`Retry in ${data.otpTimeLeft}s`);
+            $(button).prop('disabled', true).text(`Retry in ${data.otpTimeLeft}s`);
 
-    data.otpTimer = setInterval(() => {
-        data.otpTimeLeft--;
-        if (data.otpTimeLeft > 0) {
-            $(button).text(`Retry in ${data.otpTimeLeft}s`);
-        } else {
-            clearInterval(data.otpTimer);
-            $(button).prop('disabled', false).text('Get OTP');
+            data.otpTimer = setInterval(() => {
+                data.otpTimeLeft--;
+
+                if (data.otpTimeLeft > 0) {
+                    $(button).text(`Retry in ${data.otpTimeLeft}s`);
+                } else {
+                    clearInterval(data.otpTimer);
+                    $(button).prop('disabled', false).text('Get OTP');
+                }
+            }, 1000);
         }
-    }, 1000);
-}
 
-$('a.getOtp').click(function(e) {
-    e.preventDefault();
+        function registerUser() {
 
-    data.phone = $('input[name=phone]').val();
+            if (!testLocalStorage('user_otp')) return false;
 
-    callApi('get', 'sendOtp', data, sendOtp);
+            let phoneRegex = '/^\d{10}$/';
+            let phone = $('input[name=phone]').val();
+            let password = $('input[name=password]').val();
+            let confirm_password = $('input[name=confirm_password]').val();
 
-    startOtpTimer(this);
-});
-
-$('input[name=password]').keypress(function(e) {
-    e.preventDefault();
-    if (!testLocalStorage('user_otp')) {
-        $(this).val('');
-        return false;
-    }
-});
-
-$('input[name=otp]').keypress(function(e) {
-    e.preventDefault();
-    data.otp = $(this).val();
-    data.phone = $('input[name=phone]').val();
-
-    if($(this).val().length==6) {
-                callApi('get','verifyOtp',data,verifyOtp);
+            let data = {
+                phone: phone,
+                password: password,
+                confirm_password: confirm_password
             }
-});
 
-$('a.registerUser').click(function(e) {
-    registerUser();
-});
+            // if (!phone.match(phoneRegex)) {
+            //     return false;
+            // } else 
 
+            if (password.length < 6) {
+                alert('Please enter strong password');
+                return false;
+            } else if (password != confirm_password) {
+                alert('please confirm correct password');
+                return false;
+            } else {
+                callApi('post', 'register', data, register_loginResponse);
+            }
+        }
+
+        // Register User End
+
+        $('input[name=password]').keypress(function(e) {
+
+            if (!testLocalStorage('user_otp')) {
+                $(this).val('');
+                return false;
+            }
+        });
+
+        $('input[name=otp]').keypress(function(e) {
+            if (!testLocalStorage('user_otp')) {
+                return false;
+            }
+
+            if ($(this).val().length == 5) {
+                let data = {};
+                data.otp = $(this).val() + e.key;
+                data.phone = $('input[name=phone]').val();
+
+                callApi('get', 'verifyOtp', data, verifyOtp);
+            }
+        });
+
+        $('a.registerUser').click(function(e) {
+            registerUser();
+        });
+
+        $('a.getOtp').click(function(e) {
+            let data = {};
+            data.phone = $('input[name=phone]').val();
+            callApi('get', 'getOtp', data, getOtp);
+            startOtpCountdown(this);
+        });
+
+        $('a.registerUser').click(function(e) {
+            registerUser();
+        });
     </script>
 </body>
 

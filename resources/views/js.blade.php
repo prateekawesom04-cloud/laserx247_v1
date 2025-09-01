@@ -24,50 +24,20 @@
 
     function testLocalStorage(key=null) {
         if(!localStorage.getItem(key)){
-            alert(`Please set ${key} first`);
+            alert(`First get ${key}`);
             return false;
         }
         return true;
     }
 
-    function sendOtp(response){
-        console.log('response--',response);
+    function getOtp(response){
+        localStorage.setItem('user_otp',response.phone);
     }
 
     function verifyOtp(response){
-        if(response.otp){
-            localStorage.setItem('user_otp',response.otp);
-        } else{
-            alert(response.error);
-        }
+        alert(response.error);
     }
 
-    // Register User start
-
-    function registerUser() {
-        if(!testLocalStorage('user_otp')) return false;
-        let phoneRegex = '/^\d{10}$/';
-        let phone = $('input[name=phone]').val();
-        let password = $('input[name=password]').val();
-        let confirm_password = $('input[name=confirm_password]');
-
-        let data = {
-            phone: phone,
-            password: password,
-            confirm_password: confirm_password
-        }
-        
-        // if (!phone.match(phoneRegex)) {
-        //     return false;
-        // } else 
-        if (password.length < 6 || password != confirm_password) {
-            return false;
-        } else {
-            callApi('post', 'register', data, register_loginResponse);
-        }
-    }
-
-    // Register User End
 
     // Login User Start
 
