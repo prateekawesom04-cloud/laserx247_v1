@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-    <script src="{{asset('js')}}/jquery-3.7.1.min.js"></script>
+    <script src="{{ asset('js') }}/jquery-3.7.1.min.js"></script>
 </head>
 
 <body class="min-vh-100 d-flex align-items-center justify-content-center"
@@ -100,35 +100,60 @@
     </div>
     @include('js')
     <script>
+       let data = {
+    phone: '',
+    otp: '',
+    otpTimer: null,
+    otpTimeLeft: 60
+};
 
-        $('input[name=password]').keypress(function(e){
-            e.preventDefault();
-            if(!testLocalStorage('user_otp')) {
-                $(this).val('');
-                return false;
-            }
-        });
+function startOtpTimer(button) {
+    data.otpTimeLeft = 60;
+    $(button).prop('disabled', true).text(`Retry in ${data.otpTimeLeft}s`);
 
-        $('input[name=otp]').keypress(function(e){
-            e.preventDefault();
-            let data={};
-            data.otp = $(this).val();
-            data.phone = $('input[name=phone]').val();
-            
-            if($(this).val().length==6) {
+    data.otpTimer = setInterval(() => {
+        data.otpTimeLeft--;
+        if (data.otpTimeLeft > 0) {
+            $(button).text(`Retry in ${data.otpTimeLeft}s`);
+        } else {
+            clearInterval(data.otpTimer);
+            $(button).prop('disabled', false).text('Get OTP');
+        }
+    }, 1000);
+}
+
+$('a.getOtp').click(function(e) {
+    e.preventDefault();
+
+    data.phone = $('input[name=phone]').val();
+
+    callApi('get', 'sendOtp', data, sendOtp);
+
+    startOtpTimer(this);
+});
+
+$('input[name=password]').keypress(function(e) {
+    e.preventDefault();
+    if (!testLocalStorage('user_otp')) {
+        $(this).val('');
+        return false;
+    }
+});
+
+$('input[name=otp]').keypress(function(e) {
+    e.preventDefault();
+    data.otp = $(this).val();
+    data.phone = $('input[name=phone]').val();
+
+    if($(this).val().length==6) {
                 callApi('get','verifyOtp',data,verifyOtp);
             }
-        });
+});
 
-        $('a.getOtp').click(function(e) {
-            let data={};
-            data.phone = $('input[name=phone]').val();
-            callApi('get','sendOtp',data,sendOtp);
-        });
-    
-        $('a.registerUser').click(function(e) {
-            registerUser();
-        });
+$('a.registerUser').click(function(e) {
+    registerUser();
+});
+
     </script>
 </body>
 
