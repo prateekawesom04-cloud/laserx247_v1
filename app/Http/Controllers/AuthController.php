@@ -235,8 +235,8 @@ class AuthController extends Controller
             'flashsms'=>0,
             'number'=>$request->phone,
             'text'=>'your otp for registration in 69exchange.in is'.session('user_otp'),
-            'route'=>'VC-P',
-            'peid'=>'##',
+            'route'=>'2',
+            'peid'=>'1701169875173062064',
             'DLTTemplateId'=>'1707174046951830675'
         ];
 

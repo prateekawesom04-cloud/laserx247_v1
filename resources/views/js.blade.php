@@ -24,7 +24,7 @@
 
     function testLocalStorage(key=null) {
         if(!localStorage.getItem(key)){
-            alert(`Please set ${key} first`);
+            alert(`Please verify ${key} first`);
             return false;
         }
         return true;
