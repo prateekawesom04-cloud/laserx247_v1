@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\PaymentController;
@@ -25,11 +26,19 @@ Route::get('removeSession', function () {
     Session::forget('user_session');
 });
 
+
+Route::get('logout', function () {
+    Session::forget('user_session');
+});
+
 Route::get('login', function () {
     return view('pages.login');
 })->name('pages.login');
 
 Route::get('register', function () {
+    
+    Session::flush();
+
     return view('pages.register');
 })->name('pages.register');
 

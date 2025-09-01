@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('password');
             $table->tinyInteger('status')->default(2);
             $table->string('referral_code');
-            $table->string('wallet_amount');
             $table->timestamps();
         });
     }
