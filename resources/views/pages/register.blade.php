@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-    <script src="{{asset('js')}}/jquery-3.7.1.min.js"></script>
+    <script src="{{ asset('js') }}/jquery-3.7.1.min.js"></script>
 </head>
 
 <body class="min-vh-100 d-flex align-items-center justify-content-center"
@@ -101,70 +101,93 @@
     @include('js')
 
     <script>
+        function startOtpCountdown(button) {
+            let data = {
+                phone: $('input[name=phone]').val(),
+                otp: '',
+                otpTimer: null,
+                otpTimeLeft: 60
+            };
 
-    // Register User start
+            $(button).prop('disabled', true).text(`Retry in ${data.otpTimeLeft}s`);
 
-    function registerUser() {
+            data.otpTimer = setInterval(() => {
+                data.otpTimeLeft--;
 
-        if(!testLocalStorage('user_otp')) return false;
-
-        let phoneRegex = '/^\d{10}$/';
-        let phone = $('input[name=phone]').val();
-        let password = $('input[name=password]').val();
-        let confirm_password = $('input[name=confirm_password]').val();
-
-        let data = {
-            phone: phone,
-            password: password,
-            confirm_password: confirm_password
+                if (data.otpTimeLeft > 0) {
+                    $(button).text(`Retry in ${data.otpTimeLeft}s`);
+                } else {
+                    clearInterval(data.otpTimer);
+                    $(button).prop('disabled', false).text('Get OTP');
+                }
+            }, 1000);
         }
-        
-        // if (!phone.match(phoneRegex)) {
-        //     return false;
-        // } else 
-        
-        if (password.length < 6) {
-            alert('Please enter strong password');
-            return false;
-        } else if(password != confirm_password){
-            alert('please confirm correct password');
-            return false;
-        }
-        else {
-            callApi('post', 'register', data, register_loginResponse);
-        }
-    }
 
-    // Register User End
+        function registerUser() {
 
-        $('input[name=password]').keypress(function(e){
-            
-            if(!testLocalStorage('user_otp')) {
+            if (!testLocalStorage('user_otp')) return false;
+
+            let phoneRegex = '/^\d{10}$/';
+            let phone = $('input[name=phone]').val();
+            let password = $('input[name=password]').val();
+            let confirm_password = $('input[name=confirm_password]').val();
+
+            let data = {
+                phone: phone,
+                password: password,
+                confirm_password: confirm_password
+            }
+
+            // if (!phone.match(phoneRegex)) {
+            //     return false;
+            // } else 
+
+            if (password.length < 6) {
+                alert('Please enter strong password');
+                return false;
+            } else if (password != confirm_password) {
+                alert('please confirm correct password');
+                return false;
+            } else {
+                callApi('post', 'register', data, register_loginResponse);
+            }
+        }
+
+        // Register User End
+
+        $('input[name=password]').keypress(function(e) {
+
+            if (!testLocalStorage('user_otp')) {
                 $(this).val('');
                 return false;
             }
         });
 
-        $('input[name=otp]').keypress(function(e){
-            if(!testLocalStorage('user_otp')) {
+        $('input[name=otp]').keypress(function(e) {
+            if (!testLocalStorage('user_otp')) {
                 return false;
             }
 
-            if($(this).val().length==5) {
-                let data={};
-                data.otp = $(this).val()+e.key;
+            if ($(this).val().length == 5) {
+                let data = {};
+                data.otp = $(this).val() + e.key;
                 data.phone = $('input[name=phone]').val();
-                
-                callApi('get','verifyOtp',data,verifyOtp);
+
+                callApi('get', 'verifyOtp', data, verifyOtp);
             }
         });
 
-        $('a.getOtp').click(function(e) {
-            let data={};
-            data.phone = $('input[name=phone]').val();
-            callApi('get','getOtp',data,getOtp);
+        $('a.registerUser').click(function(e) {
+            registerUser();
         });
-    
+
+        $('a.getOtp').click(function(e) {
+            let data = {};
+            data.phone = $('input[name=phone]').val();
+            callApi('get', 'getOtp', data, getOtp);
+            startOtpCountdown(this);
+        });
+
         $('a.registerUser').click(function(e) {
             registerUser();
         });
