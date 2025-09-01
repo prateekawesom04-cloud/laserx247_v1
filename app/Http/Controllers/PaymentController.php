@@ -13,7 +13,7 @@ class PaymentController extends Controller
         
         $data = [];
         $data['app_id'] = env('LG_PAY_APP_ID');
-        $data['order_sn'] = date("Y-m-d")."_p_".time();
+        $data['order_sn'] = date("Y-m-d")."_p_".time().rand(0000,9999);
         $data['money'] = $request->money;
         $data['notify_url'] = url('/').'/paymentCallback';
         // $user = User::where([

@@ -191,6 +191,10 @@
         $('a.registerUser').click(function(e) {
             registerUser();
         });
+
+        $(document).ready(function(){
+            localStorage.clear();
+        });
     </script>
 </body>
 

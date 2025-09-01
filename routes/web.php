@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\PaymentController;
@@ -17,21 +18,39 @@ use Illuminate\Support\Facades\View;
 //     }
 // });
 
+Route::middleware(['auth_middleware'])->group(function () {
+    
+    Route::get('login', function () {
+        return view('pages.login');
+    })->name('pages.login');
+
+    Route::get('register', function () {
+        
+        Session::flush();
+
+        return view('pages.register');
+
+    })->name('pages.register');
+
+});
+
+Route::middleware(['auth_check_middleware'])->group(function () {
+    
+    Route::get('logout', function () {
+        Session::flush();
+        return redirect()->route('index');
+    });
+
+    Route::get('removeSession', function () {
+        Session::forget('user_session');
+    });
+    
+});
+
 Route::get('/', function () {
     return view('pages.index');
 })->name('index');
 
-Route::get('removeSession', function () {
-    Session::forget('user_session');
-});
-
-Route::get('login', function () {
-    return view('pages.login');
-})->name('pages.login');
-
-Route::get('register', function () {
-    return view('pages.register');
-})->name('pages.register');
 
 Route::get('forgot-page', function () {
     return view('pages.forgot-page');

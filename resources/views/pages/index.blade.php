@@ -90,13 +90,10 @@ $providers = json_decode($providers);
                 </div>
                 <div class="row g-2 mt-2 game_list"
                     data-provider='{{ strtolower(explode('provider=', $provider->link)[1]) }}'>
-                    <div class="col-6 col-md-3">
-                        <img src="{{ asset('images/rps.webp') }}" alt="Rock Paper Scissors" class="img-fluid w-100">
-                        <div class="bg-dark text-white py-1">Rock Paper Scissors</div>
-                    </div>
+                    
                 </div>
                 <div class="text-center mt-3">
-                    <a class="btn btn-primary btn-sm load-more-btn">Load More</a>
+                    <a class="btn btn-primary btn-sm load-more-btn" data-provider='{{ strtolower(explode('provider=', $provider->link)[1]) }}' data-game_index='0'>Load More</a>
                 </div>
             @endforeach
 
@@ -133,10 +130,19 @@ $providers = json_decode($providers);
 
                 @foreach ($providers as $provider)
                     callApi('get', 'gameList', {
-                        'provider': "{{ strtolower(explode('provider=', $provider->link)[1]) }}"
+                        'provider': "{{ strtolower(explode('provider=', $provider->link)[1]) }}",
+                        'game_index':0
                     }, gameList);
                 @endforeach
 
+            });
+
+            $('body').on('click','a.load-more-btn',function(e){
+                let data ={};
+                data.provider = $(this).attr('data-provider');
+                data.game_index = $(this).attr('data-game_index');
+
+                callApi('get','gameList',data,gameList);
             });
         </script>
     @endsection
