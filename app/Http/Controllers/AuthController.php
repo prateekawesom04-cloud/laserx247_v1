@@ -229,13 +229,15 @@ class AuthController extends Controller
             // 'APIKey'=>env('SMS_API_KEY'),
             'user'=>'awesomecart',
             'password'=>'Awesomecart@612',
-            'senderid'=>'WEBSMS',
+            'senderid'=>'AWSMCT',
             'channel'=>'Trans',
             'DCS'=>0,
             'flashsms'=>0,
             'number'=>$request->phone,
             'text'=>'your otp for registration in 69exchange.in is'.session('user_otp'),
-            'route'=>'VC-P'
+            'route'=>'VC-P',
+            'peid'=>'##',
+            'DLTTemplateId'=>'1707174046951830675'
         ];
 
         $string = http_build_query($data);
