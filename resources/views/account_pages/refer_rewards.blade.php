@@ -16,7 +16,7 @@
         <div class="mb-3">
             <label for="referralCode" class="form-label">Your Referral Code:</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="referralCode" placeholder="Enter Referral Code" readonly>
+                <input type="text" class="form-control" id="referralCode" placeholder="Enter Referral Code" value="{{ $data->referral_code }}" readonly>
                 <button class="btn btn-dark" type="button">Copy</button>
             </div>
         </div>
@@ -49,7 +49,7 @@
         <div class="mb-3">
             <label for="referralLink" class="form-label">Refer Link</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="referralLink" placeholder="Enter Referral Link"disabled readonly>
+                <input type="text" class="form-control" id="referralLink" placeholder="Enter Referral Link" value="{{ url('/refer')}}/{{ $data->referral_code }}" readonly>
                 <button class="btn btn-dark" type="button">Copy</button>
             </div>
         </div>

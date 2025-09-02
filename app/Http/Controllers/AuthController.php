@@ -40,6 +40,7 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
+        
         $rules = [
             'phone' => 'required|numeric|digits:10',
             'password' => 'required|min:6',
@@ -57,13 +58,22 @@ class AuthController extends Controller
                 'error_code'=> '105'
             ]);
             
-            // return response()->json($errors);
         } else{
+            $referral_code = '';
+            if($request->referral_code != ''){
+                $referral_code = $request->referral_code;
+                $referralUser = User::getCurrentUser('referral_code',$referral_code);
+                $referralUser->referral_nos += 1;
+                $referralUser->save();
+            } else{
+                $referral_code = rand(0000,9999);
+            }
+
             $user = new User;
             $user->phone = $request->phone;
-            $user->user_uid = $request->phone.'_'.date("Y_m_d");
+            $user->user_uid = $request->phone.time().'_'.date("Ymd");
             $user->password = Hash::make($request->password);
-            $user->referral_code = 'no';
+            $user->referral_code = $referral_code;
             $user->save();
 
             Session::put(['user_session'=>$user->id.'_user_'.$user->user_uid]);
@@ -133,7 +143,7 @@ class AuthController extends Controller
 
     public function demoLogin(){
         Session::put(['user_session'=>'demo_user']);
-        return True;
+        return redirect()->route('index');
     }
 
     public function validateData($data) {

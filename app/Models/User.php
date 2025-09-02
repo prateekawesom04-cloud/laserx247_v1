@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Session;
 
 class User extends Authenticatable
 {
@@ -45,4 +46,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public static function getCurrentUser($key=NULL,$value=NULL){
+        if($key != NULL){
+
+            return static::where($key, $value)->first();
+
+        }
+        $userData = Session::get('user_session');
+        $userData = explode('_user_',$userData);
+        $userData = $userData[1];
+        return static::where('user_uid', $userData)->first();
+    }
+
 }

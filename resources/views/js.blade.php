@@ -73,9 +73,9 @@
     //     loginUser();
     // });
 
-    function gameList(data) {
-
-        $(`.game_list[data-provider=${data.provider}]`).html('');
+    function gameList(data){
+        
+        $(`.game_list[data-provider=${data.provider}]`).next().find('a.load-more-btn').attr('data-game_index',data.game_index);
 
         Object.entries(data.games).forEach((value, key) => {
             $(`.game_list[data-provider=${data.provider}]`).append(`
@@ -88,6 +88,7 @@
             `);
 
         });
+
 
     }
 
