@@ -45,6 +45,8 @@ Route::middleware(['auth_check_middleware'])->group(function () {
         Session::forget('user_session');
     });
     
+    // User Section Start
+
     Route::get('/deposit-withdrawal', function () {
         return view('account_pages.deposit-withdrawal');
     });
@@ -75,6 +77,8 @@ Route::middleware(['auth_check_middleware'])->group(function () {
     Route::get('/market_analysis', function () {
         return view('account_pages.market_analysis');
     });
+
+    // User Section End
 
 });
 
