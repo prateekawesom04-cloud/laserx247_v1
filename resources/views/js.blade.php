@@ -30,14 +30,6 @@
         return true;
     }
 
-    function getOtp(response) {
-        localStorage.setItem('user_otp', response.phone);
-    }
-
-    function verifyOtp(response) {
-        alert(response.error);
-    }
-
 
     // Login User Start
 

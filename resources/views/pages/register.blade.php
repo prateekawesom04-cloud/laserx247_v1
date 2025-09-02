@@ -171,19 +171,6 @@
             }
         });
 
-        $('input[name=confirm_password]').keypress(function(e) {
-
-            if (!testLocalStorage('user_otp')) {
-                $(this).val('');
-                return false;
-            }
-
-            if (!otpVerified) {
-                e.preventDefault();
-                alert('Please verify OTP first');
-            }
-        });
-
         $('input[name=otp]').keypress(function(e) {
             if (!testLocalStorage('user_otp')) {
                 return false;
