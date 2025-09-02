@@ -141,7 +141,7 @@ $providers = json_decode($providers);
                 let data ={};
                 data.provider = $(this).attr('data-provider');
                 data.game_index = $(this).attr('data-game_index');
-
+                
                 callApi('get','gameList',data,gameList);
             });
         </script>
