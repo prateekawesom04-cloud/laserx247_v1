@@ -19,9 +19,9 @@
             <a href="profile" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-user me-3 text-primary"></i> <span class="fw-semibold">Profile</span>
             </a>
-            <a href="wallet" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            {{-- <a href="wallet" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-wallet me-3 text-success"></i> <span class="fw-semibold">Wallet</span>
-            </a>
+            </a> --}}
             <a href="deposit-withdrawal"
                 class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-plus-circle me-3 text-success"></i> <span class="fw-semibold">Deposit / Withdrawal</span>
