@@ -4,6 +4,7 @@
 
 <body>
     @include('header')
+    @include('account-sidebar')
     @include('navbar')
     @yield('body')
     @include('footer')

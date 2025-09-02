@@ -1,4 +1,4 @@
-@extends('master')
+@extends('super-master')
 @section('body')
     <div class="d-flex flex-column flex-md-row vh-100">
         <!-- Sidebar -->
