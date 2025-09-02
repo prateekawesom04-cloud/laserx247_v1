@@ -61,7 +61,7 @@
                                     <i class="bi bi-lock"></i>
                                 </span>
                                 <input type="password" class="form-control" name="password"
-                                    placeholder="Enter Password" />
+                                    placeholder="Enter Password"disabled />
                             </div>
 
                             <!-- Confirm Password -->
@@ -70,7 +70,7 @@
                                     <i class="bi bi-lock"></i>
                                 </span>
                                 <input type="password" class="form-control" name="confirm_password"
-                                    placeholder="Enter Confirm Password" />
+                                    placeholder="Enter Confirm Password"disabled />
                             </div>
                             <div class="text-end mb-3">
                                 <a href="#" class="small text-info">Have a referral code?</a>
@@ -117,10 +117,13 @@
                 if (data.otpTimeLeft > 0) {
                     $(button).text(`Retry in ${data.otpTimeLeft}s`);
                 } else {
+                    if (!otpVerified) {
+                        $(button).prop('disabled', false).text('Get OTP');
+                    }
                     clearInterval(data.otpTimer);
-                    $(button).prop('disabled', false).text('Get OTP');
                 }
             }, 1000);
+
         }
 
         function registerUser() {
@@ -161,6 +164,24 @@
                 $(this).val('');
                 return false;
             }
+
+            if (!otpVerified) {
+                e.preventDefault();
+                alert('Please verify OTP first');
+            }
+        });
+
+        $('input[name=confirm_password]').keypress(function(e) {
+
+            if (!testLocalStorage('user_otp')) {
+                $(this).val('');
+                return false;
+            }
+
+            if (!otpVerified) {
+                e.preventDefault();
+                alert('Please verify OTP first');
+            }
         });
 
         $('input[name=otp]').keypress(function(e) {
@@ -181,18 +202,38 @@
             registerUser();
         });
 
+        let otpVerified = false;
+
+        function verifyOtp(response) {
+            if (response.err_code == 101) {
+                otpVerified = true;
+
+                $('input[name=password]').prop('disabled', false);
+                $('input[name=confirm_password]').prop('disabled', false);
+
+                $('a.getOtp').prop('disabled', true).text('OTP Verified');
+
+                if (data.otpTimer) {
+                    clearInterval(data.otpTimer);
+                    data.otpTimer = null;
+                }
+            } else {
+                alert('Invalid OTP');
+            }
+        }
+
         $('a.getOtp').click(function(e) {
+            if (otpVerified || $(this).prop('disabled')) {
+                return false;
+            }
+
             let data = {};
             data.phone = $('input[name=phone]').val();
             callApi('get', 'getOtp', data, getOtp);
             startOtpCountdown(this);
         });
 
-        $('a.registerUser').click(function(e) {
-            registerUser();
-        });
-
-        $(document).ready(function(){
+        $(document).ready(function() {
             localStorage.clear();
         });
     </script>
