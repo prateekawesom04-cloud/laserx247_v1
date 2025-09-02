@@ -177,10 +177,6 @@
             }
         });
 
-        $('a.registerUser').click(function(e) {
-            registerUser();
-        });
-
         $('a.getOtp').click(function(e) {
             let data = {};
             data.phone = $('input[name=phone]').val();
