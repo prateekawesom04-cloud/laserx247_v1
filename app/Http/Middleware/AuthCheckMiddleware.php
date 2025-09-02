@@ -5,9 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Session;
 
-class AuthMiddleware
+class AuthCheckMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,8 +15,8 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Session::get('user_session')) {
-            return redirect()->route('index');
+        if(!Session::get('user_session')) {
+            return redirect()->route('login');
         } else{
             return $next($request);
         }

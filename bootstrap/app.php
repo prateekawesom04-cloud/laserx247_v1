@@ -19,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'auth_middleware' => \App\Http\Middleware\AuthMiddleware::class,
+            'auth_check_middleware' => \App\Http\Middleware\AuthCheckMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
