@@ -210,6 +210,12 @@
             }
         }
 
+        function getOtp(response) {
+
+            localStorage.setItem('user_otp', response.phone);
+
+        }
+
         $('a.getOtp').click(function(e) {
             if (otpVerified || $(this).prop('disabled')) {
                 return false;
