@@ -22,7 +22,7 @@
             {{-- <a href="wallet" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-wallet me-3 text-success"></i> <span class="fw-semibold">Wallet</span>
             </a> --}}
-            <a href="deposit-withdrawal"
+            <a href="{{ url('/deposit') }}"
                 class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-plus-circle me-3 text-success"></i> <span class="fw-semibold">Deposit / Withdrawal</span>
             </a>

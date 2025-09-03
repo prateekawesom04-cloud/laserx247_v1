@@ -29,7 +29,7 @@
           <small class="fw-semibold" style="font-size: 0.75rem;">Multi</small>
         </a>
       </div>
-
+    @if (session('user_session'))
       <div class="col">
         <a href="#" class="d-flex flex-column align-items-center py-2 text-white text-decoration-none"data-bs-toggle="offcanvas"
                     data-bs-target="#accountPanel" aria-controls="accountPanel">
@@ -37,6 +37,14 @@
           <small class="fw-semibold" style="font-size: 0.75rem;">Account</small>
         </a>
       </div>
+      @else
+      <div class="col">
+        <a href="{{ url('login') }}" class="d-flex flex-column align-items-center py-2 text-white text-decoration-none">
+          <i class="fas fa-user-circle mb-0" style="font-size: 1.3rem;"></i>
+          <small class="fw-semibold" style="font-size: 0.75rem;">Login</small>
+        </a>
+      </div>
+      @endif
 
     </div>
   </div>

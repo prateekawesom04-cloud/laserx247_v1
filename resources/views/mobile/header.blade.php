@@ -7,6 +7,7 @@
         </a>
 
         <!-- Right-aligned buttons -->
+        @if (!session('user_session'))
        <div class="d-flex justify-content-center gap-2 d-lg-none mt-2">
     <a href="login" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
         Login
@@ -15,6 +16,7 @@
         Register
     </a>
 </div>
+@endif
 
 
     </div>
