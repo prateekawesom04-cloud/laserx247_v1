@@ -57,23 +57,21 @@
                                 <th>AMOUNT</th>
                                 <th>STATUS</th>
                                 <th>DATE</th>
-                                <th>PAYMENT METHOD</th>
                                 <th>TRANSACTION NO</th>
-                                <th>UTR NO</th>
                                 <th>REASON</th>
                             </tr>
                         </thead>
                         <tbody class="table-content">
-                            <tr class="table-row text-center">
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>7</td>
-                                <td>8</td>
-                            </tr>
+                            @foreach ($data as $value)
+                                <tr class="table-row text-center">
+                                    <td>{{($value->payment_type)? 'withdraw' : 'deposit'}}</td>
+                                    <td>{{$value->transfer_amount}}</td>
+                                    <td>{{($value->status==2)?'success':'under process or failed'}}</td>
+                                    <td>{{$value->created_at->format('Y-m-d')}}</td>
+                                    <td>{{$value->order_sn}}</td>
+                                    <td>{{$value->remark}}</td>
+                                </tr>                                
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

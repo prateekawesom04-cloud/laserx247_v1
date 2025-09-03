@@ -26,7 +26,7 @@
                 </a>
                 <a href="#" class="btn btn-sm fw-bold d-flex align-items-center gap-1"
                     style="background-color: #05113C; color:  white;">
-                    <i class="bi bi-coin"></i> 200
+                    <i class="bi bi-coin"></i> {{ (isset($userData))?$userData->wallet_amount:'200' }}
                 </a>
             </div>
         @endif
