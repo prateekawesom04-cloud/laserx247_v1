@@ -139,7 +139,7 @@
                 phone: phone,
                 password: password,
                 confirm_password: confirm_password,
-                referral_code: {{ ($referral_code) }}
+                referral_code: {{ ($referral_code != '')?$referral_code:'no' }}
             }
 
             // if (!phone.match(phoneRegex)) {
