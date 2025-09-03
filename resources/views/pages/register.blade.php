@@ -139,7 +139,7 @@
                 phone: phone,
                 password: password,
                 confirm_password: confirm_password,
-                referral_code: {{ ($referral_code != '')?$referral_code:'no' }}
+                referral_code: {{ ($referral_code) }}
             }
 
             // if (!phone.match(phoneRegex)) {
@@ -160,19 +160,6 @@
         // Register User End
 
         $('input[name=password]').keypress(function(e) {
-
-            if (!testLocalStorage('user_otp')) {
-                $(this).val('');
-                return false;
-            }
-
-            if (!otpVerified) {
-                e.preventDefault();
-                alert('Please verify OTP first');
-            }
-        });
-
-        $('input[name=confirm_password]').keypress(function(e) {
 
             if (!testLocalStorage('user_otp')) {
                 $(this).val('');

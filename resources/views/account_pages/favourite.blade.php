@@ -1,4 +1,4 @@
-@extends('master')
+@extends('super-master')
 
 @section('body')
 <div class="container-xl py-4">

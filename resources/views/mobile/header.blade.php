@@ -8,16 +8,28 @@
 
         <!-- Right-aligned buttons -->
         @if (!session('user_session'))
-       <div class="d-flex justify-content-center gap-2 d-lg-none mt-2">
-    <a href="login" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
-        Login
-    </a>
-    <a href="register" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
-        Register
-    </a>
-</div>
-@endif
-
+            <div class="d-flex justify-content-center gap-2 d-lg-none mt-2">
+                <a href="login" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
+                    Login
+                </a>
+                <a href="register" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
+                    Register
+                </a>
+            </div>
+        @else
+            <div class="d-flex justify-content-center gap-2 d-lg-none mt-2">
+                <a href="deposit" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
+                    Deposit
+                </a>
+                <a href="withdrawal" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
+                    Withdrawal
+                </a>
+                <a href="#" class="btn btn-sm fw-bold d-flex align-items-center gap-1"
+                    style="background-color: #05113C; color:  white;">
+                    <i class="bi bi-coin"></i> 200
+                </a>
+            </div>
+        @endif
 
     </div>
 </nav>
