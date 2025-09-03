@@ -19,9 +19,9 @@
             <a href="profile" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-user me-3 text-primary"></i> <span class="fw-semibold">Profile</span>
             </a>
-            <a href="wallet" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            {{-- <a href="wallet" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-wallet me-3 text-success"></i> <span class="fw-semibold">Wallet</span>
-            </a>
+            </a> --}}
             <a href="deposit-withdrawal"
                 class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-plus-circle me-3 text-success"></i> <span class="fw-semibold">Deposit / Withdrawal</span>
@@ -47,7 +47,7 @@
             <a href="change_password" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-key me-3 text-warning"></i> <span class="fw-semibold">Change Password</span>
             </a>
-            <a href="#" class="list-group-item list-group-item-action d-flex align-items-center text-danger fs-6">
+            <a href="{{url('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center text-danger fs-6">
                 <i class="fas fa-sign-out-alt me-3"></i> <span class="fw-semibold">Logout</span>
             </a>
         </div>

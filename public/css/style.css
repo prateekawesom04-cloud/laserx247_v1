@@ -755,16 +755,25 @@ body {
 }
 
 /* this is for sports-book */
- .carousel-item img {
-        width: 100%;
-        height: auto;
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* For desktop - height */
+@media (min-width: 992px) {
+    .carousel-item img {
+        height: 200px;
         object-fit: cover;
     }
+}
 
-    /* For desktop - height */
-    @media (min-width: 992px) {
-        .carousel-item img {
-            height: 200px; 
-            object-fit: cover;
-        }
-    }
+/* Referral Code & Link */
+#referralCode,#referralCode:focus,
+#referralLink:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: inherit !important;
+    border: none !important;
+}

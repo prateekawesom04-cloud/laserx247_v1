@@ -22,19 +22,19 @@
         // }
     }
 
-    function testLocalStorage(key=null) {
-        if(!localStorage.getItem(key)){
+    function testLocalStorage(key = null) {
+        if (!localStorage.getItem(key)) {
             alert(`First get ${key}`);
             return false;
         }
         return true;
     }
 
-    function getOtp(response){
-        localStorage.setItem('user_otp',response.phone);
+    function getOtp(response) {
+        localStorage.setItem('user_otp', response.phone);
     }
 
-    function verifyOtp(response){
+    function verifyOtp(response) {
         alert(response.error);
     }
 
@@ -178,134 +178,33 @@
             }
         });
     });
-    // for deposit-withdrawal page
-    // Restrict input to numbers only
-    const depositRadio = document.getElementById('deposit');
-    const createRadio = document.getElementById('create');
-    const depositSection = document.getElementById('depositSection');
-    const withdrawalSection = document.getElementById('withdrawalSection');
-    const depositAmount = document.getElementById('depositAmount');
-    const balanceInfo = document.getElementById('balanceInfo');
 
-    let minAmount = 200;
-    let maxAmount = 50000;
 
-    // Update UI and validation limits
-    function switchSection() {
-        if (depositRadio.checked) {
-            minAmount = 500;
-            balanceInfo.innerText = `Min: ${minAmount} Max: ${maxAmount}`;
-        } else {
-            minAmount = 200;
-            balanceInfo.innerText = `Min: ${minAmount} Max: ${maxAmount}`;
-        }
-
-        depositSection.classList.remove('inactive');
-        withdrawalSection.classList.remove('active');
-    }
-
-    // Handle radio change
-    [depositRadio, createRadio].forEach(radio =>
-        radio.addEventListener('change', switchSection)
-    );
-
-    // Input only numbers
-    depositAmount.addEventListener('input', function() {
-        this.value = this.value.replace(/\D/g, '');
-
-        document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('active'));
-
-        const amount = parseInt(this.value, 10);
-        if (isNaN(amount) || amount < minAmount || amount > maxAmount) {
-            this.classList.add('is-invalid');
-        } else {
-            this.classList.remove('is-invalid');
-        }
-    });
-
-    // Amount buttons click
-    document.querySelectorAll('.amount-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            depositAmount.value = this.dataset.amount;
-            depositAmount.classList.remove('is-invalid');
-        });
-    });
-
-    // Submit button (no alert)
-    document.querySelector('.btn-submit').onclick = () => {
-        const amount = parseInt(depositAmount.value, 10);
-        if (isNaN(amount) || amount < minAmount || amount > maxAmount) {
-            depositAmount.classList.add('is-invalid');
-        } else {
-            depositAmount.classList.remove('is-invalid');
-            console.log(`Valid amount: ₹${amount}`);
-        }
+    //reload page for all pages
+    const breakpoints = {
+        mobile: 768
     };
 
-    // Initialize on load
-    switchSection();
+    let resizeTimer;
+    let lastMode = window.innerWidth < breakpoints.mobile ? 'mobile' : 'desktop';
 
-    // for wallet page
-    document.addEventListener('DOMContentLoaded', function() {
-        const walletEditBtn = document.getElementById('walletEditStakeBtn');
-        const walletModal = document.getElementById('walletEditModal');
-        const walletModalInput = document.getElementById('walletModalInputAmount');
-        const walletCancelBtn = document.getElementById('walletCancelModalBtn');
-        const walletSaveBtn = document.getElementById('walletSaveModalBtn');
-        const walletInput = document.getElementById('walletAmount');
-        const walletAmountBtns = document.querySelectorAll('.wallet-amount-btn');
-        const walletModalAmountBtns = document.querySelectorAll('.wallet-modal-amount-btn');
+    function responsiveReloadHandler() {
+        clearTimeout(resizeTimer);
 
-        walletEditBtn.addEventListener('click', () => {
-            walletModalInput.value = walletInput.value || '';
-            walletModal.style.display = 'flex'; // show modal
-        });
+        resizeTimer = setTimeout(() => {
+            const currentMode = window.innerWidth < breakpoints.mobile ? 'mobile' : 'desktop';
 
-        walletCancelBtn.addEventListener('click', () => {
-            walletModal.style.display = 'none'; // hide modal
-            walletModalAmountBtns.forEach(btn => btn.classList.remove('active'));
-        });
-
-        walletModalAmountBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                walletModalAmountBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                walletModalInput.value = btn.getAttribute('data-modal-amount');
-            });
-        });
-
-        walletSaveBtn.addEventListener('click', () => {
-            const amount = walletModalInput.value.trim();
-            if (!amount || isNaN(amount) || amount < 100 || amount > 50000) {
-                alert("Please enter a valid amount between 100 and 50000.");
-                return;
+            if (currentMode !== lastMode) {
+                console.log(`Mode changed from ${lastMode} to ${currentMode}. Reloading...`);
+                location.reload();
             }
 
-            walletInput.value = amount;
+            lastMode = currentMode;
+        }, 100);
+    }
 
-            walletAmountBtns.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-amount') === amount) {
-                    btn.classList.add('active');
-                }
-            });
-
-            walletModal.style.display = 'none';
-            walletModalAmountBtns.forEach(btn => btn.classList.remove('active'));
-        });
-
-        walletInput.addEventListener('input', () => {
-            walletAmountBtns.forEach(btn => btn.classList.remove('active'));
-        });
-
-        walletAmountBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                walletAmountBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                walletInput.value = btn.getAttribute('data-amount');
-            });
-        });
+    window.addEventListener('resize', () => {
+        console.log('Window resized');
+        responsiveReloadHandler();
     });
 </script>
