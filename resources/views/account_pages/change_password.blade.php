@@ -13,14 +13,14 @@
             <h6 class="fw-semibold text-dark mb-3" style="font-size: 13px;">Update Your Password</h6>
 
             <!-- Old Password -->
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <div class="input-group">
                     <input type="password" class="form-control" placeholder="Enter Old Password" id="oldPassword"
-                        style="font-size: 12px;">
+                        style="font-size: 12px;" disabled>
                     <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('oldPassword')"
                         style="font-size: 12px;">👁️</button>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- New Password -->
             <div class="mb-3">
@@ -53,4 +53,36 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+<script>
+
+    $('a.btn-submit').click(function(){
+        let data = {
+            password: $('#newPassword').val(),
+            confirm_password: $('#confirmPassword').val()
+        };
+        
+        if (password.length < 6) {
+            alert('Please enter strong password');
+            return false;
+        } else if (password != confirm_password) {
+            alert('please confirm correct password');
+            return false;
+        } else {
+            callApi('post', 'changePassword', data, changePassword);
+        }
+
+    });
+
+    function changePassword(response){
+        if(response == true){
+            window.location.reload(true);
+        } else{
+            alert(response.error);
+        }   
+    }
+
+</script>
 @endsection
