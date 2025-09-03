@@ -53,10 +53,15 @@ class User extends Authenticatable
             return static::where($key, $value)->first();
 
         }
+        
         $userData = Session::get('user_session');
-        $userData = explode('_user_',$userData);
-        $userData = $userData[1];
-        return static::where('user_uid', $userData)->first();
+        if(!empty($userData)){
+            $userData = explode('_user_',$userData);
+            $userData = $userData[1];
+            return static::where('user_uid', $userData)->first();
+        } else{
+            return False;
+        }
     }
 
 }

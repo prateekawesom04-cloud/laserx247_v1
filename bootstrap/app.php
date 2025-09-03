@@ -14,12 +14,13 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         //
         $middleware->web(append: [
-            // \App\Http\Middleware\AuthMiddleware::class,
+            \App\Http\Middleware\CustomSessionMiddleware::class,
         ]);
 
         $middleware->alias([
             'auth_middleware' => \App\Http\Middleware\AuthMiddleware::class,
             'auth_check_middleware' => \App\Http\Middleware\AuthCheckMiddleware::class,
+            'custom_session_middleware' => \App\Http\Middleware\CustomSessionMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

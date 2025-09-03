@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     
     public function profile(Request $request){
-        if(Session::get('user_session')=='demo_user'){
+        if(Session::get('user_session')=='demo_user_demo'){
             $data = [
                 'user_id'=>'demo data',
                 'available_chips'=>'demo data',
