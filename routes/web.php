@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ApiCallController;
@@ -24,11 +26,19 @@ Route::middleware(['auth_middleware'])->group(function () {
         return view('pages.login');
     })->name('pages.login');
 
-    Route::get('register', function () {
+    Route::get('register', function (Request $request) {
         
+        $referral_code = '';
+        
+        if($request->session()->has('referral_code')){
+            
+            $referral_code = session('referral_code');
+
+        }
+
         Session::flush();
 
-        return view('pages.register');
+        return view('pages.register',compact('referral_code'));
 
     })->name('pages.register');
 
@@ -47,9 +57,18 @@ Route::middleware(['auth_check_middleware'])->group(function () {
     
     // User Section Start
 
-    Route::get('/deposit-withdrawal', function () {
-        return view('account_pages.deposit-withdrawal');
-    });
+    // Route::get('/deposit', function () {
+    //     return view('account_pages.deposit-withdrawal');
+    // });
+    
+    Route::get('/profile', [UserController::class,'profile'])->name('user.profile');
+
+    Route::get('/deposit', [UserController::class,'deposit'])->name('user.deposit');
+
+    Route::get('/refer_rewards', [UserController::class,'refer_rewards'])->name('user.refer_rewards');
+
+    Route::get('/refer/{referral_code}', [UserController::class,'referral_code'])->name('user.referral_code');
+
     Route::get('/wallet', function () {
         return view('account_pages.wallet');
     });
@@ -59,14 +78,10 @@ Route::middleware(['auth_check_middleware'])->group(function () {
     Route::get('/change_password', function () {
         return view('account_pages.change_password');
     });
-    Route::get('/profile', function () {
-        return view('account_pages.profile');
-    });
+    
+    
     Route::get('/profit_loss', function () {
         return view('account_pages.profit_loss');
-    });
-    Route::get('/refer_rewards', function () {
-        return view('account_pages.refer_rewards');
     });
     Route::get('/unsettled_bets', function () {
         return view('account_pages.unsettled_bets');

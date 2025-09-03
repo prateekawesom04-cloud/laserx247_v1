@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('game_histories');
         Schema::create('game_histories', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_uid');
             $table->string('user_ip');
             $table->string('game_uid');
             $table->string('game_round');
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->float('wallet_before');
             $table->float('wallet_after');
             $table->timestamps();
+            $table->foreign('user_uid')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
