@@ -11,14 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('users');
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('user_uid');
             $table->string('phone')->unique();
             $table->string('password');
             $table->tinyInteger('status')->default(2);
+            $table->string('wallet_amount')->default('0.00');
+            $table->string('unsattled_amount')->default('0.00');
+            $table->string('commission_amount')->default('0.00');
             $table->string('referral_code');
-            $table->string('wallet_amount')->default(0.00);
+            $table->integer('referral_nos')->default(0);
+            $table->string('addition_data')->default('NULL');
             $table->timestamps();
         });
     }

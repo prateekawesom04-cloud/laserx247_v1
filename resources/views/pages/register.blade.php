@@ -135,7 +135,8 @@
             let data = {
                 phone: phone,
                 password: password,
-                confirm_password: confirm_password
+                confirm_password: confirm_password,
+                referral_code: {{ ($referral_code) }}
             }
 
             // if (!phone.match(phoneRegex)) {
