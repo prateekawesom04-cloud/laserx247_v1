@@ -18,10 +18,10 @@
             </div>
         @else
             <div class="d-flex justify-content-center gap-2 d-lg-none mt-2">
-                <a href="deposit" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
+                <a href="{{ url('/deposit') }}" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
                     Deposit
                 </a>
-                <a href="withdrawal" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
+                <a href="{{ url('/deposit') }}" class="btn btn-sm fw-bold" style="background-color: #05113C; color:  white;">
                     Withdrawal
                 </a>
                 <a href="#" class="btn btn-sm fw-bold d-flex align-items-center gap-1"
