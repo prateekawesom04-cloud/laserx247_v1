@@ -102,12 +102,6 @@
 
     <script>
         function startOtpCountdown(button) {
-            let data = {
-                phone: $('input[name=phone]').val(),
-                otp: '',
-                otpTimer: null,
-                otpTimeLeft: 60
-            };
 
             $(button).prop('disabled', true).text(`Retry in ${data.otpTimeLeft}s`);
 
@@ -174,6 +168,7 @@
 
         $('input[name=otp]').keypress(function(e) {
             if (!testLocalStorage('user_otp')) {
+                alert('Please get OTP first');
                 return false;
             }
 
@@ -191,6 +186,13 @@
         });
 
         let otpVerified = false;
+
+        let data = {
+            phone: $('input[name=phone]').val(),
+            otp: '',
+            otpTimer: null,
+            otpTimeLeft: 60
+        };
 
         function verifyOtp(response) {
             if (response.err_code == 101) {
