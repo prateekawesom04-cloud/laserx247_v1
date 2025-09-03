@@ -60,7 +60,7 @@ class AuthController extends Controller
             
         } else{
             $referral_code = '';
-            if($request->referral_code != ''){
+            if(isset($request->referral_code) && $request->referral_code != ''){
                 $referral_code = $request->referral_code;
                 $referralUser = User::getCurrentUser('referral_code',$referral_code);
                 $referralUser->referral_nos += 1;
