@@ -16,15 +16,15 @@
 
                     <!-- Left: Username -->
                     <div class="me-4 text-white d-flex align-items-center" style="font-weight: 00; font-size: 14px;">
-                        <i class="bi bi-person-fill me-1"></i> Demo
+                        <i class="bi bi-person-fill me-1"></i> {{ $userData->user_uid }}
                     </div>
                     <!-- Right: Balance and Expiry -->
                     <div class="text-white text-end" style="font-size: 13px; line-height: 1.2;">
                         <div>
-                            <i class="bi bi-coin me-1"></i> <span style="color: #ffffff;">200</span>
+                            <i class="bi bi-coin me-1"></i> <span style="color: #ffffff;">{{ $userData->wallet_amount }}</span>
                         </div>
                         <div>
-                            Exp: <span style="color: #ff4c4c;">1234.8</span>
+                            Exp: <span style="color: #ff4c4c;">{{ $userData->unsattled_amount }}</span>
                         </div>
                     </div>
                 </div>

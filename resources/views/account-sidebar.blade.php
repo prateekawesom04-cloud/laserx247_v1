@@ -4,10 +4,10 @@
     <div class="offcanvas-header bg-primary text-white">
         <div>
             <h5 class="mb-0 fw-bold fs-6" id="accountPanelLabel">
-                Account ID: <span class="text-warning fs-6">12faf4cf3444</span>
+                Account ID: <span class="text-warning fs-6">{{ $userData->user_uid }}</span>
             </h5>
             <small class="d-block mt-1 text-white-50 fs-7">
-                Last Login: <span class="fst-italic fs-7">1756100089</span>
+                Last Login: <span class="fst-italic fs-7">{{ $userData->updated_at }}</span>
             </small>
         </div>
         <a type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></a>
