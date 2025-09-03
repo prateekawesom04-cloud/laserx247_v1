@@ -1,4 +1,4 @@
-@extends('master')
+@extends('super-master')
 
 @section('body')
     <div class="wallet-main-container bg-white rounded shadow">

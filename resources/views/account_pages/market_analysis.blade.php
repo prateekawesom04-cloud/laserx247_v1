@@ -1,4 +1,4 @@
-@extends('master')
+@extends('super-master')
 
 @section('body')
     <div class="market-analysis text-center">
