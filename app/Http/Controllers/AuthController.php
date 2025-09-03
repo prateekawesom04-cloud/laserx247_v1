@@ -98,11 +98,42 @@ class AuthController extends Controller
             foreach ($validator->errors()->messages() as $key => $value) {
                 $errors[] = $value[0];
             }
+            return response()->json([
+                'error'=> $errors[0],
+                'error_code'=> '105'
+            ]);
+        } else{
+            $user = User::where([
+                'phone'=>$request->phone
+            ])->first();
+            $user->password = Hash::make($request->password);
+            $user->save();
+            
+            return True;
+            
+        }
+
+    }
+
+    public function changePassword(Request $request){
+        
+        $rules = [
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|same:password',
+        ];
+        
+        $validator = Validator::make($request->all(), $rules);
+        $errors = [];
+        if($validator->fails()){
+            foreach ($validator->errors()->messages() as $key => $value) {
+                $errors[] = $value[0];
+            }
             return response()->json($errors);
         } else{
             $user = User::where([
                 'phone'=>$request->phone
             ])->first();
+            $user = User::getCurrentUser();
             $user->password = Hash::make($request->password);
             $user->save();
             
@@ -142,7 +173,7 @@ class AuthController extends Controller
     }
 
     public function demoLogin(){
-        Session::put(['user_session'=>'demo_user']);
+        Session::put(['user_session'=>'demo_user_demo']);
         return redirect()->route('index');
     }
 
