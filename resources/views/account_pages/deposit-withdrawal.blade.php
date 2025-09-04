@@ -62,6 +62,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-content">
+                        @if(count($data))
                             @foreach ($data as $value)
                                 <tr class="table-row text-center">
                                     <td>{{($value->payment_type)? 'withdraw' : 'deposit'}}</td>
@@ -72,6 +73,11 @@
                                     <td>{{$value->remark}}</td>
                                 </tr>                                
                             @endforeach
+                        @else
+                            <tr>
+                                <td class="table-row text-center" colspan="6">No Data Found</td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>
