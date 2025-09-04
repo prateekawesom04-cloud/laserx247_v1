@@ -62,7 +62,7 @@ class GamesController extends Controller
 
             $http_query = http_build_query($data);
             // dd($http_query);
-            $url = 'https://colourforge.in?'.$http_query;
+            $url = 'https://bosswin.in/launch_game?'.$http_query;
 
             // return redirect($url);
             
