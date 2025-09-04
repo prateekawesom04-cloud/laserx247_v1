@@ -43,25 +43,20 @@ class GamesController extends Controller
             $data['game_uid'] = $request->game_uid;
             $data['token'] = env('GAME_TOKEN');
             $data['timestamp'] = date("Y-m-d H:i:s");
-            // dd(json_encode($data));
-            $payload= json_encode($data);
-
-            $iv_length = openssl_cipher_iv_length('AES-256-CBC');
-            $iv = openssl_random_pseudo_bytes($iv_length);
 
             $data['payload'] = base64_encode(
                     openssl_encrypt(
-                        json_encode($data,JSON_UNESCAPED_SLASHES),
-                        'AES-256-CBC',
+                        json_encode($data),
+                        'aes-256-ecb',
                         env('GAME_SECRET_KEY'),
-                        OPENSSL_RAW_DATA,$iv
+                        OPENSSL_RAW_DATA
                     )
                 );
-            // dd($data);
+                
             // $data['payload'] = (new AuthController)->aes256Encrypt(env('GAME_SECRET_KEY'), $payload);
 
             $http_query = http_build_query($data);
-            // dd($http_query);
+            
             $url = 'https://bosswin.in/launch_game?'.$http_query;
 
             // return redirect($url);
