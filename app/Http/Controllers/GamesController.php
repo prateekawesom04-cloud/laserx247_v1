@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\AuthController;
+use App\Models\User;
+use App\Models\Game;
+use App\Models\GameHistory;
 
 class GamesController extends Controller
 {
@@ -26,20 +29,20 @@ class GamesController extends Controller
     }
 
     public function launchGame(Request $request){
-        // $user = User::where([
-        //     'user_uid'=>session('user_uid')
-        // ])->first();
+
+        $user = User::getCurrentUser();
         
         $data = [];
 
-        if(1){
-        // if(session('user_uid')){
-            $data['user_id'] = '345456';
-            // $data['wallet_amount'] = $user->wallet_amount;
-            $data['wallet_amount'] = '565.67';
-            $data['game_uid'] = '2fa9a84d096d6ff0bab53f81b79876c8';
+        // if(1){
+        if(!empty($user)){
+            
+            $data['user_id'] = $user->user_uid;
+            $data['wallet_amount'] = $user->wallet_amount;
+            // $data['wallet_amount'] = '565.67';
+            $data['game_uid'] = $request->game_uid;
             $data['token'] = env('GAME_TOKEN');
-            $data['timestamp'] = time();
+            $data['timestamp'] = date("Y-m-d H:i:s");
             // dd(json_encode($data));
             $payload= json_encode($data);
 
@@ -71,8 +74,26 @@ class GamesController extends Controller
             ]);
         }
 
+    }
 
-        // https://bosswin.in/launch_game?user_id=225&wallet_amount=939.45&game_uid=ba2adf72179e1ead9e3dae8f0a7d4c07&token=2a4ee16f-c3c1-4c0c-94cd-b7ca28&timestamp=1756285833432&payload=OGpH%2FxBHdnAF%2BHCLiFFof%2BnENwQE3h848ji2zlNbmP3e6W%2FZimD91bkVO2w7ZKCwAo3Rvr9wKwd4kg9RAx0US2b%2Fl5ku0bQGBV0aicf2MiFS12bYZgrY3avL7IEF6MONbtug7s1E07nioR0FkGhnNa2%2BXEYqTnBkrkB5%2Fomdv1TFCedUxNahkMcwgvMC8GPOWe%2BaG7Z1P4pHBKM0Tmriyg%3D%3D", returnType: 1
+    public function launchGameCallback(Request $request) : void {
+
+        $gameHistory = new GameHistory();
+        $gameHistory->user_uid = $request->mobile;
+        $gameHistory->user_uid = $request->mobile;
+        $gameHistory->bet_amount = $request->bet_amount;
+        $gameHistory->win_amount = $request->win_amount;
+        $gameHistory->game_uid = $request->game_uid;
+        $gameHistory->game_round = $request->game_round;
+        $gameHistory->token = $request->token;
+        $gameHistory->wallet_before = $request->wallet_before;
+        $gameHistory->wallet_after = $request->wallet_after;
+        $gameHistory->updated_at = date("Y-m-d H:i:s",$request->timestamp);
+        $gameHistory->save();
+
+        $user = User::where('user_uid',$request->mobile);
+        $user->wallet_amount = $request->wallet_after;
+        $user->save();
 
     }
 }
