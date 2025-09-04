@@ -13,10 +13,10 @@
                 <div class="btn btn-outline-light btn-sm me-2 fw-bold d-inline-flex align-items-center px-2 py-1"
                     style="background-color: #1d3b50; border: none; border-radius: 5px;">
                     <a href="javascript:void(0)" class="text-decoration-none text-white me-3">
-                        <span class="text-white-50">Bal:</span> <span class="fw-bold">1338.35</span>
+                        <span class="text-white-50">Bal:</span> <span class="fw-bold">{{ $userData->wallet_amount }}</span>
                     </a>
                     <a href="javascript:void(0)" class="text-decoration-none text-white">
-                        <span class="text-white-50">Exp:</span> <span class="fw-bold">1336.16</span>
+                        <span class="text-white-50">Exp:</span> <span class="fw-bold">{{ $userData->unsattled_amount }}</span>
                     </a>
                 </div>
 
