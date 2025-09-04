@@ -80,7 +80,10 @@
         Object.entries(data.games).forEach((value, key) => {
             $(`.game_list[data-provider=${data.provider}]`).append(`
                 <div class="col-6 col-md-3">
+                    <form action="{{url('launchGame')}}" method="POST">
+                    <input type="hidden" name="game_uid" value="${value[1].providerId}">
                     <a href='javascript:void(0)' class="launch_game d-block" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
+                    </form>
                     <img src="${value[1].img}" alt="${value[1].title}" class="img-fluid w-100">
                     <div class="bg-dark text-white py-1">${value[1].title}</div>
                     </a>
@@ -111,12 +114,14 @@
     }
 
     $('body').on('click', '.launch_game', function(e) {
-        let data = {};
 
-        data.game_id = $(this).attr('data-game_id');
-        // data.game_link = $(this).attr('data-game_link');
+        $(this).parent('form').submit();
+        // let data = {};
 
-        callApi('post', 'launchGame', data, launchGame);
+        // data.game_id = $(this).attr('data-game_id');
+        // // data.game_link = $(this).attr('data-game_link');
+
+        // callApi('post', 'launchGame', data, launchGame);
     });
 
 
