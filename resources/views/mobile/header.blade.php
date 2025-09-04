@@ -16,7 +16,7 @@
 
                     <!-- Left: Username -->
                     <div class="me-4 text-white d-flex align-items-center" style="font-weight: 00; font-size: 14px;">
-                        <i class="bi bi-person-fill me-1"></i> {{ $userData->user_uid }}
+                        <i class="bi bi-person-fill me-1"></i> {{ substr($userData->user_uid,0,6) }} ...
                     </div>
                     <!-- Right: Balance and Expiry -->
                     <div class="text-white text-end" style="font-size: 13px; line-height: 1.2;">
