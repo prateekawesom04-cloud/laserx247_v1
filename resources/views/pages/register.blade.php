@@ -153,7 +153,7 @@
 
         // Register User End
 
-        $('input[name=password]').keypress(function(e) {
+        $('input[name=password]').on('keypress change',function(e) {
 
             if (!testLocalStorage('user_otp')) {
                 $(this).val('');
@@ -166,7 +166,7 @@
             }
         });
 
-        $('input[name=otp]').keypress(function(e) {
+        $('input[name=otp]').on('keypress change',function(e) {
             if (!testLocalStorage('user_otp')) {
                 alert('Please get OTP first');
                 return false;
