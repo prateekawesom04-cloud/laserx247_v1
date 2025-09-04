@@ -49,6 +49,3 @@
     </div>
   </div>
 </nav>
-<a href="#" class="btn btn-outline-light btn-sm me-2 fw-bold" data-bs-toggle="offcanvas"
-                    data-bs-target="#accountPanel" aria-controls="accountPanel"> Account</a>
-      </div>

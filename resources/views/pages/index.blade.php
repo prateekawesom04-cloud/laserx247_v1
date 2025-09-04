@@ -85,8 +85,8 @@ $providers = json_decode($providers);
             @foreach ($providers as $provider)
                 <div class="bg-dark text-white py-2 px-3 d-flex justify-content-between align-items-center mt-4">
                     <div>{{ $provider->title }}</div>
-                    <a href="{{ url('providers_games') }}/{{ strtolower(explode('provider=', $provider->link)[1]) }}"
-                        class="btn btn-sm btn-outline-light">View All</a>
+                    {{-- <a href="{{ url('providers_games') }}/{{ strtolower(explode('provider=', $provider->link)[1]) }}"
+                        class="btn btn-sm btn-outline-light">View All</a> --}}
                 </div>
                 <div class="row g-2 mt-2 game_list"
                     data-provider='{{ strtolower(explode('provider=', $provider->link)[1]) }}'>
