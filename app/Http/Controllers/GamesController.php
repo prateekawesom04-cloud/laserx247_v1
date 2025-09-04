@@ -29,7 +29,7 @@ class GamesController extends Controller
     }
 
     public function launchGame(Request $request){
-
+        
         $user = User::getCurrentUser();
         
         $data = [];
@@ -58,10 +58,8 @@ class GamesController extends Controller
             $http_query = http_build_query($data);
             
             $url = 'https://bosswin.in/launch_game?'.$http_query;
-
-            // return redirect($url);
             
-            return $url;
+            return Redirect::to($url);
         } else {
             return response()->json([
                 'err_msg'=>'Please Login',
