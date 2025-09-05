@@ -88,7 +88,7 @@ $providers = json_decode($providers);
                     {{-- <a href="{{ url('providers_games') }}/{{ strtolower(explode('provider=', $provider->link)[1]) }}"
                         class="btn btn-sm btn-outline-light">View All</a> --}}
                 </div>
-                <div class="row g-2 mt-2 game_list"
+                <div class="d-flex flex-row g-2 mt-2 game_list overflow-x-auto"
                     data-provider='{{ strtolower(explode('provider=', $provider->link)[1]) }}'>
                     
                 </div>

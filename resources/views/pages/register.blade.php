@@ -40,7 +40,7 @@
                                     <i class="bi bi-phone"></i> +91
                                 </span>
                                 <input type="text" class="form-control border-start-0" name="phone"
-                                    placeholder="Enter Phone Number" />
+                                    placeholder="Enter Phone Number" maxlength="10" />
                                 <a class="btn btn-dark getOtp" type="button">Get OTP</a>
                             </div>
 
@@ -49,7 +49,7 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control" name="otp" placeholder="Enter OTP" />
+                                <input type="text" class="form-control" name="otp" placeholder="Enter OTP" maxlength="6" />
                             </div>
                             <div class="text-end mb-3">
                                 <a href="#" class="small text-info">Want to set UserID?</a>
@@ -101,6 +101,27 @@
     @include('js')
 
     <script>
+
+        // Get Otp
+
+        $('a.getOtp').click(function(e) {
+
+            if($('input[name=phone]').val().length < 10){
+                alert('Please Enter Correct Number');
+                return false;
+            }
+
+            if (otpVerified || $(this).prop('disabled')) {
+                return false;
+            }
+
+            let data = {};
+            data.phone = $('input[name=phone]').val();
+            callApi('get', 'getOtp', data, getOtp);
+            startOtpCountdown(this);
+        });
+
+
         function startOtpCountdown(button) {
 
             $(button).prop('disabled', true).text(`Retry in ${data.otpTimeLeft}s`);
@@ -153,7 +174,7 @@
 
         // Register User End
 
-        $('input[name=password]').on('keypress change',function(e) {
+        $('input[name=password]').on('keyup',function(e) {
 
             if (!testLocalStorage('user_otp')) {
                 $(this).val('');
@@ -166,15 +187,17 @@
             }
         });
 
-        $('input[name=otp]').on('keypress change',function(e) {
-            if (!testLocalStorage('user_otp')) {
-                alert('Please get OTP first');
+        $('input[name=otp]').on('keyup',function(e) {
+            
+            let charCode = (e.which) ? e.which : e.keyCode;
+            if (!testLocalStorage('user_otp') || charCode > 31 && (charCode < 48 || charCode > 57)) {
+                e.preventDefault();
                 return false;
             }
-
-            if ($(this).val().length == 5) {
+            
+            if ($(this).val().length == 6) {
                 let data = {};
-                data.otp = $(this).val() + e.key;
+                data.otp = $(this).val();
                 data.phone = $('input[name=phone]').val();
 
                 callApi('get', 'verifyOtp', data, verifyOtp);
@@ -217,17 +240,6 @@
             localStorage.setItem('user_otp', response.phone);
 
         }
-
-        $('a.getOtp').click(function(e) {
-            if (otpVerified || $(this).prop('disabled')) {
-                return false;
-            }
-
-            let data = {};
-            data.phone = $('input[name=phone]').val();
-            callApi('get', 'getOtp', data, getOtp);
-            startOtpCountdown(this);
-        });
 
         $(document).ready(function() {
             localStorage.clear();

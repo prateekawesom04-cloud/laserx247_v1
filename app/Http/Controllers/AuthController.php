@@ -143,15 +143,47 @@ class AuthController extends Controller
 
     }
 
-    // public function getOtp($phone){
+    public function getOtp(Request $request){
 
-    //     $otp = random_int(100000, 999999);
+        $otp = random_int(100000, 999999);
 
-    //     session('user_otp_'.$phone,$otp);
-    //     session('otp_expiry_time',time() + (5 * 60));
-    //     return $otp;
-    
-    // }
+        Session::put('user_otp_'.$request->phone,$otp);
+        Session::put('otp_expiry_time',time() + (5 * 60));
+
+        $data = [
+            'APIKey'=>env('SMS_API_KEY'),
+            // 'user'=>'awesomecart',
+            // 'password'=>'Awesomecart@612',
+            'senderid'=>'AWSMCT',
+            'channel'=>'Trans',
+            'DCS'=>0,
+            'flashsms'=>0,
+            'number'=>$request->phone,
+            'text'=>'Your OTP is '.$otp.'. This code is valid for the next 10 min. Please enter it on the website/app for login AWESOMCART. Regards, AWSMCT',
+            'route'=>'2',
+            'peid'=>'1701169875173062064',
+            'DLTTemplateId'=>'1707174046951830675'
+        ];
+
+        $string = http_build_query($data);
+
+        $smsUrl = "http://bulksms.actinnsol.com/api/mt/SendSMS?".$string;
+
+        $ch = curl_init();
+        
+        curl_setopt($ch, CURLOPT_URL, $smsUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        if (curl_errno($ch)) {
+            echo 'cURL Error: ' . curl_error($ch);
+        }
+        curl_close($ch);
+
+        return response()->json([
+            'phone'=>$request->phone,
+            'smsResponse'=>$response
+        ]);
+    }
 
     public function verifyOtp(Request $request){
 
@@ -186,7 +218,12 @@ class AuthController extends Controller
         
     }
 
+
+
+
+    // -----------------------------------
     // Additional authentication functions
+    // -----------------------------------
 
     
 	public function generate_jwt($headers, $payload, $secret = 'testing_jwt') {
@@ -263,48 +300,6 @@ class AuthController extends Controller
         $string = urldecode($string); 
         $string = trim($string) . "&key=" . $key;
         return strtoupper(md5($string));
-    }
-
-    public function getOtp(Request $request){
-
-        $otp = random_int(100000, 999999);
-
-        Session::put('user_otp_'.$request->phone,$otp);
-        Session::put('otp_expiry_time',time() + (5 * 60));
-
-        $data = [
-            'APIKey'=>env('SMS_API_KEY'),
-            // 'user'=>'awesomecart',
-            // 'password'=>'Awesomecart@612',
-            'senderid'=>'AWSMCT',
-            'channel'=>'Trans',
-            'DCS'=>0,
-            'flashsms'=>0,
-            'number'=>$request->phone,
-            'text'=>'Your OTP is '.$otp.'. This code is valid for the next 10 min. Please enter it on the website/app for login AWESOMCART. Regards, AWSMCT',
-            'route'=>'2',
-            'peid'=>'1701169875173062064',
-            'DLTTemplateId'=>'1707174046951830675'
-        ];
-
-        $string = http_build_query($data);
-
-        $smsUrl = "http://bulksms.actinnsol.com/api/mt/SendSMS?".$string;
-
-        $ch = curl_init();
-        
-        curl_setopt($ch, CURLOPT_URL, $smsUrl);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($ch);
-        if (curl_errno($ch)) {
-            echo 'cURL Error: ' . curl_error($ch);
-        }
-        curl_close($ch);
-
-        return response()->json([
-            'phone'=>$request->phone,
-            'smsResponse'=>$response
-        ]);
     }
 
 }

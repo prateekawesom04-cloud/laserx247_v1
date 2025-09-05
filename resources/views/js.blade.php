@@ -79,12 +79,12 @@
 
         Object.entries(data.games).forEach((value, key) => {
             $(`.game_list[data-provider=${data.provider}]`).append(`
-                <div class="col-6 col-md-3">
+                <span class="col-6 col-md-3">
                     <a href='javascript:void(0)' class="launch_game d-block" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
                     <img src="${value[1].img}" alt="${value[1].title}" class="img-fluid w-100">
                     <div class="bg-dark text-white py-1">${value[1].title}</div>
                     </a>
-                </div>
+                </span>
             `);
 
         });
