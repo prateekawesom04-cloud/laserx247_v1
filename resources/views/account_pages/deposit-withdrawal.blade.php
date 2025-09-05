@@ -41,9 +41,9 @@
                         style="font-size: 12px;">2000</a></div>
             </div>
 
-            <div class="row g-2 mb-3">
-                <div class="col-6"><a href="javascript:void(0)" class="btn btn-edit text-white w-100"
-                        style="font-size: 11px;">📝 Edit Stake</a></div>
+            <div class="row g-2 mb-3 justify-content-center">
+                <!-- <div class="col-6"><a href="javascript:void(0)" class="btn btn-edit text-white w-100"
+                        style="font-size: 11px;">📝 Edit Stake</a></div> -->
                 <div class="col-6"><a href="javascript:void(0)" class="btn btn-submit text-white w-100"
                         style="font-size: 11px;">SUBMIT</a></div>
             </div>
@@ -117,7 +117,11 @@
             }
         });
 
-
+        $('.amount-btn').click(function() {
+            $('.amount-btn').removeClass('active');
+            $(this).addClass('active');
+            $('#depositAmount').val($(this).attr('data-amount'));
+        });
 
 
 
