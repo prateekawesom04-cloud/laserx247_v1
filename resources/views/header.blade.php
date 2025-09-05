@@ -1,6 +1,6 @@
 <nav class="navbar px-3 py-2" style="background: linear-gradient(to right, #070047, #0052a1, #00c2ff);">
     <div class="container-fluid">
-        <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40" />
+        <a href="{{route('index')}}"><img src="{{ asset('images/logo.png') }}" alt="Logo" height="40" /></a>
         <div class="d-flex ms-auto align-items-center">
 
             @if (session('user_session'))

@@ -3,7 +3,7 @@
     style="background: linear-gradient(to right, #070047, #0052a1, #00c2ff);">
     <div class="container-fluid">
         <!-- Logo -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{route('index')}}">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" height="35" />
         </a>
 
