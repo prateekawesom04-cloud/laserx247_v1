@@ -59,21 +59,17 @@ class AuthController extends Controller
             ]);
             
         } else{
-            $referral_code = '';
             if($request->referral_code){
-                $referral_code = $request->referral_code;
-                $referralUser = User::getCurrentUser('referral_code',$referral_code);
+                $referralUser = User::getCurrentUser('referral_code',$request->referral_code);
                 $referralUser->referral_nos += 1;
                 $referralUser->save();
-            } else{
-                $referral_code = rand(0000,9999);
             }
 
             $user = new User;
             $user->phone = $request->phone;
-            $user->user_uid = $request->phone.time().'_'.date("Ymd");
+            $user->user_uid = rand(0000,9999).'_'.time().$request->phone;
             $user->password = Hash::make($request->password);
-            $user->referral_code = $referral_code;
+            $user->referral_code = substr(time(),2,3).rand(0000,9999);
             $user->save();
 
             Session::put(['user_session'=>$user->id.'_user_'.$user->user_uid]);
