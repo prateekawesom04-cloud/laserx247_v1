@@ -79,16 +79,12 @@
 
         Object.entries(data.games).forEach((value, key) => {
             $(`.game_list[data-provider=${data.provider}]`).append(`
-                <span class="col-6 col-md-3">
-                    <a href='javascript:void(0)' class="launch_game d-block" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
-                    <img src="${value[1].img}" alt="${value[1].title}" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">${value[1].title}</div>
-                    </a>
-                </span>
+                <a href='javascript:void(0)' class="launch_game d-block p-2 my-2" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
+                    <img src="${value[1].img}" alt="${value[1].title}" srcset="" class="w-40 rounded-lg">
+                </a>
             `);
 
         });
-
 
     }
 
@@ -106,8 +102,12 @@
     // Launch Games
 
     function launchGame(data) {
-
-        window.location.href = data;
+        
+        if(data.error_code==101){
+            window.location.href = data.url;
+        } else{
+            alert('Please Login');
+        }
     }
 
     $('body').on('click', '.launch_game', function(e) {

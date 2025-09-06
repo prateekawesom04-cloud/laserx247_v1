@@ -20,7 +20,7 @@ class GamesController extends Controller
         // $games = json_decode($games);
 
         $games = json_decode($games, true);
-        $games = array_slice($games, $request->game_index*6, 6);
+        $games = array_slice($games, $request->game_index*16, 16);
         return response()->json([
             'provider'=> $request->provider,
             'games'=> $games,
@@ -49,7 +49,11 @@ class GamesController extends Controller
             
             $url = 'https://bosswin.in/launch_game?'.$http_query;
             
-            return $url;
+            
+            return response()->json([
+                'url'=>$url,
+                'error_code'=> '101'
+            ]);
         } else {
             return response()->json([
                 'err_msg'=>'Please Login',
