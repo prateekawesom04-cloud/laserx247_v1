@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="{{asset('css')}}/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css')}}/style.css">
+    <link rel="stylesheet" href="{{asset('css')}}/admin_style.css">
     <script src="{{asset('js')}}/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </head>

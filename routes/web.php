@@ -182,3 +182,65 @@ Route::middleware('auth_middleware')->group(function(){
 
 
 // @if(!session()->has('user_session'))
+
+
+
+
+
+
+// Admin routes
+Route::prefix('admin')->group(function () {
+    
+    Route::get('/', function () {
+       return  view('admin.pages.index');
+    })->name('admin.index');
+
+    Route::get('/user_downline_list', function () {
+      return view('admin.pages.user_downline_list');
+    })->name('admin.user_downline_list');
+
+    Route::get('/master_downline_list', function () {
+        return view('admin.pages.master_downline_list');
+        })->name('admin.master_downline_list');
+
+    Route::get('/my_account', function () {
+        return view('admin.pages.my_account');
+        })->name('admin.my_account');
+
+    Route::get('/event_profit_loss', function () {
+       return view('admin.pages.event_profit_loss');
+        })->name('admin.event_profit_loss');
+
+    Route::get('/downline_profit_loss', function () {
+     return view('admin.pages.downline_profit_loss');
+        })->name('admin.downline_profit_loss');
+
+    Route::get('/betlist', function () {
+       return view('admin.pages.betlist');
+        })->name('admin.betlist');
+
+    Route::get('/market_analysis', function () {
+       return view('admin.pages.market_analysis');
+        })->name('admin.market_analysis');
+
+    Route::get('/user_banking', function () {
+       return view('admin.pages.user_banking');
+        })->name('admin.user_banking');
+
+    Route::get('/master_banking', function () {
+       return view('admin.pages.master_banking');
+        })->name('admin.master_banking');
+
+        Route::get('/payment_setup', function () {
+       return view('admin.pages.payment_setup');
+        })->name('admin.payment_setup');
+
+        Route::get('/deposit_request', function () {
+       return view('admin.pages.deposit_request');
+        })->name('admin.deposit_request');
+
+        Route::get('/withdraw_request', function () {
+       return view('admin.pages.withdraw_request');
+        })->name('admin.withdraw_request');
+
+});
