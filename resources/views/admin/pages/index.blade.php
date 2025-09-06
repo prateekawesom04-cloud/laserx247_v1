@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('body')
-<div class="container mt-4">
+<div class="container-fluid bg-light p-4">
   <div class="row g-4">
 
     <!-- Live Sports Profit -->

@@ -245,4 +245,15 @@ Route::prefix('admin')->group(function () {
        return view('admin.pages.withdraw_request');
         })->name('admin.withdraw_request');
 
+        Route::get('/commission', function () {
+       return view('admin.pages.commission');
+        })->name('admin.commission');
+
+        Route::get('/password_history', function () {
+       return view('admin.pages.password_history');
+        })->name('admin.password_history');
+
+         Route::get('/restore_user', function () {
+       return view('admin.pages.restore_user');
+        })->name('admin.restore_user');
 });

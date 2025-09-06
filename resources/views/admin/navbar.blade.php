@@ -49,12 +49,12 @@
             </ul>
           </li>
 
-          <li class="nav-item"><a class="nav-link" href="#">Commission</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('admin.commission') }}">Commission</a></li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Password History</a>
+            <a class="nav-link" href="{{ route('admin.password_history') }}">Password History</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Restore User</a>
+            <a class="nav-link" href="{{ route('admin.restore_user') }}">Restore User</a>
           </li>
 
           <li class="nav-item dropdown">
@@ -78,7 +78,7 @@
           </li>
         </ul>
       </div>
-    </nav>
+    </nav> 
 
     <script>
       // Active link

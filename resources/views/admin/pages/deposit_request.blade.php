@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('body')
-<div class="container my-4">
+<div class="container-fluid bg-light p-4">
 
   {{-- Deposit Request Section --}}
   <div class="card mb-4 shadow-sm">

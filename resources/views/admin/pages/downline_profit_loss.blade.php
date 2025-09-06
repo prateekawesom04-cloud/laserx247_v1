@@ -1,6 +1,7 @@
 @extends('admin.master')
 @section('body')
-<div class="pl-body container-fluid px-2 py-4">
+<div class="container-fluid bg-light p-4">
+<div class="pl-body px-2">
 
         <!-- Filter Card -->
         <div class="card pl-card border border-success p-1 mb-4">
@@ -95,4 +96,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

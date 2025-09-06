@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('body')
-<div class="container my-4">
+<div class="container-fluid bg-light p-4">
 
   <!-- Card Container -->
   <div class="card border-success shadow-sm">
@@ -51,8 +51,8 @@
 
             <tr>
               <td>UPI</td>
-              <td>MOHD ARIF</td>
-              <td>mohdarif66261@fbl</td>
+              <td>Backy</td>
+              <td>rebeccabacky@fbl</td>
               <td>-</td>
               <td><span class="status-active">Active</span></td>
               <td>

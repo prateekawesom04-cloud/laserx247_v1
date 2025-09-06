@@ -2,7 +2,7 @@
 @section('body')
 
 <!-- Responsive Account Page -->
-<div class="container-fluid py-4">
+<div class="container-fluid bg-light p-4">
   <div class="row g-3">
 
     <!-- Sidebar -->
@@ -26,7 +26,7 @@
     </div>
 
     <!-- Content Area -->
-    <div class="col-12 col-md-8 col-lg-9">
+    <div class="col-12 col-md-8 col-lg-9 mx-auto">
 
       <!-- Profile Section -->
       <div id="profile-section">

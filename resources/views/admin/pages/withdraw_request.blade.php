@@ -2,7 +2,7 @@
 
 @section('body')
 <!-- Withdraw Request Section -->
-<div class="bg-light p-3">
+<div class="container-fluid bg-light p-4">
   <section class="mb-4 bg-white rounded shadow-sm">
     <div class="section-header">Withdraw Request</div>
     <div class="table-responsive">
