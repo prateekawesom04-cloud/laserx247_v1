@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('commission_amount')->default('0.00');
             $table->string('referral_code');
             $table->integer('referral_nos')->default(0);
-            $table->string('addition_data')->default('NULL');
+            $table->string('addition_data')->nullable();
             $table->timestamps();
         });
     }

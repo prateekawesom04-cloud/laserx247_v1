@@ -69,7 +69,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-white text-dark border-0"><i
                                             class="bi bi-lock"></i></span>
-                                    <input type="password" class="form-control border-0" name="password" placeholder="Enter Password" />
+                                    <input type="password" class="form-control border-0 shadow-none" name="password" placeholder="Enter Password" />
                                 </div>
                             </div>
 

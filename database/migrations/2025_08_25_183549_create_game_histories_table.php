@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::dropIfExists('game_histories');
         Schema::create('game_histories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_uid');
-            $table->string('user_ip');
+            $table->string('user_uid');
+            $table->string('user_ip')->nullable();
+            $table->float('bet_amount');
+            $table->float('win_amount')->nullable();
             $table->string('game_uid');
             $table->string('game_round');
-            $table->float('bet_amount');
-            $table->float('win_amount');
+            $table->string('token');
             $table->float('wallet_before');
-            $table->float('wallet_after');
+            $table->float('wallet_after')->nullable();
             $table->timestamps();
             $table->foreign('user_uid')->references('id')->on('users')->onDelete('cascade');
         });

@@ -27,7 +27,7 @@
         <!-- Transaction Section -->
         <div class="p-3 deposit-section" id="depositSection">
             <h6 id="transactionHeader" class="fw-semibold text-dark mb-3" style="font-size: 13px;"></h6>
-            <input type="text" class="form-control mb-3" id="transactionAmount" placeholder="Enter amount..."
+            <input type="text" class="form-control mb-3" id="depositAmount" placeholder="Enter amount..."
                 style="font-size: 12px;">
 
             <div class="row g-2 mb-3">
@@ -41,9 +41,9 @@
                         style="font-size: 12px;">2000</a></div>
             </div>
 
-            <div class="row g-2 mb-3">
-                <div class="col-6"><a href="javascript:void(0)" class="btn btn-edit text-white w-100"
-                        style="font-size: 11px;">📝 Edit Stake</a></div>
+            <div class="row g-2 mb-3 justify-content-center">
+                <!-- <div class="col-6"><a href="javascript:void(0)" class="btn btn-edit text-white w-100"
+                        style="font-size: 11px;">📝 Edit Stake</a></div> -->
                 <div class="col-6"><a href="javascript:void(0)" class="btn btn-submit text-white w-100"
                         style="font-size: 11px;">SUBMIT</a></div>
             </div>
@@ -62,6 +62,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-content">
+                        @if(count($data))
                             @foreach ($data as $value)
                                 <tr class="table-row text-center">
                                     <td>{{($value->payment_type)? 'withdraw' : 'deposit'}}</td>
@@ -72,6 +73,11 @@
                                     <td>{{$value->remark}}</td>
                                 </tr>                                
                             @endforeach
+                        @else
+                            <tr>
+                                <td class="table-row text-center" colspan="6">No Data Found</td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>
@@ -82,76 +88,114 @@
 
 @section('js')
     <script>
-        function initTransaction() {
-            const minAmt = {
-                    0: 500,
-                    1: 200
-                },
-                max = 50000;
 
-            function updateUI(t) {
-                $('#balanceInfo').text(`Min: ${minAmt[t]} Max: ${max}`);
-                $('#transactionAmount').val('').removeClass('is-invalid').attr(
-                    'placeholder',
-                    t == 0 ? 'Enter deposit amount...' : 'Enter withdrawal amount...'
-                );
-                $('.amount-btn').removeClass('active');
-            }
-
-            $('input[name="transaction_type"]').click(e => updateUI(+e.target.value));
-
-            $('#transactionAmount').on('input', function() {
-                this.value = this.value.replace(/\D/g, '');
-                $(this).removeClass('is-invalid');
-            });
-
-            $('.amount-btn').click(function() {
-                $('.amount-btn').removeClass('active');
-                $(this).addClass('active');
-                $('#transactionAmount').val($(this).data('amount')).removeClass('is-invalid');
-            });
-
-            $('.btn-submit').click(() => {
-                let t = +$('input[name="transaction_type"]:checked').val(),
-                    v = $('#transactionAmount').val(),
-                    a = parseInt(v, 10);
-
-                if (!v || isNaN(a) || a < minAmt[t] || a > max) {
-                    $('#transactionAmount').addClass('is-invalid');
-                    alert(`Enter amount between ${minAmt[t]} and ${max}`);
-                    return;
-                }
-                alert(`Submitted: ${t == 0 ? 'Deposit' : 'Withdrawal'} ₹${a}`);
-            });
-            updateUI(+$('input[name="transaction_type"]:checked').val());
-        }
-        initTransaction();
-
-        function paymentRequest(response) {
+        function paymentRequest(response){
             response = JSON.parse(response);
             
-            (response.data['pay_url']) ? window.location.href = response.data['pay_url'] : alert('issue');
+            window.location.href = response.data['pay_url'];
         }
 
-        $('a.btn-submit').click(function(e) {
+        $('a.btn-submit').click(function(e){
             let data = {};
-
+            
             data.payment_type = $('input[type=radio]:checked').val();
-            // data.payment_type = 'create';
-            if ($('#depositAmount').val() > 100) {
-                data.money = $('#depositAmount').val() * 100;
+
+            if((data.payment_type==0 && $('#depositAmount').val() > 200) || (data.payment_type==1 && $('#depositAmount').val() > 500)){
+                data.money = $('#depositAmount').val()*100;
                 callApi('post', 'paymentRequest', data, paymentRequest);
-            } else {
-                if (data.payment_type == 0) {
+            } else{
+                
+                if(data.payment_type == 0){
 
-                    alert('Please Enter Amount more than 100');
-
-                } else {
-
+                    alert('Please Enter Amount more than 200');
+                    
+                } else{
+                    
                     alert('Please Enter Amount more than 500');
 
                 }
             }
         });
+
+        $('.amount-btn').click(function() {
+            $('.amount-btn').removeClass('active');
+            $(this).addClass('active');
+            $('#depositAmount').val($(this).attr('data-amount'));
+        });
+
+
+
+        // function initTransaction() {
+        //     const minAmt = {
+        //             0: 500,
+        //             1: 200
+        //         },
+        //         max = 50000;
+
+        //     function updateUI(t) {
+        //         $('#balanceInfo').text(`Min: ${minAmt[t]} Max: ${max}`);
+        //         $('#transactionAmount').val('').removeClass('is-invalid').attr(
+        //             'placeholder',
+        //             t == 0 ? 'Enter deposit amount...' : 'Enter withdrawal amount...'
+        //         );
+        //         $('.amount-btn').removeClass('active');
+        //     }
+
+        //     $('input[name="transaction_type"]').click(e => updateUI(+e.target.value));
+
+        //     $('#transactionAmount').on('input', function() {
+        //         this.value = this.value.replace(/\D/g, '');
+        //         $(this).removeClass('is-invalid');
+        //     });
+
+        //     $('.amount-btn').click(function() {
+        //         $('.amount-btn').removeClass('active');
+        //         $(this).addClass('active');
+        //         $('#transactionAmount').val($(this).data('amount')).removeClass('is-invalid');
+        //     });
+
+        //     $('.btn-submit').click(() => {
+        //         let t = +$('input[name="transaction_type"]:checked').val(),
+        //             v = $('#transactionAmount').val(),
+        //             a = parseInt(v, 10);
+
+        //         if (!v || isNaN(a) || a < minAmt[t] || a > max) {
+        //             $('#transactionAmount').addClass('is-invalid');
+        //             alert(`Enter amount between ${minAmt[t]} and ${max}`);
+        //             return;
+        //         }
+        //         alert(`Submitted: ${t == 0 ? 'Deposit' : 'Withdrawal'} ₹${a}`);
+        //     });
+        //     updateUI(+$('input[name="transaction_type"]:checked').val());
+        // }
+
+        // initTransaction();
+
+        // function paymentRequest(response) {
+        //     response = JSON.parse(response);
+            
+        //     (response.data['pay_url']) ? window.location.href = response.data['pay_url'] : alert('issue');
+        // }
+
+        // $('a.btn-submit').click(function(e) {
+        //     let data = {};
+
+        //     data.payment_type = $('input[type=radio]:checked').val();
+        //     // data.payment_type = 'create';
+        //     if ($('#depositAmount').val() > 100) {
+        //         data.money = $('#depositAmount').val() * 100;
+        //         callApi('post', 'paymentRequest', data, paymentRequest);
+        //     } else {
+        //         if (data.payment_type == 0) {
+
+        //             alert('Please Enter Amount more than 100');
+
+        //         } else {
+
+        //             alert('Please Enter Amount more than 500');
+
+        //         }
+        //     }
+        // });
     </script>
 @endsection

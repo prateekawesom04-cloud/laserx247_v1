@@ -7,7 +7,9 @@ $providers = json_decode($providers);
 ?>
 @extends('super-master')
 @section('body')
-    <!-- News Bar + Banner -->
+
+<!-- News Bar + Banner -->
+
     <div class="container-fluid px-0">
         <div class="container px-2 my-2">
             <!-- News Bar -->
@@ -79,53 +81,87 @@ $providers = json_decode($providers);
     </div>
     </div>
 
-    <!-- New Launch -->
-    <div class="container-fluid px-0">
-        <div class="container px-2 my-3">
-            @foreach ($providers as $provider)
-                <div class="bg-dark text-white py-2 px-3 d-flex justify-content-between align-items-center mt-4">
-                    <div>{{ $provider->title }}</div>
-                    <a href="{{ url('providers_games') }}/{{ strtolower(explode('provider=', $provider->link)[1]) }}"
-                        class="btn btn-sm btn-outline-light">View All</a>
-                </div>
-                <div class="row g-2 mt-2 game_list"
-                    data-provider='{{ strtolower(explode('provider=', $provider->link)[1]) }}'>
+
+<!-- new changes start -->
+
+    <div class="app_index">
+        <div class="container">
+            <div class="row py-5 justify-center items-center">
+                
+                <div class="d-flex flex-column p-2">
+
+                    <!-- game List -->
+                    <div class="app_card d-flex flex-column w-100 rounded-lg bg-white mb-3">
+                        <div class="d-flex flex-row justify-content-between border-b border-1 border-gray-200b px-3 py-1 rounded-t-lg">
+                            <div class="d-flex flex-row gap-3 justify-content-start">
+                                <div>Our Games</div>
+                            </div>
+                            <div class="d-flex flex-row gap-1 justify-content-end">
+                                <a href="javascript:void(0)" class="left_scroll d-flex align-items-center justify-content-center bg-gray-200 text-success rounded-circle" style="height: 22px;width: 22px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 6l-6 6l6 6"></path></svg>
+                                </a>
+                                <a href="javascript:void(0)" class="right_scroll d-flex align-items-center justify-content-center bg-gray-200 text-success rounded-circle" style="height: 22px;width: 22px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 6l6 6l-6 6"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="all_games flex flex-col px-2 w-full overflow-x-auto app_scroller">
+                            @foreach ($providers as $provider)
+                            <div class="app_games flex flex-row w-100 game_list" data-provider="{{ strtolower(explode('provider=', $provider->link)[1]) }}">
+                            </div>
+
+                            @endforeach
+                        </div>
+
+                    </div>
                     
-                </div>
-                <div class="text-center mt-3">
-                    <a class="btn btn-primary btn-sm load-more-btn" data-provider='{{ strtolower(explode('provider=', $provider->link)[1]) }}' data-game_index='0'>Load More</a>
-                </div>
-            @endforeach
+                    <!-- provider List -->
+                    <div class="app_card d-flex flex-column w-100 rounded-lg bg-white shadow mb-3 app_scroller">
+                        <div class="d-flex flex-row justify-content-between border-b border-1 border-gray-200b px-3 py-1 rounded-t-lg">
+                            <div class="d-flex flex-row gap-3 justify-content-start">
+                                <div><svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 16 16" height="20" width="20"><path d="M8 16c3.314 0 6 -2 6 -5.5 0 -1.5 -0.5 -4 -2.5 -6 0.25 1.5 -1.25 2 -1.25 2C11 4 9 0.5 6 0c0.357 2 0.5 4 -2 6 -1.25 1 -2 2.729 -2 4.5C2 14 4.686 16 8 16m0 -1c-1.657 0 -3 -1 -3 -2.75 0 -0.75 0.25 -2 1.25 -3C6.125 10 7 10.5 7 10.5c-0.375 -1.25 0.5 -3.25 2 -3.5 -0.179 1 -0.25 2 1 3 0.625 0.5 1 1.364 1 2.25C11 14 9.657 15 8 15" stroke-width="1"></path></svg></div>
+                                <div>Game Providers</div>
+                            </div>
+                            <!-- <div class="d-flex flex-row gap-1 justify-content-end">
+                                <a href="javascript:void(0)" class="left_scroll d-flex align-items-center justify-content-center bg-gray-200 text-success rounded-circle" style="height: 22px;width: 22px;">
+                                    <svg data-scroll="-5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 6l-6 6l6 6"></path></svg>
+                                </a>
+                                <a href="javascript:void(0)" class="right_scroll d-flex align-items-center justify-content-center bg-gray-200 text-success rounded-circle" style="height: 22px;width: 22px;">
+                                    <svg data-scroll="5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 6l6 6l-6 6"></path></svg>
+                                </a>
+                            </div> -->
+                        </div>
+                        <div class="flex flex-row flex-wrap justify-center w-100 gap-2">
+                            @foreach ($providers as $provider)
+                            <div class="p-2">
+                                <img src="{{$provider->img}}" alt="" srcset="" class="w-32 bg-gray-900 h-16 rounded-lg shadow">
+                            </div>
+                            @endforeach
+                        </div>
+                        <div class="app_providers flex flex-row overflow-x-auto">
+                        </div>
 
-        </div>
+                    </div>
 
-        <!-- License Info -->
-        <div class="container-sm my-3">
-            <div class="row border rounded p-2 align-items-center flex-column flex-md-row text-center text-md-start">
 
-                <!-- Left Image -->
-                <div class="col-md-3 col-12 mb-2 mb-md-0 border-end border-md-end-1 border-end-0">
-                    <img src="{{ asset('images/gc.png') }}" alt="GC Logo" class="img-fluid" style="max-height:50px;">
                 </div>
-
-                <!-- Right Image + Text -->
-                <div class="col-md-9 col-12 d-flex flex-column flex-md-row align-items-center text-center text-md-start">
-                    <img src="{{ asset('images/lice.png') }}" alt="License Logo"
-                        class="img-fluid me-0 me-md-2 mb-2 mb-md-0" style="max-height:50px;">
-                    <p class="mb-0" style="font-size: 0.75rem;">
-                        LaserX247 is the trading name of Sports Target B.V., a company incorporated and regulated in Curaçao
-                        under company number 148053 with its registered office at Fransche Bloemweg 4, Willemstad, Curaçao.
-                    </p>
-                </div>
+                
             </div>
         </div>
+    </div>
 
-        <!-- Browser Info -->
-        <p class="mb-1 container-sm text-center" style="font-size: 0.75rem;">
-            Our website works best in the newest and last prior version of these browsers: Google Chrome. Firefox
-        </p>
+<!-- new changes end -->
 
         <script>
+
+            $('a svg').click(function(e){
+
+                let currentScroller = $(this).parents('.app_card').find('.app_scroller');
+                console.log('currentscroller-----',currentScroller);
+                
+                $(currentScroller).scrollLeft($(currentScroller).scrollLeft()+$(this).attr('data-scroll'));
+            });
+
             $(document).ready(function() {
 
                 @foreach ($providers as $provider)

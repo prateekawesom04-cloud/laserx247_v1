@@ -1,6 +1,6 @@
 <nav class="navbar px-3 py-2" style="background: linear-gradient(to right, #070047, #0052a1, #00c2ff);">
     <div class="container-fluid">
-        <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40" />
+        <a href="{{route('index')}}"><img src="{{ asset('images/logo.png') }}" alt="Logo" height="40" width="100" /></a>
         <div class="d-flex ms-auto align-items-center">
 
             @if (session('user_session'))
@@ -13,10 +13,10 @@
                 <div class="btn btn-outline-light btn-sm me-2 fw-bold d-inline-flex align-items-center px-2 py-1"
                     style="background-color: #1d3b50; border: none; border-radius: 5px;">
                     <a href="javascript:void(0)" class="text-decoration-none text-white me-3">
-                        <span class="text-white-50">Bal:</span> <span class="fw-bold">1338.35</span>
+                        <span class="text-white-50">Bal:</span> <span class="fw-bold">{{ $userData->wallet_amount }}</span>
                     </a>
                     <a href="javascript:void(0)" class="text-decoration-none text-white">
-                        <span class="text-white-50">Exp:</span> <span class="fw-bold">1336.16</span>
+                        <span class="text-white-50">Exp:</span> <span class="fw-bold">{{ $userData->unsattled_amount }}</span>
                     </a>
                 </div>
 

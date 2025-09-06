@@ -48,7 +48,7 @@ class User extends Authenticatable
     }
 
     public static function getCurrentUser($key=NULL,$value=NULL){
-        if($key != NULL){
+        if($key != NULL && $value != NULL){
 
             return static::where($key, $value)->first();
 
