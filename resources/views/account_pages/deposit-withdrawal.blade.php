@@ -10,7 +10,7 @@
         </div>
 
         <!-- Radio Section -->
-        <!-- <div class="radio-section p-3 border-bottom">
+        <div class="radio-section p-3 border-bottom">
             <div class="d-flex justify-content-center gap-4">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="transaction_type" id="deposit" value="0"
@@ -22,7 +22,7 @@
                     <label class="form-check-label fw-medium" for="withdrawal" style="font-size: 13px;">Withdrawal</label>
                 </div>
             </div>
-        </div> -->
+        </div>
 
         <!-- Transaction Section -->
         <div class="p-3 deposit-section" id="depositSection">
@@ -98,8 +98,7 @@
         $('a.btn-submit').click(function(e){
             let data = {};
             
-            // data.payment_type = $('input[type=radio]:checked').val();
-            data.payment_type = 0;
+            data.payment_type = $('input[type=radio]:checked').val();
 
             if((data.payment_type==0 && $('#depositAmount').val() > 200) || (data.payment_type==1 && $('#depositAmount').val() > 500)){
                 data.money = $('#depositAmount').val()*100;
