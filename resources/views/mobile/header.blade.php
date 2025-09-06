@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="{{route('index')}}">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" height="35" />
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" height="35" width="100" />
         </a>
 
         <!-- Right Side Content -->

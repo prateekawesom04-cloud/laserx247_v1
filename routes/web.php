@@ -71,27 +71,27 @@ Route::middleware(['auth_check_middleware'])->group(function () {
 
     Route::get('/wallet', function () {
         return view('account_pages.wallet');
-    });
+    })->name('user.wallet');
     Route::get('/statements', function () {
         return view('account_pages.statements');
-    });
+    })->name('user.statements');
     Route::get('/change_password', function () {
         return view('account_pages.change_password');
-    });
+    })->name('user.change_password');
     
     
     Route::get('/profit_loss', function () {
         return view('account_pages.profit_loss');
-    });
+    })->name('user.profit_loss');
     Route::get('/unsettled_bets', function () {
         return view('account_pages.unsettled_bets');
-    });
+    })->name('user.unsettled_bets');
     Route::get('/favourite', function () {
         return view('account_pages.favourite');
-    });
+    })->name('user.favourite');
     Route::get('/market_analysis', function () {
         return view('account_pages.market_analysis');
-    });
+    })->name('user.market_analysis');
 
     // User Section End
 
@@ -104,36 +104,36 @@ Route::get('/', function () {
 
 Route::get('forgot-page', function () {
     return view('pages.forgot-page');
-});
+})->name('pages.forgot-page');
 
 Route::get('home', function () {
     return view('pages.home');
-});
+})->name('pages.home');
 
 Route::get('/in-play', function () {
     return view('pages.in-play');
-});
+})->name('pages.in-play');
 Route::get('/multi-market', function () {
     return view('pages.multi-market');
-});
+})->name('pages.multi-market');
 Route::get('/cricket', function () {
     return view('pages.cricket');
-});
+})->name('pages.cricket');
 Route::get('/football', function () {
     return view('pages.football');
-});
+})->name('pages.football');
 Route::get('/tennis', function () {
     return view('pages.tennis');
-});
+})->name('pages.tennis');
 Route::get('/casino', function () {
     return view('pages.casino');
-});
+})->name('pages.casino');
 Route::get('/sports-book', function () {
     return view('pages.sports-book');
-});
+})->name('pages.sports-book');
 Route::get('/providers_tab', function () {
     return view('pages.providers_tab');
-});
+})->name('pages.providers_tab');
 
 // Games
 

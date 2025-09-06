@@ -5,6 +5,10 @@ body {
     padding: 0;
 }
 
+img{
+    max-width: unset;
+}
+
 /* Sidebar Styles */
 .sidebar {
     background-color: white;
