@@ -14,7 +14,6 @@ $providers = json_decode($providers);
         <div class="container">
             <div class="row p-3">
                 <div class="col-md-3">
-                    @include('l_sidebar')
                     @include('left-sidebar')
                 </div>
                 <div class="col-md-6 d-flex flex-column p-2">
@@ -145,7 +144,6 @@ $providers = json_decode($providers);
 
                 </div>
                 <div class="col-md-3">
-                    @include('r_sidebar')
                     @include('right-sidebar')
                 </div>
             </div>
