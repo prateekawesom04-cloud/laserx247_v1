@@ -86,12 +86,12 @@ $providers = json_decode($providers);
 
     <div class="app_index">
         <div class="container">
-            <div class="row py-5 justify-center items-center">
+            <div class="row pb-5 justify-center items-center">
                 
                 <div class="d-flex flex-column p-2">
 
                     <!-- game List -->
-                    <div class="app_card d-flex flex-column w-100 rounded-lg bg-white mb-3">
+                    <div class="app_card d-flex flex-column w-100 rounded-lg bg-white mb-3 shadow">
                         <div class="d-flex flex-row justify-content-between border-b border-1 border-gray-200b px-3 py-1 rounded-t-lg">
                             <div class="d-flex flex-row gap-3 justify-content-start">
                                 <div>Our Games</div>
