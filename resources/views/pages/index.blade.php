@@ -10,8 +10,8 @@ $providers = json_decode($providers);
 
 <!-- News Bar + Banner -->
 
-    <div class="container-fluid px-0">
-        <div class="container px-2 my-2">
+    <div class="container-fluid pb-[1px] px-0">
+        <div class="">
             <!-- News Bar -->
             <div class="text-white d-flex align-items-center w-100 px-2" style="background:#000;">
                 <span class="me-2"><i class="fas fa-microphone text-warning"></i></span>
