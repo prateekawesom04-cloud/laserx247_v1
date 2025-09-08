@@ -513,3 +513,49 @@ td {
 @media (max-width: 480px) {
     .pch-footer-text { font-size: 0.75rem; }
 }
+
+/* (setting)-block market */
+    .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 34px;
+        height: 20px;
+    }
+
+    .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 50px;
+    }
+
+    .toggle-slider:before {
+        content: "";
+        position: absolute;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+    }
+
+    .toggle-switch input:checked + .toggle-slider {
+        background-color: #4CAF50;
+    }
+
+    .toggle-switch input:checked + .toggle-slider:before {
+        transform: translateX(14px);
+    }

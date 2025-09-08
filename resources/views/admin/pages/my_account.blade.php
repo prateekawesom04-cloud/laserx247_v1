@@ -2,7 +2,7 @@
 @section('body')
 
 <!-- Responsive Account Page -->
-<div class="container-fluid bg-light p-4">
+<div class="container-fluid p-4">
   <div class="row g-3">
 
     <!-- Sidebar -->

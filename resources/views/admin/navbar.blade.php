@@ -75,16 +75,16 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">My Setting</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Admin Fund</a></li>
-                        <li><a class="dropdown-item" href="#">News</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.admin_fund') }}">Admin Fund</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.news_view') }}">News</a></li>
                         <li>
-                            <a class="dropdown-item" href="#">User General Setting</a>
+                            <a class="dropdown-item" href="{{ route('admin.user_general_setting') }}">User General Setting</a>
                         </li>
-                        <li><a class="dropdown-item" href="#">Block Market</a></li>
-                        <li><a class="dropdown-item" href="#">Event Wise Setting</a></li>
-                        <li><a class="dropdown-item" href="#">Betting</a></li>
-                        <li><a class="dropdown-item" href="#">Add Banner</a></li>
-                        <li><a class="dropdown-item" href="#">Add Number</a></li>
+                         <li><a class="dropdown-item" href="{{ route('admin.block_market') }}">Block Market</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.event_wise_setting') }}">Event Wise Setting</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.betting') }}">Betting</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.add_banner') }}">Add Banner</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.add_number') }}">Add Number</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
