@@ -76,11 +76,15 @@
     function gameList(data){
         
         $(`.game_list[data-provider=${data.provider}]`).next().find('a.load-more-btn').attr('data-game_index',data.game_index);
-
+        let imgSrc = '';
         Object.entries(data.games).forEach((value, key) => {
+
+            imgSrc = (value[1].img)?value[1].img:'imgLoading.jpg';
+            
+            
             $(`.game_list[data-provider=${data.provider}]`).append(`
                 <a href='javascript:void(0)' class="launch_game d-block p-2 my-2" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
-                    <img src="${value[1].img}" alt="${value[1].title}" srcset="" class="w-40 rounded-lg max-h-[150px]">
+                    <img src="{{asset("images")}}/gamesImg/${imgSrc}" alt="${value[1].title}" srcset="" class="w-32 rounded-lg max-h-[120px]" onerror="this.onerror=null; $(this).parent().remove()">
                 </a>
             `);
 
