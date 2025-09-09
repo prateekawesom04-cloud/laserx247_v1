@@ -76,12 +76,16 @@
     function gameList(data){
         
         $(`.game_list[data-provider=${data.provider}]`).next().find('a.load-more-btn').attr('data-game_index',data.game_index);
-
+        let imgSrc = '';
         Object.entries(data.games).forEach((value, key) => {
+
+            imgSrc = (value[1].img)?value[1].img:'imgLoading.jpg';
+            
+            
             $(`.game_list[data-provider=${data.provider}]`).append(`
-                <a href='javascript:void(0)' class="launch_game d-block p-2 my-2" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
-                    <img src="${value[1].img}" alt="${value[1].title}" srcset="" class="w-40 rounded-lg">
-                </a>
+                <div href='javascript:void(0)' class="launch_game col-4 col-md-2 p-[1px] cursor-pointer" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
+                    <img src="{{asset("images")}}/gamesImg/${imgSrc}" alt="${value[1].title}" srcset="" class="w-100" onerror="this.onerror=null; $(this).parent().remove()">
+                </div>
             `);
 
         });
@@ -106,7 +110,7 @@
         if(data.error_code==101){
             window.location.href = data.url;
         } else{
-            alert('Please Login');
+            window.location.href = "{{route('login')}}";
         }
     }
 

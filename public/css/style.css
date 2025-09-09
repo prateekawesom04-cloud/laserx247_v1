@@ -803,3 +803,17 @@ body {
     border-color: inherit !important;
     border: none !important;
 }
+
+
+
+
+
+/* Additional Css */
+
+.scrollbar-hide{
+    -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
