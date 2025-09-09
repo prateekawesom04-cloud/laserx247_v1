@@ -21,6 +21,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth_middleware' => \App\Http\Middleware\AuthMiddleware::class,
             'auth_check_middleware' => \App\Http\Middleware\AuthCheckMiddleware::class,
             'custom_session_middleware' => \App\Http\Middleware\CustomSessionMiddleware::class,
+            'admin_auth_middleware' => \App\Http\Middleware\AdminAuthMiddleware::class,
+            'admin_auth_check_middleware' => \App\Http\Middleware\AdminAuthCheckMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -191,105 +191,119 @@ Route::middleware('auth_middleware')->group(function(){
 
 
 // Admin routes
-Route::prefix('admin')->group(function () {
-    
-    Route::get('/', function () {
-       return  view('admin.pages.index');
-    })->name('admin.index');
 
-    Route::get('/user_downline_list', function () {
-      return view('admin.pages.user_downline_list');
-    })->name('admin.user_downline_list');
+Route::middleware(['admin_auth_middleware'])->group(function () {
 
-    Route::get('/master_downline_list', function () {
-        return view('admin.pages.master_downline_list');
-        })->name('admin.master_downline_list');
-
-    Route::get('/my_account', function () {
-        return view('admin.pages.my_account');
-        })->name('admin.my_account');
-
-    Route::get('/event_profit_loss', function () {
-       return view('admin.pages.event_profit_loss');
-        })->name('admin.event_profit_loss');
-
-    Route::get('/downline_profit_loss', function () {
-     return view('admin.pages.downline_profit_loss');
-        })->name('admin.downline_profit_loss');
-
-    Route::get('/betlist', function () {
-       return view('admin.pages.betlist');
-        })->name('admin.betlist');
-
-    Route::get('/market_analysis', function () {
-       return view('admin.pages.market_analysis');
-        })->name('admin.market_analysis');
-
-    Route::get('/user_banking', function () {
-       return view('admin.pages.user_banking');
-        })->name('admin.user_banking');
-
-    Route::get('/master_banking', function () {
-       return view('admin.pages.master_banking');
-        })->name('admin.master_banking');
-
-        Route::get('/payment_setup', function () {
-       return view('admin.pages.payment_setup');
-        })->name('admin.payment_setup');
-
-        Route::get('/deposit_request', function () {
-       return view('admin.pages.deposit_request');
-        })->name('admin.deposit_request');
-
-        Route::get('/withdraw_request', function () {
-       return view('admin.pages.withdraw_request');
-        })->name('admin.withdraw_request');
-
-        Route::get('/commission', function () {
-       return view('admin.pages.commission');
-        })->name('admin.commission');
-
-        Route::get('/password_history', function () {
-       return view('admin.pages.password_history');
-        })->name('admin.password_history');
-
-         Route::get('/restore_user', function () {
-       return view('admin.pages.restore_user');
-        })->name('admin.restore_user');
-
-        Route::get('/admin_fund', function () {
-       return view('admin.pages.admin_fund');
-        })->name('admin.admin_fund');
-
-        Route::get('/news_view', function () {
-       return view('admin.pages.news_view');
-        })->name('admin.news_view');
-
-         Route::get('/user_general_setting', function () {
-       return view('admin.pages.user_general_setting');
-        })->name('admin.user_general_setting');
-
-         Route::get('/block_market', function () {
-       return view('admin.pages.block_market');
-        })->name('admin.block_market');
-
-        Route::get('/event_wise_setting', function () {
-       return view('admin.pages.event_wise_setting');
-        })->name('admin.event_wise_setting');
-
-        Route::get('/betting', function () {
-       return view('admin.pages.betting');
-        })->name('admin.betting');
-
-        Route::get('/add_banner', function () {
-       return view('admin.pages.add_banner');
-        })->name('admin.add_banner');
-
-         Route::get('/add_number', function () {
-       return view('admin.pages.add_number');
-        })->name('admin.add_number');
+    Route::prefix('admin')->group(function () {
 
         Route::get('/login', function () {
-       return view('admin.pages.login');
+            return view('admin.pages.login');
         })->name('admin.login');
+
+    });
+
+});
+
+Route::middleware(['admin_auth_check_middleware'])->group(function () {
+    
+    Route::prefix('admin')->group(function () {
+        
+        Route::get('/', function () {
+        return  view('admin.pages.index');
+        })->name('admin.index');
+
+        Route::get('/user_downline_list', function () {
+        return view('admin.pages.user_downline_list');
+        })->name('admin.user_downline_list');
+
+        Route::get('/master_downline_list', function () {
+            return view('admin.pages.master_downline_list');
+            })->name('admin.master_downline_list');
+
+        Route::get('/my_account', function () {
+            return view('admin.pages.my_account');
+            })->name('admin.my_account');
+
+        Route::get('/event_profit_loss', function () {
+        return view('admin.pages.event_profit_loss');
+            })->name('admin.event_profit_loss');
+
+        Route::get('/downline_profit_loss', function () {
+        return view('admin.pages.downline_profit_loss');
+            })->name('admin.downline_profit_loss');
+
+        Route::get('/betlist', function () {
+        return view('admin.pages.betlist');
+            })->name('admin.betlist');
+
+        Route::get('/market_analysis', function () {
+        return view('admin.pages.market_analysis');
+            })->name('admin.market_analysis');
+
+        Route::get('/user_banking', function () {
+        return view('admin.pages.user_banking');
+            })->name('admin.user_banking');
+
+        Route::get('/master_banking', function () {
+        return view('admin.pages.master_banking');
+            })->name('admin.master_banking');
+
+            Route::get('/payment_setup', function () {
+        return view('admin.pages.payment_setup');
+            })->name('admin.payment_setup');
+
+            Route::get('/deposit_request', function () {
+        return view('admin.pages.deposit_request');
+            })->name('admin.deposit_request');
+
+            Route::get('/withdraw_request', function () {
+        return view('admin.pages.withdraw_request');
+            })->name('admin.withdraw_request');
+
+            Route::get('/commission', function () {
+        return view('admin.pages.commission');
+            })->name('admin.commission');
+
+            Route::get('/password_history', function () {
+        return view('admin.pages.password_history');
+            })->name('admin.password_history');
+
+            Route::get('/restore_user', function () {
+        return view('admin.pages.restore_user');
+            })->name('admin.restore_user');
+
+            Route::get('/admin_fund', function () {
+        return view('admin.pages.admin_fund');
+            })->name('admin.admin_fund');
+
+            Route::get('/news_view', function () {
+        return view('admin.pages.news_view');
+            })->name('admin.news_view');
+
+            Route::get('/user_general_setting', function () {
+        return view('admin.pages.user_general_setting');
+            })->name('admin.user_general_setting');
+
+            Route::get('/block_market', function () {
+        return view('admin.pages.block_market');
+            })->name('admin.block_market');
+
+            Route::get('/event_wise_setting', function () {
+        return view('admin.pages.event_wise_setting');
+            })->name('admin.event_wise_setting');
+
+            Route::get('/betting', function () {
+        return view('admin.pages.betting');
+            })->name('admin.betting');
+
+            Route::get('/add_banner', function () {
+        return view('admin.pages.add_banner');
+            })->name('admin.add_banner');
+
+            Route::get('/add_number', function () {
+        return view('admin.pages.add_number');
+            })->name('admin.add_number');
+
+    });
+    
 });
