@@ -1,126 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Fonts for custom font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            background-color: #e7bdbd;
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-        .login-container {
-            background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        }
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #060e06d4, #193e16);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
 
-        .form-control {
-            border-radius: 25px;
-            height: 44px;
-            margin-bottom: 16px;
-            font-size: 14px;
-        }
+    .login-card {
+      background: linear-gradient(135deg, #40e735d4, #b6b925f2, #bf8c14f2);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
 
-        .btn-login {
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 25px;
-            height: 44px;
-            font-size: 15px;
-            width: 100%;
-            border: none;
-            font-weight: 600;
-        }
+    .login-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #ff0022;
+    }
 
-        .btn-login:hover {
-            background-color: #0056b3;
-        }
+    .login-title span {
+      color: #671dac;
+    }
 
-        h2 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
+    .form-control {
+      padding-left: 2.2rem;
+    }
 
-        label {
-            font-size: 14px;
-            margin-bottom: 6px;
-        }
+    .form-group i {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      color: #555;
+    }
 
-        .left img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
+    .btn-login {
+      background-color: #193e16;
+      color: white;
+      font-weight: 600;
+      border-radius: 10px;
+    }
 
-        @media (max-width: 767px) {
-            .login-container {
-                width: 100%;
-                padding: 20px;
-            }
+    .btn-login:hover {
+      background-color: #b38900;
+    }
 
-            .left {
-                display: none;
-            }
+    @media (max-width: 576px) {
+      .login-card {
+        padding: 1.5rem;
+      }
 
-            .right {
-                width: 100%;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .login-container {
-                width: 750px;
-            }
-        }
-    </style>
+      .login-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <div class="login-container row justify-content-center">
-        <!-- Left Section with Image -->
-        <div class="col-md-6 left d-none d-md-block">
-            <img src="{{ asset('images/login-image.jpg') }}" alt="Login Image">
-        </div>
-
-        <!-- Right Section with Form -->
-        <div class="col-12 col-md-6 right">
-            <h2 class="text-center text-md-start">Playcricket Login</h2>
-            <form>
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter username" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter password" required>
-                </div>
-                <button type="submit" class="btn btn-login">Login</button>
-            </form>
-        </div>
+  <div class="login-card">
+    <div class="login-title">
+      <span>Admin</span> Login
     </div>
 
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <form>
+      <div class="form-group position-relative mb-3">
+        <i class="fas fa-user"></i>
+        <input type="text" class="form-control" placeholder="Username" required />
+      </div>
 
+      <div class="form-group position-relative mb-4">
+        <i class="fas fa-eye-slash"></i>
+        <input type="password" class="form-control" placeholder="Password" required />
+      </div>
+
+      <button type="submit" class="btn btn-login w-100">
+        Login <i class="fas fa-arrow-right-to-bracket ms-2"></i>
+      </button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
