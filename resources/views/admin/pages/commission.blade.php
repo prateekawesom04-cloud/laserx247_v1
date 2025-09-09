@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('body')
-    <div class="container-fluid bg-light p-4">
+    <div class="container-fluid p-4">
 
         <!-- Date Range Card -->
         <div class="card mb-3">

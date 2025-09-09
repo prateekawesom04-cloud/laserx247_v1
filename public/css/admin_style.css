@@ -6,7 +6,9 @@ body {
     box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -92,15 +94,22 @@ body {
     }
     .admin-info {
         width: 100%;
-        text-align: left;
+        text-align: right;
     }
+}
+
+@media (max-width: 480px) {
+    .responsive-header { padding: 8px 10px; }
+    .header-logo { height: 28px; }
+    .admin-row { font-size: 12px; }
+    .irp-row { font-size: 11px; }
+    .admin-badge { font-size: 9px; padding: 2px 5px; }
 }
 
 /* Navbar Active nav link */
 .navbar {
     background-color: rgb(233, 58, 27);
     padding: 0;
-    white-space: nowrap;
 }
 
 .nav-link {
@@ -116,27 +125,23 @@ body {
 
 .active-nav {
     background: black !important;
-    color: white !important;
 }
 
-/* Dropdown menu absolute fix */
 .dropdown-menu {
     position: absolute !important;
-    top: 100%;
-    left: 0;
-    z-index: 9999;
-    display: none;
+    z-index: 9999 !important;
     background: #fff;
     border: 1px solid #ddd;
     min-width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.dropdown-menu .dropdown-item {
+.dropdown-item {
     font-size: 13px;
 }
 
-.dropdown.open .dropdown-menu {
-    display: block;
+.dropdown-item:hover {
+    background: rgba(233, 58, 27, 0.1);
 }
 
 /* Mobile scroll */
@@ -146,42 +151,75 @@ body {
         overflow-x: auto;
         flex-wrap: nowrap;
     }
+
     .nav-item {
         flex-shrink: 0;
-        position: relative;
     }
+
     .navbar-nav::-webkit-scrollbar {
         height: 0px;
     }
+
     .dropdown-menu {
         position: fixed !important;
-        left: 10px !important;
-        right: 10px !important;
-        min-width: auto;
+        max-height: 200px;
+        overflow-y: auto;
     }
 }
 
-/* index body */
-.circle-display {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 5px solid #0c9e7d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #0c9e7d;
-    background-color: #f5fdfb;
+@media (max-width: 576px) {
+    .nav-link { font-size: 11px; padding: 6px 8px !important; }
+    .dropdown-menu { min-width: 120px; }
+    .dropdown-item { font-size: 11px; }
 }
+
+/* Logout styling */
+.nav-item:last-child .nav-link {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+@media (max-width: 576px) {
+    .nav-item:last-child .nav-link { margin-left: 4px; }
+}
+
+/* index page */
+.circle-display {
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff4b5c, #ffcc00);
+    border: 4px solid #70428d;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.circle-display span {
+    font-size: 1.4rem;
+}
+
 @media (max-width: 768px) {
     .circle-display {
-        width: 120px;
-        height: 120px;
+        height: 100px;
+        width: 100px;
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .circle-display {
+        height: 80px;
+        width: 80px;
         font-size: 1.2rem;
     }
 }
+
+@media (max-width: 480px) {
+    .circle-display { height: 70px; width: 70px; font-size: 1.1rem; }
+    .circle-display span { font-size: 1rem; }
+}
+
 /* My Account  */
 .sidebar-link.active {
     background-color: #dceede;
@@ -245,6 +283,11 @@ td {
     }
 }
 
+@media (max-width: 480px) {
+    body, .card, .card-body, .list-group-item, table, th, td { font-size: 11px; }
+    table th, table td { padding: 4px 2px; }
+}
+
 /* Event profit/loss */
 .pl-body {
     background-color: #f8f9fa;
@@ -277,6 +320,13 @@ td {
 .btn-sm {
     font-size: 0.875rem;
     padding: 0.4rem 1rem;
+}
+
+@media (max-width: 576px) {
+    .pl-header { font-size: 1rem; }
+    .form-label { font-size: 0.8rem; }
+    .form-control-sm, .form-select-sm { font-size: 0.75rem; }
+    .btn-sm { font-size: 0.75rem; }
 }
 
 /* user banking */
@@ -337,31 +387,39 @@ td {
         font-size: 0.75rem;
         padding: 0.25rem 0.4rem;
     }
-    
+
     .acc-btn-dw {
         width: 30px;
     }
-    
+
     .acc-btn-full {
         width: 50px;
         font-size: 11px;
     }
-    
+
     .acc-input-sm {
         width: 80px;
     }
-    
+
     .form-control,
     .form-select {
         width: 100%;
         font-size: 14px;
     }
-    
+
     .btn {
         width: 100%;
         margin-bottom: 5px;
     }
 }
+
+@media (max-width: 480px) {
+    .qr-img { width: 35px; height: 35px; }
+    .acc-btn-dw { width: 25px; }
+    .acc-btn-full { width: 40px; font-size: 10px; }
+    .acc-input-sm { width: 60px; }
+}
+
 /* deposit request */
 .pm-screenshot-img {
     width: 60px;
@@ -374,6 +432,10 @@ td {
     .pm-screenshot-img {
         width: 40px;
     }
+}
+
+@media (max-width: 480px) {
+    .pm-screenshot-img { width: 30px; }
 }
 
 /* withdraw request */
@@ -392,6 +454,11 @@ td {
     text-align: center;
     color: #6c757d;
     padding: 1.5rem 0;
+}
+
+@media (max-width: 576px) {
+    .section-header { padding: 8px 12px; font-size: 0.9rem; }
+    .no-data { padding: 1rem 0; }
 }
 
 /* commission page */
@@ -416,6 +483,10 @@ td {
     }
 }
 
+@media (max-width: 480px) {
+    .nav-tabs .nav-link { font-size: 11px; padding: 6px 10px; }
+}
+
 /* password history */
 .pch-header {
     background-color: #149978;
@@ -438,3 +509,53 @@ td {
     font-size: 0.9rem;
     margin-top: 0.5rem;
 }
+
+@media (max-width: 480px) {
+    .pch-footer-text { font-size: 0.75rem; }
+}
+
+/* (setting)-block market */
+    .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 34px;
+        height: 20px;
+    }
+
+    .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 50px;
+    }
+
+    .toggle-slider:before {
+        content: "";
+        position: absolute;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+    }
+
+    .toggle-switch input:checked + .toggle-slider {
+        background-color: #4CAF50;
+    }
+
+    .toggle-switch input:checked + .toggle-slider:before {
+        transform: translateX(14px);
+    }

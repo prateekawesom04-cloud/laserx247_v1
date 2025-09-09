@@ -256,4 +256,40 @@ Route::prefix('admin')->group(function () {
          Route::get('/restore_user', function () {
        return view('admin.pages.restore_user');
         })->name('admin.restore_user');
+
+        Route::get('/admin_fund', function () {
+       return view('admin.pages.admin_fund');
+        })->name('admin.admin_fund');
+
+        Route::get('/news_view', function () {
+       return view('admin.pages.news_view');
+        })->name('admin.news_view');
+
+         Route::get('/user_general_setting', function () {
+       return view('admin.pages.user_general_setting');
+        })->name('admin.user_general_setting');
+
+         Route::get('/block_market', function () {
+       return view('admin.pages.block_market');
+        })->name('admin.block_market');
+
+        Route::get('/event_wise_setting', function () {
+       return view('admin.pages.event_wise_setting');
+        })->name('admin.event_wise_setting');
+
+        Route::get('/betting', function () {
+       return view('admin.pages.betting');
+        })->name('admin.betting');
+
+        Route::get('/add_banner', function () {
+       return view('admin.pages.add_banner');
+        })->name('admin.add_banner');
+
+         Route::get('/add_number', function () {
+       return view('admin.pages.add_number');
+        })->name('admin.add_number');
+
+        Route::get('/login', function () {
+       return view('admin.pages.login');
+        })->name('admin.login');
 });

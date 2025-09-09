@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('body')
 
-<div class="container-fluid bg-light p-4">
+<div class="container-fluid p-4">
   <div class="card border border-success">
     <div class="card-body">
 

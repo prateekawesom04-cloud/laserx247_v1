@@ -11,9 +11,11 @@
             <div class="admin-row">
                 <span class="admin-badge">Admin</span>
                 <span class="admin-name">agplaycrick99</span>
-                <button class="refresh-btn">&#x21bb;</button>
             </div>
-            <div class="irp-row">IRP 1012099026.00</div>
+            <div class="irp-row">
+                IRP 1012099026.00
+                <a class="refresh-btn">&#x21bb;</a> 
+            </div>
         </div>
     </div>
 </div>

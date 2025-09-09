@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('body')
-    <div class="container-fluid bg-light p-4">
+    <div class="container-fluid p-4">
 
         <!-- Add User Link Button -->
         <div class="mb-3 d-flex justify-content-end gap-2">
