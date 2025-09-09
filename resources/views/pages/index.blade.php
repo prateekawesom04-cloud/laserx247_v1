@@ -106,7 +106,7 @@ $providers = json_decode($providers);
                         </div>
                         <div class="all_games flex flex-col w-full overflow-x-auto app_scroller">
                             @foreach ($providers as $provider)
-                            <div class="app_games flex flex-row w-100 game_list items-center" data-provider="{{ strtolower(explode('provider=', $provider->link)[1]) }}">
+                            <div class="app_games flex flex-row w-screen game_list items-center" data-provider="{{ strtolower(explode('provider=', $provider->link)[1]) }}">
                             </div>
 
                             @endforeach
