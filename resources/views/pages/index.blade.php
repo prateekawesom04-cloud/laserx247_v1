@@ -91,7 +91,7 @@ $providers = json_decode($providers);
 
                     <!-- game List -->
                     <div class="app_card d-flex flex-column w-100 mb-[1px]">
-                        <div class="d-flex flex-row justify-content-between px-3 py-1 bg-red-700">
+                        <div class="d-flex flex-row justify-content-between px-3 py-1 bg-[#f00]">
                             <div class="d-flex flex-row gap-3 justify-content-start">
                                 <div>Our Games</div>
                             </div>
@@ -116,9 +116,9 @@ $providers = json_decode($providers);
                     
                     <!-- provider List -->
                     <div class="app_card d-flex flex-column w-100 mb-3 app_scroller">
-                        <div class="d-flex flex-row justify-content-between px-3 py-1 bg-red-700">
+                        <div class="d-flex flex-row justify-content-between px-3 py-1 bg-[#f00]">
                             <div class="d-flex flex-row gap-3 justify-content-start">
-                                <div><svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 16 16" height="20" width="20"><path d="M8 16c3.314 0 6 -2 6 -5.5 0 -1.5 -0.5 -4 -2.5 -6 0.25 1.5 -1.25 2 -1.25 2C11 4 9 0.5 6 0c0.357 2 0.5 4 -2 6 -1.25 1 -2 2.729 -2 4.5C2 14 4.686 16 8 16m0 -1c-1.657 0 -3 -1 -3 -2.75 0 -0.75 0.25 -2 1.25 -3C6.125 10 7 10.5 7 10.5c-0.375 -1.25 0.5 -3.25 2 -3.5 -0.179 1 -0.25 2 1 3 0.625 0.5 1 1.364 1 2.25C11 14 9.657 15 8 15" stroke-width="1"></path></svg></div>
+                                <!-- <div><svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 16 16" height="20" width="20"><path d="M8 16c3.314 0 6 -2 6 -5.5 0 -1.5 -0.5 -4 -2.5 -6 0.25 1.5 -1.25 2 -1.25 2C11 4 9 0.5 6 0c0.357 2 0.5 4 -2 6 -1.25 1 -2 2.729 -2 4.5C2 14 4.686 16 8 16m0 -1c-1.657 0 -3 -1 -3 -2.75 0 -0.75 0.25 -2 1.25 -3C6.125 10 7 10.5 7 10.5c-0.375 -1.25 0.5 -3.25 2 -3.5 -0.179 1 -0.25 2 1 3 0.625 0.5 1 1.364 1 2.25C11 14 9.657 15 8 15" stroke-width="1"></path></svg></div> -->
                                 <div>Game Providers</div>
                             </div>
                             <!-- <div class="d-flex flex-row gap-1 justify-content-end">
