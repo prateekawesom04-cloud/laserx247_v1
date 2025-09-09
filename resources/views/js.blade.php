@@ -83,7 +83,7 @@
             
             
             $(`.game_list[data-provider=${data.provider}]`).append(`
-                <div href='javascript:void(0)' class="col-4 col-md-3 p-[1px] cursor-pointer" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
+                <div href='javascript:void(0)' class="col-4 col-md-2 p-[1px] cursor-pointer" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
                     <img src="{{asset("images")}}/gamesImg/${imgSrc}" alt="${value[1].title}" srcset="" class="w-100" onerror="this.onerror=null; $(this).parent().remove()">
                 </div>
             `);
