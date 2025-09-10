@@ -13,6 +13,9 @@
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <script src="{{asset('js')}}/jquery-3.7.1.min.js"></script>
+    <script src="{{asset('js')}}/tailwind.min.js"></script>
 
   <style>
     body {
@@ -88,15 +91,16 @@
       <span>Admin</span> Login
     </div>
 
-    <form>
+    <form action="{{route('admin.auth.login')}}" method="POST">
+      @csrf
       <div class="form-group position-relative mb-3">
         <i class="fas fa-user"></i>
-        <input type="text" class="form-control" placeholder="Username" required />
+        <input name="username" type="text" class="form-control" placeholder="Username" required />
       </div>
 
       <div class="form-group position-relative mb-4">
         <i class="fas fa-eye-slash"></i>
-        <input type="password" class="form-control" placeholder="Password" required />
+        <input name="password" type="password" class="form-control" placeholder="Password" required />
       </div>
 
       <button type="submit" class="btn btn-login w-100">
@@ -104,6 +108,23 @@
       </button>
     </form>
   </div>
+
+@if ($error=request()->session()->get('error'))
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog flex flex-row justify-between items-center login-card p-2">
+      <h5 class="modal-title">{{$error}}</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <script>
+    $('.modal').show();
+    setTimeout(() => {
+      $('.modal').hide('2000');
+      
+    }, 1000);
+  </script>
+@endif
 
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

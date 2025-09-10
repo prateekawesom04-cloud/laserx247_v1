@@ -11,6 +11,9 @@ use App\Http\Controllers\ApiCallController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\View;
 
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminDataController;
+
 
 // Route::get('/{slug}', function ($slug) {
 //     if(View::exists('pages.'.$slug)){
@@ -199,6 +202,8 @@ Route::middleware(['admin_auth_middleware'])->group(function () {
         Route::get('/login', function () {
             return view('admin.pages.login');
         })->name('admin.login');
+        
+        Route::post('login', [AdminAuthController::class,'login'])->name('admin.auth.login');
 
     });
 
@@ -208,13 +213,14 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
     
     Route::prefix('admin')->group(function () {
         
-        Route::get('/', function () {
-        return  view('admin.pages.index');
-        })->name('admin.index');
+        Route::get('/logout', function () {
+            Session::flush();
+            return redirect()->route('admin.login');
+        })->name('admin.logout');
 
-        Route::get('/user_downline_list', function () {
-        return view('admin.pages.user_downline_list');
-        })->name('admin.user_downline_list');
+        Route::get('/', [AdminDataController::class,'index'])->name('admin.index');
+
+        Route::get('/user_downline_list', [AdminDataController::class,'user_downline_list'])->name('admin.user_downline_list');
 
         Route::get('/master_downline_list', function () {
             return view('admin.pages.master_downline_list');

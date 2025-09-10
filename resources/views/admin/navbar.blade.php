@@ -90,7 +90,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-bold" href="#"><strong>Logout 🔒</strong></a>
+                    <a class="nav-link fw-bold" href="{{route('admin.logout')}}"><strong>Logout 🔒</strong></a>
                 </li>
             </ul>
         </div>

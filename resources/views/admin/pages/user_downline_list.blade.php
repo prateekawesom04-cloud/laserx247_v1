@@ -16,13 +16,13 @@
                     <div class="col-md-2 mb-2">
                         <div class="border p-2">
                             <div class="fw-semibold">Total Balance</div>
-                            <div class="text-primary">IRP 1000</div>
+                            <div class="text-primary">IRP {{$userData->wallet_amount}}</div>
                         </div>
                     </div>
                     <div class="col-md-2 mb-2">
                         <div class="border p-2">
                             <div class="fw-semibold">Total Exposure</div>
-                            <div class="text-danger">IRP ( 0 )</div>
+                            <div class="text-danger">IRP ( {{$userData->unsattled_amount}} )</div>
                         </div>
                     </div>
                     <div class="col-md-2 mb-2">
@@ -81,29 +81,21 @@
                         <thead class="table-light">
                             <tr>
                                 <th>Username</th>
-                                <th>Credit Ref.</th>
                                 <th>Balance</th>
                                 <th>Exposure</th>
-                                <th>Exposure Limit</th>
-                                <th>Avail .Bal.</th>
-                                <th>Ref. P/L</th>
-                                <th>Partnership</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Row 1 -->
+                             @foreach($users as $user)
                             <tr>
                                 <td><span class="badge bg-success">USER</span> demo</td>
-                                <td>0</td>
-                                <td>1000</td>
-                                <td class="text-danger">(0)</td>
-                                <td>200000</td>
-                                <td>1000</td>
-                                <td>1000</td>
-                                <td>100</td>
-                                <td><span class="badge bg-success">active</span></td>
+                                <td>{{$user->user_uid}}</td>
+                                <td>{{$user->wallet_amount}}</td>
+                                <td>{{$user->unsattled_amount}}</td>
+                                <td><span class="badge bg-{{($user->status==3)?'danger':'success'}}">{{($user->status==3)?'inactive':'active'}}</span></td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-outline-secondary">₹</a>
                                     <a href="#" class="btn btn-sm btn-outline-secondary">👤</a>
@@ -112,25 +104,7 @@
                                     <a href="#" class="btn btn-sm btn-outline-danger">🗑️</a>
                                 </td>
                             </tr>
-                            <!-- Row 2 -->
-                            <tr>
-                                <td><span class="badge bg-success">USER</span> 7050840056</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td class="text-danger">(0)</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>100</td>
-                                <td></td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">₹</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">👤</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">⚙️</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">📄</a>
-                                    <a href="#" class="btn btn-sm btn-outline-danger">🗑️</a>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
