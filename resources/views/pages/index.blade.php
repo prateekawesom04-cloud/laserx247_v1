@@ -87,11 +87,12 @@ $providers = json_decode($providers);
                     <div class="d-flex flex-column">
 
                         <!-- game List -->
+                    @foreach ($providers as $provider)
                         <div class="app_card d-flex flex-column w-100 mb-[1px]">
                             <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#f00]">
                                 <!-- <div class="d-flex flex-row gap-3 justify-content-start">
                                 </div> -->
-                                <div class="font-bold">Our Games</div>
+                                <div class="font-bold">{{$provider->title}}</div>
                                 <div class="d-flex flex-row gap-1 justify-content-end">
                                     <a href="javascript:void(0)" class="games_scroll d-flex items-center justify-content-center bg-[#212529] rounded-circle" data-scroll="-150" style="height: 22px;width: 22px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 6l-6 6l6 6"></path></svg>
@@ -102,14 +103,13 @@ $providers = json_decode($providers);
                                 </div>
                             </div>
                             <div class="all_games flex flex-col w-full overflow-x-auto app_scroller scrollbar-hide">
-                                @foreach ($providers as $provider)
                                 <div class="app_games flex flex-row w-screen game_list items-center" data-provider="{{ strtolower(explode('provider=', $provider->link)[1]) }}">
                                 </div>
 
-                                @endforeach
                             </div>
 
                         </div>
+                    @endforeach
                         
                         <!-- provider List -->
                         <div class="app_card d-flex flex-column w-100 mb-3 app_scroller">
