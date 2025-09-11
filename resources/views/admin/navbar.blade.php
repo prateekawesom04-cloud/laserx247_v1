@@ -97,33 +97,72 @@
     </nav>
 
     <script>
-        // Simple active link functionality
-        document.querySelectorAll(".nav-link, .dropdown-item").forEach((link) => {
-            link.addEventListener("click", function() {
-                // Remove active from all
-                document
-                    .querySelectorAll(".nav-link, .dropdown-item")
-                    .forEach((l) => l.classList.remove("active-nav"));
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = location.pathname;
 
-                // Add active to clicked
-                this.classList.add("active-nav");
-            });
-        });
+            // Helper: Remove all active classes from nav links
+            function clearActiveNav() {
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active-nav');
+                });
+            }
+            // Helper: Activate a nav link or its dropdown parent
+            function activateNavLink(link) {
+                clearActiveNav();
 
-        // Mobile dropdown positioning
-        document.querySelectorAll(".dropdown-toggle").forEach((toggle) => {
-            toggle.addEventListener("click", function() {
+                if (link.classList.contains('dropdown-item')) {
+                    const parentToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+                    if (parentToggle) {
+                        parentToggle.classList.add('active-nav');
+                    }
+                } else if (!link.classList.contains('dropdown-toggle')) {
+                    link.classList.add('active-nav');
+                }
+            }
+
+            // Helper: Position dropdowns properly on mobile
+            function positionMobileDropdown(toggle) {
                 if (window.innerWidth <= 991) {
                     setTimeout(() => {
-                        const menu = this.nextElementSibling;
-                        const rect = this.getBoundingClientRect();
-
-                        menu.style.position = "fixed";
-                        menu.style.top = rect.bottom + 2 + "px";
-                        menu.style.left =
-                            Math.min(rect.left, window.innerWidth - 200) + "px";
+                        const menu = toggle.nextElementSibling;
+                        if (menu) {
+                            const rect = toggle.getBoundingClientRect();
+                            menu.style.position = "fixed";
+                            menu.style.top = rect.bottom + 2 + "px";
+                            menu.style.left = Math.min(rect.left, window.innerWidth - 200) + "px";
+                        }
                     }, 10);
                 }
+            }
+
+            // Loop through all nav links and dropdown items
+            document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (!linkHref || linkHref === '#') return;
+
+                let linkPath;
+                try {
+                    linkPath = new URL(linkHref, window.location.origin).pathname;
+                } catch (e) {
+                    linkPath = linkHref;
+                }
+
+                // Match current URL
+                if (currentPath === linkPath) {
+                    activateNavLink(link);
+                }
+
+                // Click event to set active manually
+                link.addEventListener('click', function() {
+                    activateNavLink(this);
+                });
+            });
+
+            // Handle mobile dropdown positioning
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    positionMobileDropdown(this);
+                });
             });
         });
     </script>

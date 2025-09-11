@@ -4,7 +4,7 @@
 
         <!-- Add User Link Button -->
         <div class="mb-3 text-end">
-            <a href="#" class="btn btn-outline-success btn-sm">
+            <a href="#" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#mainModal">
                 <i class="bi bi-person-plus"></i> Add User
             </a>
         </div>
@@ -60,18 +60,18 @@
                 <!-- Show Entries and Search -->
                 <div class="d-flex justify-content-between align-items-center mb-3 small">
                     <div class="col-md-6 d-flex align-items-center">
-                    <label class="me-2" for="show-entries">Show</label>
-                    <select id="show-entries" class="form-select w-auto">
-                        <option>10</option>
-                        <option>25</option>
-                        <option>50</option>
-                        <option>100</option>
-                    </select>
-                    <span class="ms-2">entries</span>
-                </div>
+                        <label class="me-2" for="show-entries">Show</label>
+                        <select id="show-entries" class="form-select w-auto">
+                            <option>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>100</option>
+                        </select>
+                        <span class="ms-2">entries</span>
+                    </div>
                     <div>
-                        <input type="search" class="form-control form-control-sm border border-success" placeholder="Search"
-                            style="width: 200px;">
+                        <input type="search" class="form-control form-control-sm border border-success"
+                            placeholder="Search" style="width: 200px;">
                     </div>
                 </div>
 
@@ -95,40 +95,38 @@
                         <tbody>
                             <!-- Row 1 -->
                             <tr>
-                                <td><span class="badge bg-success">USER</span> demo</td>
-                                <td>0</td>
-                                <td>1000</td>
-                                <td class="text-danger">(0)</td>
-                                <td>200000</td>
-                                <td>1000</td>
-                                <td>1000</td>
-                                <td>100</td>
-                                <td><span class="badge bg-success">active</span></td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">₹</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">👤</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">⚙️</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">📄</a>
-                                    <a href="#" class="btn btn-sm btn-outline-danger">🗑️</a>
-                                </td>
-                            </tr>
-                            <!-- Row 2 -->
-                            <tr>
                                 <td><span class="badge bg-success">USER</span> 7050840056</td>
+                                <td>
+                                    0
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#creditRefModal"
+                                        title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+
                                 <td>0</td>
-                                <td>0</td>
-                                <td class="text-danger">(0)</td>
+                                <td class="text-danger">0 <a href="#" data-bs-toggle="modal"
+                                        data-bs-target="#creditRefModal" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>100</td>
                                 <td></td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">₹</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">👤</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">⚙️</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">📄</a>
-                                    <a href="#" class="btn btn-sm btn-outline-danger">🗑️</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#balanceModal" data-bs-placement="top" title="Deposit / Withdraw"
+                                        id="modalTooltipBtn">₹</a>
+                                    <a href="{{ route('admin.my_account') }}" class="btn btn-sm btn-outline-secondary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Profile">👤</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#userStatusModal"data-bs-placement="top" title="Change Status">⚙️</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Account Statement">📄</a>
+                                    <a href="#" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                                        data-bs-target="#deleteConfirmationModal"data-bs-placement="top" title="Delete">🗑️</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -140,3 +138,7 @@
 
     </div>
 @endsection
+<script>
+    var tooltipTrigger = document.getElementById('modalTooltipBtn')
+    var tooltip = new bootstrap.Tooltip(tooltipTrigger)
+</script>

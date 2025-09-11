@@ -9,7 +9,10 @@
             <form class="px-4">
                 <!-- Add Message Button on the right side -->
                 <div class="d-flex justify-content-end mb-3 p-2">
-                    <a type="button" class="btn btn-primary">Add Message</a>
+                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMessageModal">
+                        Add Message
+                    </a>
+
                 </div>
 
                 <!-- News Table below the Add Message button -->

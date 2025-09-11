@@ -9,7 +9,9 @@
             <form class="px-4">
                 <!-- Add Banner Button Section (Aligned to the right) -->
                 <div class="d-flex justify-content-end p-2 mb-3">
-                    <a href="javascript:void(0);" class="btn btn-primary btn-sm" id="addBanner">Add Banner</a>
+                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addBannerModal">
+                        Add Banner
+                    </a>
                 </div>
 
                 <!-- Banner Table Section -->

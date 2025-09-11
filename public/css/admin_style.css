@@ -114,7 +114,7 @@ body {
 
 .nav-link {
     color: white !important;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 13px;
     padding: 10px 12px !important;
 }
@@ -124,20 +124,23 @@ body {
 }
 
 .active-nav {
-    background: rgb(75, 113, 185) !important;
+    background: #fff !important;
+    color: black !important; 
 }
 
 .dropdown-menu {
     position: absolute !important;
     z-index: 9999 !important;
-    background: #fff;
-    border: 1px solid #ddd;
+    background: linear-gradient(to right, #1c0bb9, #0052a1, #00c2ff);
+    border: 1px solid #2622fa;
     min-width: 180px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-item {
     font-size: 13px;
+    color: white !important;       
+    font-weight: 600 !important;
 }
 
 .dropdown-item:hover {
