@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
     <script src="{{ asset('js') }}/jquery-3.7.1.min.js"></script>
+    <script src="//code.jivosite.com/widget/O2AMREX4Ch" async></script>
 </head>
 
 <body class="min-vh-100 d-flex align-items-center justify-content-center"
@@ -83,8 +84,8 @@
                             <div class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</div>
 
                             <!-- WhatsApp Button -->
-                            <a href="https://wa.me/your-number" target="_blank" class="btn btn-success w-100 mb-3">
-                                📱 WhatsApp Now
+                            <a href="javascript:void(0)" class="btn btn-success w-100 mb-3 chat_support">
+                                📱 Support
                             </a>
 
                             <!-- Login Link -->
@@ -243,7 +244,14 @@
 
         $(document).ready(function() {
             localStorage.clear();
+
+            $('.chat_support').click(function(){
+                $('.hoverArea__TJfJw').trigger('click');
+            });
+
         });
+
+
     </script>
 </body>
 
