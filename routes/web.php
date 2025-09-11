@@ -89,16 +89,13 @@ Route::middleware(['auth_check_middleware'])->group(function () {
 
     
     Route::get('/bonus', function () {
-        // return view('account_pages.bonus');
-        return 'testing';
+        return view('account_pages.bonus');
     })->name('user.bonus');
     Route::get('/game_statics', function () {
-        return 'testing';
-        // return view('account_pages.statements');
+        return view('account_pages.statements');
     })->name('user.game_statics');
     Route::get('/notification', function () {
-        return 'testing';
-        // return view('account_pages.statements');
+        return view('account_pages.notification');
     })->name('user.notification');
     
 
