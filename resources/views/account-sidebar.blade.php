@@ -27,35 +27,44 @@
     <!-- Body -->
     <div class="offcanvas-body p-3 bg-light">
         <div class="list-group list-group-flush">
-            <a href="profile" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            <a href="{{route('user.profile')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-user me-3 text-primary"></i> <span class="">Profile</span>
             </a>
-            {{-- <a href="wallet" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            {{-- <a href="{{route('user.wallet')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-wallet me-3 text-success"></i> <span class="">Wallet</span>
             </a> --}}
-            <a href="{{ url('/deposit') }}"
+            <a href="{{ route('user.deposit') }}"
                 class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-plus-circle me-3 text-success"></i> <span class="">Deposit / Withdrawal</span>
             </a>
-            <a href="profit_loss" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            <a href="{{route('user.profit_loss')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-balance-scale me-3 text-info"></i> <span class="">Profit / Loss</span>
             </a>
-            <a href="favourite" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            <a href="{{route('user.favourite')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-star me-3 text-warning"></i> <span class="">Favourite</span>
             </a>
-            <a href="refer_rewards" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            <a href="{{route('user.refer_rewards')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-user-friends me-3 text-secondary"></i> <span class="">Refer and Earn</span>
             </a>
-            <a href="statements" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            <a href="{{route('user.statements')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-file-alt me-3 text-primary"></i> <span class="">Account Statement</span>
             </a>
-            <a href="unsettled_bets" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            <a href="{{route('user.bonus')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-tasks me-3 text-dark"></i> <span class="">Bonus</span>
+            </a>
+            <a href="{{route('user.game_statics')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-tasks me-3 text-dark"></i> <span class="">Game statics</span>
+            </a>
+            <a href="{{route('user.notification')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-tasks me-3 text-dark"></i> <span class="">Notification</span>
+            </a>
+            <a href="{{route('user.unsettled_bets')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-tasks me-3 text-dark"></i> <span class="">Unsettled Bets</span>
             </a>
-            {{-- <a href="market_analysis" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            {{-- <a href="{{route('user.market_analysis')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-chart-pie me-3 text-danger"></i> <span class="">Market Analysis</span>
             </a> --}}
-            <a href="change_password" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+            <a href="{{route('user.change_password')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-key me-3 text-warning"></i> <span class="">Change Password</span>
             </a>
             <a href="{{url('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center text-danger fs-6">
