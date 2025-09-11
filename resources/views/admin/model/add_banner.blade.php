@@ -1,0 +1,34 @@
+
+<!-- Add Banner Modal -->
+<div class="modal fade add-banner-modal" id="addBannerModal" tabindex="-1" aria-labelledby="addBannerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header py-2" style="background-color: #007bff; color: white;">
+        <h5 class="modal-title fs-6" id="addBannerModalLabel">Add Banner</h5>
+        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Modal Body with Form -->
+      <div class="modal-body p-3">
+        <form action="#" method="POST" enctype="multipart/form-data" id="addBannerForm">
+          @csrf
+
+          <!-- Image Upload Field -->
+          <div class="form-group mb-4">
+            <label for="image" class="form-label fw-bold">📤 Select Image</label>
+            <input type="file" name="image" id="image" class="form-control" required>
+          </div>
+
+          <!-- Buttons -->
+          <div class="form-group text-end">
+            <a href="#" class="btn btn-dark" onclick="document.getElementById('addBannerForm').submit(); return false;">Add</a>
+            <a href="#" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

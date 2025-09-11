@@ -41,7 +41,8 @@
               <td><span class="status-active">Active</span></td>
               <td>
                 <div class="d-flex justify-content-center align-items-center flex-wrap gap-2">
-                  <button class="btn btn-sm btn-outline-danger" title="Delete">🗑️</button>
+                  <a href="#" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                                        data-bs-target="#deleteConfirmationModal"data-bs-placement="top" title="Delete">🗑️</a>
                   <div class="form-check form-switch m-0">
                     <input class="form-check-input" type="checkbox" checked>
                   </div>

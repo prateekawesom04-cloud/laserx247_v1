@@ -2,14 +2,14 @@
 @section('body')
     <div class="container-fluid p-4">
 
-        <!-- Add User Link Button -->
+        <!-- Add Downline Link Button -->
         <div class="mb-3 d-flex justify-content-end gap-2">
             <a href="#" class="btn btn-outline-success btn-sm d-flex align-items-center gap-1">
                 <span>Clip summary</span>
                 <input type="checkbox" />
             </a>
-            <a href="#" class="btn btn-outline-success btn-sm">
-                <i class="bi bi-person-plus"></i> Add User
+            <a href="#" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#addDownlineModal">
+                <i class="bi bi-person-plus"></i> Add Downline
             </a>
         </div>
         <!-- Info Cards in Card -->
@@ -107,12 +107,18 @@
                                 <td>1000</td>
                                 <td>100</td>
                                 <td><span class="badge bg-success">active</span></td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">₹</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">👤</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">⚙️</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">📄</a>
-                                    <a href="#" class="btn btn-sm btn-outline-danger">🗑️</a>
+                                 <td>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#balanceModal" data-bs-placement="top" title="Deposit / Withdraw"
+                                        id="modalTooltipBtn">₹</a>
+                                    <a href="{{ route('admin.my_account') }}" class="btn btn-sm btn-outline-secondary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Profile">👤</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#userStatusModal"data-bs-placement="top" title="Change Status">⚙️</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Account Statement">📄</a>
+                                    <a href="#" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                                        data-bs-target="#deleteConfirmationModal"data-bs-placement="top" title="Delete">🗑️</a>
                                 </td>
                             </tr>
                         </tbody>

@@ -41,7 +41,7 @@
             <td>1000</td>
             <td>1000</td>
             <td class="text-danger"><b>(0)</b></td>
-            <td>0.00 <i class="bi bi-pencil-square"></i></td>
+            <td>0.00 <i class="fas fa-pen-to-square icon-btn"data-bs-toggle="modal" data-bs-target="#creditRefModal"></i></td>
             <td class="text-success"><b>1000</b></td>
             <td>
               <div class="d-flex align-items-center justify-content-center">
@@ -52,24 +52,6 @@
               </div>
             </td>
             <td><input type="text" class="form-control form-control-sm" value="Remark"></td>
-          </tr>
-
-          <tr>
-            <td><strong>1234567890</strong></td>
-            <td>0</td>
-            <td>0</td>
-            <td class="text-danger"><b>(0)</b></td>
-            <td>0.00 <i class="bi bi-pencil-square"></i></td>
-            <td class="text-danger"><b>0</b></td>
-            <td>
-              <div class="d-flex align-items-center justify-content-center">
-                <button class="btn btn-secondary btn-sm acc-btn-dw">D</button>
-                <button class="btn btn-secondary btn-sm acc-btn-dw ms-1">W</button>
-                <input type="number" class="form-control form-control-sm mx-2 acc-input-sm" value="0">
-                <button class="btn btn-success btn-sm acc-btn-full">Full</button>
-              </div>
-            </td>
-            <td><input type="text" class="form-control form-control-sm" value="-"></td>
           </tr>
         </tbody>
       </table>
