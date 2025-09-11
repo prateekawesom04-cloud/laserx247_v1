@@ -3,17 +3,28 @@
 @include('head')
 
 <body>
+    <div class="app_body">
     @include('header')
     @include('account-sidebar')
     @include('navbar')
     @yield('body')
     @include('footer')
+    </div>
     @include('js')
-    <div class="loader" style="display: none !important;">
-        Loading...
+    <div class="app_loader bg-white flex items-center justify-center w-full h-[100vh] absolute left-0 top-0 bg-gray-300 z-[1111]" style="display:none;">
+        <img src="{{ asset('images/Hourglass.gif') }}" alt="Logo" height="40" width="100" />
     </div>
 
     @yield('js')
+    
+    <script>
+        // $(document).ready(function(){
+        //     setTimeout(() => {
+        //         $('.app_body').show();
+        //         $('.app_loader').fadeOut(500);
+        //     }, 4000);
+        // })
+    </script>
 </body>
 
 </html>

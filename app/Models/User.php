@@ -59,6 +59,10 @@ class User extends Authenticatable
             $userData = explode('_user_',$userData);
             $userData = $userData[1];
             return static::where('user_uid', $userData)->first();
+        } else if(Session::has('admin_session')){
+            $userData = explode('_user_',Session::get('admin_session'));
+            $userData = $userData[1];
+            return static::where('user_uid', $userData)->first();
         } else{
             return False;
         }

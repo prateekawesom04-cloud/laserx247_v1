@@ -8,10 +8,10 @@
     <div class="col-12 col-md-6">
       <div class="card h-100 border-0 shadow-sm">
         <div class="card-header bg-success text-white fw-bold">
-          <i class="fas fa-bolt me-2"></i>Live Sports Profit
+          <i class="fas fa-bolt me-2"></i>User Data
         </div>
         <div class="card-body text-center">
-          <h5 class="mb-3">Current Live Profit</h5>
+          <h5 class="mb-3">Active User Data</h5>
           <canvas id="liveChart" class="w-100" style="max-height: 250px;"></canvas>
         </div>
       </div>
@@ -38,7 +38,7 @@
 
 <script>
   const charts = [
-    { id: 'liveChart', value: 12435, color: '#28a745' },
+    { id: 'liveChart', value: {{$user}}, color: '#28a745' },
     { id: 'backupChart', value: 8765, color: '#17a2b8' }
   ];
 
@@ -49,7 +49,7 @@
       data: {
         labels: ['Profit', 'Remaining'],
         datasets: [{
-          data: [chart.value, 20000 - chart.value],
+          data: [chart.value, {{$userTotal}} - chart.value],
           backgroundColor: [chart.color, '#e0e0e0'],
           borderWidth: 1
         }]
