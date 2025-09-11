@@ -22,7 +22,7 @@ class UserController extends Controller
             $user = User::getCurrentUser();
             
             $data = [
-                'user_id'=>$user->user_uid,
+                'user_id'=>$user->phone,
                 'available_chips'=>$user->wallet_amount,
                 'exposure'=>$user->unsattled_amount
             ];
