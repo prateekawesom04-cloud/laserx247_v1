@@ -66,11 +66,11 @@ $providers = json_decode($providers);
         <!-- Aviator & Mines -->
         <div class="container-fluid font-bold">
             <div class="row w-100 mx-auto">
-                <div class="col-6 !p-[1px]">
+                <div class="col-6 !p-[1px] launch_game cursor-pointer" data-game_id="a04d1f3eb8ccec8a4823bdf18e3f0e84">
                     <img src="{{ asset('images/aviator-730-280.gif') }}" alt="Aviator" class="img-fluid w-100">
                     <div class="bg-dark text-white py-1">Aviator</div>
                 </div>
-                <div class="col-6 !p-[1px]">
+                <div class="col-6 !p-[1px] launch_game cursor-pointer" data-game_id="5c4a12fb0a9b296d9b0d5f9e1cd41d65">
                     <img src="{{ asset('images/evoplay-730-280.gif') }}" alt="Mines" class="img-fluid w-100">
                     <div class="bg-dark text-white py-1">Mines</div>
                 </div>
