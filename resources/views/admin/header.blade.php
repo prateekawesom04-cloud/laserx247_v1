@@ -1,20 +1,31 @@
 <!-- Header -->
 <div class="responsive-header">
-    <div class="header-inner">
+    <div class="header-inner flex flex-row">
         <!-- Logo Section -->
-        <div class="logo-section">
+        <div class="logo-section w-25">
             <img src="{{ asset('images/A_logo.png') }}" alt="Logo" class="header-logo" />
         </div>
 
         <!-- Admin Info Section -->
-        <div class="admin-info">
+        <div class="admin-info w-75">
             <div class="admin-row">
-                <span class="admin-badge">Admin</span>
-                <span class="admin-name">agplaycrick99</span>
-            </div>
-            <div class="irp-row">
-                IRP 1012099026.00
-                <a class="refresh-btn">&#x21bb;</a> 
+                {{-- <span class="admin-badge">Admin</span> --}}
+
+                <div class="dropdown">
+    <a class="admin-name dropdown-toggle" href="#" role="button" id="adminDropdown"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        admin1234
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end fw-light" aria-labelledby="adminDropdown">
+        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-coins me-2"></i>Coins</a></li>
+        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-lock me-2"></i>Change Password</a></li>
+        <li><a class="dropdown-item text-danger" href="{{ route('admin.logout') }}">
+            <i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
+        </li>
+    </ul>
+</div>
+
+
             </div>
         </div>
     </div>

@@ -1,59 +1,86 @@
-<!-- Add Downline Modal -->
-<div class="modal fade add-downline-modal" id="addDownlineModal" tabindex="-1" aria-labelledby="addDownlineModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
+<div class="modal fade" id="addDownlineModal" tabindex="-1" aria-labelledby="addDownlineModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md"> <!-- Compact size -->
+        <div class="modal-content shadow">
 
-      <!-- Modal Header -->
-      <div class="modal-header py-2 bg-primary text-white">
-        <h5 class="modal-title fs-6" id="addDownlineModalLabel">Add Downline</h5>
-        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+            <!-- Modal Header -->
+            <div class="modal-header bg-primary text-white py-2">
+                <h5 class="modal-title" id="addDownlineModalLabel">Add Downline</h5>
+                <button type="button" class="btn-close btn-close-white btn-sm" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
 
-      <!-- Modal Body with Form -->
-      <div class="modal-body p-3">
-        <form action="#" method="POST" id="addDownlineForm">
-          @csrf
+            <!-- Modal Body -->
+            <div class="modal-body py-3 px-3">
+                <form id="addDownlineForm">
+                    @csrf
 
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" name="username" class="form-control">
-          </div>
+                    <!-- User & Reference Name (Always side by side) -->
+                    <div class="row gx-2 mb-2">
+                        <div class="col-6">
+                            <label class="form-label">User Name</label>
+                            <input type="text" name="username" class="form-control form-control-sm"
+                                placeholder="User Name">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label">Reference Name</label>
+                            <input type="text" name="reference_name" class="form-control form-control-sm"
+                                placeholder="Reference Name">
+                        </div>
+                    </div>
 
-          <div class="mb-3">
-            <label for="account_type" class="form-label">Account Type</label>
-            <select name="account_type" class="form-control" required>
-              <option value="">Select Type</option>
-              <option value="super_master">Super Master</option>
-              <option value="master">Master</option>
-              <option value="agent">Agent</option>
-              <option value="user">User</option>
-            </select>
-          </div>
+                    <!-- Password & Retype Password -->
+                    <div class="row gx-2 mb-2">
+                        <div class="col-6">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control form-control-sm"
+                                placeholder="Password">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label">Retype Password</label>
+                            <input type="password" name="retype_password" class="form-control form-control-sm"
+                                placeholder="Retype Password">
+                        </div>
+                    </div>
 
-          <div class="mb-3">
-            <label for="opening_balance" class="form-label">Opening Balance</label>
-            <input type="number" name="opening_balance" class="form-control" placeholder="Opening Balance...">
-          </div>
 
-          <div class="mb-3">
-            <label for="credit_reference" class="form-label">Credit Reference</label>
-            <input type="text" name="credit_reference" class="form-control" placeholder="Credit Reference...">
-          </div>
+                    <!-- Partnership Sharing -->
+                    <div class="mb-3">
+                        <label class="form-label">Downline Sharing</label>
+                        <div class="input-group input-group-sm">
+                            <input type="number" name="downline_sharing" class="form-control" placeholder="%"
+                                min="0" max="100">
+                            <span class="input-group-text">(My Sharing 0%)</span>
+                        </div>
+                    </div>
 
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control">
-          </div>
+                    <!-- Credit & Deposit -->
+                    <div class="mb-3">
+                        <label class="form-label">Credit Reference</label>
+                        <input type="text" name="credit_reference" class="form-control form-control-sm"
+                            placeholder="Credit Reference">
+                    </div>
 
-        </form>
-      </div>
+                    <div class="mb-3">
+                        <label class="form-label">Add Deposit</label>
+                        <input type="number" name="add_deposit" class="form-control form-control-sm"
+                            placeholder="Amount">
+                    </div>
 
-      <!-- Modal Footer -->
-      <div class="modal-footer py-2 px-3">
-        <a href="#" class="btn btn-primary btn-sm" onclick="document.getElementById('addDownlineForm').submit(); return false;">Create</a>
-        <a href="#" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</a>
-      </div>
+                    <div class="mb-3">
+                        <label class="form-label">Deposit Remark</label>
+                        <input type="text" name="deposit_remark" class="form-control form-control-sm"
+                            placeholder="Remark">
+                    </div>
+                </form>
+            </div>
 
+            <!-- Modal Footer -->
+            <div class="modal-footer py-2 px-3">
+                <button type="submit" class="btn btn-sm btn-primary"
+                    onclick="document.getElementById('addDownlineForm').submit(); return false;">Create</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+
+        </div>
     </div>
-  </div>
 </div>
