@@ -92,22 +92,15 @@ Route::middleware(['auth_check_middleware'])->group(function () {
         // return view('account_pages.bonus');
         return 'testing';
     })->name('user.bonus');
-    Route::get('/statements', function () {
+    Route::get('/game_statics', function () {
         return 'testing';
         // return view('account_pages.statements');
-    })->name('user.statements');
-    Route::get('/statements', function () {
+    })->name('user.game_statics');
+    Route::get('/notification', function () {
         return 'testing';
         // return view('account_pages.statements');
-    })->name('user.statements');
-    Route::get('/statements', function () {
-        return 'testing';
-        // return view('account_pages.statements');
-    })->name('user.statements');
-    Route::get('/statements', function () {
-        return 'testing';
-        // return view('account_pages.statements');
-    })->name('user.statements');
+    })->name('user.notification');
+    
 
 
 
