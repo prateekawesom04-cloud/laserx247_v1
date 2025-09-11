@@ -22,7 +22,7 @@
             setTimeout(() => {
                 $('.app_body').show();
                 $('.app_loader').fadeOut(500);
-            }, 2000);
+            }, 4000);
         })
     </script>
 </body>
