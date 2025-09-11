@@ -38,11 +38,15 @@ class UserController extends Controller
         
         $user = User::getCurrentUser();
         $data = Transaction::where('user_uid',$user->user_uid)->get();
-        // foreach ($data as $key => $value) {
-        //     dump($key,'----',$value->user_uid);
-        // }
-        // dd($data);
         return view('account_pages.deposit-withdrawal',compact('data'));
+
+    }
+    
+    public function transaction(Request $request){
+        
+        $user = User::getCurrentUser();
+        $data = Transaction::where('user_uid',$user->user_uid)->get();
+        return view('account_pages.transaction',compact('data'));
 
     }
 

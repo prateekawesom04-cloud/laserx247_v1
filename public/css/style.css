@@ -817,3 +817,10 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
+
+body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar { 
+    -ms-overflow-style: none;
+    /* display: none; */
+    width: 2px;
+    background: transparent;
+}

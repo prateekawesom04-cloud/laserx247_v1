@@ -13,3 +13,4 @@
     <script src="{{asset('js')}}/jquery-3.7.1.min.js"></script>
     <script src="{{asset('js')}}/tailwind.min.js"></script>
     <script src="{{asset('js')}}/bootstrap.bundle.min.js"></script>
+    <script src="//code.jivosite.com/widget/O2AMREX4Ch" async></script>

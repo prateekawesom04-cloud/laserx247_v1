@@ -68,6 +68,8 @@ Route::middleware(['auth_check_middleware'])->group(function () {
 
     Route::get('/deposit', [UserController::class,'deposit'])->name('user.deposit');
 
+    Route::get('/transaction', [UserController::class,'transaction'])->name('user.transaction');
+
     Route::get('/refer_rewards', [UserController::class,'refer_rewards'])->name('user.refer_rewards');
 
     Route::get('/refer/{referral_code}', [UserController::class,'referral_code'])->name('user.referral_code');

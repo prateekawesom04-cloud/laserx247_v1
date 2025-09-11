@@ -37,6 +37,9 @@
                 class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-plus-circle me-3 text-success"></i> <span class="">Deposit / Withdrawal</span>
             </a>
+            <a href="{{route('user.transaction')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-file-alt me-3 text-primary"></i> <span class="">Transactions</span>
+            </a>
             <a href="{{route('user.profit_loss')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-balance-scale me-3 text-info"></i> <span class="">Profit / Loss</span>
             </a>

@@ -37,9 +37,9 @@ $providers = json_decode($providers);
                 <div class="col-md-6 position-relative !p-[1px]">
                     <img src="{{ asset('images/banner-sport1.png') }}" alt="Sports" class="img-fluid w-100">
                     <div class="bg-dark text-white py-1 font-bold">Sports</div>
-                    <div class="position-absolute top-0 end-0 bg-black bg-opacity-75 h-full text-white p-2 rounded overflow-auto">
+                    <div class="position-absolute top-0 end-0 bg-black bg-opacity-75 h-full text-white p-2 rounded flex flex-col">
                         <div class="fw-bold text-danger mb-1">(🔴) LIVE</div>
-                        <ul class="list-unstyled small mb-0">
+                        <ul class="list-unstyled small mb-0 overflow-auto">
                             <li class="d-flex justify-content-between border-bottom">Cricket <span>23</span></li>
                             <li class="d-flex justify-content-between border-bottom">Football <span>14</span></li>
                             <li class="d-flex justify-content-between border-bottom">Tennis <span>12</span></li>
