@@ -49,6 +49,8 @@ Route::middleware(['auth_middleware'])->group(function () {
 
 Route::middleware(['auth_check_middleware'])->group(function () {
     
+    Route::post('addStake', [UserController::class,'addStake'])->name('user.post.addStake')->withoutMiddleware([VerifyCsrfToken::class]);
+
     Route::get('logout', function () {
         Session::flush();
         return redirect()->route('index');
@@ -67,6 +69,10 @@ Route::middleware(['auth_check_middleware'])->group(function () {
     Route::get('/profile', [UserController::class,'profile'])->name('user.profile');
 
     Route::get('/deposit', [UserController::class,'deposit'])->name('user.deposit');
+
+    Route::get('/withdrawal', [UserController::class,'withdrawal'])->name('user.withdrawal');
+
+    Route::get('/enterStakes', [UserController::class,'enterStakes'])->name('user.enterStakes');
 
     Route::get('/transaction', [UserController::class,'transaction'])->name('user.transaction');
 

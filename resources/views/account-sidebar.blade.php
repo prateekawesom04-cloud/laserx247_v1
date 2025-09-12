@@ -35,7 +35,15 @@
             </a> --}}
             <a href="{{ route('user.deposit') }}"
                 class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
-                <i class="fas fa-plus-circle me-3 text-success"></i> <span class="">Deposit / Withdrawal</span>
+                <i class="fas fa-plus-circle me-3 text-success"></i> <span class="">Deposit</span>
+            </a>
+            <a href="{{ route('user.withdrawal') }}"
+                class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-plus-circle me-3 text-success"></i> <span class="">Withdrawal</span>
+            </a>
+            <a href="{{ route('user.enterStakes') }}"
+                class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
+                <i class="fas fa-plus-circle me-3 text-success"></i> <span class="">Enter Stakes</span>
             </a>
             <a href="{{route('user.transaction')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-file-alt me-3 text-primary"></i> <span class="">Transactions</span>

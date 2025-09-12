@@ -75,6 +75,11 @@ class AuthController extends Controller
                 $user->referral_code = substr(time(),2,3).rand(000000,999999);
 
             }
+            $emptyObject = (object)[];
+            $stakes = (object)['100','200','500','1000','2000'];
+            $emptyObject->stakes = $stakes;
+            
+            $user->addition_data = json_encode($emptyObject);
             $user->save();
 
             Session::put(['user_session'=>$user->id.'_user_'.$user->user_uid]);

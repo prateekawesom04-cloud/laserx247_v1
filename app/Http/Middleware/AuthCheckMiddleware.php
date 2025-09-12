@@ -17,6 +17,13 @@ class AuthCheckMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(!Session::get('user_session')) {
+            if($request->ajax()){
+                return response()->json([
+                    'error'=> 'User Not Logged In',
+                    'error_code'=> '409',
+                    'redirect'=> route('login')
+                ]);
+            }
             return redirect()->route('login');
         } else{
             return $next($request);

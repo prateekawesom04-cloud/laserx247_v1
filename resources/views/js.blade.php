@@ -1,5 +1,5 @@
 
-    <div class="chat_support_btn chat_support fixed right-0 bottom-0 btn rounded-md !bg-gray-300 !p-1 text-black" style="display:none;">
+    <div class="chat_support_btn chat_support fixed right-0 bottom-[80px] btn rounded-md !bg-gray-300 !p-1 text-black" style="display:none;">
         Support
     </div>
 
@@ -14,6 +14,13 @@
                 if (beforeAction) beforeAction();
             },
             success: (response) => {
+                if(response.error_code == '409'){
+                    alert(response.error);
+                    setTimeout(() => {
+                        window.location.href = response.redirect;
+                    }, 2000);
+                    return false;
+                }
                 if (action) {
                     action(response);
                 } else {

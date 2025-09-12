@@ -169,14 +169,17 @@
 
             let phoneRegex = '/^\d{10}$/';
             let phone = $('input[name=phone]').val();
+            let user_id = $('input[name=user_id]').val();
             let password = $('input[name=password]').val();
             let confirm_password = $('input[name=confirm_password]').val();
+            let referral_code = $('input[name=referral_code]').val();
 
             let data = {
                 phone: phone,
+                user_id: user_id,
                 password: password,
                 confirm_password: confirm_password,
-                referral_code: {{ ($referral_code)?$referral_code:'0' }}
+                referral_code: referral_code
             }
 
             // if (!phone.match(phoneRegex)) {
