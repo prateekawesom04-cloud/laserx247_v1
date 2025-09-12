@@ -79,7 +79,7 @@ class AuthController extends Controller
             $stakes = (object)['100','200','500','1000','2000'];
             $emptyObject->stakes = $stakes;
             
-            $user->addition_data = json_encode($emptyObject);
+            $user->additional_data = json_encode($emptyObject);
             $user->save();
 
             Session::put(['user_session'=>$user->id.'_user_'.$user->user_uid]);
