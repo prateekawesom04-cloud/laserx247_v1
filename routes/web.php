@@ -31,7 +31,7 @@ Route::middleware(['auth_middleware'])->group(function () {
 
     Route::get('register', function (Request $request) {
         
-        $referral_code = NULL;
+        $referral_code = '';
         
         if($request->session()->has('referral_code')){
             

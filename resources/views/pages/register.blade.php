@@ -54,8 +54,15 @@
                                 </span>
                                 <input type="text" class="form-control" name="otp" placeholder="Enter OTP" maxlength="6" />
                             </div>
+                            <!-- UserId -->
+                            <div class="input-group mb-3 user_id_input" style="display:none;">
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-key"></i>
+                                </span>
+                                <input type="text" class="form-control" name="user_id" maxlength="6" value="{{substr(md5(mt_rand()), 0, 10)}}" />
+                            </div>
                             <div class="text-end mb-3">
-                                <a href="#" class="small text-info">Want to set UserID?</a>
+                                <a href="javascript:void(0)" class="small text-info set_user_id">Want to set UserID?</a>
                             </div>
 
                             <!-- Password -->
@@ -75,7 +82,14 @@
                                 <input type="password" class="form-control" name="confirm_password"
                                     placeholder="Enter Confirm Password"disabled />
                             </div>
-                            <div class="text-end mb-3">
+                            <!-- UserId -->
+                            <div class="input-group mb-3 referral_code_input" style="display:none;">
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-key"></i>
+                                </span>
+                                <input type="text" class="form-control" name="referral_code" maxlength="6" value="{{$referral_code}}" placeholder='Please Enter Referral Code' />
+                            </div>
+                            <div class="text-end mb-3 have_referral_code">
                                 <a href="#" class="small text-info">Have a referral code?</a>
                             </div>
 
@@ -253,6 +267,23 @@
             localStorage.clear();
         });
 
+        $('.set_user_id').click(function(){
+            // if (!otpVerified) {
+            //     alert('Please verify OTP first');
+            //     return false;
+            // }
+            $('.user_id_input').show();
+            $(this).hide();
+        });
+        
+        $('.have_referral_code').click(function(){
+            // if (!otpVerified) {
+            //     alert('Please verify OTP first');
+            //     return false;
+            // }
+            $('.referral_code_input').show();
+            $(this).hide();
+        });
 
     </script>
 </body>
