@@ -5,10 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login page</title>
-    <link rel="stylesheet" href="{{asset('css')}}/style.css">
     <link rel="stylesheet" href="{{asset('css')}}/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css')}}/tailwind.min.css">
+    <link rel="stylesheet" href="{{asset('css')}}/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
     <script src="{{asset('js')}}/jquery-3.7.1.min.js"></script>
+    <script src="{{asset('js')}}/tailwind.min.js"></script>
     <script src="//code.jivosite.com/widget/O2AMREX4Ch" async></script>
 </head>
 
