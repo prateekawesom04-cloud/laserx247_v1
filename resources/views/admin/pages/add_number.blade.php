@@ -7,11 +7,6 @@
             <h4 class="mb-0">Add Number</h4>
         </div>
         <form class="px-4">
-            <!-- Add Banner Button Section (Aligned to the right) -->
-            <div class="d-flex justify-content-end p-2 mb-3">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm" id="addBanner">Add Number</a>
-            </div>
-
             <!-- Banner Table Section -->
             <table class="table table-bordered">
                 <thead>
@@ -26,8 +21,11 @@
                     <tr>
                         <td>1234567890</td>
                         <td>Freen</td>
-                        <td><a href="#" class="btn btn-warning btn-sm px-3 py-1"><i class="fa fa-edit"></i></a></td>
-                        <td><a href="#" class="btn btn-danger btn-sm px-3 py-1"><i class="fa fa-trash"></i></a></td>
+                        <td><a href="#" class="btn btn-warning btn-sm px-3 py-1"data-bs-toggle="modal"
+                                        data-bs-target="#editMobileModal"data-bs-placement="top" title="Delete"><i class="fa fa-edit"></i></a></td>
+                        <td>
+                         <a href="#" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                                        data-bs-target="#deleteConfirmationModal"data-bs-placement="top" title="Delete">🗑️</a></td>
                     </tr>
                 </tbody>
             </table>
