@@ -252,6 +252,10 @@
             localStorage.clear();
         });
 
+        $('.chat_support').click(function(){
+            $('.button__Qkvay').trigger('click');
+        });
+
     </script>
 </body>
 

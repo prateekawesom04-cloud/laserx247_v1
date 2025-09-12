@@ -122,6 +122,10 @@
         $('a.loginUser').click(function(e) {
             loginUser();
         });
+        
+        $('.chat_support').click(function(){
+            $('.button__Qkvay').trigger('click');
+        });
     </script>
 </body>
 
