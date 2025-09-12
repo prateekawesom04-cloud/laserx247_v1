@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{asset('css')}}/tailwind.min.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
     <script src="{{ asset('js') }}/jquery-3.7.1.min.js"></script>
+    <script src="{{asset('js')}}/tailwind.min.js"></script>
     <script src="//code.jivosite.com/widget/O2AMREX4Ch" async></script>
 </head>
 
@@ -84,8 +86,12 @@
                             <div class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</div>
 
                             <!-- WhatsApp Button -->
-                            <a href="javascript:void(0)" class="btn btn-success w-100 mb-3 chat_support">
-                                📱 Support
+                            <a href="javascript:void(0)" class="btn btn-success w-100 mb-3 chat_support !flex flex-row justify-center items-center gap-2">
+                                <div class="support_icon min-w-min">
+                                    <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset="">
+                                </div>
+                                <div class="support_text min-w-min">Support</div>
+                                <!-- <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset=""> Support -->
                             </a>
 
                             <!-- Login Link -->
