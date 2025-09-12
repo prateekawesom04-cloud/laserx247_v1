@@ -828,3 +828,7 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
 .button__Qkvay{
     display: none !important;
 }
+
+.chat_support_btn {
+    z-index: 1111;
+}

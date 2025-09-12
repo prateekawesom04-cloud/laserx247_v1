@@ -1,3 +1,8 @@
+
+    <div class="chat_support_btn chat_support fixed right-0 bottom-0 btn rounded-md !bg-gray-300 !p-1 text-black" style="display:none;">
+        Support
+    </div>
+
 <script>
     function callApi(type = null, url = null, data = null, action = null, beforeAction = null, catchError = null) {
         // if(type.tpLowerCase() != 'get'){
@@ -206,8 +211,7 @@
 
     
     $('.chat_support').click(function(){
-        $('.chat_support_btn').css('display','none');
-        // $('.chat_support_btn').hide();
+        $('.chat_support_btn').hide();
         $('.button__Qkvay').trigger('click');
     });
 
@@ -215,17 +219,9 @@
         $('.chat_support_btn').show();
     });
 
-
-    // $(document).ready(function(){
-        
-    //     $('.chat_support').click(function(){
-    //         $('.hoverArea__TJfJw').trigger('click');
-    //     });
-
-    //     $('#jvLabelWrap').css('display','none');
-
-    //     $('#jcont')
-    // });
+    setTimeout(() => {
+        $('.chat_support_btn').show();
+    }, 2000);
 
 </script>
 
