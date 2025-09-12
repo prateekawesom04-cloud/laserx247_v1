@@ -204,6 +204,18 @@
         responsiveReloadHandler();
     });
 
+    
+    $('.chat_support').click(function(){
+        $('.chat_support_btn').css('display','none');
+        // $('.chat_support_btn').hide();
+        $('.button__Qkvay').trigger('click');
+    });
+
+    $('body').on('click','.closeIcon__sAHIm',function(){
+        $('.chat_support_btn').show();
+    });
+
+
     // $(document).ready(function(){
         
     //     $('.chat_support').click(function(){
@@ -216,3 +228,4 @@
     // });
 
 </script>
+

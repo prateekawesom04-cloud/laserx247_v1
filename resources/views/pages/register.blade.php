@@ -105,6 +105,10 @@
             </div>
         </div>
     </div>
+    
+<div class="chat_support_btn chat_support absolute right-0 bottom-0 btn rounded-md bg-white text-black">
+    Support
+</div>
     @include('js')
 
     <script>
@@ -252,9 +256,6 @@
             localStorage.clear();
         });
 
-        $('.chat_support').click(function(){
-            $('.button__Qkvay').trigger('click');
-        });
 
     </script>
 </body>

@@ -825,6 +825,6 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
     background: transparent;
 }
 
-/* #jvLabelWrap{
-    display: none;
-} */
+.button__Qkvay{
+    display: none !important;
+}
