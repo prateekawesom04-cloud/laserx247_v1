@@ -83,7 +83,7 @@
                             <a class="btn btn-dark w-100 mb-3 registerUser">Register</a>
 
                             <!-- Info Text -->
-                            <div class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</div>
+                            <!-- <div class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</div> -->
 
                             <!-- WhatsApp Button -->
                             <a href="javascript:void(0)" class="btn btn-success w-100 mb-3 chat_support !flex flex-row justify-center items-center gap-2">

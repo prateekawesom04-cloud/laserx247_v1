@@ -86,8 +86,15 @@
                             </div>
 
                             <!-- WhatsApp -->
-                            <p class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</p>
-                            <a href="https://web.whatsapp.com/" class="btn btn-success w-100 mb-3">📱 Whatsapp Now</a>
+                            <!-- <p class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</p> -->
+                            
+                            <a href="javascript:void(0)" class="btn btn-success w-100 mb-3 chat_support !flex flex-row justify-center items-center gap-2">
+                                <div class="support_icon min-w-min">
+                                    <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset="">
+                                </div>
+                                <div class="support_text min-w-min">Support</div>
+                                <!-- <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset=""> Support -->
+                            </a>
 
                             <!-- Social login -->
                             <p class="text-center small mb-2">Or Login With</p>
