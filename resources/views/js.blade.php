@@ -203,4 +203,16 @@
         console.log('Window resized');
         responsiveReloadHandler();
     });
+
+    // $(document).ready(function(){
+        
+    //     $('.chat_support').click(function(){
+    //         $('.hoverArea__TJfJw').trigger('click');
+    //     });
+
+    //     $('#jvLabelWrap').css('display','none');
+
+    //     $('#jcont')
+    // });
+
 </script>

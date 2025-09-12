@@ -13,22 +13,22 @@
             <h6 class="fw-semibold text-dark mb-3" style="font-size: 13px;">Update Your Password</h6>
 
             <!-- Old Password -->
-            {{-- <div class="mb-3">
+            <div class="mb-3">
                 <div class="input-group">
                     <input type="password" class="form-control" placeholder="Enter Old Password" id="oldPassword"
-                        style="font-size: 12px;" disabled>
-                    <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('oldPassword')"
-                        style="font-size: 12px;">👁️</button>
+                        style="font-size: 12px;">
+                    <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button"
+                        style="font-size: 12px;">👁️</a>
                 </div>
-            </div> --}}
+            </div>
 
             <!-- New Password -->
             <div class="mb-3">
                 <div class="input-group">
                     <input type="password" class="form-control" placeholder="Enter New Password" id="newPassword"
                         style="font-size: 12px;">
-                    <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('newPassword')"
-                        style="font-size: 12px;">👁️</button>
+                    <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button"
+                        style="font-size: 12px;">👁️</a>
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
                 <div class="input-group">
                     <input type="password" class="form-control" placeholder="Confirm New Password" id="confirmPassword"
                         style="font-size: 12px;">
-                    <a class="btn btn-outline-secondary" type="button" onclick="togglePassword('confirmPassword')"
+                    <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button"
                         style="font-size: 12px;">👁️</a>
                 </div>
             </div>
@@ -45,10 +45,10 @@
             <!-- Buttons -->
             <div class="row g-2">
                 <div class="col-6">
-                    <a type="reset" class="btn btn-edit text-white w-100" style="font-size: 11px;">📝 Reset</a>
+                    <a href="javascript:void(0)" type="reset" class="btn btn-edit text-white w-100 input_reset" style="font-size: 11px;" onclick="$('input').val('');">📝 Reset</a>
                 </div>
                 <div class="col-6">
-                    <a type="submit" class="btn btn-submit text-white w-100" style="font-size: 11px;">CHANGE</a>
+                    <a href="javascript:void(0)" type="submit" class="btn btn-submit text-white w-100" style="font-size: 11px;">CHANGE</a>
                 </div>
             </div>
         </div>
@@ -58,16 +58,33 @@
 @section('js')
 <script>
 
+    $('a.btn').click(function(){
+        element = $(this).siblings('input');
+        if(element.attr('type')=='password'){
+            element.attr('type', 'text');
+        } else{
+            element.attr('type', 'password');            
+        }
+    });
+
+
     $('a.btn-submit').click(function(){
+        let oldPassword = $('#oldPassword').val();
+        let newPassword = $('#newPassword').val();
+        let confirmPassword = $('#confirmPassword').val();
         let data = {
-            password: $('#newPassword').val(),
-            confirm_password: $('#confirmPassword').val()
+            oldPassword: oldPassword,
+            newPassword: newPassword,
+            confirmPassword: confirmPassword
         };
         
-        if (password.length < 6) {
-            alert('Please enter strong password');
+        if (oldPassword.length < 6) {
+            alert('Please enter correct password');
             return false;
-        } else if (password != confirm_password) {
+        } else if (newPassword.length < 6) {
+            alert('Please enter new strong password');
+            return false;
+        } else if (newPassword != confirmPassword) {
             alert('please confirm correct password');
             return false;
         } else {

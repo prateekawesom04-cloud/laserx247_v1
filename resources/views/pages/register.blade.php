@@ -244,13 +244,7 @@
 
         $(document).ready(function() {
             localStorage.clear();
-
-            $('.chat_support').click(function(){
-                $('.hoverArea__TJfJw').trigger('click');
-            });
-
         });
-
 
     </script>
 </body>

@@ -824,3 +824,7 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
     width: 2px;
     background: transparent;
 }
+
+/* #jvLabelWrap{
+    display: none;
+} */

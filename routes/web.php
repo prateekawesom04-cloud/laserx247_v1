@@ -174,6 +174,8 @@ Route::post('register', [AuthController::class,'register'])->name('register')->w
 
 Route::post('forgetPassword', [AuthController::class,'forgetPassword'])->name('forgetPassword')->withoutMiddleware([VerifyCsrfToken::class]);
 
+Route::post('changePassword', [AuthController::class,'changePassword'])->name('changePassword')->withoutMiddleware([VerifyCsrfToken::class]);
+
 Route::post('launchGame', [GamesController::class,'launchGame'])->name('launchGame')->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::post('launchGame/callback', [GamesController::class,'launchGameCallback'])->name('launchGameCallback')->withoutMiddleware([VerifyCsrfToken::class]);

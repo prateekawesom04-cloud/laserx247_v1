@@ -114,8 +114,9 @@ class AuthController extends Controller
     public function changePassword(Request $request){
         
         $rules = [
-            'password' => 'required|min:6',
-            'confirm_password' => 'required|same:password',
+            'oldPassword' => 'required',
+            'newPassword' => 'required|min:6',
+            'confirmPassword' => 'required|same:newPassword',
         ];
         
         $validator = Validator::make($request->all(), $rules);
@@ -130,7 +131,13 @@ class AuthController extends Controller
                 'phone'=>$request->phone
             ])->first();
             $user = User::getCurrentUser();
-            $user->password = Hash::make($request->password);
+            if(!Hash::check($request->oldPassword,$user->password)){
+                return response()->json([
+                    'error'=> 'Old Password Mismatched',
+                    'error_code'=> '401'
+                ]);
+            }
+            $user->password = Hash::make($request->newPassword);
             $user->save();
             
             return True;
