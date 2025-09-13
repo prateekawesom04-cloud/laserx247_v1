@@ -149,8 +149,11 @@
                                                 title="Password Change">P</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-game-controller"
                                                 data-bs-toggle="modal" data-bs-target="#gameControllerModal"title="Game Control">GC</a>
-                                            <a href="#" class="btn btn-sm fw-bold btn-casino-control"
-                                                data-bs-toggle="tooltip" title="Casino Control">CC</a>
+                                           <a href="#" class="btn btn-sm fw-bold btn-casino-control"
+                                                data-bs-toggle="modal" data-bs-target="#casinocontrolModal"
+                                                title="Casino Control">
+                                                CC
+                                            </a>
                                             <a href="#" class="btn btn-sm fw-bold btn-delete" data-bs-toggle="modal"
                                                 data-bs-target="#deleteConfirmationModal" title="Delete">D</a>
                                         </div>

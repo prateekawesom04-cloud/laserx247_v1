@@ -61,16 +61,16 @@
                 <i class="fas fa-file-alt me-3 text-primary"></i> <span class="">Account Statement</span>
             </a>
             <a href="{{route('user.bonus')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
-                <i class="fas fa-tasks me-3 text-dark"></i> <span class="">Bonus</span>
+                <i class="fas fa-gift me-3 text-success"></i> <span class="">Bonus</span>
             </a>
             <a href="{{route('user.game_statics')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
-                <i class="fas fa-tasks me-3 text-dark"></i> <span class="">Game statics</span>
+                <i class="fas fa-chart-line me-3 text-info"></i> <span class="">Game statics</span>
             </a>
             <a href="{{route('user.notification')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
-                <i class="fas fa-tasks me-3 text-dark"></i> <span class="">Notification</span>
+                <i class="fas fa-bell me-3 text-warning"></i> <span class="">Notification</span>
             </a>
             <a href="{{route('user.unsettled_bets')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
-                <i class="fas fa-tasks me-3 text-dark"></i> <span class="">Unsettled Bets</span>
+                <i class="fas fa-clock me-3 text-danger"></i> <span class="">Unsettled Bets</span>
             </a>
             {{-- <a href="{{route('user.market_analysis')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-chart-pie me-3 text-danger"></i> <span class="">Market Analysis</span>
