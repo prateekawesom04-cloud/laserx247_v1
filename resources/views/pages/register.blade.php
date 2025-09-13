@@ -59,7 +59,7 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control" name="user_id" maxlength="6" value="{{substr(md5(mt_rand()), 0, 10)}}" />
+                                <input type="text" class="form-control" name="user_id" maxlength="6" value="{{rand(000000, 999999)}}" />
                             </div>
                             <div class="text-end mb-3">
                                 <a href="javascript:void(0)" class="small text-info set_user_id">Want to set UserID?</a>
