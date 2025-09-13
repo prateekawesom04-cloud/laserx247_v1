@@ -1,3 +1,11 @@
+
+    <div class="chat_support_btn chat_support fixed right-0 bottom-[80px] btn rounded-md !bg-gray-900 !p-1 text-white !flex flex-row justify-center items-center gap-2" style="display:none;">
+        <div class="support_icon min-w-min">
+            <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset="">
+        </div>
+        <div class="support_text min-w-min">Support</div>
+    </div>
+
 <script>
     function callApi(type = null, url = null, data = null, action = null, beforeAction = null, catchError = null) {
         // if(type.tpLowerCase() != 'get'){
@@ -9,6 +17,13 @@
                 if (beforeAction) beforeAction();
             },
             success: (response) => {
+                if(response.error_code == '409'){
+                    alert(response.error);
+                    setTimeout(() => {
+                        window.location.href = response.redirect;
+                    }, 2000);
+                    return false;
+                }
                 if (action) {
                     action(response);
                 } else {
@@ -203,4 +218,24 @@
         console.log('Window resized');
         responsiveReloadHandler();
     });
+
+    
+    $('.chat_support').click(function(){
+        $('.chat_support_btn').hide();
+        $('.button__Qkvay').trigger('click');
+    });
+
+    $('body').on('click','.closeIcon__sAHIm',function(){
+        $('.chat_support_btn').show();
+    });
+    
+    $('jdiv').on('click','.closeBox__T4hRn',function(){
+        $('.chat_support_btn').show();
+    });
+
+    setTimeout(() => {
+        $('.chat_support_btn').show();
+    }, 2000);
+
 </script>
+

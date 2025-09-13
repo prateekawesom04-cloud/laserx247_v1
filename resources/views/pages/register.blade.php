@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{asset('css')}}/tailwind.min.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
     <script src="{{ asset('js') }}/jquery-3.7.1.min.js"></script>
+    <script src="{{asset('js')}}/tailwind.min.js"></script>
+    <script src="//code.jivosite.com/widget/O2AMREX4Ch" async></script>
 </head>
 
 <body class="min-vh-100 d-flex align-items-center justify-content-center"
@@ -51,8 +54,15 @@
                                 </span>
                                 <input type="text" class="form-control" name="otp" placeholder="Enter OTP" maxlength="6" />
                             </div>
+                            <!-- UserId -->
+                            <div class="input-group mb-3 user_id_input" style="display:none;">
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-key"></i>
+                                </span>
+                                <input type="text" class="form-control" name="user_id" maxlength="6" value="{{rand(000000, 999999)}}" />
+                            </div>
                             <div class="text-end mb-3">
-                                <a href="#" class="small text-info">Want to set UserID?</a>
+                                <a href="javascript:void(0)" class="small text-info set_user_id">Want to set UserID?</a>
                             </div>
 
                             <!-- Password -->
@@ -72,7 +82,14 @@
                                 <input type="password" class="form-control" name="confirm_password"
                                     placeholder="Enter Confirm Password"disabled />
                             </div>
-                            <div class="text-end mb-3">
+                            <!-- UserId -->
+                            <div class="input-group mb-3 referral_code_input" style="display:none;">
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-key"></i>
+                                </span>
+                                <input type="text" class="form-control" name="referral_code" maxlength="6" value="{{$referral_code}}" placeholder='Please Enter Referral Code' />
+                            </div>
+                            <div class="text-end mb-3 have_referral_code">
                                 <a href="#" class="small text-info">Have a referral code?</a>
                             </div>
 
@@ -80,11 +97,15 @@
                             <a class="btn btn-dark w-100 mb-3 registerUser">Register</a>
 
                             <!-- Info Text -->
-                            <div class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</div>
+                            <!-- <div class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</div> -->
 
                             <!-- WhatsApp Button -->
-                            <a href="https://wa.me/your-number" target="_blank" class="btn btn-success w-100 mb-3">
-                                📱 WhatsApp Now
+                            <a href="javascript:void(0)" class="btn btn-success w-100 mb-3 chat_support !flex flex-row justify-center items-center gap-2">
+                                <div class="support_icon min-w-min">
+                                    <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset="">
+                                </div>
+                                <div class="support_text min-w-min">Support</div>
+                                <!-- <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset=""> Support -->
                             </a>
 
                             <!-- Login Link -->
@@ -98,6 +119,7 @@
             </div>
         </div>
     </div>
+    
     @include('js')
 
     <script>
@@ -147,14 +169,17 @@
 
             let phoneRegex = '/^\d{10}$/';
             let phone = $('input[name=phone]').val();
+            let user_id = $('input[name=user_id]').val();
             let password = $('input[name=password]').val();
             let confirm_password = $('input[name=confirm_password]').val();
+            let referral_code = $('input[name=referral_code]').val();
 
             let data = {
                 phone: phone,
+                user_id: user_id,
                 password: password,
                 confirm_password: confirm_password,
-                referral_code: {{ ($referral_code)?$referral_code:'0' }}
+                referral_code: referral_code
             }
 
             // if (!phone.match(phoneRegex)) {
@@ -188,9 +213,7 @@
         });
 
         $('input[name=otp]').on('keyup',function(e) {
-            
-            let charCode = (e.which) ? e.which : e.keyCode;
-            if (!testLocalStorage('user_otp') || charCode > 31 && (charCode < 48 || charCode > 57)) {
+            if (!testLocalStorage('user_otp')) {
                 e.preventDefault();
                 return false;
             }
@@ -244,6 +267,25 @@
         $(document).ready(function() {
             localStorage.clear();
         });
+
+        $('.set_user_id').click(function(){
+            // if (!otpVerified) {
+            //     alert('Please verify OTP first');
+            //     return false;
+            // }
+            $('.user_id_input').show();
+            $(this).hide();
+        });
+        
+        $('.have_referral_code').click(function(){
+            // if (!otpVerified) {
+            //     alert('Please verify OTP first');
+            //     return false;
+            // }
+            $('.referral_code_input').show();
+            $(this).hide();
+        });
+
     </script>
 </body>
 

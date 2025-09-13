@@ -59,17 +59,27 @@ class AuthController extends Controller
             ]);
             
         } else{
-            if($request->referral_code){
-                $referralUser = User::getCurrentUser('referral_code',$request->referral_code);
-                $referralUser->referral_nos += 1;
-                $referralUser->save();
-            }
 
             $user = new User;
             $user->phone = $request->phone;
-            $user->user_uid = rand(0000,9999).'_'.time().$request->phone;
+            // $user->user_uid = rand(0000,9999).'_'.time().$request->phone;
+            $user->user_uid = $request->user_id;
             $user->password = Hash::make($request->password);
-            $user->referral_code = substr(time(),2,3).rand(0000,9999);
+            
+            if($request->referral_code){
+                $referralUser = User::getCurrentUser('referral_code',$request->referral_code);
+                $user->referral = $referralUser->phone;
+                $referralUser->referral_nos += 1;
+                $referralUser->save();
+            } else{
+                $user->referral_code = substr(time(),2,3).rand(000000,999999);
+
+            }
+            $emptyObject = (object)[];
+            $stakes = (object)['100','200','500','1000','2000'];
+            $emptyObject->stakes = $stakes;
+            
+            $user->additional_data = json_encode($emptyObject);
             $user->save();
 
             Session::put(['user_session'=>$user->id.'_user_'.$user->user_uid]);
@@ -114,8 +124,9 @@ class AuthController extends Controller
     public function changePassword(Request $request){
         
         $rules = [
-            'password' => 'required|min:6',
-            'confirm_password' => 'required|same:password',
+            'oldPassword' => 'required',
+            'newPassword' => 'required|min:6',
+            'confirmPassword' => 'required|same:newPassword',
         ];
         
         $validator = Validator::make($request->all(), $rules);
@@ -130,7 +141,13 @@ class AuthController extends Controller
                 'phone'=>$request->phone
             ])->first();
             $user = User::getCurrentUser();
-            $user->password = Hash::make($request->password);
+            if(!Hash::check($request->oldPassword,$user->password)){
+                return response()->json([
+                    'error'=> 'Old Password Mismatched',
+                    'error_code'=> '401'
+                ]);
+            }
+            $user->password = Hash::make($request->newPassword);
             $user->save();
             
             return True;

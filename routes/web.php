@@ -31,7 +31,7 @@ Route::middleware(['auth_middleware'])->group(function () {
 
     Route::get('register', function (Request $request) {
         
-        $referral_code = NULL;
+        $referral_code = '';
         
         if($request->session()->has('referral_code')){
             
@@ -49,6 +49,8 @@ Route::middleware(['auth_middleware'])->group(function () {
 
 Route::middleware(['auth_check_middleware'])->group(function () {
     
+    Route::post('addStake', [UserController::class,'addStake'])->name('user.post.addStake')->withoutMiddleware([VerifyCsrfToken::class]);
+
     Route::get('logout', function () {
         Session::flush();
         return redirect()->route('index');
@@ -68,6 +70,12 @@ Route::middleware(['auth_check_middleware'])->group(function () {
 
     Route::get('/deposit', [UserController::class,'deposit'])->name('user.deposit');
 
+    Route::get('/withdrawal', [UserController::class,'withdrawal'])->name('user.withdrawal');
+
+    Route::get('/enterStakes', [UserController::class,'enterStakes'])->name('user.enterStakes');
+
+    Route::get('/transaction', [UserController::class,'transaction'])->name('user.transaction');
+
     Route::get('/refer_rewards', [UserController::class,'refer_rewards'])->name('user.refer_rewards');
 
     Route::get('/refer/{referral_code}', [UserController::class,'referral_code'])->name('user.referral_code');
@@ -75,26 +83,41 @@ Route::middleware(['auth_check_middleware'])->group(function () {
     Route::get('/wallet', function () {
         return view('account_pages.wallet');
     })->name('user.wallet');
-    Route::get('/statements', function () {
-        return view('account_pages.statements');
-    })->name('user.statements');
-    Route::get('/change_password', function () {
-        return view('account_pages.change_password');
-    })->name('user.change_password');
     
     
     Route::get('/profit_loss', function () {
         return view('account_pages.profit_loss');
     })->name('user.profit_loss');
-    Route::get('/unsettled_bets', function () {
-        return view('account_pages.unsettled_bets');
-    })->name('user.unsettled_bets');
     Route::get('/favourite', function () {
         return view('account_pages.favourite');
     })->name('user.favourite');
+    Route::get('/statements', function () {
+        return view('account_pages.statements');
+    })->name('user.statements');
+
+    
+    Route::get('/bonus', function () {
+        return view('account_pages.bonus');
+    })->name('user.bonus');
+    Route::get('/game_statics', function () {
+        return view('account_pages.statements');
+    })->name('user.game_statics');
+    Route::get('/notification', function () {
+        return view('account_pages.notification');
+    })->name('user.notification');
+    
+
+
+
+    Route::get('/unsettled_bets', function () {
+        return view('account_pages.unsettled_bets');
+    })->name('user.unsettled_bets');
     Route::get('/market_analysis', function () {
         return view('account_pages.market_analysis');
     })->name('user.market_analysis');
+    Route::get('/change_password', function () {
+        return view('account_pages.change_password');
+    })->name('user.change_password');
 
     // User Section End
 
@@ -156,6 +179,8 @@ Route::post('login', [AuthController::class,'login'])->name('login')->withoutMid
 Route::post('register', [AuthController::class,'register'])->name('register')->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::post('forgetPassword', [AuthController::class,'forgetPassword'])->name('forgetPassword')->withoutMiddleware([VerifyCsrfToken::class]);
+
+Route::post('changePassword', [AuthController::class,'changePassword'])->name('changePassword')->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::post('launchGame', [GamesController::class,'launchGame'])->name('launchGame')->withoutMiddleware([VerifyCsrfToken::class]);
 

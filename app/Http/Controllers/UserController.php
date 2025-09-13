@@ -9,7 +9,12 @@ use App\Models\Transaction;
 
 class UserController extends Controller
 {
-    
+    protected $currentUser;
+
+    public function __construct(){
+        $this->currentUser = User::getCurrentUser();
+    }
+
     public function profile(Request $request){
         if(Session::get('user_session')=='demo_user_demo'){
             $data = [
@@ -19,10 +24,10 @@ class UserController extends Controller
             ];
         } else{
 
-            $user = User::getCurrentUser();
+            $user = $this->currentUser;
             
             $data = [
-                'user_id'=>$user->user_uid,
+                'user_id'=>$user->phone,
                 'available_chips'=>$user->wallet_amount,
                 'exposure'=>$user->unsattled_amount
             ];
@@ -36,19 +41,55 @@ class UserController extends Controller
 
     public function deposit(Request $request){
         
-        $user = User::getCurrentUser();
+        $user = $this->currentUser;
+        $data = Transaction::where([
+            'user_uid'=>$user->user_uid,
+            'payment_type'=>'0'
+        ])->get();
+        return view('account_pages.deposit',compact('data'));
+
+    }
+    
+    public function withdrawal(Request $request){
+        
+        $user = $this->currentUser;
+        $data = Transaction::where([
+            'user_uid'=>$user->user_uid,
+            'payment_type'=>'1'
+        ])->get();
+        return view('account_pages.withdrawal',compact('data'));
+
+    }
+
+    public function enterStakes(Request $request){
+        return view('account_pages.enterStakes');
+    }
+    
+    public function addStake(Request $request){
+        $user = $this->currentUser;
+        $oldStakes = json_decode($user->additional_data,true);
+        $oldStakes['stakes'][] = $request->stake;
+        
+        $user->additional_data = json_encode($oldStakes);
+        $user->save();
+        
+        return response()->json([
+            'message'=> 'Stake added',
+            'error_code'=> '201'
+        ]);
+    }
+
+    public function transaction(Request $request){
+        
+        $user = $this->currentUser;
         $data = Transaction::where('user_uid',$user->user_uid)->get();
-        // foreach ($data as $key => $value) {
-        //     dump($key,'----',$value->user_uid);
-        // }
-        // dd($data);
-        return view('account_pages.deposit-withdrawal',compact('data'));
+        return view('account_pages.transaction',compact('data'));
 
     }
 
     public function refer_rewards(){
 
-        $data = User::getCurrentUser();
+        $data = $this->currentUser;
         return view('account_pages.refer_rewards',compact('data'));
     }
 

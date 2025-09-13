@@ -817,3 +817,18 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
+
+body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar { 
+    -ms-overflow-style: none;
+    /* display: none; */
+    width: 2px;
+    background: transparent;
+}
+
+.button__Qkvay{
+    display: none !important;
+}
+
+.chat_support_btn {
+    z-index: 1111;
+}

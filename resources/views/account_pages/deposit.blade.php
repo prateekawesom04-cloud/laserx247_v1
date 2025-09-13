@@ -9,20 +9,6 @@
             </div>
         </div>
 
-        <!-- Radio Section -->
-        <div class="radio-section p-3 border-bottom">
-            <div class="d-flex justify-content-center gap-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transaction_type" id="deposit" value="0"
-                        checked>
-                    <label class="form-check-label fw-medium" for="deposit" style="font-size: 13px;">Deposit</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transaction_type" id="withdrawal" value="1">
-                    <label class="form-check-label fw-medium" for="withdrawal" style="font-size: 13px;">Withdrawal</label>
-                </div>
-            </div>
-        </div>
 
         <!-- Transaction Section -->
         <div class="p-3 deposit-section" id="depositSection">
@@ -48,7 +34,8 @@
                         style="font-size: 11px;">SUBMIT</a></div>
             </div>
 
-            <div class="table-container rounded">
+            <div class="table-container rounded flex items-center justify-center">
+                @if(count($data))
                 <div class="table-wrapper">
                     <table class="table w-100 m-0">
                         <thead class="table-header text-white text-center py-0" style="font-size: 10px;">
@@ -62,25 +49,22 @@
                             </tr>
                         </thead>
                         <tbody class="table-content">
-                        @if(count($data))
                             @foreach ($data as $value)
                                 <tr class="table-row text-center">
                                     <td>{{($value->payment_type)? 'withdraw' : 'deposit'}}</td>
                                     <td>{{$value->transfer_amount}}</td>
-                                    <td>{{($value->status==2)?'success':'under process or failed'}}</td>
+                                    <td>{{($value->status==0)?'success':'processing'}}</td>
                                     <td>{{$value->created_at->format('Y-m-d')}}</td>
                                     <td>{{$value->order_sn}}</td>
                                     <td>{{$value->remark}}</td>
                                 </tr>                                
                             @endforeach
-                        @else
-                            <tr>
-                                <td class="table-row text-center" colspan="6">No Data Found</td>
-                            </tr>
-                        @endif
                         </tbody>
                     </table>
                 </div>
+                @else
+                    <div class="table-row text-center">No Data Found</div>
+                @endif
             </div>
         </div>
     </div>
@@ -91,17 +75,20 @@
 
         function paymentRequest(response){
             response = JSON.parse(response);
-            
-            window.location.href = response.data['pay_url'];
+            if(response.data['pay_url']){
+                window.location.href = response.data['pay_url'];
+            } else{
+                alert('Payment failed');
+            }
         }
 
         $('a.btn-submit').click(function(e){
             let data = {};
+           
+            data.payment_type = '0';
             
-            data.payment_type = $('input[type=radio]:checked').val();
-
-            if((data.payment_type==0 && $('#depositAmount').val() > 200) || (data.payment_type==1 && $('#depositAmount').val() > 500)){
-                data.money = $('#depositAmount').val()*100;
+            if($('#depositAmount').val() >= 200){
+                data.money = $('#depositAmount').val();
                 callApi('post', 'paymentRequest', data, paymentRequest);
             } else{
                 

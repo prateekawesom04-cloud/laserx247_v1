@@ -21,9 +21,10 @@ return new class extends Migration
             $table->string('wallet_amount')->default('0.00');
             $table->string('unsattled_amount')->default('0.00');
             $table->string('commission_amount')->default('0.00');
+            $table->string('referral')->nullable();
             $table->string('referral_code');
             $table->integer('referral_nos')->default(0);
-            $table->string('addition_data')->nullable();
+            $table->string('additional_data')->nullable();
             $table->timestamps();
         });
     }
