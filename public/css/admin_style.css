@@ -415,7 +415,7 @@ td {
     color: white;
 }
 .acc-btn-submit {
-    background-color: #009966;
+    background-color: #0e22db;
     color: white;
 }
 .acc-password-input {
@@ -518,7 +518,7 @@ td {
 
 /* withdraw request */
 .section-header {
-    background-color: #009879;
+    background-color: #0d6efd;
     color: white;
     padding: 10px 15px;
     font-weight: 600;
@@ -550,57 +550,12 @@ td {
 }
 
 .nav-tabs .nav-link.active {
-    background-color: #0d8754;
+    background-color: #0d6efd;
     color: #fff !important;
 }
 
-@media (max-width: 576px) {
-    .nav-tabs {
-        overflow-x: auto;
-        flex-wrap: nowrap;
-    }
-    .nav-tabs .nav-link {
-        flex-shrink: 0;
-        font-size: 12px;
-        padding: 8px 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    .nav-tabs .nav-link {
-        font-size: 11px;
-        padding: 6px 10px;
-    }
-}
-
 /* password history */
-.pch-header {
-    background-color: #149978;
-    color: white;
-    font-weight: bold;
-}
 
-.pch-table th {
-    background-color: #dee2e6;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.pch-table td {
-    text-align: center;
-    vertical-align: middle;
-}
-
-.pch-footer-text {
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-}
-
-@media (max-width: 480px) {
-    .pch-footer-text {
-        font-size: 0.75rem;
-    }
-}
 
 /* (setting)-block market */
 .toggle-switch {

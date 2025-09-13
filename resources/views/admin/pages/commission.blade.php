@@ -7,6 +7,7 @@
         <div class="card mb-3">
             <div class="card-body">
                 <div class="row g-3 align-items-center">
+                    <div class="col-auto">FROM</div>
                     <div class="col-sm-auto">
                         <input type="date" class="form-control" value="2025-09-01" />
                     </div>
@@ -95,16 +96,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-
-                        <div class="d-flex flex-column flex-md-row justify-content-between mt-3">
-                            <div>Showing 1 to 10 of 0 entries</div>
-                            <div class="mt-2 mt-md-0">
-                                <a class="btn btn-link btn-sm">First</a>
-                                <a class="btn btn-link btn-sm">Previous</a>
-                                <a class="btn btn-link btn-sm">Next</a>
-                                <a class="btn btn-link btn-sm">Last</a>
-                            </div>
                         </div>
                     </div>
 

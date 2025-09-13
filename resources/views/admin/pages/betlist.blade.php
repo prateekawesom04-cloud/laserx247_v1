@@ -8,32 +8,33 @@
             <div class="card-body border border-primary">
                 <form>
                     <div class="row g-3">
-                        <div class="col-12 col-sm-6 col-md-3">
+                        <div class="col-6 col-md-4 col-lg-3">
                             <label for="choose-type" class="form-label">Choose Type</label>
                             <select id="choose-type" class="form-select form-select-sm">
                                 <option>UnSettle</option>
                             </select>
                         </div>
 
-                        <div class="col-12 col-sm-6 col-md-3">
+                        <div class="col-6 col-md-4 col-lg-3">
                             <label for="choose-sport" class="form-label">Choose Sport</label>
                             <select id="choose-sport" class="form-select form-select-sm">
                                 <option>Cricket</option>
                             </select>
                         </div>
 
-                        <div class="col-12 col-sm-6 col-md-2">
+                        <div class="col-6 col-md-4 col-lg-3">
                             <label for="from-date" class="form-label">From Date</label>
                             <input type="date" id="from-date" class="form-control form-control-sm" value="2025-09-02">
                         </div>
 
-                        <div class="col-12 col-sm-6 col-md-2">
+                        <div class="col-6 col-md-4 col-lg-3">
                             <label for="to-date" class="form-label">To Date</label>
                             <input type="date" id="to-date" class="form-control form-control-sm" value="2025-09-02">
                         </div>
 
-                        <div class="col-12 col-md-2">
-                            <button type="submit" class="btn btn-primary w-100 btn-sm mt-sm-4 mt-md-0">Get History</button>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <label class="form-label d-block">&nbsp;</label>
+                            <button type="submit" class="btn btn-primary w-100 btn-sm">Get History</button>
                         </div>
                     </div>
                 </form>
@@ -48,22 +49,24 @@
             <div class="card-body">
 
                 <!-- Table Controls -->
-                <div class="row mb-3">
-                    <div class="col-md-6 d-flex align-items-center">
-                        <label class="me-2" for="show-entries">Show</label>
+                <div class="d-flex flex-wrap flex-nowrap align-items-center mb-3">
+                    <div class="d-flex align-items-center me-3 flex-shrink-0">
+                        <label class="me-2 mb-0" for="show-entries">Show</label>
                         <select id="show-entries" class="form-select w-auto">
                             <option>10</option>
                             <option>25</option>
                             <option>50</option>
                             <option>100</option>
                         </select>
-                        <span class="ms-2">entries</span>
                     </div>
-                    <div class="col-md-6 d-flex justify-content-end align-items-center ">
-                        <label class="me-2 " for="search">Search:</label>
-                        <input type="search" id="search" class="form-control w-auto border border-primary">
+
+                    <div class="d-flex align-items-center ms-auto flex-grow-1">
+                        <label class="me-2 mb-0" for="search">Search:</label>
+                        <input type="search" id="search" class="form-control form-control-sm border border-primary"
+                            style="max-width: 250px;">
                     </div>
                 </div>
+
                 <!-- Bet History Table -->
                 <div class="table-responsive">
                     <table class="table table-bordered text-center align-middle table-sm">
