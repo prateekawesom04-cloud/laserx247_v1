@@ -2,21 +2,22 @@
 <nav class="navbar navbar-expand-lg px-3 py-2 m-0"
     style="background: linear-gradient(to right, #070047, #0052a1, #00c2ff);">
     <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand" href="{{route('index')}}">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" height="35" width="100" />
-        </a>
+        <div class="flex flex-row items-center justify-evenly">
+            <!-- Logo -->
+            <a class="navbar-brand w-[40%]" href="{{route('index')}}">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-full" />
+            </a>
 
         <!-- Right Side Content -->
         @if (session('user_session'))
-            <div class="d-flex align-items-center ms-auto">
+            <div class="d-flex align-items-center justify-end ms-auto w-[60%]">
                 <!-- Info Box -->
                 <div class="d-flex align-items-center"
                     style="background-color: #2b3c48; border-radius: 6px; padding: 5px 10px; min-width: 100px;">
 
                     <!-- Left: Username -->
                     <div class="me-4 text-white d-flex align-items-center" style="font-weight: 00; font-size: 14px;">
-                        <i class="bi bi-person-fill me-1"></i> {{ substr($userData->user_uid,0,6) }} ...
+                        <i class="bi bi-person-fill me-1"></i> {{ $userData->phone }} ...
                     </div>
                     <!-- Right: Balance and Expiry -->
                     <div class="text-white text-end" style="font-size: 13px; line-height: 1.2;">
@@ -31,7 +32,7 @@
             </div>
         @else
             <!-- Login/Register (if not logged in) -->
-            <div class="d-flex ms-auto align-items-center gap-2">
+            <div class="d-flex ms-auto align-items-center justify-end gap-2 w-[60%]">
                 <a href="login" class="btn btn-sm fw-bold" style="background-color: #05113C; color: white;">
                     Login
                 </a>
@@ -40,6 +41,8 @@
                 </a>
             </div>
         @endif
+            
+        </div>
     </div>
 </nav>
 
