@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
     <script src="{{ asset('js') }}/jquery-3.7.1.min.js"></script>
     <script src="{{asset('js')}}/tailwind.min.js"></script>
-    <script src="//code.jivosite.com/widget/O2AMREX4Ch" async></script>
+    <!-- <script src="//code.jivosite.com/widget/O2AMREX4Ch" async></script> -->
 </head>
 
 <body class="min-vh-100 d-flex align-items-center justify-content-center"
@@ -213,9 +213,7 @@
         });
 
         $('input[name=otp]').on('keyup',function(e) {
-            
-            let charCode = (e.which) ? e.which : e.keyCode;
-            if (!testLocalStorage('user_otp') || charCode > 31 && (charCode < 48 || charCode > 57)) {
+            if (!testLocalStorage('user_otp')) {
                 e.preventDefault();
                 return false;
             }
