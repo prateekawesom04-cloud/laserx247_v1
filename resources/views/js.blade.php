@@ -179,6 +179,8 @@
     }
     // Header panel
     $(document).ready(function() {
+        $('.footer_height').height($('.app_footer').height());
+        
         $('#myAccountBtn').on('click', function(e) {
             e.preventDefault();
             console.log("My Account clicked!");
