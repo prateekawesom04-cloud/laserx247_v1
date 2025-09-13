@@ -48,14 +48,14 @@
     <div class="container-fluid py-0">
         <div class="row justify-content-center g-1">
             <div class="col-6 col-md-3 p-0">
-                <a href="{{route('user.deposit')}}" class="btn fw-bold text-white w-100"
-                    style="background-color: #28a745; border-radius: 0; padding: 12px 0;">
+                <a href="{{route('user.deposit')}}" class="btn fw-bold text-white w-100 py-1"
+                    style="background-color: #00b8f6; border-radius: 0;font-size: 12px;">
                     💳 DEPOSIT
                 </a>
             </div>
             <div class="col-6 col-md-3 p-0">
-                <a href="{{route('user.deposit')}}" class="btn fw-bold text-white w-100"
-                    style="background-color: #dc3545; border-radius: 0; padding: 12px 0;">
+                <a href="{{route('user.withdrawal')}}" class="btn fw-bold text-white w-100 py-1"
+                    style="background-color: #07054c; border-radius: 0;font-size: 12px;">
                     💸 WITHDRAWAL
                 </a>
             </div>
