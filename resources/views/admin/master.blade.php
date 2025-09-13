@@ -13,6 +13,7 @@
     @include('admin.model.add_user')
     @include('admin.model.add_banner')
     @include('admin.model.add_downline')
+    @include('admin.model.game_controller')
     @include('admin.model.add_message')
     @include('admin.model.agent_rolling_commission')
     @include('admin.model.change_password')

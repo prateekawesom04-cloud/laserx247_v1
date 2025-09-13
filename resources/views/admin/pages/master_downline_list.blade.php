@@ -134,23 +134,26 @@
                                 <td>
                                     <!-- Scrollable action buttons -->
                                     <div
-                                        class="action-buttons d-flex flex-nowrap gap-1 justify-content-center overflow-auto">
-                                        <a href="{{ route('admin.my_account') }}"
-                                            class="btn btn-sm fw-bold btn-user-details" data-bs-toggle="tooltip"
-                                            title="User Details">U</a>
-                                        <a href="#" class="btn btn-sm fw-bold btn-deposit-collection"
-                                            data-bs-toggle="tooltip" title="Deposit / Collection">D/C</a>
-                                        <a href="#" class="btn btn-sm fw-bold btn-withdrawal" data-bs-toggle="tooltip"
-                                            title="Withdrawal">W</a>
-                                        <a href="#" class="btn btn-sm fw-bold btn-password-change"
-                                            data-bs-toggle="tooltip" title="Password Change">P</a>
-                                        <a href="#" class="btn btn-sm fw-bold btn-game-control"
-                                            data-bs-toggle="tooltip" title="Game Control">GC</a>
-                                        <a href="#" class="btn btn-sm fw-bold btn-casino-control"
-                                            data-bs-toggle="tooltip" title="Casino Control">CC</a>
-                                        <a href="#" class="btn btn-sm fw-bold btn-delete" data-bs-toggle="tooltip"
-                                            title="Delete">D</a>
-                                    </div>
+                                            class="action-buttons d-flex flex-nowrap gap-1 justify-content-center overflow-auto">
+                                            <a href="{{ route('admin.my_account') }}"
+                                                class="btn btn-sm fw-bold btn-user-details" data-bs-toggle="tooltip"
+                                                title="User Details">U</a>
+                                            <a href="#" class="btn btn-sm fw-bold btn-deposit-collection"
+                                                data-bs-toggle="modal" data-bs-target="#balanceModal"
+                                                title="Deposit / Collection">D/C</a>
+                                            <a href="#" class="btn btn-sm fw-bold btn-withdrawal"
+                                                data-bs-toggle="modal" data-bs-target="#balanceModal"
+                                                title="Withdrawal">W</a>
+                                            <a href="#" class="btn btn-sm fw-bold btn-password-change"
+                                                data-bs-toggle="modal" data-bs-target="#changePasswordModal"
+                                                title="Password Change">P</a>
+                                            <a href="#" class="btn btn-sm fw-bold btn-game-controller"
+                                                data-bs-toggle="modal" data-bs-target="#gameControllerModal"title="Game Control">GC</a>
+                                            <a href="#" class="btn btn-sm fw-bold btn-casino-control"
+                                                data-bs-toggle="tooltip" title="Casino Control">CC</a>
+                                            <a href="#" class="btn btn-sm fw-bold btn-delete" data-bs-toggle="modal"
+                                                data-bs-target="#deleteConfirmationModal" title="Delete">D</a>
+                                        </div>
                                 </td>
 
                             </tr>

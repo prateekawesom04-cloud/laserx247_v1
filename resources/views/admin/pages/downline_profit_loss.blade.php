@@ -63,8 +63,6 @@
                             class="form-control w-auto form-control-sm border border-primary" style="min-width: 120px;">
                     </div>
                 </div>
-
-
                 <!-- Table -->
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
