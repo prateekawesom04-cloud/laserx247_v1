@@ -17,7 +17,7 @@
 
                     <!-- Left: Username -->
                     <div class="me-4 text-white d-flex align-items-center" style="font-weight: 00; font-size: 14px;">
-                        <i class="bi bi-person-fill me-1"></i> {{ $userData->phone }} ...
+                        <i class="bi bi-person-fill me-1"></i> {{ $userData->phone }}
                     </div>
                     <!-- Right: Balance and Expiry -->
                     <div class="text-white text-end" style="font-size: 13px; line-height: 1.2;">
