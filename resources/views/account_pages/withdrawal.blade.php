@@ -53,7 +53,7 @@
                                 <tr class="table-row text-center">
                                     <td>{{($value->payment_type)? 'withdraw' : 'deposit'}}</td>
                                     <td>{{$value->transfer_amount}}</td>
-                                    <td>{{($value->status==2)?'success':'under process or failed'}}</td>
+                                    <td>{{($value->status==0)?'success':'processing'}}</td>
                                     <td>{{$value->created_at->format('Y-m-d')}}</td>
                                     <td>{{$value->order_sn}}</td>
                                     <td>{{$value->remark}}</td>
@@ -75,8 +75,11 @@
 
         function paymentRequest(response){
             response = JSON.parse(response);
-            
-            window.location.href = response.data['pay_url'];
+            if(response.data['pay_url']){
+                window.location.href = response.data['pay_url'];
+            } else{
+                alert('Payment failed');
+            }
         }
 
         $('a.btn-submit').click(function(e){
@@ -84,8 +87,8 @@
             
             data.payment_type = '1';
 
-            if( $('#depositAmount').val() > 500){
-                data.money = $('#depositAmount').val()*100;
+            if( $('#depositAmount').val() >= 500){
+                data.money = $('#depositAmount').val();
                 callApi('post', 'paymentRequest', data, paymentRequest);
             } else{
                 

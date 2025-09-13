@@ -15,18 +15,18 @@ class PaymentController extends Controller
         $data = [];
         $data['app_id'] = env('LG_PAY_APP_ID');
         $data['order_sn'] = time().date("Ymd")."_p_".time().rand(0000,9999);
-        $data['money'] = $request->money;
+        $data['money'] = $request->money*100;
         $data['notify_url'] = url('/').'/paymentCallback';
 
         $user = User::getCurrentUser();
-
+        
         if($user){
 
             $transaction = new Transaction();
             $transaction->user_uid = $user->user_uid;
             // $transaction->user_uid = '121';
             $transaction->order_sn = $data['order_sn'];
-            $transaction->transfer_amount = $data['money'];
+            $transaction->transfer_amount = $request->money;
             $transaction->ip = $request->ip();
             $transaction->status = 2;
             $transaction->payment_type = $request->payment_type;

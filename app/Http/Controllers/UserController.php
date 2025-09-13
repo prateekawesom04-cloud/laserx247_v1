@@ -42,7 +42,10 @@ class UserController extends Controller
     public function deposit(Request $request){
         
         $user = $this->currentUser;
-        $data = Transaction::where('user_uid',$user->user_uid)->get();
+        $data = Transaction::where([
+            'user_uid'=>$user->user_uid,
+            'payment_type'=>'0'
+        ])->get();
         return view('account_pages.deposit',compact('data'));
 
     }
@@ -50,7 +53,10 @@ class UserController extends Controller
     public function withdrawal(Request $request){
         
         $user = $this->currentUser;
-        $data = Transaction::where('user_uid',$user->user_uid)->get();
+        $data = Transaction::where([
+            'user_uid'=>$user->user_uid,
+            'payment_type'=>'1'
+        ])->get();
         return view('account_pages.withdrawal',compact('data'));
 
     }
