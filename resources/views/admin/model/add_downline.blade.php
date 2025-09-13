@@ -41,36 +41,39 @@
                                 placeholder="Retype Password">
                         </div>
                     </div>
+                    <div class="row">
+                        <!-- Partnership Sharing -->
+                        <div class="mb-3 col-6">
+                            <label class="form-label">Downline Sharing</label>
+                            <div class="input-group input-group-sm">
+                                <input type="number" name="downline_sharing" class="form-control" placeholder="%"
+                                    min="0" max="100">
+                                <span class="input-group-text">(My Sharing 0%)</span>
+                            </div>
+                        </div>
 
+                        <!-- Credit Reference -->
+                        <div class="mb-3 col-6">
+                            <label class="form-label">Credit Reference</label>
+                            <input type="text" name="credit_reference" class="form-control form-control-sm"
+                                placeholder="Credit Reference">
+                        </div>
 
-                    <!-- Partnership Sharing -->
-                    <div class="mb-3">
-                        <label class="form-label">Downline Sharing</label>
-                        <div class="input-group input-group-sm">
-                            <input type="number" name="downline_sharing" class="form-control" placeholder="%"
-                                min="0" max="100">
-                            <span class="input-group-text">(My Sharing 0%)</span>
+                        <!-- Add Deposit -->
+                        <div class="mb-3 col-6">
+                            <label class="form-label">Add Deposit</label>
+                            <input type="number" name="add_deposit" class="form-control form-control-sm"
+                                placeholder="Amount">
+                        </div>
+
+                        <!-- Deposit Remark -->
+                        <div class="mb-3 col-6">
+                            <label class="form-label">Deposit Remark</label>
+                            <input type="text" name="deposit_remark" class="form-control form-control-sm"
+                                placeholder="Remark">
                         </div>
                     </div>
 
-                    <!-- Credit & Deposit -->
-                    <div class="mb-3">
-                        <label class="form-label">Credit Reference</label>
-                        <input type="text" name="credit_reference" class="form-control form-control-sm"
-                            placeholder="Credit Reference">
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Add Deposit</label>
-                        <input type="number" name="add_deposit" class="form-control form-control-sm"
-                            placeholder="Amount">
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Deposit Remark</label>
-                        <input type="text" name="deposit_remark" class="form-control form-control-sm"
-                            placeholder="Remark">
-                    </div>
                 </form>
             </div>
 

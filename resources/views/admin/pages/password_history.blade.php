@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('body')
-<div class=" p-4">
+<div class=" py-4">
     <div class="container-fluid">
         <div class="card shadow-sm">
             <div class="card-header pch-header">

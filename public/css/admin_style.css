@@ -206,23 +206,72 @@ body {
 }
 
 /* index page */
+
 /* Downline user */
-.btn-custom {
-    border: none;
+ .table .btn-sm {
+        min-width: 36px;
+        padding: 0.25rem 0.5rem;
+    }
+
+    /* Prevent overflow stacking on mobile */
+    td .d-flex {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    /* Responsive fix for long buttons */
+    .table td, 
+    .table th {
+        white-space: nowrap;
+    }
+
+    .table-responsive-sm {
+        overflow-x: auto;
+        overflow-y: auto;
+        max-height: 400px;
+    }
+    .btn-user-details {
+    background-color: #f47442;
     color: white;
-    padding: 5px 10px;
-    margin: 2px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 14px;
 }
+
+.btn-deposit-collection {
+    background-color: #157a06;
+    color: white;
+}
+
+.btn-withdrawal {
+    background-color: #2f3c88;
+    color: white;
+}
+
+.btn-password-change {
+    background-color: #fff700;
+    color: black;
+}
+
+.btn-game-control {
+    background-color: #e287f2;
+    color: black;
+}
+
+.btn-casino-control {
+    background-color: #5efc4d;
+    color: black;
+}
+
+.btn-delete {
+    background-color: #fc4d4d;
+    color: black;
+}
+/* Add clint Account */
+
 /* My Account  */
 .sidebar-link.active {
     background-color: #dceede;
-    color: #009b5e;
+    color: #000a9b;
     font-weight: 600;
-    border-left: 4px solid #009b5e;
+    border-left: 4px solid #00039b;
 }
 
 .icon-btn {
@@ -597,4 +646,11 @@ td {
 
 .toggle-switch input:checked + .toggle-slider:before {
     transform: translateX(14px);
+}
+/* padding media query for mobile padding */
+@media (max-width: 576px) {
+     .container-fluid {
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+    }
 }

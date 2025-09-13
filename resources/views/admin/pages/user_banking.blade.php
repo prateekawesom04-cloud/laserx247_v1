@@ -2,7 +2,7 @@
 @section('body')
 
 <div class="container-fluid p-4">
-  <div class="card border border-success">
+  <div class="card border border-primary">
     <div class="card-body">
 
       <div class="d-flex justify-content-between align-items-center mb-3">
@@ -48,7 +48,7 @@
                 <button class="btn btn-secondary btn-sm acc-btn-dw">D</button>
                 <button class="btn btn-secondary btn-sm acc-btn-dw ms-1">W</button>
                 <input type="number" class="form-control form-control-sm mx-2 acc-input-sm" value="0">
-                <button class="btn btn-success btn-sm acc-btn-full">Full</button>
+                <button class="btn btn-primary btn-sm acc-btn-full">Full</button>
               </div>
             </td>
             <td><input type="text" class="form-control form-control-sm" value="Remark"></td>

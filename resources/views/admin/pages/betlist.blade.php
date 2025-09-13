@@ -5,7 +5,7 @@
 
         <!-- Filter Section -->
         <div class="card shadow-sm border-0 mb-4 mt-4">
-            <div class="card-body border border-success">
+            <div class="card-body border border-primary">
                 <form>
                     <div class="row g-3">
                         <div class="col-12 col-sm-6 col-md-3">
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="col-12 col-md-2">
-                            <button type="submit" class="btn btn-success w-100 btn-sm mt-sm-4 mt-md-0">Get History</button>
+                            <button type="submit" class="btn btn-primary w-100 btn-sm mt-sm-4 mt-md-0">Get History</button>
                         </div>
                     </div>
                 </form>
@@ -42,7 +42,7 @@
 
         <!-- Bet History Section -->
         <div class="card shadow-sm border-0 mb-4">
-            <div class="card-header bg-success text-white">
+            <div class="card-header bg-primary text-white">
                 <strong>Bet History</strong>
             </div>
             <div class="card-body">
@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-md-6 d-flex justify-content-end align-items-center ">
                         <label class="me-2 " for="search">Search:</label>
-                        <input type="search" id="search" class="form-control w-auto border border-success">
+                        <input type="search" id="search" class="form-control w-auto border border-primary">
                     </div>
                 </div>
                 <!-- Bet History Table -->

@@ -3,7 +3,7 @@
 @section('body')
 <div class="container-fluid p-4">
     <div class="card shadow-lg rounded bg-white">
-        <div class="card-header bg-success text-white p-2">
+        <div class="card-header bg-primary text-white p-2">
             <h4 class="mb-0">Block Market</h4>
         </div>
         <div class="card-body">

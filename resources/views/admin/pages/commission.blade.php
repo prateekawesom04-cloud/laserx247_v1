@@ -15,7 +15,7 @@
                         <input type="date" class="form-control" value="2025-09-02" />
                     </div>
                     <div class="col-sm-auto">
-                        <a class="btn btn-success">Get Commission</a>
+                        <a class="btn btn-primary">Get Commission</a>
                     </div>
                 </div>
             </div>
@@ -24,7 +24,7 @@
         <!-- Tabs and Table Card -->
         <div class="card">
             <div class="card mb-3">
-                <div class="card-body py-2 px-3 bg-success text-white">
+                <div class="card-body py-2 px-3 bg-primary text-white">
                     <h5 class="mb-0">Agent Commission</h5>
                 </div>
             </div>

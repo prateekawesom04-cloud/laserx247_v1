@@ -5,7 +5,7 @@
     <div class="row">
         <!-- Table with event settings -->
         <div class="col-12">
-            <div class="card-header bg-success text-white p-2">
+            <div class="card-header bg-primary text-white p-2">
                 <h4 class="mb-0">Event General Settings</h4>
             </div>
             <div class="bg-white p-3 rounded shadow">

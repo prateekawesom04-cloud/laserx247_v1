@@ -4,59 +4,60 @@
         <div class="pl-body px-2 ">
 
             <!-- Filter Card -->
-            <div class="card pl-card border border-success p-1 mb-4">
+            <div class="card pl-card border border-primary p-1 mb-4">
                 <div class="pl-header"></div>
                 <form>
                     <div class="row g-3 align-items-end">
-                        <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="col-6 col-md-4 col-lg-2">
                             <label for="data-source" class="form-label">Data Source</label>
                             <select id="data-source" class="form-select form-select-sm">
                                 <option selected>LIVE DATA</option>
                                 <option>DEMO DATA</option>
                             </select>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="col-6 col-md-4 col-lg-2">
                             <label for="from-date" class="form-label">From Date</label>
                             <input type="date" id="from-date" class="form-control form-control-sm" value="2025-09-02">
                         </div>
-                        <div class="col-lg-1 col-md-4 col-sm-6">
+                        <div class="col-6 col-md-4 col-lg-1">
                             <label for="from-time" class="form-label">Time</label>
                             <input type="time" id="from-time" class="form-control form-control-sm" value="00:00">
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="col-6 col-md-4 col-lg-2">
                             <label for="to-date" class="form-label">To Date</label>
                             <input type="date" id="to-date" class="form-control form-control-sm" value="2025-09-02">
                         </div>
-                        <div class="col-lg-1 col-md-4 col-sm-6">
+                        <div class="col-6 col-md-4 col-lg-1">
                             <label for="to-time" class="form-label">Time</label>
                             <input type="time" id="to-time" class="form-control form-control-sm" value="23:59">
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-6">
-                            <button type="submit" class="btn btn-success w-100 btn-sm">Get P&L</button>
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <button type="submit" class="btn btn-primary w-100 btn-sm">Get P&L</button>
                         </div>
                     </div>
                 </form>
+
             </div>
 
             <!-- Table + Controls Card -->
             <div class="card pl-card p-1">
-                <div class="pl-header text-center bg-success text-white py-2 rounded">Profit & Loss Table</div>
-
+                <div class="pl-header text-center bg-primary text-white py-2 rounded">Profit & Loss Table</div>
                 <!-- Table Controls -->
-                <div class="row mb-3">
-                    <div class="col-md-6 d-flex align-items-center">
-                        <label class="me-2" for="show-entries">Show</label>
+                <div class="d-flex flex-wrap flex-nowrap align-items-center mb-3">
+                    <div class="d-flex align-items-center me-3 flex-shrink-0">
+                        <label class="me-2 mb-0" for="show-entries">Show</label>
                         <select id="show-entries" class="form-select w-auto">
                             <option>10</option>
                             <option>25</option>
                             <option>50</option>
                             <option>100</option>
                         </select>
-                        <span class="ms-2">entries</span>
                     </div>
-                    <div class="col-md-6 d-flex justify-content-end align-items-center ">
-                        <label class="me-2 " for="search">Search:</label>
-                        <input type="search" id="search" class="form-control w-auto border border-success">
+
+                    <div class="d-flex align-items-center ms-auto flex-grow-1">
+                        <label class="me-2 mb-0" for="search">Search:</label>
+                        <input type="search" id="search" class="form-control form-control-sm border border-primary"
+                            style="max-width: 250px;">
                     </div>
                 </div>
 

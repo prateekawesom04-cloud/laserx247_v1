@@ -4,10 +4,10 @@
 <div class="container-fluid p-4">
 
   <!-- Card Container -->
-  <div class="card border-success shadow-sm">
+  <div class="card border-primary shadow-sm">
     
     <!-- Header -->
-    <div class="card-header bg-success text-white fw-bold">Add Method</div>
+    <div class="card-header bg-primary text-white fw-bold">Add Method</div>
 
     <!-- Action Button -->
     <div class="card-body pb-0">

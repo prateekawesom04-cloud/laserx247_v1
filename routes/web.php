@@ -238,6 +238,10 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         return view('admin.pages.downline_profit_loss');
             })->name('admin.downline_profit_loss');
 
+             Route::get('/add_edit_client_account', function () {
+        return view('admin.pages.add_edit_client_account');
+            })->name('admin.add_edit_client_account');
+
         Route::get('/betlist', function () {
         return view('admin.pages.betlist');
             })->name('admin.betlist');

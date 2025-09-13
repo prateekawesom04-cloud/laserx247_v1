@@ -3,7 +3,7 @@
 @section('body')
     <div class="container-fluid p-4">
         <div class="card shadow rounded bg-white" style="max-width: 600px; margin: 0 auto;">
-            <div class="card-header bg-success text-white p-2 rounded-top">
+            <div class="card-header bg-primary text-white p-2 rounded-top">
                 <h4 class="mb-0">Add Banner</h4>
             </div>
             <form class="px-4">

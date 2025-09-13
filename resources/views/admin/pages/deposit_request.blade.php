@@ -5,7 +5,7 @@
 
   {{-- Deposit Request Section --}}
   <div class="card mb-4 shadow-sm">
-    <div class="card-header bg-success text-white fw-bold">Deposit Request</div>
+    <div class="card-header bg-primary text-white fw-bold">Deposit Request</div>
     <div class="card-body p-0">
       <div class="table-responsive">
         <table class="table table-bordered table-hover align-middle text-center mb-0">
@@ -33,7 +33,7 @@
 
   {{-- Transaction History Section --}}
   <div class="card shadow-sm">
-    <div class="card-header bg-success text-white fw-bold">Transaction History</div>
+    <div class="card-header bg-primary text-white fw-bold">Transaction History</div>
     <div class="card-body p-0">
       <div class="table-responsive">
         <table class="table table-bordered table-hover align-middle text-center mb-0">

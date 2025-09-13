@@ -3,7 +3,7 @@
 @section('body')
 <div class="container-fluid p-4">
     <div class="card">
-        <div class="card-header bg-success text-white">
+        <div class="card-header bg-primary text-white">
             <h5 class="mb-0">User General Setting</h5>
         </div>
         <div class="card-body">
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="text-end">
-                    <a type="submit" class="btn btn-success">Update</a>
+                    <a type="submit" class="btn btn-primary">Update</a>
                 </div>
             </form>
         </div>
