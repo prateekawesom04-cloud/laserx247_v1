@@ -14,7 +14,7 @@
         @else
         <div>
             <h5 class="mb-0 fw-bold fs-6" id="accountPanelLabel">
-                Account ID: <span class="text-warning fs-6">{{ substr($userData->user_uid,0,6) }} ...</span>
+                Account ID: <span class="text-warning fs-6">{{ $userData->phone }}</span>
             </h5>
             <small class="d-block mt-1 text-white-50 fs-7">
                 Last Login: <span class="fst-italic fs-7">{{ $userData->updated_at }}</span>
