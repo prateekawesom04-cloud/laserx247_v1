@@ -1,4 +1,4 @@
-<nav class="bg-dark text-white fixed-bottom border-top">
+<nav class="bg-dark text-white fixed-bottom border-top app_footer">
   <div class="container-fluid">
     <div class="row text-center">
 
@@ -49,7 +49,7 @@
     </div>
   </div>
 </nav>
-
+<div class="footer_height w-full"></div>
 <script>
   $(document).ready(function(){
     $('nav a').removeClass('text-primary');

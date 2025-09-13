@@ -1,5 +1,5 @@
 <!-- Footer Info Section -->
-<footer class="fixed-bottom bg-light border-top py-2 shadow-sm">
+<footer class="fixed-bottom bg-light border-top py-2 shadow-sm app_footer">
     <div class="container text-center">
         <div class="d-flex justify-content-center flex-wrap gap-3 small text-muted">
             <a href="javascript:void(0)" class="text-decoration-none text-secondary fw-medium hover-link">Privacy Policy</a>
@@ -9,3 +9,4 @@
     </div>
 </footer>
 
+<div class="footer_height w-full py-2"></div>
