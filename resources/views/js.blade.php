@@ -248,5 +248,50 @@
             element.attr('type', 'password');            
         }
     });
+
+
+
+
+    
+        // Get Otp
+
+        $('a.getOtp').click(function(e) {
+
+            if($('input[name=phone]').val().length < 10){
+                alert('Please Enter Correct Number');
+                return false;
+            }
+
+            if (otpVerified || $(this).prop('disabled')) {
+                return false;
+            }
+            $('input[name=user_id]').val($('input[name=phone]').val());
+            let data = {};
+            data.phone = $('input[name=phone]').val();
+            callApi('get', 'getOtp', data, getOtp);
+            startOtpCountdown(this);
+        });
+
+
+        function startOtpCountdown(button) {
+
+            $(button).prop('disabled', true).text(`Retry in ${data.otpTimeLeft}s`);
+
+            data.otpTimer = setInterval(() => {
+                data.otpTimeLeft--;
+
+                if (data.otpTimeLeft > 0) {
+                    $(button).text(`Retry in ${data.otpTimeLeft}s`);
+                } else {
+                    if (!otpVerified) {
+                        $(button).prop('disabled', false).text('Get OTP');
+                    }
+                    clearInterval(data.otpTimer);
+                }
+            }, 1000);
+
+        }
+
+
 </script>
 
