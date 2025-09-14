@@ -239,5 +239,14 @@
         $('.chat_support_btn').show();
     }, 2000);
 
+
+    $('a.btn').click(function(){
+        element = $(this).siblings('input');
+        if(element.attr('type')=='password'){
+            element.attr('type', 'text');
+        } else{
+            element.attr('type', 'password');            
+        }
+    });
 </script>
 

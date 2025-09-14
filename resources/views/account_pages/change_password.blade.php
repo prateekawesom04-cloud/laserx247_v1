@@ -15,7 +15,7 @@
             <!-- Old Password -->
             <div class="mb-3">
                 <div class="input-group">
-                    <input type="password" class="form-control" placeholder="Enter Old Password" id="oldPassword"
+                    <input type="password" class="form-control shadow-none" placeholder="Enter Old Password" id="oldPassword"
                         style="font-size: 12px;">
                     <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button"
                         style="font-size: 12px;">👁️</a>
@@ -25,7 +25,7 @@
             <!-- New Password -->
             <div class="mb-3">
                 <div class="input-group">
-                    <input type="password" class="form-control" placeholder="Enter New Password" id="newPassword"
+                    <input type="password" class="form-control shadow-none" placeholder="Enter New Password" id="newPassword"
                         style="font-size: 12px;">
                     <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button"
                         style="font-size: 12px;">👁️</a>
@@ -35,7 +35,7 @@
             <!-- Confirm Password -->
             <div class="mb-3">
                 <div class="input-group">
-                    <input type="password" class="form-control" placeholder="Confirm New Password" id="confirmPassword"
+                    <input type="password" class="form-control shadow-none" placeholder="Confirm New Password" id="confirmPassword"
                         style="font-size: 12px;">
                     <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button"
                         style="font-size: 12px;">👁️</a>
@@ -57,16 +57,6 @@
 
 @section('js')
 <script>
-
-    $('a.btn').click(function(){
-        element = $(this).siblings('input');
-        if(element.attr('type')=='password'){
-            element.attr('type', 'text');
-        } else{
-            element.attr('type', 'password');            
-        }
-    });
-
 
     $('a.btn-submit').click(function(){
         let oldPassword = $('#oldPassword').val();

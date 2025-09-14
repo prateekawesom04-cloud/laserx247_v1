@@ -71,7 +71,8 @@
                                     <i class="bi bi-lock"></i>
                                 </span>
                                 <input type="password" class="form-control shadow-none" name="password"
-                                    placeholder="Enter Password"disabled />
+                                    placeholder="Enter Password" disabled />
+                                <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button" style="font-size: 12px;">👁️</a>
                             </div>
 
                             <!-- Confirm Password -->
@@ -80,7 +81,8 @@
                                     <i class="bi bi-lock"></i>
                                 </span>
                                 <input type="password" class="form-control shadow-none" name="confirm_password"
-                                    placeholder="Enter Confirm Password"disabled />
+                                    placeholder="Enter Confirm Password" disabled />
+                                <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button" style="font-size: 12px;">👁️</a>
                             </div>
                             <!-- UserId -->
                             <div class="input-group mb-3 referral_code_input" style="display:none;">
