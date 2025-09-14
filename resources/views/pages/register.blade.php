@@ -42,7 +42,7 @@
                                 <span class="input-group-text bg-white border-end-0">
                                     <i class="bi bi-phone"></i> +91
                                 </span>
-                                <input type="text" class="form-control border-start-0" name="phone"
+                                <input type="text" class="form-control border-start-0 shadow-none" name="phone"
                                     placeholder="Enter Phone Number" maxlength="10" />
                                 <a class="btn btn-dark getOtp" type="button">Get OTP</a>
                             </div>
@@ -52,14 +52,14 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control" name="otp" placeholder="Enter OTP" maxlength="6" />
+                                <input type="text" class="form-control shadow-none" name="otp" placeholder="Enter OTP" maxlength="6" />
                             </div>
                             <!-- UserId -->
                             <div class="input-group mb-3 user_id_input" style="display:none;">
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control" name="user_id" maxlength="6" value="{{rand(000000, 999999)}}" />
+                                <input type="text" class="form-control shadow-none" name="user_id" maxlength="6" value="{{rand(000000, 999999)}}" />
                             </div>
                             <div class="text-end mb-3">
                                 <a href="javascript:void(0)" class="small text-info set_user_id">Want to set UserID?</a>
@@ -70,7 +70,7 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-lock"></i>
                                 </span>
-                                <input type="password" class="form-control" name="password"
+                                <input type="password" class="form-control shadow-none" name="password"
                                     placeholder="Enter Password"disabled />
                             </div>
 
@@ -79,7 +79,7 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-lock"></i>
                                 </span>
-                                <input type="password" class="form-control" name="confirm_password"
+                                <input type="password" class="form-control shadow-none" name="confirm_password"
                                     placeholder="Enter Confirm Password"disabled />
                             </div>
                             <!-- UserId -->
@@ -87,7 +87,7 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control" name="referral_code" maxlength="6" value="{{$referral_code}}" placeholder='Please Enter Referral Code' />
+                                <input type="text" class="form-control shadow-none" name="referral_code" maxlength="6" value="{{$referral_code}}" placeholder='Please Enter Referral Code' />
                             </div>
                             <div class="text-end mb-3 have_referral_code">
                                 <a href="#" class="small text-info">Have a referral code?</a>

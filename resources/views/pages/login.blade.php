@@ -51,7 +51,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-white text-dark border-0"><i class="bi bi-phone"></i>
                                         +91</span>
-                                    <input type="text" class="form-control border-0" name="phone" placeholder="Enter Phone Number" />
+                                    <input type="text" class="form-control border-0 shadow-none" name="phone" placeholder="Enter Phone Number" />
                                 </div>
                             </div>
 
