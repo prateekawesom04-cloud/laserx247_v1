@@ -100,7 +100,7 @@ Route::middleware(['auth_check_middleware'])->group(function () {
         return view('account_pages.bonus');
     })->name('user.bonus');
     Route::get('/game_statics', function () {
-        return view('account_pages.statements');
+        return view('account_pages.game_statics');
     })->name('user.game_statics');
     Route::get('/notification', function () {
         return view('account_pages.notification');

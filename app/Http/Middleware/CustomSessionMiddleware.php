@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 
 class CustomSessionMiddleware
@@ -19,6 +20,13 @@ class CustomSessionMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         
+        $userAgent = $_SERVER['HTTP_USER_AGENT'];
+        $providers = Storage::disk('local')->get('games_data/providers.json');
+        
+        $providers = json_decode($providers);
+        
+        View::share('providers',$providers);
+
         $userData = User::getCurrentUser();
         
         if(!empty($userData)){
