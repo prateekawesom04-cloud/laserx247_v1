@@ -58,11 +58,11 @@
                             <!-- Radio -->
                             <div class="d-flex gap-3 mb-3 flex-wrap">
                                 <div>
-                                    <input type="radio" name="loginType" id="passwordOption" checked />
+                                    <input type="radio" name="loginType" id="passwordOption" value="" checked />
                                     <label for="passwordOption" class="ms-1">Password</label>
                                 </div>
                                 <div>
-                                    <input type="radio" name="loginType" id="otpOption" />
+                                    <input type="radio" name="loginType" id="otpOption" value="" />
                                     <label for="otpOption" class="ms-1">OTP</label>
                                 </div>
                             </div>
@@ -74,6 +74,14 @@
                                             class="bi bi-lock"></i></span>
                                     <input type="password" class="form-control border-0 shadow-none" name="password" placeholder="Enter Password" />
                                 </div>
+                            </div>
+                            
+                            <!-- otp -->
+                            <div class="input-group mb-3 otp_input" style="display:none;">
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-key"></i>
+                                </span>
+                                <input type="text" class="form-control shadow-none" name="otp" value="" />
                             </div>
 
                             <!-- Forgot -->
@@ -123,6 +131,8 @@
         $('a.loginUser').click(function(e) {
             loginUser();
         });
+
+        // $('input[type=radio]:checked')
         
     </script>
 </body>
