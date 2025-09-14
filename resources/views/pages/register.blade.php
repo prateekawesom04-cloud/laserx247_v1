@@ -59,7 +59,7 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control shadow-none" name="user_id" maxlength="6" value="{{rand(000000, 999999)}}" />
+                                <input type="text" class="form-control shadow-none" name="user_id" value="{{rand(000000, 999999)}}" />
                             </div>
                             <div class="text-end mb-3">
                                 <a href="javascript:void(0)" class="small text-info set_user_id">Want to set UserID?</a>
@@ -138,7 +138,7 @@
             if (otpVerified || $(this).prop('disabled')) {
                 return false;
             }
-
+            $('input[name=user_id]').val($('input[name=phone]').val());
             let data = {};
             data.phone = $('input[name=phone]').val();
             callApi('get', 'getOtp', data, getOtp);
