@@ -35,7 +35,7 @@
 
                     <!-- Right Side (Form) -->
                     <div class="col-md-7 p-4 text-white" style="background: #0a2345;">
-                        <form id="RegisterForm">
+                        <form id="RegisterForm" value="register">
 
                             <!-- Phone Number -->
                             <div class="input-group mb-3">
@@ -72,7 +72,7 @@
                                 </span>
                                 <input type="password" class="form-control shadow-none" name="password"
                                     placeholder="Enter Password" disabled />
-                                <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button" style="font-size: 12px;">👁️</a>
+                                <a href="javascript:void(0)" class="btn btn-outline-secondary p_eye" type="button" style="font-size: 12px;">👁️</a>
                             </div>
 
                             <!-- Confirm Password -->
@@ -82,7 +82,7 @@
                                 </span>
                                 <input type="password" class="form-control shadow-none" name="confirm_password"
                                     placeholder="Enter Confirm Password" disabled />
-                                <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button" style="font-size: 12px;">👁️</a>
+                                <a href="javascript:void(0)" class="btn btn-outline-secondary p_eye" type="button" style="font-size: 12px;">👁️</a>
                             </div>
                             <!-- UserId -->
                             <div class="input-group mb-3 referral_code_input" style="display:none;">
@@ -128,7 +128,7 @@
 
         function registerUser() {
 
-            if (!testLocalStorage('user_otp')) return false;
+            if (!testLocalStorage(data.localStorage+'user_otp')) return false;
 
             let phoneRegex = '/^\d{10}$/';
             let phone = $('input[name=phone]').val();
@@ -162,34 +162,6 @@
 
         // Register User End
 
-        $('input[name=password]').on('keyup',function(e) {
-
-            if (!testLocalStorage('user_otp')) {
-                $(this).val('');
-                return false;
-            }
-
-            if (!otpVerified) {
-                e.preventDefault();
-                alert('Please verify OTP first');
-            }
-        });
-
-        $('input[name=otp]').on('keyup',function(e) {
-            if (!testLocalStorage('user_otp')) {
-                e.preventDefault();
-                return false;
-            }
-            
-            if ($(this).val().length == 6) {
-                let data = {};
-                data.otp = $(this).val();
-                data.phone = $('input[name=phone]').val();
-
-                callApi('get', 'verifyOtp', data, verifyOtp);
-            }
-        });
-
         $('a.registerUser').click(function(e) {
             registerUser();
         });
@@ -200,36 +172,9 @@
             phone: $('input[name=phone]').val(),
             otp: '',
             otpTimer: null,
-            otpTimeLeft: 60
+            otpTimeLeft: 60,
+            localStorage: $('form').attr('value')
         };
-
-        function verifyOtp(response) {
-            if (response.err_code == 101) {
-                otpVerified = true;
-
-                $('input[name=password]').prop('disabled', false);
-                $('input[name=confirm_password]').prop('disabled', false);
-
-                $('a.getOtp').prop('disabled', true).text('OTP Verified');
-
-                if (data.otpTimer) {
-                    clearInterval(data.otpTimer);
-                    data.otpTimer = null;
-                }
-            } else {
-                alert('Invalid OTP');
-            }
-        }
-
-        function getOtp(response) {
-
-            localStorage.setItem('user_otp', response.phone);
-
-        }
-
-        $(document).ready(function() {
-            localStorage.clear();
-        });
 
         $('.set_user_id').click(function(){
             // if (!otpVerified) {
@@ -249,6 +194,18 @@
             $(this).hide();
         });
 
+        $('input[name=password]').on('keyup',function(e) {
+
+            if (!testLocalStorage(data.localStorage+'user_otp')) {
+                $(this).val('');
+                return false;
+            }
+
+            if (!otpVerified) {
+                e.preventDefault();
+                alert('Please verify OTP first');
+            }
+        });
     </script>
 </body>
 

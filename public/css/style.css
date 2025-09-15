@@ -832,3 +832,11 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
 .chat_support_btn {
     z-index: 1111;
 }
+
+.p_eye {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex
+;
+}

@@ -38,50 +38,66 @@
 
                     <!-- Right side (Form) -->
                     <div class="col-12 col-md-7 bg-transparent p-4 text-white">
-                        <form id="LoginForm"> 
+                        <form id="LoginForm" value="login"> 
 
                             <!-- Tabs -->
-                            <div class="d-flex mb-3 gap-2">
+                            <!-- <div class="d-flex mb-3 gap-2">
                                 <a type="button" class="btn btn-light flex-fill fw-bold" aria-pressed="false">Phone</a>
                                 <a type="button" class="btn btn-primary flex-fill fw-bold" aria-pressed="true">User ID</a>
-                            </div>
+                            </div> -->
 
                             <!-- Phone -->
                             <div class="mb-3 text-start">
                                 <div class="input-group">
                                     <span class="input-group-text bg-white text-dark border-0"><i class="bi bi-phone"></i>
                                         +91</span>
-                                    <input type="text" class="form-control border-0 shadow-none" name="phone" placeholder="Enter Phone Number" />
+                                    <input type="text" class="form-control border-start-0 shadow-none" name="phone"
+                                    placeholder="Enter Phone Number" maxlength="10" style="border-radius: 5px;border-top-left-radius: 0;border-bottom-left-radius:0;" />
+                                <a class="btn btn-dark getOtp" type="button" style="display:none;">Get OTP</a>
+                                </div>
+                            </div>
+                            
+                            <!-- User Id -->
+                            <div class="mb-3 text-start">
+                                <div class="input-group user_id_input" style="display:none;">
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-key"></i>
+                                </span>
+                                <input type="text" class="form-control shadow-none" name="user_id" value="" />
+                                <a class="btn btn-dark getOtp" type="button" style="display:none;">Get OTP</a>
                                 </div>
                             </div>
 
                             <!-- Radio -->
                             <div class="d-flex gap-3 mb-3 flex-wrap">
                                 <div>
-                                    <input type="radio" name="loginType" id="passwordOption" value="" checked />
+                                    <input type="radio" name="loginType" id="l_password" value="0" checked />
                                     <label for="passwordOption" class="ms-1">Password</label>
                                 </div>
                                 <div>
-                                    <input type="radio" name="loginType" id="otpOption" value="" />
+                                    <input type="radio" name="loginType" id="l_otp" value="1" />
                                     <label for="otpOption" class="ms-1">OTP</label>
                                 </div>
                             </div>
 
                             <!-- Password -->
-                            <div class="mb-3">
-                                <div class="input-group">
+                            <div id="" class="l_password mb-3 radio_input">
+                                <div class="input-group ">
                                     <span class="input-group-text bg-white text-dark border-0"><i
                                             class="bi bi-lock"></i></span>
-                                    <input type="password" class="form-control border-0 shadow-none" name="password" placeholder="Enter Password" />
+                                    <input type="password" class="form-control shadow-none" name="password" placeholder="Enter Password" />
+                                    <a href="javascript:void(0)" class="btn btn-outline-secondary p_eye" type="button" style="font-size: 12px;">👁️</a>
                                 </div>
                             </div>
                             
                             <!-- otp -->
-                            <div class="input-group mb-3 otp_input" style="display:none;">
-                                <span class="input-group-text bg-white">
-                                    <i class="bi bi-key"></i>
-                                </span>
-                                <input type="text" class="form-control shadow-none" name="otp" value="" />
+                            <div id="" class="l_otp text-start mb-3 otp_input radio_input" style="display:none;" value="1">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white">
+                                        <i class="bi bi-key"></i>
+                                    </span>
+                                    <input type="text" class="form-control shadow-none" name="otp" maxlength="6" placeholder="Enter OTP" disabled />
+                                </div>
                             </div>
 
                             <!-- Forgot -->
@@ -128,12 +144,70 @@
     
 @include('js')
     <script>
+        
+        let otpVerified = false;
+
+        let data = {
+            phone: $('input[name=phone]').val(),
+            otp: '',
+            otpTimer: null,
+            otpTimeLeft: 60,
+            localStorage: $('form').attr('value'),
+            login_type: $('#passwordOption').val()
+        };
+
+        // Login User Start
+
+        function loginUser() {
+            let phoneRegex = '/^\d{10}$/';
+            let phone = $('input[name=phone]').val();
+            let password = $('input[name=password]').val();
+
+            let data = {
+                phone: $('input[name=phone]').val(),
+                password: $('input[name=password]').val(),
+                otp: $('input[type=radio]:checked').val()
+            }
+            
+
+            // if (!phone.match(phoneRegex)) {
+            //     alert('Please Enter Correct Phone Number');
+            //     return false;
+            // } else 
+            if(data.otp){
+                callApi('post', 'login', data, register_loginResponse);
+            } else{
+                if (password.length < 6) {
+                    alert('Please Enter Minimum 6 digit password');
+                    return false;
+                } else {
+                    callApi('post', 'login', data, register_loginResponse);
+                }
+            }
+        }
+
+        // Login User End
+
+
         $('a.loginUser').click(function(e) {
             loginUser();
         });
 
-        // $('input[type=radio]:checked')
+        $('input[type=radio]').click(function(){
+            $('.radio_input').hide();
+            $('.getOtp').hide();
+            $('.radio_input').find('input').attr('disabled','true');
+            $(`.${$(this).attr('id')}`).find('input').removeAttr('disabled');
+            data.login_type = $(this).val();
+            
+            $(`.${$(this).attr('id')}`).show();
+            if($(this).val() == 1){
+                $('.getOtp').show();
+            }
+
+        })
         
+
     </script>
 </body>
 

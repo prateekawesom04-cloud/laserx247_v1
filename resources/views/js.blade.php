@@ -45,33 +45,6 @@
         return true;
     }
 
-
-    // Login User Start
-
-    function loginUser() {
-        let phoneRegex = '/^\d{10}$/';
-        let phone = $('input[name=phone]').val();
-        let password = $('input[name=password]').val();
-
-        let data = {
-            phone: phone,
-            password: password
-        }
-
-        // if (!phone.match(phoneRegex)) {
-        //     alert('Please Enter Correct Phone Number');
-        //     return false;
-        // } else 
-        if (password.length < 6) {
-            alert('Please Enter Minimum 6 digit password');
-            return false;
-        } else {
-            callApi('post', 'login', data, register_loginResponse);
-        }
-    }
-
-    // Login User End
-
     function register_loginResponse(response) {
         if (response == true) {
             window.location.href = "/";
@@ -240,7 +213,7 @@
     }, 2000);
 
 
-    $('a.btn').click(function(){
+    $('.p_eye').click(function(){
         element = $(this).siblings('input');
         if(element.attr('type')=='password'){
             element.attr('type', 'text');
@@ -268,7 +241,13 @@
             $('input[name=user_id]').val($('input[name=phone]').val());
             let data = {};
             data.phone = $('input[name=phone]').val();
-            callApi('get', 'getOtp', data, getOtp);
+            data.otptype = $('form').attr('value');
+            if(data.otptype == 'register'){
+                callApi('get', 'getOtp', data, getOtp);
+            } else if(data.otptype == 'login'){
+                callApi('get', 'getOtp', data, getOtp);
+            }
+            
             startOtpCountdown(this);
         });
 
@@ -291,6 +270,53 @@
             }, 1000);
 
         }
+
+        function verifyOtp(response) {
+            if (response.err_code == 101) {
+                otpVerified = true;
+
+                $('input[name=password]').prop('disabled', false);
+                $('input[name=confirm_password]').prop('disabled', false);
+
+                $('a.getOtp').prop('disabled', true).text('OTP Verified');
+
+                if (data.otpTimer) {
+                    clearInterval(data.otpTimer);
+                    data.otpTimer = null;
+                }
+            } else {
+                alert('Invalid OTP');
+            }
+        }
+
+        function getOtp(response) {
+            if(data.localStorage){
+                localStorage.setItem(data.localStorage+'user_otp', response.phone);
+            } else{
+                localStorage.setItem('user_localstorage_data', response);
+            }
+
+        }
+
+        $(document).ready(function() {
+            localStorage.clear();
+        });
+
+        $('input[name=otp]').on('keyup',function(e) {
+            if (!testLocalStorage(data.localStorage+'user_otp')) {
+                e.preventDefault();
+                return false;
+            }
+            
+            if ($(this).val().length == 6) {
+                let data = {};
+                data.otp = $(this).val();
+                data.phone = $('input[name=phone]').val();
+                data.otptype = $(this).parents('form').attr('value');
+
+                callApi('get', 'verifyOtp', data, verifyOtp);
+            }
+        });
 
 
 </script>

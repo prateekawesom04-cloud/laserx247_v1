@@ -27,7 +27,7 @@
                 <div class="input-group">
                     <input type="password" class="form-control shadow-none" placeholder="Enter New Password" id="newPassword"
                         style="font-size: 12px;">
-                    <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button"
+                    <a href="javascript:void(0)" class="btn btn-outline-secondary p_eye" type="button"
                         style="font-size: 12px;">👁️</a>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <div class="input-group">
                     <input type="password" class="form-control shadow-none" placeholder="Confirm New Password" id="confirmPassword"
                         style="font-size: 12px;">
-                    <a href="javascript:void(0)" class="btn btn-outline-secondary" type="button"
+                    <a href="javascript:void(0)" class="btn btn-outline-secondary p_eye" type="button"
                         style="font-size: 12px;">👁️</a>
                 </div>
             </div>

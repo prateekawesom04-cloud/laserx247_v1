@@ -1,10 +1,3 @@
-<?php
-
-$providers = Storage::disk('local')->get('games_data/providers.json');
-
-$providers = json_decode($providers);
-
-?>
 @extends('super-master')
 @section('body')
 
@@ -86,7 +79,8 @@ $providers = json_decode($providers);
                     <div class="d-flex flex-column">
 
                         <!-- game List -->
-                    @foreach ($providers as $provider)
+                    @foreach ($providers as $key=>$provider)
+                        @if(count($providers) - $key > 2)
                         <div class="app_card d-flex flex-column w-100 mb-[1px]">
                             <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#f00]">
                                 <!-- <div class="d-flex flex-row gap-3 justify-content-start">
@@ -108,7 +102,37 @@ $providers = json_decode($providers);
                             </div>
 
                         </div>
+                        @endif
                     @endforeach
+                            
+                        <div class="flex flex-row justify-start gap-[1px]">
+                        @foreach ($providers as $key=>$provider)
+                            @if(count($providers) - $key <= 2)
+                                <div class="app_card d-flex flex-column mb-[1px] {{($key!=6)? 'w-[50%]' : 'min-w-[45%]'}}">
+                                    <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#f00]">
+                                        <!-- <div class="d-flex flex-row gap-3 justify-content-start">
+                                        </div> -->
+                                        <div class="font-bold">{{$provider->title}}</div>
+                                        <div class="d-flex flex-row gap-1 justify-content-end">
+                                            <a href="javascript:void(0)" class="games_scroll d-flex items-center justify-content-center bg-[#212529] rounded-circle" data-scroll="-150" style="height: 22px;width: 22px;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 6l-6 6l6 6"></path></svg>
+                                            </a>
+                                            <a href="javascript:void(0)" class="games_scroll d-flex align-items-center justify-content-center bg-[#212529] text-success rounded-circle" data-scroll="150" style="height: 22px;width: 22px;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 6l6 6l-6 6"></path></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="all_games flex flex-col w-full overflow-x-auto app_scroller scrollbar-hide">
+                                        <div class="app_games flex flex-row w-screen game_list items-center" data-provider="{{ strtolower(explode('provider=', $provider->link)[1]) }}">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                        @endif
+                    @endforeach
+                            </div>
                         
                         <!-- provider List -->
                         <div class="app_card d-flex flex-column w-100 mb-3 app_scroller">
@@ -128,7 +152,7 @@ $providers = json_decode($providers);
                             </div>
                             <div class="flex flex-row flex-wrap justify-center w-100 gap-2">
                                 @foreach ($providers as $provider)
-                                <div class="p-2">
+                                                                <div class="p-2">
                                     <img src="{{$provider->img}}" alt="" srcset="" class="w-32 bg-gray-900 h-16 rounded-lg shadow">
                                 </div>
                                 @endforeach
