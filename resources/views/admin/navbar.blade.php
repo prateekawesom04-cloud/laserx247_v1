@@ -49,28 +49,14 @@
                     </ul>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Payments</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('admin.payment_setup') }}">Payment Setup</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.deposit_request') }}">Deposit Request</a>
-                        </li>
-                        <li><a class="dropdown-item" href="{{ route('admin.withdraw_request') }}">Withdraw Request</a>
-                        </li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.payments') }}" >Payments</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.commission') }}">Commission</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.password_history') }}">Password History</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.restore_user') }}">Restore User</a>
-                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">My Setting</a>
@@ -87,6 +73,7 @@
                         <li><a class="dropdown-item" href="{{ route('admin.betting') }}">Betting</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.add_banner') }}">Add Banner</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.add_number') }}">Add Number</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.add_bonus') }}">Add Bonus</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

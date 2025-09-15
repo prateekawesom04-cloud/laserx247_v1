@@ -12,9 +12,10 @@
             <!-- Action Button -->
             <div class="card-body pb-0">
                 <div class="text-end mb-3">
-                    <a class="btn btn-dark btn-sm">Add Method</a>
+                    <a href="#"class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#mainModal">Add Method</a>
                 </div>
 
+                    </a>
                 <!-- Table -->
                 <div class="table-responsive">
                     <table class="table table-bordered align-middle table-hover text-center">

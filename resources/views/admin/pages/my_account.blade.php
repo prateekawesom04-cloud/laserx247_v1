@@ -13,7 +13,7 @@
 
                     <!-- Grid layout for small screens, stacked for md -->
                     <ul class="list-group list-group-flush mb-0 d-none d-md-block">
-                        <!-- Desktop (md and up): Stacked list -->
+                        <!-- Desktop:  -->
                         <li>
                             <a href="javascript:void(0);" class="list-group-item list-group-item-action sidebar-link active"
                                 data-target="profile">My Profile</a>
@@ -29,7 +29,7 @@
                     </ul>
 
                     <div class="d-block d-md-none px-2 py-2">
-                        <!-- Mobile/Tablet (below md): -->
+                        <!-- Mobile/Tablet: -->
                         <div class="row g-2 text-center">
                             <div class="col-4">
                                 <a href="javascript:void(0);" class="btn btn-outline-primary w-100 sidebar-link active"
@@ -170,8 +170,6 @@
                                         <tr>
                                             <th>Login Date & Time</th>
                                             <th>Login Status</th>
-                                            <th>IP Address</th>
-                                            <th>ISP</th>
                                             <th>City/State/Country</th>
                                         </tr>
                                     </thead>
@@ -179,22 +177,16 @@
                                         <tr>
                                             <td>04-05-2024 10:16:03</td>
                                             <td class="text-success fw-bold">Login Successful</td>
-                                            <td>0</td>
-                                            <td>0</td>
                                             <td>0/0/0</td>
                                         </tr>
                                         <tr>
                                             <td>03-05-2024 17:44:10</td>
                                             <td class="text-success fw-bold">Login Successful</td>
-                                            <td>0</td>
-                                            <td>0</td>
                                             <td>0/0/0</td>
                                         </tr>
                                         <tr>
                                             <td>03-05-2024 10:51:24</td>
                                             <td class="text-success fw-bold">Login Successful</td>
-                                            <td>157.38.148.224</td>
-                                            <td>0</td>
                                             <td>Rajasthan/India</td>
                                         </tr>
                                     </tbody>

@@ -7,10 +7,10 @@
             <!-- Modal Header -->
             <div class="modal-header py-2" style="background-color: #007bff; color: white;">
                 <h5 class="modal-title fs-6" id="editNewsModalLabel">🎮 Game Controller</h5>
-                <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+                <a type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></a>
             </div>
 
-            <!-- CSRF (for Laravel or other frameworks) -->
+            <!-- CSRF -->
             <form method="POST" action="/save-game-settings">
                 @csrf
 

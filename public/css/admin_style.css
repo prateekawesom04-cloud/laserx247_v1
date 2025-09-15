@@ -145,6 +145,11 @@ body {
     min-width: 180px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+.dropdown-menu li:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light divider */
+    margin-bottom: 3px;
+    padding-bottom: 3px;
+}
 
 .dropdown-item {
     font-size: 13px;
@@ -231,7 +236,7 @@ body {
         max-height: 400px;
     }
     .btn-user-details {
-    background-color: #f47442;
+    background-color: #0eb8a9;
     color: white;
 }
 
@@ -246,23 +251,27 @@ body {
 }
 
 .btn-password-change {
-    background-color: #fff700;
-    color: black;
+    background-color: #bdb412;
+    color: white;
 }
 
 .btn-game-control {
     background-color: #e287f2;
-    color: black;
+    color: white;
 }
 
+.btn-game-controller {
+     background-color: #02049c;
+    color: white;
+}
 .btn-casino-control {
-    background-color: #5efc4d;
-    color: black;
+    background-color: #ce42db;
+    color: white;
 }
 
 .btn-delete {
     background-color: #fc4d4d;
-    color: black;
+    color: white;
 }
 /* Add clint Account */
 
@@ -496,54 +505,6 @@ td {
     }
 }
 
-/* deposit request */
-.pm-screenshot-img {
-    width: 60px;
-    height: auto;
-    border: 1px solid #ccc;
-    object-fit: cover;
-}
-
-@media (max-width: 767.98px) {
-    .pm-screenshot-img {
-        width: 40px;
-    }
-}
-
-@media (max-width: 480px) {
-    .pm-screenshot-img {
-        width: 30px;
-    }
-}
-
-/* withdraw request */
-.section-header {
-    background-color: #0d6efd;
-    color: white;
-    padding: 10px 15px;
-    font-weight: 600;
-    border-radius: 0.25rem 0.25rem 0 0;
-}
-.table-responsive {
-    border: 1px solid #dee2e6;
-    border-radius: 0 0 0.25rem 0.25rem;
-}
-.no-data {
-    text-align: center;
-    color: #6c757d;
-    padding: 1.5rem 0;
-}
-
-@media (max-width: 576px) {
-    .section-header {
-        padding: 8px 12px;
-        font-size: 0.9rem;
-    }
-    .no-data {
-        padding: 1rem 0;
-    }
-}
-
 /* commission page */
 .nav-tabs .nav-link {
     color: #000 !important;
@@ -553,9 +514,6 @@ td {
     background-color: #0d6efd;
     color: #fff !important;
 }
-
-/* password history */
-
 
 /* (setting)-block market */
 .toggle-switch {

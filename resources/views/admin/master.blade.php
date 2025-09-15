@@ -10,7 +10,7 @@
     @include('admin.header')
     @include('admin.navbar')
     @yield('body')
-    @include('admin.model.add_user')
+    @include('admin.model.add_method')
     @include('admin.model.add_banner')
     @include('admin.model.add_downline')
     @include('admin.model.game_controller')

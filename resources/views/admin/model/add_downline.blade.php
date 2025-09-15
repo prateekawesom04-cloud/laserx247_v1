@@ -5,8 +5,8 @@
             <!-- Modal Header -->
             <div class="modal-header bg-primary text-white py-2">
                 <h5 class="modal-title" id="addDownlineModalLabel">Add Downline</h5>
-                <button type="button" class="btn-close btn-close-white btn-sm" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                <a type="button" class="btn-close btn-close-white btn-sm" data-bs-dismiss="modal"
+                    aria-label="Close"></a>
             </div>
 
             <!-- Modal Body -->

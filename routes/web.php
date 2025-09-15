@@ -267,6 +267,10 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         return view('admin.pages.add_edit_client_account');
             })->name('admin.add_edit_client_account');
 
+               Route::get('/user_client_account', function () {
+        return view('admin.pages.user_client_account');
+            })->name('admin.user_client_account');
+
         Route::get('/betlist', function () {
         return view('admin.pages.betlist');
             })->name('admin.betlist');
@@ -283,29 +287,14 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         return view('admin.pages.master_banking');
             })->name('admin.master_banking');
 
-            Route::get('/payment_setup', function () {
-        return view('admin.pages.payment_setup');
-            })->name('admin.payment_setup');
+            Route::get('/payments', function () {
+        return view('admin.pages.payments');
+            })->name('admin.payments');
 
-            Route::get('/deposit_request', function () {
-        return view('admin.pages.deposit_request');
-            })->name('admin.deposit_request');
-
-            Route::get('/withdraw_request', function () {
-        return view('admin.pages.withdraw_request');
-            })->name('admin.withdraw_request');
 
             Route::get('/commission', function () {
         return view('admin.pages.commission');
             })->name('admin.commission');
-
-            Route::get('/password_history', function () {
-        return view('admin.pages.password_history');
-            })->name('admin.password_history');
-
-            Route::get('/restore_user', function () {
-        return view('admin.pages.restore_user');
-            })->name('admin.restore_user');
 
             Route::get('/admin_fund', function () {
         return view('admin.pages.admin_fund');
@@ -338,6 +327,10 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
             Route::get('/add_number', function () {
         return view('admin.pages.add_number');
             })->name('admin.add_number');
+
+            Route::get('/add_bonus', function () {
+        return view('admin.pages.add_bonus');
+            })->name('admin.add_bonus');
 
     });
     

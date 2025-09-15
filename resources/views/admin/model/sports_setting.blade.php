@@ -19,7 +19,7 @@
                         <td>Cricket</td>
                         <td>
                             <input class="form-check-input" type="checkbox" name="cricket">
-                            <button type="button" class="btn btn-sm btn-danger ms-2">✖</button>
+                            <a type="button" class="btn btn-sm btn-danger ms-2">✖</a>
                         </td>
                     </tr>
                     <tr>
@@ -27,7 +27,7 @@
                         <td>Tennis</td>
                         <td>
                             <input class="form-check-input" type="checkbox" name="tennis">
-                            <button type="button" class="btn btn-sm btn-danger ms-2">✖</button>
+                            <a type="button" class="btn btn-sm btn-danger ms-2">✖</a>
                         </td>
                     </tr>
                     <tr>
@@ -35,7 +35,7 @@
                         <td>Casino</td>
                         <td>
                             <input class="form-check-input" type="checkbox" name="casino">
-                            <button type="button" class="btn btn-sm btn-danger ms-2">✖</button>
+                            <a type="button" class="btn btn-sm btn-danger ms-2">✖</a>
                         </td>
                     </tr>
                     <tr>
@@ -43,7 +43,7 @@
                         <td>Soccer</td>
                         <td>
                             <input class="form-check-input" type="checkbox" name="soccer">
-                            <button type="button" class="btn btn-sm btn-danger ms-2">✖</button>
+                            <a type="button" class="btn btn-sm btn-danger ms-2">✖</a>
                         </td>
                     </tr>
                     <tr>
@@ -51,7 +51,7 @@
                         <td>Horse Racing</td>
                         <td>
                             <input class="form-check-input" type="checkbox" name="horse_racing">
-                            <button type="button" class="btn btn-sm btn-danger ms-2">✖</button>
+                            <a type="button" class="btn btn-sm btn-danger ms-2">✖</a>
                         </td>
                     </tr>
                 </tbody>

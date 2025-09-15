@@ -3,13 +3,6 @@
 @section('body')
     <div class="container-fluid px-3 px-md-5 p-4">
 
-        <!-- Add User Button -->
-        <div class="mb-3 text-end">
-            <a href="#" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#mainModal">
-                <i class="bi bi-person-plus"></i> Add User
-            </a>
-        </div>
-
         <!-- Responsive Info Cards -->
         <div class="card border border-primary mb-4">
             <div class="card-body py-3">
@@ -82,7 +75,7 @@
                                     placeholder="Search by client" style="min-width: 100%;">
                             </div>
                             <div class="col-6 col-lg-3">
-                                <a href="{{ route('admin.add_edit_client_account') }}"
+                                <a href="{{ route('admin.user_client_account') }}"
                                     class="btn btn-primary btn-sm w-100">Add Client Account</a>
                             </div>
                             <div class="col-6 col-lg-3">

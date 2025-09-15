@@ -8,9 +8,7 @@
         </div>
         <div class="card-body">
             <h6 class="mb-3">Cricket</h6>
-            <form action="{{ url('your-update-route') }}" method="POST">
-                @csrf
-
+            <form>
                 <div class="row mb-3">
                     <div class="col-12 col-md-4">
                         <label for="min_stake" class="form-label">Min Stake:</label>
