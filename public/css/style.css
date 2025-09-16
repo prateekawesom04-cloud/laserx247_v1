@@ -832,3 +832,31 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
 .chat_support_btn {
     z-index: 1111;
 }
+
+.p_eye {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
+.row {
+    margin: 0px;
+}
+
+.row>* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body, body a, body p, body div, body h1, body h2, body h3, body h4 {
+    color: #8b8b8b;
+}
+
+body, footer {
+    background: #000;
+}

@@ -35,14 +35,14 @@
 
                     <!-- Right Side (Form) -->
                     <div class="col-md-7 p-4 text-white" style="background: #0a2345;">
-                        <form id="RegisterForm">
+                        <form id="RegisterForm" value="register">
 
                             <!-- Phone Number -->
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-white border-end-0">
                                     <i class="bi bi-phone"></i> +91
                                 </span>
-                                <input type="text" class="form-control border-start-0" name="phone"
+                                <input type="text" class="form-control border-start-0 shadow-none" name="phone"
                                     placeholder="Enter Phone Number" maxlength="10" />
                                 <a class="btn btn-dark getOtp" type="button">Get OTP</a>
                             </div>
@@ -52,14 +52,14 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control" name="otp" placeholder="Enter OTP" maxlength="6" />
+                                <input type="text" class="form-control shadow-none" name="otp" placeholder="Enter OTP" maxlength="6" />
                             </div>
                             <!-- UserId -->
                             <div class="input-group mb-3 user_id_input" style="display:none;">
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control" name="user_id" maxlength="6" value="{{rand(000000, 999999)}}" />
+                                <input type="text" class="form-control shadow-none" name="user_id" value="{{rand(000000, 999999)}}" />
                             </div>
                             <div class="text-end mb-3">
                                 <a href="javascript:void(0)" class="small text-info set_user_id">Want to set UserID?</a>
@@ -70,8 +70,9 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-lock"></i>
                                 </span>
-                                <input type="password" class="form-control" name="password"
-                                    placeholder="Enter Password"disabled />
+                                <input type="password" class="form-control shadow-none" name="password"
+                                    placeholder="Enter Password" disabled />
+                                <a href="javascript:void(0)" class="btn btn-outline-secondary p_eye" type="button" style="font-size: 12px;">👁️</a>
                             </div>
 
                             <!-- Confirm Password -->
@@ -79,15 +80,16 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-lock"></i>
                                 </span>
-                                <input type="password" class="form-control" name="confirm_password"
-                                    placeholder="Enter Confirm Password"disabled />
+                                <input type="password" class="form-control shadow-none" name="confirm_password"
+                                    placeholder="Enter Confirm Password" disabled />
+                                <a href="javascript:void(0)" class="btn btn-outline-secondary p_eye" type="button" style="font-size: 12px;">👁️</a>
                             </div>
                             <!-- UserId -->
                             <div class="input-group mb-3 referral_code_input" style="display:none;">
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control" name="referral_code" maxlength="6" value="{{$referral_code}}" placeholder='Please Enter Referral Code' />
+                                <input type="text" class="form-control shadow-none" name="referral_code" maxlength="6" value="{{$referral_code}}" placeholder='Please Enter Referral Code' />
                             </div>
                             <div class="text-end mb-3 have_referral_code">
                                 <a href="#" class="small text-info">Have a referral code?</a>
@@ -124,48 +126,9 @@
 
     <script>
 
-        // Get Otp
-
-        $('a.getOtp').click(function(e) {
-
-            if($('input[name=phone]').val().length < 10){
-                alert('Please Enter Correct Number');
-                return false;
-            }
-
-            if (otpVerified || $(this).prop('disabled')) {
-                return false;
-            }
-
-            let data = {};
-            data.phone = $('input[name=phone]').val();
-            callApi('get', 'getOtp', data, getOtp);
-            startOtpCountdown(this);
-        });
-
-
-        function startOtpCountdown(button) {
-
-            $(button).prop('disabled', true).text(`Retry in ${data.otpTimeLeft}s`);
-
-            data.otpTimer = setInterval(() => {
-                data.otpTimeLeft--;
-
-                if (data.otpTimeLeft > 0) {
-                    $(button).text(`Retry in ${data.otpTimeLeft}s`);
-                } else {
-                    if (!otpVerified) {
-                        $(button).prop('disabled', false).text('Get OTP');
-                    }
-                    clearInterval(data.otpTimer);
-                }
-            }, 1000);
-
-        }
-
         function registerUser() {
 
-            if (!testLocalStorage('user_otp')) return false;
+            if (!testLocalStorage(data.localStorage+'user_otp')) return false;
 
             let phoneRegex = '/^\d{10}$/';
             let phone = $('input[name=phone]').val();
@@ -199,34 +162,6 @@
 
         // Register User End
 
-        $('input[name=password]').on('keyup',function(e) {
-
-            if (!testLocalStorage('user_otp')) {
-                $(this).val('');
-                return false;
-            }
-
-            if (!otpVerified) {
-                e.preventDefault();
-                alert('Please verify OTP first');
-            }
-        });
-
-        $('input[name=otp]').on('keyup',function(e) {
-            if (!testLocalStorage('user_otp')) {
-                e.preventDefault();
-                return false;
-            }
-            
-            if ($(this).val().length == 6) {
-                let data = {};
-                data.otp = $(this).val();
-                data.phone = $('input[name=phone]').val();
-
-                callApi('get', 'verifyOtp', data, verifyOtp);
-            }
-        });
-
         $('a.registerUser').click(function(e) {
             registerUser();
         });
@@ -237,36 +172,9 @@
             phone: $('input[name=phone]').val(),
             otp: '',
             otpTimer: null,
-            otpTimeLeft: 60
+            otpTimeLeft: 60,
+            localStorage: $('form').attr('value')
         };
-
-        function verifyOtp(response) {
-            if (response.err_code == 101) {
-                otpVerified = true;
-
-                $('input[name=password]').prop('disabled', false);
-                $('input[name=confirm_password]').prop('disabled', false);
-
-                $('a.getOtp').prop('disabled', true).text('OTP Verified');
-
-                if (data.otpTimer) {
-                    clearInterval(data.otpTimer);
-                    data.otpTimer = null;
-                }
-            } else {
-                alert('Invalid OTP');
-            }
-        }
-
-        function getOtp(response) {
-
-            localStorage.setItem('user_otp', response.phone);
-
-        }
-
-        $(document).ready(function() {
-            localStorage.clear();
-        });
 
         $('.set_user_id').click(function(){
             // if (!otpVerified) {
@@ -286,6 +194,18 @@
             $(this).hide();
         });
 
+        $('input[name=password]').on('keyup',function(e) {
+
+            if (!testLocalStorage(data.localStorage+'user_otp')) {
+                $(this).val('');
+                return false;
+            }
+
+            if (!otpVerified) {
+                e.preventDefault();
+                alert('Please verify OTP first');
+            }
+        });
     </script>
 </body>
 

@@ -1,15 +1,8 @@
-<?php
-
-$providers = Storage::disk('local')->get('games_data/providers.json');
-
-$providers = json_decode($providers);
-
-?>
 @extends('super-master')
 @section('body')
 
 <!-- News Bar + Banner -->
-    <div class="px-md-4 px-2">
+    <div class="">
         
         <div class="container-fluid">
             <div class="">
@@ -64,7 +57,7 @@ $providers = json_decode($providers);
     
         <!-- Aviator & Mines -->
         <div class="container-fluid font-bold">
-            <div class="row w-100 mx-auto">
+            <div class="row w-full mx-auto">
                 <div class="col-6 !p-[1px] launch_game cursor-pointer" data-game_id="a04d1f3eb8ccec8a4823bdf18e3f0e84">
                     <img src="{{ asset('images/aviator-730-280.gif') }}" alt="Aviator" class="img-fluid w-100">
                     <div class="bg-dark text-white py-1">Aviator</div>
@@ -86,9 +79,10 @@ $providers = json_decode($providers);
                     <div class="d-flex flex-column">
 
                         <!-- game List -->
-                    @foreach ($providers as $provider)
+                    @foreach ($providers as $key=>$provider)
+                        @if(count($providers) - $key > 2)
                         <div class="app_card d-flex flex-column w-100 mb-[1px]">
-                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#f00]">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#323738]">
                                 <!-- <div class="d-flex flex-row gap-3 justify-content-start">
                                 </div> -->
                                 <div class="font-bold">{{$provider->title}}</div>
@@ -108,23 +102,37 @@ $providers = json_decode($providers);
                             </div>
 
                         </div>
+                        @endif
                     @endforeach
+                            
+                        <div class="app_card d-flex flex-column mb-[1px]">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#323738]">
+                                <!-- <div class="d-flex flex-row gap-3 justify-content-start">
+                                </div> -->
+                                <div class="font-bold">Evo Play and Playtech</div>
+                                <div class="d-flex flex-row gap-1 justify-content-end">
+                                    <a href="javascript:void(0)" class="games_scroll d-flex items-center justify-content-center bg-[#212529] rounded-circle" data-scroll="-150" style="height: 22px;width: 22px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 6l-6 6l6 6"></path></svg>
+                                    </a>
+                                    <a href="javascript:void(0)" class="games_scroll d-flex align-items-center justify-content-center bg-[#212529] text-success rounded-circle" data-scroll="150" style="height: 22px;width: 22px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 6l6 6l-6 6"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="all_games flex flex-row w-full overflow-x-auto app_scroller scrollbar-hide">
+                                <div class="app_games flex flex-row game_list items-center" data-provider="evoplay_playtech">
+                                </div>
+                            </div>
+
+                        </div>
+
                         
                         <!-- provider List -->
                         <div class="app_card d-flex flex-column w-100 mb-3 app_scroller">
-                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#f00]">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#323738]">
                                 <div class="d-flex flex-row gap-3 justify-content-start">
-                                    <!-- <div><svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 16 16" height="20" width="20"><path d="M8 16c3.314 0 6 -2 6 -5.5 0 -1.5 -0.5 -4 -2.5 -6 0.25 1.5 -1.25 2 -1.25 2C11 4 9 0.5 6 0c0.357 2 0.5 4 -2 6 -1.25 1 -2 2.729 -2 4.5C2 14 4.686 16 8 16m0 -1c-1.657 0 -3 -1 -3 -2.75 0 -0.75 0.25 -2 1.25 -3C6.125 10 7 10.5 7 10.5c-0.375 -1.25 0.5 -3.25 2 -3.5 -0.179 1 -0.25 2 1 3 0.625 0.5 1 1.364 1 2.25C11 14 9.657 15 8 15" stroke-width="1"></path></svg></div> -->
                                     <div class="font-bold">Game Providers</div>
                                 </div>
-                                <!-- <div class="d-flex flex-row gap-1 justify-content-end">
-                                    <a href="javascript:void(0)" class="left_scroll d-flex align-items-center justify-content-center bg-gray-200 text-success rounded-circle" style="height: 22px;width: 22px;">
-                                        <svg data-scroll="-5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 6l-6 6l6 6"></path></svg>
-                                    </a>
-                                    <a href="javascript:void(0)" class="right_scroll d-flex align-items-center justify-content-center bg-gray-200 text-success rounded-circle" style="height: 22px;width: 22px;">
-                                        <svg data-scroll="5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 6l6 6l-6 6"></path></svg>
-                                    </a>
-                                </div> -->
                             </div>
                             <div class="flex flex-row flex-wrap justify-center w-100 gap-2">
                                 @foreach ($providers as $provider)
@@ -156,7 +164,6 @@ $providers = json_decode($providers);
 
                 let games_scroller = $(this);
                 let currentScroller = $(this).parents('.app_card').find('.app_scroller');
-                console.log('currentscroller-----',currentScroller);
                 
                 $(currentScroller).animate({
                     scrollLeft: '+='+$(games_scroller).attr('data-scroll')
@@ -165,12 +172,23 @@ $providers = json_decode($providers);
 
             $(document).ready(function() {
 
-                @foreach ($providers as $provider)
+                @foreach ($providers as $key=>$provider)
+                @if(count($providers) - $key > 2)
                     callApi('get', 'gameList', {
                         'provider': "{{ strtolower(explode('provider=', $provider->link)[1]) }}",
                         'game_index':0
                     }, gameList);
+                @endif
                 @endforeach
+
+                callApi('get', 'gameList', {
+                        'provider': 'evoplay_playtech',
+                        'providers': [
+                            "{{ strtolower(explode('provider=', $providers[count($providers)-1]->link)[1]) }}",
+                            "{{ strtolower(explode('provider=', $providers[count($providers)-2]->link)[1]) }}"
+                        ],
+                        'game_index':0
+                    }, gameList);
 
             });
 

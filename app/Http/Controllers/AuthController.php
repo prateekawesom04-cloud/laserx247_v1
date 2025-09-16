@@ -15,9 +15,16 @@ class AuthController extends Controller
     public function login(Request $request){
         // dd('request',$request);
         // return response()->json($request);
-        $user = User::where([
-            'phone'=>$request->phone
-        ])->first();
+        if($request->user_id){
+            $user = User::where([
+                'user_uid'=>$request->user_id
+            ])->first();
+
+        } else{
+            $user = User::where([
+                'phone'=>$request->phone
+            ])->first();
+        }
 
         if(empty($user)){
             return response()->json([
@@ -25,17 +32,29 @@ class AuthController extends Controller
                 'error_code'=> '104'
             ]);
         }
-        if(Hash::check($request->password,$user->password)){
-            Session::put([
-                'user_session'=>$user->id.'_user_'.$user->user_uid,
-                'user_uid'=>$user->user_uid
-            ]);
-            return True;
+        if($request->otp!=1){
+
+            if(Hash::check($request->password,$user->password)){
+                Session::put([
+                    'user_session'=>$user->id.'_user_'.$user->user_uid,
+                    'user_uid'=>$user->user_uid
+                ]);
+                return True;
+            } else{
+                return response()->json([
+                    'error'=> 'Wrong Password',
+                    'error_code'=> '105'
+                ]);
+            }
+
         } else{
-            return response()->json([
-                'error'=> 'Wrong Password',
-                'error_code'=> '105'
-            ]);
+            if(Session::get('login_otp_'.$request->phone.'verified')){
+                Session::put([
+                    'user_session'=>$user->id.'_user_'.$user->user_uid,
+                    'user_uid'=>$user->user_uid
+                ]);
+                return True;
+            }
         }
     }
 
@@ -156,12 +175,67 @@ class AuthController extends Controller
 
     }
 
-    public function getOtp(Request $request){
+    // public function getOtp(Request $request){
 
+    //     $otp = random_int(100000, 999999);
+
+    //     Session::put('user_otp_'.$request->phone,$otp);
+    //     Session::put('otp_expiry_time',time() + (60));
+
+    //     $data = [
+    //         'APIKey'=>env('SMS_API_KEY'),
+    //         // 'user'=>'awesomecart',
+    //         // 'password'=>'Awesomecart@612',
+    //         'senderid'=>'AWSMCT',
+    //         'channel'=>'Trans',
+    //         'DCS'=>0,
+    //         'flashsms'=>0,
+    //         'number'=>$request->phone,
+    //         'text'=>'Your OTP is '.$otp.'. This code is valid for the next 10 min. Please enter it on the website/app for login AWESOMCART. Regards, AWSMCT',
+    //         'route'=>'2',
+    //         'peid'=>'1701169875173062064',
+    //         'DLTTemplateId'=>'1707174046951830675'
+    //     ];
+
+    //     $string = http_build_query($data);
+
+    //     $smsUrl = "http://bulksms.actinnsol.com/api/mt/SendSMS?".$string;
+
+    //     $ch = curl_init();
+        
+    //     curl_setopt($ch, CURLOPT_URL, $smsUrl);
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //     $response = curl_exec($ch);
+    //     if (curl_errno($ch)) {
+    //         echo 'cURL Error: ' . curl_error($ch);
+    //     }
+    //     curl_close($ch);
+
+    //     return response()->json([
+    //         'phone'=>$request->phone,
+    //         'smsResponse'=>$response
+    //     ]);
+    // }
+    
+    public function getOtp(Request $request){
+        
+        if($request->otptype == 'login'){
+            $user = User::where([
+                'phone'=>$request->phone
+            ])->first();
+            
+            if(!$user){
+                return response()->json([
+                    'error'=> 'User not found',
+                    'error_code'=> '104'
+                ]);
+            }
+        }
+        
         $otp = random_int(100000, 999999);
 
-        Session::put('user_otp_'.$request->phone,$otp);
-        Session::put('otp_expiry_time',time() + (5 * 60));
+        Session::put('user'.$request->otptype.'_otp_'.$request->phone,$otp);
+        Session::put($request->otptype.'otp_expiry_time',time() + (60));
 
         $data = [
             'APIKey'=>env('SMS_API_KEY'),
@@ -199,9 +273,11 @@ class AuthController extends Controller
     }
 
     public function verifyOtp(Request $request){
-
-        if (time() < session('otp_expiry_time')){
-            if($request->otp == Session::get('user_otp_'.$request->phone)){
+        if (time() < session($request->otptype.'otp_expiry_time')){
+            if($request->otp == Session::get('user'.$request->otptype.'_otp_'.$request->phone)){
+                Session::put([
+                    $request->otptype.'_otp_'.$request->phone.'verified'=>True
+                ]);
                 return response()->json([
                     'error'=> 'otp matched',
                     'err_code'=>101
