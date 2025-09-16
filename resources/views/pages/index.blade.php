@@ -82,7 +82,7 @@
                     @foreach ($providers as $key=>$provider)
                         @if(count($providers) - $key > 2)
                         <div class="app_card d-flex flex-column w-100 mb-[1px]">
-                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#f00]">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#323738]">
                                 <!-- <div class="d-flex flex-row gap-3 justify-content-start">
                                 </div> -->
                                 <div class="font-bold">{{$provider->title}}</div>
@@ -106,7 +106,7 @@
                     @endforeach
                             
                         <div class="app_card d-flex flex-column mb-[1px]">
-                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#f00]">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#323738]">
                                 <!-- <div class="d-flex flex-row gap-3 justify-content-start">
                                 </div> -->
                                 <div class="font-bold">Evo Play and Playtech</div>
@@ -129,7 +129,7 @@
                         
                         <!-- provider List -->
                         <div class="app_card d-flex flex-column w-100 mb-3 app_scroller">
-                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#f00]">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#323738]">
                                 <div class="d-flex flex-row gap-3 justify-content-start">
                                     <div class="font-bold">Game Providers</div>
                                 </div>

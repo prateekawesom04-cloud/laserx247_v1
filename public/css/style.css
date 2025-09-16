@@ -852,3 +852,11 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
     padding: 0px;
     margin: 0px;
 }
+
+body, body a, body p, body div, body h1, body h2, body h3, body h4 {
+    color: #8b8b8b;
+}
+
+body, footer {
+    background: #000;
+}
