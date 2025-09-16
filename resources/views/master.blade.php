@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('head')
+    <head>
+        @include('head')
+
+    <link rel="stylesheet" href="{{asset('css')}}/style.css">
+        @yield('head')
+    </head>
 
 <body>
     <div class="app_body relative">
