@@ -837,6 +837,17 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
     align-items: center;
     text-align: center;
     justify-content: center;
-    display: flex
-;
+    display: flex;
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
+.row {
+    margin: 0px;
+}
+
+.row>* {
+    padding: 0px;
 }

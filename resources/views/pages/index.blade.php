@@ -2,7 +2,7 @@
 @section('body')
 
 <!-- News Bar + Banner -->
-    <div class="px-md-4 px-2">
+    <div class="">
         
         <div class="container-fluid">
             <div class="">
@@ -57,7 +57,7 @@
     
         <!-- Aviator & Mines -->
         <div class="container-fluid font-bold">
-            <div class="row w-100 mx-auto">
+            <div class="row w-full mx-auto">
                 <div class="col-6 !p-[1px] launch_game cursor-pointer" data-game_id="a04d1f3eb8ccec8a4823bdf18e3f0e84">
                     <img src="{{ asset('images/aviator-730-280.gif') }}" alt="Aviator" class="img-fluid w-100">
                     <div class="bg-dark text-white py-1">Aviator</div>
