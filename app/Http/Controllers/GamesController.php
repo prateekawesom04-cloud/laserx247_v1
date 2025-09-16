@@ -14,12 +14,23 @@ class GamesController extends Controller
 {
     //
     public function gameList(Request $request){
+        if($request->providers) {
+            $games_1 = Storage::disk('local')->get('games_data/'.$request->providers[0].'.json');
+            $games_1 = array_slice(json_decode($games_1, true),0,4);
 
-        $games = Storage::disk('local')->get('games_data/'.$request->provider.'.json');
+            $games_2 = Storage::disk('local')->get('games_data/'.$request->providers[1].'.json');
+            $games_2 = array_slice(json_decode($games_2, true),0,4);
+
+            $games = array_merge($games_1,$games_2);
+        } else{
+            
+            $games = Storage::disk('local')->get('games_data/'.$request->provider.'.json');
+            $games = json_decode($games, true);
+
+        }
         
         // $games = json_decode($games);
-
-        $games = json_decode($games, true);
+        
         $games = array_slice($games, $request->game_index*16, 16);
         return response()->json([
             'provider'=> $request->provider,
