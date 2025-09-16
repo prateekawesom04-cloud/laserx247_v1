@@ -1,4 +1,4 @@
-<nav class="bg-dark text-white fixed-bottom border-top app_footer">
+<nav class="bg-dark text-white fixed-bottom position-absolute border-top app_footer">
   <div class="container-fluid">
     <div class="row text-center">
 

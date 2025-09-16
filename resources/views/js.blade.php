@@ -1,5 +1,5 @@
 
-    <div class="chat_support_btn chat_support fixed right-0 bottom-[80px] btn rounded-md !bg-gray-900 !p-1 text-white !flex flex-row justify-center items-center gap-2" style="display:none;">
+    <div class="chat_support_btn chat_support absolute right-0 bottom-[80px] btn rounded-md !bg-gray-900 !p-1 text-white !flex flex-row justify-center items-center gap-2" style="display:none;">
         <div class="support_icon min-w-min">
             <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset="">
         </div>
