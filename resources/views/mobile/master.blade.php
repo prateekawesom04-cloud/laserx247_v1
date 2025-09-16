@@ -9,7 +9,7 @@
                @include('mobile.header')
                @include('account-sidebar')
          </div>
-         <div class="app_body_center w-full h-full">
+         <div class="app_body_center w-full">
                @yield('body')
          </div>
          <div class="footer_part w-full relative">
