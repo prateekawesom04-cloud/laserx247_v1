@@ -850,4 +850,5 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
 
 .row>* {
     padding: 0px;
+    margin: 0px;
 }
