@@ -1,34 +1,34 @@
 @extends('admin.master')
 @section('body')
     <!-- Responsive Account Page -->
-    <div class="container-fluid p-4">
+    <div class="container-fluid p-4 text-white bg-dark">
         <div class="row g-3">
 
             <!-- Sidebar -->
             <div class="col-12 col-md-4 col-lg-3">
-                <div class="card shadow-sm h-100">
+                <div class="card shadow-sm h-100 bg-dark text-white">
                     <div class="card-header bg-primary text-white fw-bold">
                         My Account
                     </div>
 
                     <!-- Grid layout for small screens, stacked for md -->
-                    <ul class="list-group list-group-flush mb-0 d-none d-md-block">
+                    <ul class="list-group list-group-flush mb-0 d-none d-md-block bg-dark">
                         <!-- Desktop:  -->
                         <li>
-                            <a href="javascript:void(0);" class="list-group-item list-group-item-action sidebar-link active"
+                            <a href="javascript:void(0);" class="list-group-item list-group-item-action sidebar-link active bg-dark text-white"
                                 data-target="profile">My Profile</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);" class="list-group-item list-group-item-action sidebar-link"
+                            <a href="javascript:void(0);" class="list-group-item list-group-item-action sidebar-link bg-dark text-white"
                                 data-target="statement">Account Statement</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);" class="list-group-item list-group-item-action sidebar-link"
+                            <a href="javascript:void(0);" class="list-group-item list-group-item-action sidebar-link bg-dark text-white"
                                 data-target="activity">Activity Log</a>
                         </li>
                     </ul>
 
-                    <div class="d-block d-md-none px-2 py-2">
+                    <div class="d-block d-md-none px-2 py-2 bg-dark">
                         <!-- Mobile/Tablet: -->
                         <div class="row g-2 text-center">
                             <div class="col-4">
@@ -53,22 +53,21 @@
 
                 <!-- Profile Section -->
                 <div id="profile-section">
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm bg-dark text-white">
                         <div class="card-header bg-primary text-white fw-bold">Account Details</div>
                         <div class="card-body p-0">
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
-                                <div class="fw-bold text-muted">Name</div>
+                                <div class="fw-bold ">Name</div>
                                 <div>agplaycrick99</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
-                                <div class="fw-bold text-muted">Commission</div>
+                                <div class="fw-bold">Commission</div>
                                 <div>0</div>
                             </div>
                             <!-- Rolling Commission -->
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
-                                <div class="fw-bold text-muted">Rolling Commission</div>
+                                <div class="fw-bold">Rolling Commission</div>
                                 <div>
-
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#rollingCommissionModal"
                                         title="Edit">
                                         <i class="fas fa-pen-to-square icon-btn"></i>
@@ -82,7 +81,7 @@
 
                             <!-- Agent Rolling Commission -->
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
-                                <div class="fw-bold text-muted">Agent Rolling Commission</div>
+                                <div class="fw-bold">Agent Rolling Commission</div>
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#agentrollingCommissionModal"
                                     title="View">
                                     <i class="fas fa-eye icon-btn"></i>
@@ -90,19 +89,19 @@
                             </div>
 
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
-                                <div class="fw-bold text-muted">Currency</div>
+                                <div class="fw-bold">Currency</div>
                                 <div>INR</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
-                                <div class="fw-bold text-muted">Partnership</div>
+                                <div class="fw-bold">Partnership</div>
                                 <div>100</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
-                                <div class="fw-bold text-muted">Mobile Number</div>
+                                <div class="fw-bold">Mobile Number</div>
                                 <div>0</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center px-3 py-2">
-                                <div class="fw-bold text-muted">Password</div>
+                                <div class="fw-bold">Password</div>
                                 <div>********* <i class="fas fa-pen-to-square icon-btn" title="Edit Password"
                                         data-bs-toggle="modal" data-bs-target="#changePasswordModal"></i>
                                     </i></div>
@@ -114,21 +113,21 @@
 
                 <!-- Statement Section -->
                 <div id="statement-section" style="display: none;">
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm bg-dark text-white">
                         <div class="card-header bg-primary text-white fw-bold">Account Statement</div>
                         <div class="card-body">
 
                             <div class="row mb-3 g-2">
                                 <div class="col-12 col-sm-6 col-md-4">
-                                    <select class="form-control">
+                                    <select class="form-control bg-dark text-white border-secondary">
                                         <option>Data Source</option>
                                     </select>
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-3">
-                                    <input type="date" class="form-control" value="2025-09-02">
+                                    <input type="date" class="form-control bg-dark text-white border-secondary" value="2025-09-02">
                                 </div>
                                 <div class="col-6 col-sm-6 col-md-3">
-                                    <input type="date" class="form-control" value="2025-09-02">
+                                    <input type="date" class="form-control bg-dark text-white border-secondary" value="2025-09-02">
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <button class="btn btn-primary w-100">Get Statement</button>
@@ -136,7 +135,7 @@
                             </div>
 
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
+                                <table class="table table-bordered table-striped table-dark mb-0">
                                     <thead class="table-primary">
                                         <tr>
                                             <th>Date/Time</th>
@@ -161,11 +160,11 @@
 
                 <!-- Activity Log Section -->
                 <div id="activity-section" style="display: none;">
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm bg-dark text-white">
                         <div class="card-header bg-primary text-white fw-bold">Activity Log</div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped mb-0">
+                                <table class="table table-bordered table-striped table-dark mb-0">
                                     <thead class="table-primary">
                                         <tr>
                                             <th>Login Date & Time</th>

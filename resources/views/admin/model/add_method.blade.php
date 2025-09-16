@@ -14,7 +14,7 @@
                 <form id="methodForm">
                     <div class="mb-3">
                         <label for="methodType" class="form-label">Select Type</label>
-                        <select class="form-select form-select-sm" id="methodType" name="methodType" required>
+                        <select class="form-select form-select-sm" id="methodType" name="addmethodType" required>
                             <option value="" disabled selected>Select a method</option>
                             <option value="upi">UPI</option>
                             <option value="bank">Bank</option>
@@ -30,7 +30,7 @@
                     <div id="dynamicFields"></div>
 
                     <div class="text-end mt-2">
-                        <a type="submit" class="btn btn-primary btn-sm">Save</a>
+                        <a href="javascript:0" type="submit" class="btn btn-primary btn-sm">Save</a>
                     </div>
                 </form>
             </div>

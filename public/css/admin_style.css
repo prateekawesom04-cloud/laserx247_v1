@@ -4,6 +4,61 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #292d2e;
+    color: #ffffff;
+}
+/* Card Styling */
+.card {
+    background-color: #323740 !important;
+    color: #ffffff !important;
+    border: 1px solid #75bada !important;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+    background-color: #3f5067 !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid #2b2f36 !important;
+    font-weight: 600;
+}
+
+.card-body {
+    background-color: #323740 !important;
+    color: #ffffff !important;
+}
+
+/* Table Styling */
+table {
+    background-color: #323740 !important;
+    color: #ffffff !important;
+    border: 1px solid #2b2f36 !important;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+table th,
+table td {
+    background-color: #323740 !important;
+    color: #ffffff !important;
+    border: 1px solid #2b2f36 !important;
+    padding: 8px;
+    text-align: left;
+}
+
+table thead th {
+    background-color: #3f5067 !important;
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+/* Hover Effect for Table Rows */
+table tbody tr:hover {
+    background-color: #424c58 !important;
+    transition: background-color 0.3s ease;
 }
 
 *,
@@ -14,7 +69,7 @@ body {
 
 /* Header Container */
 .responsive-header {
-    background: linear-gradient(to right, #070047, #0052a1, #00c2ff);
+    background: linear-gradient(to bottom, #1f2327, #3b4553, #49585f);
     color: white;
     padding: 12px 16px;
 }
@@ -117,7 +172,7 @@ body {
 
 /* Navbar Active nav link */
 .navbar {
-    background: linear-gradient(to right, #00c2ff, #0052a1, #070047);
+    background: linear-gradient(to bottom, #1f2327, #3b4655, #4a5357);
     padding: 0;
 }
 
@@ -133,15 +188,15 @@ body {
 }
 
 .active-nav {
-    background: #fff !important;
+    background: #dddddd !important;
     color: black !important;
 }
 
 .dropdown-menu {
     position: absolute !important;
     z-index: 9999 !important;
-    background: linear-gradient(to right, #1c0bb9, #0052a1, #00c2ff);
-    border: 1px solid #2622fa;
+    background: linear-gradient(to bottom, #1f2327, #425063, #5d7581);
+    border: 1px solid #4b4a5e;
     min-width: 180px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -213,29 +268,29 @@ body {
 /* index page */
 
 /* Downline user */
- .table .btn-sm {
-        min-width: 36px;
-        padding: 0.25rem 0.5rem;
-    }
+.table .btn-sm {
+    min-width: 36px;
+    padding: 0.25rem 0.5rem;
+}
 
-    /* Prevent overflow stacking on mobile */
-    td .d-flex {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-    }
+/* Prevent overflow stacking on mobile */
+td .d-flex {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
 
-    /* Responsive fix for long buttons */
-    .table td, 
-    .table th {
-        white-space: nowrap;
-    }
+/* Responsive fix for long buttons */
+.table td,
+.table th {
+    white-space: nowrap;
+}
 
-    .table-responsive-sm {
-        overflow-x: auto;
-        overflow-y: auto;
-        max-height: 400px;
-    }
-    .btn-user-details {
+.table-responsive-sm {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 400px;
+}
+.btn-user-details {
     background-color: #0eb8a9;
     color: white;
 }
@@ -261,7 +316,7 @@ body {
 }
 
 .btn-game-controller {
-     background-color: #02049c;
+    background-color: #02049c;
     color: white;
 }
 .btn-casino-control {
@@ -355,20 +410,10 @@ td {
 }
 
 /* Event profit/loss */
-.pl-body {
-    background-color: #f8f9fa;
-}
-
-.pl-card {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    border-radius: 6px;
-    background: #ffffff;
-}
 
 .pl-header {
     font-size: 1.25rem;
-    font-weight: 600;
-    color: #009879;
+    font-weight: 800;
     margin-bottom: 1rem;
 }
 
@@ -562,7 +607,7 @@ td {
 }
 /* padding media query for mobile padding */
 @media (max-width: 576px) {
-     .container-fluid {
+    .container-fluid {
         padding-left: 0.25rem !important;
         padding-right: 0.25rem !important;
     }

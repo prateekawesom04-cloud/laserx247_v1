@@ -60,7 +60,7 @@
                 </ul>
 
                 <!-- Tab Content -->
-                <div class="tab-content border rounded-bottom p-3 bg-white">
+                <div class="tab-content border rounded-bottom p-3">
                     <!-- Fancy Tab -->
                     <div class="tab-pane fade show active" id="fancy" role="tabpanel" aria-labelledby="fancy-tab">
                         <div class="row mb-3">

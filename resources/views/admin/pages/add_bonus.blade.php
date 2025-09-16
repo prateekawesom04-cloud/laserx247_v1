@@ -2,6 +2,11 @@
 
 @section('body')
 <div class="container-fluid p-4">
+    <div class="mb-3 d-flex justify-content-end gap-2">
+            <a href="#" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#editBonusModal">
+                 Edit Bonus
+            </a>
+        </div>
     <div class="card shadow-sm">
         <div class="card-header bg-primary text-white">
             <h5 class="mb-0">Assign Bonus to User</h5>

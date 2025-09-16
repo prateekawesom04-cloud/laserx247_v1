@@ -279,13 +279,13 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         return view('admin.pages.market_analysis');
             })->name('admin.market_analysis');
 
-        Route::get('/user_banking', function () {
-        return view('admin.pages.user_banking');
-            })->name('admin.user_banking');
+        Route::get('/deposit', function () {
+        return view('admin.pages.deposit');
+            })->name('admin.deposit');
 
-        Route::get('/master_banking', function () {
-        return view('admin.pages.master_banking');
-            })->name('admin.master_banking');
+        Route::get('/withdraw', function () {
+        return view('admin.pages.withdraw');
+            })->name('admin.withdraw');
 
             Route::get('/payments', function () {
         return view('admin.pages.payments');

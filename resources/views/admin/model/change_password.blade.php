@@ -36,8 +36,8 @@
 
           <!-- Buttons -->
           <div class="form-group text-end">
-            <a href="#" class="btn btn-primary" onclick="document.getElementById('changePasswordForm').submit(); return false;">Confirm</a>
-            <a href="#" class="btn btn-secondary" data-bs-dismiss="modal">No</a>
+            <a href="javascript:0" class="btn btn-primary" onclick="document.getElementById('changePasswordForm').submit(); return false;">Confirm</a>
+            <a href="javascript:0" class="btn btn-secondary" data-bs-dismiss="modal">No</a>
           </div>
         </form>
       </div>

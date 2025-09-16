@@ -23,7 +23,7 @@
                                 <div class="mt-1">
                                     <span class="badge bg-success">In-Play</span>
                                     <span class="badge bg-primary">📺</span>
-                                    <small class="text-muted d-block d-md-inline">08/05/2025 06:30</small>
+                                    <small class="text-white d-block d-md-inline">08/05/2025 06:30</small>
                                 </div>
                             </td>
                             <td>
@@ -55,7 +55,7 @@
                                 <div class="mt-1">
                                     <span class="badge bg-success">Live</span>
                                     <span class="badge bg-primary">📺</span>
-                                    <small class="text-muted d-block d-md-inline">08/05/2025 22:00</small>
+                                    <small class="text-white d-block d-md-inline">08/05/2025 22:00</small>
                                 </div>
                             </td>
                             <td>

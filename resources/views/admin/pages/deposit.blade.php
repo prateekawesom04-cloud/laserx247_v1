@@ -20,7 +20,6 @@
                                 <option>25</option>
                                 <option>50</option>
                             </select>
-
                         </div>
 
                         <!-- Search -->

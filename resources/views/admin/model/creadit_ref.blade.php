@@ -16,25 +16,25 @@
                     <!-- Current -->
                     <div class="mb-3">
                         <label for="current" class="form-label">Current</label>
-                        <input type="text" name="current" class="form-control" value="0" readonly>
+                        <input type="text" name="refcurrent" class="form-control" value="0" readonly>
                     </div>
 
                     <!-- New -->
                     <div class="mb-3">
                         <label for="new" class="form-label">New</label>
-                        <input type="text" name="new" class="form-control">
+                        <input type="text" name="refnew" class="form-control">
                     </div>
 
                     <!-- Password -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control">
+                        <input type="password" name="refpassword" class="form-control">
                     </div>
 
                     <!-- Buttons -->
                     <div class="d-flex justify-content-end">
-                        <a type="submit" class="btn btn-primary btn-sm me-2">Submit</a>
-                        <a type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</a>
+                        <a href="javascript:0" type="submit" class="btn btn-primary btn-sm me-2">Submit</a>
+                        <a href="javascript:0" type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</a>
                     </div>
                 </form>
             </div>

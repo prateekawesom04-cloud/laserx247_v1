@@ -18,7 +18,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.my_account') }}">My Account</a>
+                    <a class="nav-link" href="{{ route('admin.my_account') }}">👨‍💼My Account</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -34,23 +34,21 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.betlist') }}">BetList</a>
+                    <a class="nav-link" href="{{ route('admin.betlist') }}">🎯BetList</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.market_analysis') }}">Market Analysis</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Banking</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('admin.user_banking') }}">User Banking</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.master_banking') }}">Master Banking</a></li>
-                    </ul>
-                </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.payments') }}" >Payments</a>
+                    <a class="nav-link" href="{{ route('admin.deposit') }}">💰Deposit </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.withdraw') }}">💸Withdraw</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.payments') }}">🏧Payments</a>
                 </li>
 
                 <li class="nav-item">
@@ -59,21 +57,21 @@
 
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">My Setting</a>
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">⚙️My Setting</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('admin.admin_fund') }}">Admin Fund</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.news_view') }}">News</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.admin_fund') }}">💰Admin Fund</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.news_view') }}">📰News</a></li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('admin.user_general_setting') }}">User General
+                            <a class="dropdown-item" href="{{ route('admin.user_general_setting') }}">👥User General
                                 Setting</a>
                         </li>
-                        <li><a class="dropdown-item" href="{{ route('admin.block_market') }}">Block Market</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.event_wise_setting') }}">Event Wise
+                        <li><a class="dropdown-item" href="{{ route('admin.block_market') }}">🚫Block Market</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.event_wise_setting') }}">📅Event Wise
                                 Setting</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.betting') }}">Betting</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.add_banner') }}">Add Banner</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.add_number') }}">Add Number</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.add_bonus') }}">Add Bonus</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.betting') }}">🎲Betting</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.add_banner') }}">🖼️Add Banner</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.add_number') }}">📞Add Number</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.add_bonus') }}">🎁Add Bonus</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

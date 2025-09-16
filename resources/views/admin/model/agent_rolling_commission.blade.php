@@ -18,36 +18,36 @@
                     <!-- Input Row Template -->
                     <div class="form-group d-flex align-items-center mb-2">
                         <label for="fancy" class="me-2 mb-0" style="width: 100px;">Fancy</label>
-                        <input type="number" name="fancy" id="fancy" class="form-control" value="0">
+                        <input type="number" name="agentfancy" id="fancy" class="form-control" value="0">
                     </div>
 
                     <div class="form-group d-flex align-items-center mb-2">
                         <label for="matka" class="me-2 mb-0" style="width: 100px;">Matka</label>
-                        <input type="number" name="matka" id="matka" class="form-control" value="0">
+                        <input type="number" name="agentmatka" id="matka" class="form-control" value="0">
                     </div>
 
                     <div class="form-group d-flex align-items-center mb-2">
                         <label for="casino" class="me-2 mb-0" style="width: 100px;">Casino</label>
-                        <input type="number" name="casino" id="casino" class="form-control" value="0">
+                        <input type="number" name="agentcasino" id="casino" class="form-control" value="0">
                     </div>
 
                     <div class="form-group d-flex align-items-center mb-2">
                         <label for="binary" class="me-2 mb-0" style="width: 100px;">Binary</label>
-                        <input type="number" name="binary" id="binary" class="form-control" value="0">
+                        <input type="number" name="agentbinary" id="binary" class="form-control" value="0">
                     </div>
 
                     <div class="form-group d-flex align-items-center mb-2">
                         <label for="sportbook" class="me-2 mb-0" style="width: 100px;">Sportbook</label>
-                        <input type="number" name="sportbook" id="sportbook" class="form-control" value="0">
+                        <input type="number" name="agentsportbook" id="sportbook" class="form-control" value="0">
                     </div>
 
                     <div class="form-group d-flex align-items-center mb-3">
                         <label for="bookmaker" class="me-2 mb-0" style="width: 100px;">Bookmaker</label>
-                        <input type="number" name="bookmaker" id="bookmaker" class="form-control" value="0">
+                        <input type="number" name="agentbookmaker" id="bookmaker" class="form-control" value="0">
                     </div>
 
                     <!-- Submit Button -->
-                    <a type="submit" class="btn btn-primary">Submit</a>
+                    <a href="javascript:0" type="submit" class="btn btn-primary">Submit</a>
                 </form>
             </div>
 

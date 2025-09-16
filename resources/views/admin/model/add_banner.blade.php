@@ -23,8 +23,8 @@
 
           <!-- Buttons -->
           <div class="form-group text-end">
-            <a href="#" class="btn btn-dark" onclick="document.getElementById('addBannerForm').submit(); return false;">Add</a>
-            <a href="#" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
+            <a href="javascript:0" class="btn btn-dark" onclick="document.getElementById('addBannerForm').submit(); return false;">Add</a>
+            <a href="javascript:0" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
           </div>
         </form>
       </div>

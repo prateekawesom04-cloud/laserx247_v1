@@ -4,8 +4,8 @@
     <div class="container-fluid p-4">
 
         <!-- Filter Section -->
-        <div class="card shadow-sm border-0 mb-4 mt-4">
-            <div class="card-body border border-primary">
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
                 <form>
                     <div class="row g-3">
                         <div class="col-6 col-md-4 col-lg-3">
@@ -43,7 +43,7 @@
 
         <!-- Bet History Section -->
         <div class="card shadow-sm border-0 mb-4">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header text-white">
                 <strong>Bet History</strong>
             </div>
             <div class="card-body">
@@ -86,7 +86,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="10" class="text-muted">No data!</td>
+                                <td colspan="10" class="text-white">No data!</td>
                             </tr>
                         </tbody>
                     </table>
@@ -94,7 +94,7 @@
 
                 <!-- Pagination -->
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-3">
-                    <div class="small text-muted mb-2 mb-md-0">Showing 1 to 10 of 0 entries</div>
+                    <div class="small text-white mb-2 mb-md-0">Showing 1 to 10 of 0 entries</div>
                     <nav>
                         <ul class="pagination pagination-sm mb-0">
                             <li class="page-item disabled"><a class="page-link">First</a></li>

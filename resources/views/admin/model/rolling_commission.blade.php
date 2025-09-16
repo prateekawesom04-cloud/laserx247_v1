@@ -18,35 +18,35 @@
           <div class="row mb-2 align-items-center">
             <label class="col-5 col-form-label" for="fancy">Fancy</label>
             <div class="col-7">
-              <input type="text" name="fancy" class="form-control form-control-sm" placeholder="...">
+              <input type="text" name="rollingfancy" class="form-control form-control-sm" placeholder="...">
             </div>
           </div>
 
           <div class="row mb-2 align-items-center">
             <label class="col-5 col-form-label" for="matka">Matka</label>
             <div class="col-7">
-              <input type="text" name="matka" class="form-control form-control-sm" placeholder="...">
+              <input type="text" name="rollingmatka" class="form-control form-control-sm" placeholder="...">
             </div>
           </div>
 
           <div class="row mb-2 align-items-center">
             <label class="col-5 col-form-label" for="casino">Casino</label>
             <div class="col-7">
-              <input type="text" name="casino" class="form-control form-control-sm" placeholder="...">
+              <input type="text" name="rollingcasino" class="form-control form-control-sm" placeholder="...">
             </div>
           </div>
 
           <div class="row mb-2 align-items-center">
             <label class="col-5 col-form-label" for="sportbook">Sportbook</label>
             <div class="col-7">
-              <input type="text" name="sportbook" class="form-control form-control-sm" placeholder="...">
+              <input type="text" name="rollingsportbook" class="form-control form-control-sm" placeholder="...">
             </div>
           </div>
 
           <div class="row mb-2 align-items-center">
             <label class="col-5 col-form-label" for="bookmaker">Bookmaker</label>
             <div class="col-7">
-              <input type="text" name="bookmaker" class="form-control form-control-sm" placeholder="...">
+              <input type="text" name="rollingbookmaker" class="form-control form-control-sm" placeholder="...">
             </div>
           </div>
 
@@ -60,14 +60,14 @@
           <div class="row mb-3 align-items-center">
             <label class="col-5 col-form-label" for="password">Password</label>
             <div class="col-7">
-              <input type="password" name="password" class="form-control form-control-sm">
+              <input type="password" name="commissionpassword" class="form-control form-control-sm">
             </div>
           </div>
 
           <!-- Footer Buttons -->
           <div class="d-flex justify-content-end gap-2">
-            <a href="#" onclick="this.closest('form').submit();" class="btn btn-primary btn-sm">Submit</a>
-            <a href="#" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</a>
+            <a href="javascript:0" onclick="this.closest('form').submit();" class="btn btn-primary btn-sm">Submit</a>
+            <a href="javascript:0" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</a>
           </div>
         </form>
       </div>
