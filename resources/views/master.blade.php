@@ -29,11 +29,6 @@
         <img src="{{ asset('images/Hourglass.gif') }}" alt="Logo" height="40" width="100" />
     </div>
 
-    @include('includes.appModel',[
-        'modal_id'=>'modal-id',
-        'modal_head'=>'Modal Header',
-        'modal_body'=>$modal_body
-        ])
 
     @yield('js')
     

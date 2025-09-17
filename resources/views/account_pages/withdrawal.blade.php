@@ -69,6 +69,56 @@
             </div>
         </div>
     </div>
+
+
+    @php
+
+    $modal_body = '
+    
+        <form id="withdrawal_details">
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Account Holder</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Account Number</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Confirm Account Number</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Bank Name</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">IFSC Code</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">UPI ID</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+
+        </form>
+    
+    ';
+
+    @endphp
+    
+    @include('includes.appModel',[
+    'modal_id'=>'modal-id',
+    'modal_head'=>'Modal Header',
+    'modal_body'=>$modal_body
+    ])
+
 @endsection
 
 @section('js')
