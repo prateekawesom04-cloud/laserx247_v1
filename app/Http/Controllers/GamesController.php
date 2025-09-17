@@ -106,7 +106,7 @@ class GamesController extends Controller
 
     public function sportsbook(Request $request){
         
-        $url = "https://betfair-sports-casino-live-tv-result-odds.p.rapidapi.com/api/allSportsID";
+        $url = "https://betfair-sports-casino-live-tv-result-odds.p.rapidapi.com/api/v3/diamonddata?sportid=4&gmid=524528365";
         $CURLOPT_RETURNTRANSFER=true;
         $CURLOPT_TIMEOUT = 30;
         $CURLOPT_MAXREDIRS = 10;
