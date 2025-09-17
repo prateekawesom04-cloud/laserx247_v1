@@ -163,7 +163,7 @@
             let phone = $('input[name=phone]').val();
             let password = $('input[name=password]').val();
 
-            let data = {
+            let pdata = {
                 phone: $('input[name=phone]').val(),
                 password: $('input[name=password]').val(),
                 otp: $('input[type=radio]:checked').val()
@@ -175,13 +175,13 @@
             //     return false;
             // } else 
             if(data.otp){
-                callApi('post', 'login', data, register_loginResponse);
+                callApi('post', 'login', pdata, register_loginResponse);
             } else{
                 if (password.length < 6) {
                     alert('Please Enter Minimum 6 digit password');
                     return false;
                 } else {
-                    callApi('post', 'login', data, register_loginResponse);
+                    callApi('post', 'login', pdata, register_loginResponse);
                 }
             }
         }

@@ -304,7 +304,7 @@
 
         $('input[name=otp]').on('keyup',function(e) {
             if (!testLocalStorage(data.localStorage+'user_otp')) {
-                e.preventDefault();
+                $(this).val('');
                 return false;
             }
             

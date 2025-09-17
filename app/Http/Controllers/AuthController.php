@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Admin\AdminDataController;
+use App\Models\User;
+use App\Models\Bonus;
 
 class AuthController extends Controller
 {
@@ -84,8 +86,22 @@ class AuthController extends Controller
             // $user->user_uid = rand(0000,9999).'_'.time().$request->phone;
             $user->user_uid = $request->user_id;
             $user->password = Hash::make($request->password);
-            
+            $bonuses = [];
+            $bonus_uid = Bonus::where(['type'=>0,'status'=>1])->first()->bonus_uid;
+            $bonus['bonus_uid'] = $bonus_uid;
+            $bonus['amount'] = 0.00;
+            $bonus['wager_amount'] = 0.00;
+            $bonus['user_uid'] = $request->user_id;
+            $bonuses[] = $bonus;
+
             if($request->referral_code){
+                $bonus_uid = Bonus::where('type',1)->first()->bonus_uid;
+                $bonus['bonus_uid'] = $bonus_uid;
+                $bonus['amount'] = 0.00;
+                $bonus['wager_amount'] = 0.00;
+                $bonus['user_uid'] = $request->user_id;
+                $bonuses[] = $bonus;
+
                 $referralUser = User::getCurrentUser('referral_code',$request->referral_code);
                 $user->referral = $referralUser->phone;
                 $referralUser->referral_nos += 1;
@@ -97,11 +113,20 @@ class AuthController extends Controller
             $emptyObject = (object)[];
             $stakes = (object)['100','200','500','1000','2000'];
             $emptyObject->stakes = $stakes;
+            $emptyObject->bonusData =(object) $bonuses;
             
             $user->additional_data = json_encode($emptyObject);
             $user->save();
 
+
+
             Session::put(['user_session'=>$user->id.'_user_'.$user->user_uid]);
+
+            foreach ($bonuses as $bonus) {
+                
+                (new AdminDataController())->addBonus((object)$bonus);
+            }
+
             return True;
             // return redirect()->route('index');
             

@@ -96,15 +96,14 @@ Route::middleware(['auth_check_middleware'])->group(function () {
     })->name('user.statements');
 
     
-    Route::get('/bonus', function () {
-        return view('account_pages.bonus');
-    })->name('user.bonus');
+    Route::get('/bonus', [UserController::class,'bonus'])->name('user.bonus');
+
+    Route::get('/notification', [UserController::class,'notification'])->name('user.notification');
+
     Route::get('/game_statics', function () {
         return view('account_pages.game_statics');
     })->name('user.game_statics');
-    Route::get('/notification', function () {
-        return view('account_pages.notification');
-    })->name('user.notification');
+    
     
 
 
@@ -339,6 +338,16 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         return view('admin.pages.add_number');
             })->name('admin.add_number');
 
+
+// Post/Action requests start
+
+        Route::post('/createBonus', [AdminDataController::class,'createBonus'])->name('admin.action.createBonus');
+        
+        Route::post('/addBonus', [AdminDataController::class,'addBonus'])->name('admin.action.addBonus');
+
     });
     
+// Post/Action requests end
+
+
 });

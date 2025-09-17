@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('referral_nos')->default(0);
             $table->string('additional_data')->nullable();
             $table->timestamps();
+
         });
     }
 
