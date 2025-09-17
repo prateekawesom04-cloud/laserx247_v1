@@ -142,6 +142,7 @@
         </div>
     </div>
     
+@include('includes.ajax_call')
 @include('js')
     <script>
         
