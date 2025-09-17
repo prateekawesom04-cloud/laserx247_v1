@@ -804,10 +804,6 @@ body {
     border: none !important;
 }
 
-
-
-
-
 /* Additional Css */
 
 .scrollbar-hide{
@@ -854,9 +850,9 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
 }
 
 body, body a, body p, body div, body h1, body h2, body h3, body h4 {
-    color: #8b8b8b;
+    color: #ffffff;
 }
 
 body, footer {
-    background: #000;
+    background: linear-gradient(to bottom, #1f2327, #3b4553, #49585f);
 }

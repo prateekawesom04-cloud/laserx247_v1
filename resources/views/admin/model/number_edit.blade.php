@@ -17,13 +17,13 @@
           <!-- Mobile Number Input -->
           <div class="mb-3">
             <label for="mobileNumber" class="form-label">Mobile Number</label>
-            <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" value="1234567890">
+            <input type="text" class="form-control" id="mobileNumber" name="editmobileNumber" value="1234567890">
           </div>
 
           <!-- Action Buttons -->
           <div class="d-flex justify-content-end">
-            <a type="submit" class="btn btn-primary me-2">Update</a>
-            <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
+            <a href="javascript:0" type="submit" class="btn btn-primary me-2">Update</a>
+            <a href="javascript:0" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
           </div>
         </form>
       </div>

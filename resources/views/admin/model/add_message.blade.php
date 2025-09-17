@@ -6,7 +6,7 @@
       <!-- Modal Header -->
       <div class="modal-header py-2" style="background-color: #007bff; color: white;">
         <h5 class="modal-title fs-6" id="addMessageModalLabel">Add Message</h5>
-        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+        <a type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></a>
       </div>
 
       <!-- Modal Body with Form -->
@@ -17,13 +17,13 @@
           <!-- Description Field -->
           <div class="form-group mb-4">
             <label for="description">Description</label>
-            <input type="text" name="description" id="description" class="form-control" placeholder="Description...">
+            <input type="text" name="adddescription" id="description" class="form-control" placeholder="Description...">
           </div>
 
           <!-- Buttons -->
           <div class="form-group text-end">
-            <a href="#" class="btn btn-dark" onclick="document.getElementById('addMessageForm').submit(); return false;">Add</a>
-            <a href="#" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
+            <a href="javascript:0" class="btn btn-dark" onclick="document.getElementById('addMessageForm').submit(); return false;">Add</a>
+            <a href="javascript:0" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
           </div>
         </form>
       </div>

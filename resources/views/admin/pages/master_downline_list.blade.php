@@ -4,11 +4,11 @@
 
         <!-- Add Downline Link Button -->
         <div class="mb-3 d-flex justify-content-end gap-2">
-            <a href="#" class="btn btn-outline-primary btn-sm d-flex align-items-center gap-1">
+            <a href="#" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1">
                 <span>Clip summary</span>
                 <input type="checkbox" />
             </a>
-            <a href="#" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addDownlineModal">
+            <a href="#" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#addDownlineModal">
                 <i class="bi bi-person-plus"></i> Add Downline
             </a>
         </div>

@@ -2,6 +2,9 @@
 @section('body')
     <div class="container-fluid p-4">
         <div class="card border border-primary">
+            <div class="card-header bg-primary text-white p-2 rounded-top">
+            <h4 class="mb-0">Withdraw Amount</h4>
+        </div>
             <div class="card-body">
 
                 <!-- Controls Section -->
@@ -32,13 +35,11 @@
                     <table class="table table-bordered table-striped acc-table">
                         <thead class="table-secondary">
                             <tr>
-                                <th>UID</th>
+                               <th>UID</th>
                                 <th>Balance</th>
-                                <th>Available D / W</th>
+                                <th>Available Balance</th>
                                 <th>Exposure</th>
-                                <th>Credit Ref.</th>
-                                <th>Reference P/L</th>
-                                <th>Deposit/Withdraw</th>
+                                <th>Date/Time</th>
                                 <th>Remark</th>
                             </tr>
                         </thead>
@@ -48,18 +49,7 @@
                                 <td>0</td>
                                 <td>0</td>
                                 <td class="text-danger"><b>(0)</b></td>
-                                <td>0.00 <i class="fas fa-pen-to-square"></i></td>
-                                <td class="text-danger"><b>0</b></td>
-                                <td>
-                                    <div class="d-flex flex-nowrap align-items-center justify-content-start">
-                                        <a class="btn btn-secondary btn-sm acc-btn-dw mb-2 mb-sm-0">D</a>
-                                        <a class="btn btn-secondary btn-sm acc-btn-dw ms-1 mb-2 mb-sm-0">W</a>
-                                        <input type="number"
-                                            class="form-control form-control-sm mx-2 acc-input-sm mb-2 mb-sm-0"
-                                            value="0">
-                                        <a class="btn btn-success btn-sm acc-btn-full mb-2 mb-sm-0">Full</a>
-                                    </div>
-                                </td>
+                                <td>04-09-2024 11:11:11</td>
                                 <td><input type="text" class="form-control form-control-sm" value="-"></td>
                             </tr>
                         </tbody>

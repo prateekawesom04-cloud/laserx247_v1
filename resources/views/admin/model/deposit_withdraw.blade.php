@@ -16,25 +16,25 @@
                     <!-- Balance -->
                     <div class="mb-3">
                         <label for="balance" class="form-label">Balance</label>
-                        <input type="text" name="balance" class="form-control" value="" placeholder="" autocomplete="off">
+                        <input type="text" name="amountbalance" class="form-control" value="" placeholder="" autocomplete="off">
                     </div>
 
                     <!-- Remark -->
                     <div class="mb-3">
                         <label for="remark" class="form-label">Remark</label>
-                        <input type="text" name="remark" class="form-control" value="777" autocomplete="off">
+                        <input type="text" name="amountremark" class="form-control" value="777" autocomplete="off">
                     </div>
 
                     <!-- Your Password -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Your Password</label>
-                        <input type="password" name="password" class="form-control">
+                        <input type="password" name="amountpassword" class="form-control">
                     </div>
 
                     <!-- Buttons -->
                     <div class="d-flex justify-content-end">
-                        <a type="submit" name="action" value="deposit" class="btn btn-success me-2" style="background-color: #4CAF50; border-color: #4CAF50;">Deposit</a>
-                        <a type="submit" name="action" value="withdraw" class="btn btn-danger" style="background-color: #FF6B6B; border-color: #FF6B6B;">Withdraw</a>
+                        <a href="javascript:0" type="submit" name="action" value="deposit" class="btn btn-success me-2" style="background-color: #4CAF50; border-color: #4CAF50;">Deposit</a>
+                        <a href="javascript:0" type="submit" name="action" value="withdraw" class="btn btn-danger" style="background-color: #FF6B6B; border-color: #FF6B6B;">Withdraw</a>
                     </div>
                 </form>
             </div>

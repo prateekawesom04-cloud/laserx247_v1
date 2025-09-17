@@ -49,8 +49,8 @@
 
       <!-- Modal Footer -->
       <div class="modal-footer">
-        <a type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</a>
-        <a type="submit" class="btn btn-primary btn-sm">Save Changes</a>
+        <a href="javascript:0" type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</a>
+        <a href="javascript:0" type="submit" class="btn btn-primary btn-sm">Save Changes</a>
       </div>
 
     </div>

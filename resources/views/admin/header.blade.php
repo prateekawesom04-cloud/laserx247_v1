@@ -12,20 +12,16 @@
                 {{-- <span class="admin-badge">Admin</span> --}}
 
                 <div class="dropdown">
-    <a class="admin-name dropdown-toggle" href="#" role="button" id="adminDropdown"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        admin1234
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end fw-light" aria-labelledby="adminDropdown">
-        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-coins me-2"></i>Coins</a></li>
-        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-lock me-2"></i>Change Password</a></li>
-        <li><a class="dropdown-item text-danger" href="{{ route('admin.logout') }}">
-            <i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
-        </li>
-    </ul>
-</div>
-
-
+                    <a class="admin-name dropdown-toggle" href="#" role="button" id="adminDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        admin1234
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end fw-light" aria-labelledby="adminDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-coins me-2"></i>Coins</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-lock me-2"></i>Change
+                                Password</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

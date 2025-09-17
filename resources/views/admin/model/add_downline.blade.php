@@ -1,12 +1,12 @@
 <div class="modal fade" id="addDownlineModal" tabindex="-1" aria-labelledby="addDownlineModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md"> <!-- Compact size -->
+    <div class="modal-dialog modal-md"> 
         <div class="modal-content shadow">
 
             <!-- Modal Header -->
             <div class="modal-header bg-primary text-white py-2">
                 <h5 class="modal-title" id="addDownlineModalLabel">Add Downline</h5>
-                <button type="button" class="btn-close btn-close-white btn-sm" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                <a type="button" class="btn-close btn-close-white btn-sm" data-bs-dismiss="modal"
+                    aria-label="Close"></a>
             </div>
 
             <!-- Modal Body -->
@@ -14,7 +14,7 @@
                 <form id="addDownlineForm">
                     @csrf
 
-                    <!-- User & Reference Name (Always side by side) -->
+                    <!-- User & Reference Name -->
                     <div class="row gx-2 mb-2">
                         <div class="col-6">
                             <label class="form-label">User Name</label>
@@ -73,17 +73,16 @@
                                 placeholder="Remark">
                         </div>
                     </div>
-
                 </form>
             </div>
 
             <!-- Modal Footer -->
             <div class="modal-footer py-2 px-3">
-                <button type="submit" class="btn btn-sm btn-primary"
-                    onclick="document.getElementById('addDownlineForm').submit(); return false;">Create</button>
-                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a href="javascript:0" type="submit" class="btn btn-sm btn-primary"
+                    onclick="document.getElementById('addDownlineForm').submit(); return false;">Create</a>
+                <a href="javascript:0" type="button" class="btn btn-sm btn-secondary"
+                    data-bs-dismiss="modal">Cancel</a>
             </div>
-
         </div>
     </div>
 </div>

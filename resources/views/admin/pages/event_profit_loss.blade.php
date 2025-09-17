@@ -74,7 +74,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="4" class="text-center text-muted">No data!</td>
+                                <td colspan="4" class="text-center text-white">No data!</td>
                             </tr>
                         </tbody>
                     </table>

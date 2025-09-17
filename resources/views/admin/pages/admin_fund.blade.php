@@ -38,7 +38,7 @@
 
             <!-- Submit Button -->
             <div class="text-center">
-                <a type="submit" class="btn btn-primary w-100 py-2">Submit</a>
+                <a type="submit" class="btn btn-primary w-100 mb-2 py-2">Submit</a>
             </div>
         </form>
     </div>

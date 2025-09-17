@@ -29,13 +29,12 @@
 
             <div class="row g-2 mb-3 justify-content-center">
                 <!-- <div class="col-6"><a href="javascript:void(0)" class="btn btn-edit text-white w-100"
-                        style="font-size: 11px;">📝 Edit Stake</a></div> -->
+                                    style="font-size: 11px;">📝 Edit Stake</a></div> -->
                 <div class="col-6"><a href="javascript:void(0)" class="btn btn-submit text-white w-100"
                         style="font-size: 11px;">SUBMIT</a></div>
             </div>
 
             <div class="table-container rounded flex items-center justify-center">
-                @if(count($data))
                 <div class="table-wrapper">
                     <table class="table w-100 m-0">
                         <thead class="table-header text-white text-center py-0" style="font-size: 10px;">
@@ -49,22 +48,26 @@
                             </tr>
                         </thead>
                         <tbody class="table-content">
-                            @foreach ($data as $value)
-                                <tr class="table-row text-center">
-                                    <td>{{($value->payment_type)? 'withdraw' : 'deposit'}}</td>
-                                    <td>{{$value->transfer_amount}}</td>
-                                    <td>{{($value->status==0)?'success':'processing'}}</td>
-                                    <td>{{$value->created_at->format('Y-m-d')}}</td>
-                                    <td>{{$value->order_sn}}</td>
-                                    <td>{{$value->remark}}</td>
-                                </tr>                                
-                            @endforeach
+                            @if (count($data) > 0)
+                                @foreach ($data as $value)
+                                    <tr class="table-row text-center">
+                                        <td>{{ $value->payment_type ? 'withdraw' : 'deposit' }}</td>
+                                        <td>{{ $value->transfer_amount }}</td>
+                                        <td>{{ $value->status == 0 ? 'success' : 'processing' }}</td>
+                                        <td>{{ $value->created_at->format('Y-m-d') }}</td>
+                                        <td>{{ $value->order_sn }}</td>
+                                        <td>{{ $value->remark }}</td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="6" class="text-center">No Data Found</td>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
-                @else
-                    <div class="table-row text-center">No Data Found</div>
-                @endif
+
             </div>
         </div>
     </div>
@@ -72,32 +75,31 @@
 
 @section('js')
     <script>
-
-        function paymentRequest(response){
+        function paymentRequest(response) {
             response = JSON.parse(response);
-            if(response.data['pay_url']){
+            if (response.data['pay_url']) {
                 window.location.href = response.data['pay_url'];
-            } else{
+            } else {
                 alert('Payment failed');
             }
         }
 
-        $('a.btn-submit').click(function(e){
+        $('a.btn-submit').click(function(e) {
             let data = {};
-            
+
             data.payment_type = '1';
 
-            if( $('#depositAmount').val() >= 500){
+            if ($('#depositAmount').val() >= 500) {
                 data.money = $('#depositAmount').val();
                 callApi('post', 'paymentRequest', data, paymentRequest);
-            } else{
-                
-                if(data.payment_type == 0){
+            } else {
+
+                if (data.payment_type == 0) {
 
                     alert('Please Enter Amount more than 200');
-                    
-                } else{
-                    
+
+                } else {
+
                     alert('Please Enter Amount more than 500');
 
                 }
@@ -160,7 +162,7 @@
 
         // function paymentRequest(response) {
         //     response = JSON.parse(response);
-            
+
         //     (response.data['pay_url']) ? window.location.href = response.data['pay_url'] : alert('issue');
         // }
 

@@ -10,7 +10,7 @@
     @include('admin.header')
     @include('admin.navbar')
     @yield('body')
-    @include('admin.model.add_user')
+    @include('admin.model.add_method')
     @include('admin.model.add_banner')
     @include('admin.model.add_downline')
     @include('admin.model.game_controller')
@@ -24,6 +24,7 @@
     @include('admin.model.sports_setting')
     @include('admin.model.news_edit')
     @include('admin.model.number_edit')
+    @include('admin.model.edit_bonus')
     @include('admin.model.casino_control')
     @yield('js')
 </body>

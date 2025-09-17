@@ -6,7 +6,7 @@
       <!-- Modal Header -->
       <div class="modal-header py-2" style="background-color: #007bff; color: white;">
         <h5 class="modal-title fs-6" id="changePasswordModalLabel">Change Password</h5>
-        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+        <a type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></a>
       </div>
 
       <!-- Modal Body with Form -->
@@ -36,8 +36,8 @@
 
           <!-- Buttons -->
           <div class="form-group text-end">
-            <a href="#" class="btn btn-primary" onclick="document.getElementById('changePasswordForm').submit(); return false;">Confirm</a>
-            <a href="#" class="btn btn-secondary" data-bs-dismiss="modal">No</a>
+            <a href="javascript:0" class="btn btn-primary" onclick="document.getElementById('changePasswordForm').submit(); return false;">Confirm</a>
+            <a href="javascript:0" class="btn btn-secondary" data-bs-dismiss="modal">No</a>
           </div>
         </form>
       </div>

@@ -6,7 +6,7 @@
       <!-- Modal Header -->
       <div class="modal-header py-2" style="background-color: #007bff; color: white;">
         <h5 class="modal-title fs-6" id="editNewsModalLabel">Edit News</h5>
-        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+        <a type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></a>
       </div>
 
       <!-- Modal Body -->
@@ -22,8 +22,8 @@
 
           <!-- Buttons -->
           <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary me-2">Update</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <a href="javascript:0" type="submit" class="btn btn-primary me-2">Update</a>
+            <a href="javascript:0" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
           </div>
         </form>
       </div>

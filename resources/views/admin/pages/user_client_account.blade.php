@@ -3,7 +3,6 @@
 @section('body')
 <div class="container-fluid py-4">
     <form id="createAccountForm">
-
         <!-- Account Details -->
         <div class="card mb-4 shadow-sm border-0">
             <div class="card-header bg-primary text-white py-1">
@@ -17,16 +16,9 @@
                         <label for="accountType" class="form-label">
                             <i class="fas fa-user-tag me-1 text-primary"></i> Account Type
                         </label>
-                        <select id="accountType" class="form-select border-2" required>
-                            <option selected disabled>Select User Type</option>
-                            <option value="admin">👤 Admin</option>
-                            <option value="super_admin">⭐ Super Admin</option>
-                            <option value="super_master">🎯 Super Master</option>
-                            <option value="master">🔧 Master</option>
-                            <option value="agent">🤝 Agent</option>
-                            <option value="user">👨‍💼 User</option>
-                        </select>
+                        <input type="text" id="accountType" class="form-control border-2" value="👨‍💼 User" disabled>
                     </div>
+
                     <div class="col-md-6">
                         <label for="clientName" class="form-label">
                             <i class="fas fa-building me-1 text-primary"></i> Client Name
@@ -84,31 +76,6 @@
             </div>
         </div>
 
-        <!-- Commission -->
-        <div class="card mb-4 shadow-sm border-0">
-            <div class="card-header bg-info text-white py-1">
-                <h5 class="mb-0">
-                    <i class="fa-solid fa-percent me-2"></i> Commission: Cricket / Soccer / Tennis
-                </h5>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-8 mx-auto">
-                        <label for="commission" class="form-label">
-                            <i class="fas fa-chart-line me-1 text-info"></i> Commission M.O
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-info text-white border-0">
-                                <i class="fas fa-percentage"></i>
-                            </span>
-                            <input id="commission" type="number" class="form-control border-2 text-center" min="0" max="100" value="1">
-                            <span class="input-group-text bg-light border-2">%(1%)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- User Settings -->
         <div class="card mb-4 shadow-sm border-0">
             <div class="card-header bg-warning text-dark py-1">
@@ -134,31 +101,6 @@
                         <div class="input-group">
                             <span class="input-group-text bg-warning border-0">₹</span>
                             <input id="maxProfit" type="number" class="form-control border-2 text-center" min="0" value="0">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Partnership Sharing -->
-        <div class="card mb-4 shadow-sm border-0">
-            <div class="card-header bg-secondary text-white py-1">
-                <h5 class="mb-0">
-                    <i class="fa-solid fa-users me-2"></i> Partnership Sharing
-                </h5>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-8 mx-auto">
-                        <label for="sharing" class="form-label">
-                            <i class="fas fa-handshake me-1 text-secondary"></i> Downline Sharing
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-secondary text-white border-0">
-                                <i class="fas fa-share-alt"></i>
-                            </span>
-                            <input id="sharing" type="number" class="form-control border-2 text-center" min="0" max="100">
-                            <span class="input-group-text bg-light border-2">%(My Sharing 0%)</span>
                         </div>
                     </div>
                 </div>
@@ -227,7 +169,7 @@
         </div>
 
         <!-- Submit Button -->
-        <div class="text-center mb-5">
+        <div class="mb-5">
             <a type="submit" class="btn btn-success px-5 py-1 shadow-lg">
                 <i class="fa-solid fa-circle-plus me-2"></i>
                 Create Account
