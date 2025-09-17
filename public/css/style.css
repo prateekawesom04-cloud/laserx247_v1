@@ -873,3 +873,13 @@ body, footer {
     color: #fff;
 }
 
+.app_dark a.btn{
+    background: #323740;
+    color: #fff;
+}
+
+.app_dark .nav-link{
+    color: #fff;
+    background: #323738;
+    margin: 0 2px 0 2px;
+}
