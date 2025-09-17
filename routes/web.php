@@ -185,6 +185,8 @@ Route::post('launchGame', [GamesController::class,'launchGame'])->name('launchGa
 
 Route::post('launchGame/callback', [GamesController::class,'launchGameCallback'])->name('launchGameCallback')->withoutMiddleware([VerifyCsrfToken::class]);
 
+Route::get('sportsbook', [GamesController::class,'sportsbook'])->name('sportsbook')->withoutMiddleware([VerifyCsrfToken::class]);
+
 Route::post('paymentRequest', [PaymentController::class,'paymentRequest'])->name('paymentRequest')->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::post('paymentCallback', [PaymentController::class,'paymentCallback'])->name('paymentCallback')->withoutMiddleware([VerifyCsrfToken::class]);
