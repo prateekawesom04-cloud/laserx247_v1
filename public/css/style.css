@@ -854,5 +854,22 @@ body, body a, body p, body div, body h1, body h2, body h3, body h4 {
 }
 
 body, footer {
-    background: linear-gradient(to bottom, #1f2327, #3b4553, #49585f);
+    background: #323740;
 }
+
+/* Dark theme */
+
+.app_dark {
+    background: #292d2e;
+    color: #333;
+}
+
+.app_dark .app_color{
+    color: #333;
+}
+
+.app_dark .app_bar{
+    background: #323740;
+    color: #fff;
+}
+

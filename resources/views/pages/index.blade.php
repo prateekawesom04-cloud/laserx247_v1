@@ -29,7 +29,7 @@
                 <!-- Sports -->
                 <div class="col-md-6 position-relative !p-[1px]">
                     <img src="{{ asset('images/banner-sport1.png') }}" alt="Sports" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1 font-bold">Sports</div>
+                    <div class="py-1 font-bold app_bar">Sports</div>
                     <div class="position-absolute top-0 end-0 bg-black bg-opacity-75 h-full text-white p-2 rounded flex flex-col">
                         <div class="fw-bold text-danger mb-1">(🔴) LIVE</div>
                         <ul class="list-unstyled small mb-0 overflow-auto">
@@ -50,7 +50,7 @@
                 <!-- Sports Book -->
                 <div class="col-md-6 !p-[1px]">
                     <img src="{{ asset('images/sportbook.png') }}" alt="Sports Book" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1 font-bold">Sports Book</div>
+                    <div class="app_bar py-1 font-bold">Sports Book</div>
                 </div>
             </div>
         </div>
@@ -60,11 +60,11 @@
             <div class="row w-full mx-auto">
                 <div class="col-6 !p-[1px] launch_game cursor-pointer" data-game_id="a04d1f3eb8ccec8a4823bdf18e3f0e84">
                     <img src="{{ asset('images/aviator-730-280.gif') }}" alt="Aviator" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Aviator</div>
+                    <div class="app_bar py-1">Aviator</div>
                 </div>
                 <div class="col-6 !p-[1px] launch_game cursor-pointer" data-game_id="5c4a12fb0a9b296d9b0d5f9e1cd41d65">
                     <img src="{{ asset('images/evoplay-730-280.gif') }}" alt="Mines" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Mines</div>
+                    <div class="app_bar py-1">Mines</div>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
                     @foreach ($providers as $key=>$provider)
                         @if(count($providers) - $key > 2)
                         <div class="app_card d-flex flex-column w-100 mb-[1px]">
-                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#323738]">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 app_bar">
                                 <!-- <div class="d-flex flex-row gap-3 justify-content-start">
                                 </div> -->
                                 <div class="font-bold">{{$provider->title}}</div>
@@ -106,7 +106,7 @@
                     @endforeach
                             
                         <div class="app_card d-flex flex-column mb-[1px]">
-                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#323738]">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 app_bar">
                                 <!-- <div class="d-flex flex-row gap-3 justify-content-start">
                                 </div> -->
                                 <div class="font-bold">Evo Play and Playtech</div>
@@ -129,7 +129,7 @@
                         
                         <!-- provider List -->
                         <div class="app_card d-flex flex-column w-100 mb-3 app_scroller">
-                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 bg-[#323738]">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 app_bar">
                                 <div class="d-flex flex-row gap-3 justify-content-start">
                                     <div class="font-bold">Game Providers</div>
                                 </div>
