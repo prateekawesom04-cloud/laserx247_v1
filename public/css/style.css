@@ -854,5 +854,5 @@ body, body a, body p, body div, body h1, body h2, body h3, body h4 {
 }
 
 body, footer {
-    background: linear-gradient(to bottom, #1f2327, #3b4553, #49585f);
+   background-color: #323740 !important;
 }

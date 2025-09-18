@@ -8,7 +8,7 @@
             <div class="card-header bg-primary text-white p-2">
                 <h4 class="mb-0">Event General Settings</h4>
             </div>
-            <div class="bg-white p-3 rounded shadow">
+            <div class="p-3 rounded shadow">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
