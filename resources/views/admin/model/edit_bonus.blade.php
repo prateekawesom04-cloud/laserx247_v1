@@ -7,7 +7,7 @@
                     <!-- Bonus Type Dropdown -->
                     <div class="mb-3">
                         <label for="bonusType" class="form-label">Bonus Type</label>
-                        <select id="bonusType" name="bonusType" class="form-select text-black">
+                        <select id="bonusType" name="type" class="form-select text-black">
                             <option value="0">Register</option>
                             <option value="1">Refer</option>
                             <option value="2">Admin</option>
@@ -17,24 +17,24 @@
                     <!-- Amount -->
                     <div class="mb-3">
                         <label for="amount" class="form-label">Amount</label>
-                        <input type="text" id="amount" name="bonusSamount" class="form-control text-black">
+                        <input type="text" id="amount" name="amount" class="form-control text-black">
                     </div>
 
                     <!-- Wager Amount -->
                     <div class="mb-3">
                         <label for="wagerAmount" class="form-label">Wager Amount</label>
-                        <input type="text" id="wagerAmount" name="wagerAmount" class="form-control text-black">
+                        <input type="text" id="wagerAmount" name="wager_amount" class="form-control text-black">
                     </div>
 
                     <!-- Description -->
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <input type="text" id="description" name="bonusdescription" class="form-control text-black">
+                        <input type="text" id="description" name="description" class="form-control text-black">
                     </div>
 
                     <!-- Status -->
                     <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" id="status" name="bonusstatus">
+                        <input class="form-check-input" type="checkbox" id="status" name="status">
                         <label class="form-check-label" for="status">Status</label>
                     </div>
                 </form>
