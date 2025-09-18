@@ -1,7 +1,7 @@
 <!-- Account Offcanvas -->
 <div class="offcanvas offcanvas-end fw-bold" tabindex="-1" id="accountPanel" aria-labelledby="accountPanelLabel">
     <!-- Header -->
-    <div class="offcanvas-header bg-primary text-white">
+    <div class="offcanvas-header app_bar text-white">
         @if (!session('user_session'))
         <div>
             <h5 class="mb-0 fw-bold fs-6" id="accountPanelLabel">
@@ -25,7 +25,7 @@
     </div>
 
     <!-- Body -->
-    <div class="offcanvas-body p-3 bg-light">
+    <div class="offcanvas-body app_bar p-3">
         <div class="list-group list-group-flush">
             <a href="{{route('user.profile')}}" class="list-group-item list-group-item-action d-flex align-items-center fs-7 mb-3">
                 <i class="fas fa-user me-3 text-primary"></i> <span class="">Profile</span>

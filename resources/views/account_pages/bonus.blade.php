@@ -2,6 +2,14 @@
 
 @section('body')
 
-<div class="flex items-center justify-center w-full h-full">Bonus Page</div>
+    <div class="container">
+        <div class="col-12 col-md-6 mx-auto my-4">
+            
+            @foreach($bonusData as $key)
+                @include('includes.claimBonus')
+            @endforeach
+
+        </div>
+    </div>
 
 @endsection

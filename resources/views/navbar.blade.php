@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<div class="bg-primary">
+<div class="">
     <nav class="nav nav-pills flex-nowrap overflow-auto px-1 py-1 small"
         style="white-space: nowrap; scrollbar-width: thin;">
         <a class="nav-link text-white py-1 px-2" href="home">Home</a>
@@ -9,7 +9,7 @@
         <a class="nav-link text-white py-1 px-2" href="football">Football</a>
         <a class="nav-link text-white py-1 px-2" href="tennis">Tennis</a>
         <a class="nav-link text-white py-1 px-2" href="casino">Casino</a>
-        <a class="nav-link text-white fw-bold py-1 px-2" href="sports-book">Sports Book</a>
+        <a class="nav-link text-white py-1 px-2" href="sports-book">Sports Book</a>
         <a class="nav-link text-white py-1 px-2" href="javascript:void(0)">Horse Racing</a>
         <a class="nav-link text-white py-1 px-2" href="javascript:void(0)">Greyhound Racing</a>
         <a class="nav-link text-white py-1 px-2" href="javascript:void(0)">Binary</a>

@@ -1,4 +1,4 @@
-<nav class="navbar px-3 py-2" style="background: linear-gradient(to bottom, #1f2327, #3b4553, #49585f);">
+<nav class="navbar px-3 py-2" style="background: linear-gradient(to right, #070047, #0052a1, #00c2ff);">
     <div class="container-fluid">
         <a href="{{route('index')}}"><img src="{{ asset('images/logo.png') }}" alt="Logo" height="40" width="100" /></a>
         <div class="d-flex ms-auto align-items-center">
@@ -10,8 +10,7 @@
                     <i class="fas fa-bell"></i>
                 </a>
                 <!-- Balance & Exp Label Style Box -->
-                <div class="btn btn-outline-light btn-sm me-2 fw-bold d-inline-flex align-items-center px-2 py-1"
-                    style="background-color: #1d3b50; border: none; border-radius: 5px;">
+                <div class="btn btn-outline-light btn-sm me-2 fw-bold d-inline-flex align-items-center px-2 py-1 app_bar">
                     <a href="javascript:void(0)" class="text-decoration-none text-white me-3">
                         <span class="text-white-50">Bal:</span> <span class="fw-bold">{{ $userData->wallet_amount }}</span>
                     </a>

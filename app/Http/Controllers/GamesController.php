@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\AuthController;
+use App\Traits\CustomTrait;
 use App\Models\User;
 use App\Models\Game;
 use App\Models\GameHistory;
 
 class GamesController extends Controller
 {
+    use CustomTrait;
     //
     public function gameList(Request $request){
         if($request->providers) {
@@ -38,6 +40,8 @@ class GamesController extends Controller
             'game_index'=>$request->game_index+1
         ]);
     }
+
+// Game Launch using Bosswin start
 
     public function launchGame(Request $request){
         
@@ -94,4 +98,36 @@ class GamesController extends Controller
         $user->save();
 
     }
+
+// Game Launch using Bosswin end
+
+
+// Sports Api start
+
+    public function sportsbook(Request $request){
+        
+        $url = "https://betfair-sports-casino-live-tv-result-odds.p.rapidapi.com/api/v3/diamonddata?sportid=4&gmid=524528365";
+        $CURLOPT_RETURNTRANSFER=true;
+        $CURLOPT_TIMEOUT = 30;
+        $CURLOPT_MAXREDIRS = 10;
+        $CURLOPT_CUSTOMREQUEST = 'GET';
+        $headers = [
+            "x-rapidapi-host: betfair-sports-casino-live-tv-result-odds.p.rapidapi.com",
+            "x-rapidapi-key: 89fa56a389msh1ce4c60caf87dd5p129021jsnc2067f32cc5d"
+        ];
+
+        $response = $this->callApi(
+            $url,
+            $CURLOPT_RETURNTRANSFER,
+            $CURLOPT_TIMEOUT,
+            $CURLOPT_MAXREDIRS,
+            $CURLOPT_CUSTOMREQUEST,
+            $headers
+        );
+
+        dd($response['response']);
+    }
+
+// Sports Api end
+
 }

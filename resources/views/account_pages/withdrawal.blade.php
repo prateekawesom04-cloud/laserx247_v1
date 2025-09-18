@@ -17,14 +17,12 @@
                 style="font-size: 12px;">
 
             <div class="row g-2 mb-3">
-                <div class="col-6"><a class="amount-btn btn text-white w-100" data-amount="300"
-                        style="font-size: 12px;">300</a></div>
-                <div class="col-6"><a class="amount-btn btn text-white w-100" data-amount="500"
-                        style="font-size: 12px;">500</a></div>
-                <div class="col-6"><a class="amount-btn btn text-white w-100" data-amount="1000"
-                        style="font-size: 12px;">1000</a></div>
-                <div class="col-6"><a class="amount-btn btn text-white w-100" data-amount="2000"
-                        style="font-size: 12px;">2000</a></div>
+                @foreach([500,1000,2000,4000] as $amount)
+                <div class="col-5">
+                    <a class="amount-btn btn text-white w-100" data-amount="{{$amount}}"
+                        style="font-size: 12px;">{{$amount}}</a>
+                </div>
+                @endforeach 
             </div>
 
             <div class="row g-2 mb-3 justify-content-center">
@@ -71,6 +69,56 @@
             </div>
         </div>
     </div>
+
+
+    @php
+
+    $modal_body = '
+    
+        <form id="withdrawal_details">
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Account Holder</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Account Number</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Confirm Account Number</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Bank Name</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">IFSC Code</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">UPI ID</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+
+        </form>
+    
+    ';
+
+    @endphp
+    
+    @include('includes.appModel',[
+    'modal_id'=>'modal-id',
+    'modal_head'=>'Modal Header',
+    'modal_body'=>$modal_body
+    ])
+
 @endsection
 
 @section('js')
@@ -188,3 +236,46 @@
         // });
     </script>
 @endsection
+
+
+    @php
+
+    $modal_body = '
+    
+        <form id="withdrawal_details">
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Account Holder</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Account Number</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Confirm Account Number</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">Bank Name</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">IFSC Code</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+            
+            <div class="mb-3">
+                <label for="amount" class="form-label">UPI ID</label>
+                <input type="text" id="amount" name="amount" class="form-control text-black">
+            </div>
+
+        </form>
+    
+    ';
+
+    @endphp

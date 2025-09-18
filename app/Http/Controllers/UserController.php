@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Models\User;
 use App\Models\Transaction;
+use App\Models\User;
+use App\Models\Bonus;
 
 class UserController extends Controller
 {
     protected $currentUser;
+    protected $user_additional_data;
 
     public function __construct(){
         $this->currentUser = User::getCurrentUser();
+        $this->user_additional_data = json_decode($this->currentUser->additional_data);
     }
 
     public function profile(Request $request){
@@ -75,7 +78,7 @@ class UserController extends Controller
         
         return response()->json([
             'message'=> 'Stake added',
-            'error_code'=> '201'
+            'error_code'=> '200'
         ]);
     }
 
@@ -97,4 +100,49 @@ class UserController extends Controller
         session('referral_code',$referral_code);
         return redirect('register');
     }
+
+    public function notification(Request $request){
+        $bonusData = $this->user_additional_data->bonusData;
+        $notifications = '';
+        if(property_exists($this->user_additional_data, 'notification')){
+            $notifications = $this->user_additional_data->notification;
+        }
+        return view('account_pages.notification',compact('bonusData','notifications'));
+    }
+
+    public function bonus(Request $request){
+        $bonusData = $this->user_additional_data->bonusData;
+        return view('account_pages.bonus',compact('bonusData'));
+    }
+
+    public function claimBonus(Request $request){
+
+        $userData = $this->currentUser;
+        $bonusData = $this->user_additional_data->bonusData;
+        $user_bonus_wager = $bonusData->{$request->bonus_id}->wager_amount;
+
+        $bonus = Bonus::where([
+            'status'=>1,
+            'bonus_uid'=>$request->bonus_id
+        ])->first();
+
+        $wager_amount = $bonus->wager_amount;
+
+        if($user_bonus_wager < $wager_amount){
+            return response()->json([
+                'message'=> 'Please fulfill the wager',
+                'response_code'=> '405'
+            ]);
+        } else{
+            // add request to add amount in wallet
+            if($bonus->type == 2){
+                $userData->wallet_amount += $bonus->amount;
+            }
+        }
+        return response()->json([
+            'message'=> 'Bonus Amount added to your wallet',
+            'response_code'=> '200'
+        ]);
+    }
+
 }

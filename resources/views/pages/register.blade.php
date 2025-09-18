@@ -122,9 +122,20 @@
         </div>
     </div>
     
+    @include('includes.ajax_call')
     @include('js')
 
     <script>
+
+        let otpVerified = false;
+
+        let data = {
+            phone: $('input[name=phone]').val(),
+            otp: '',
+            otpTimer: null,
+            otpTimeLeft: 60,
+            localStorage: $('form').attr('value')
+        };
 
         function registerUser() {
 
@@ -137,7 +148,7 @@
             let confirm_password = $('input[name=confirm_password]').val();
             let referral_code = $('input[name=referral_code]').val();
 
-            let data = {
+            let pdata = {
                 phone: phone,
                 user_id: user_id,
                 password: password,
@@ -156,7 +167,7 @@
                 alert('please confirm correct password');
                 return false;
             } else {
-                callApi('post', 'register', data, register_loginResponse);
+                callApi('post', 'register', pdata, register_loginResponse);
             }
         }
 
@@ -166,15 +177,6 @@
             registerUser();
         });
 
-        let otpVerified = false;
-
-        let data = {
-            phone: $('input[name=phone]').val(),
-            otp: '',
-            otpTimer: null,
-            otpTimeLeft: 60,
-            localStorage: $('form').attr('value')
-        };
 
         $('.set_user_id').click(function(){
             // if (!otpVerified) {

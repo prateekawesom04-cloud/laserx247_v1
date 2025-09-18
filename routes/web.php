@@ -96,15 +96,14 @@ Route::middleware(['auth_check_middleware'])->group(function () {
     })->name('user.statements');
 
     
-    Route::get('/bonus', function () {
-        return view('account_pages.bonus');
-    })->name('user.bonus');
+    Route::get('/bonus', [UserController::class,'bonus'])->name('user.bonus');
+
+    Route::get('/notification', [UserController::class,'notification'])->name('user.notification');
+
     Route::get('/game_statics', function () {
         return view('account_pages.game_statics');
     })->name('user.game_statics');
-    Route::get('/notification', function () {
-        return view('account_pages.notification');
-    })->name('user.notification');
+    
     
 
 
@@ -185,6 +184,8 @@ Route::post('changePassword', [AuthController::class,'changePassword'])->name('c
 Route::post('launchGame', [GamesController::class,'launchGame'])->name('launchGame')->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::post('launchGame/callback', [GamesController::class,'launchGameCallback'])->name('launchGameCallback')->withoutMiddleware([VerifyCsrfToken::class]);
+
+Route::get('sportsbook', [GamesController::class,'sportsbook'])->name('sportsbook')->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::post('paymentRequest', [PaymentController::class,'paymentRequest'])->name('paymentRequest')->withoutMiddleware([VerifyCsrfToken::class]);
 
@@ -328,10 +329,25 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         return view('admin.pages.add_number');
             })->name('admin.add_number');
 
-            Route::get('/add_bonus', function () {
+        Route::get('/add_bonus', function () {
         return view('admin.pages.add_bonus');
             })->name('admin.add_bonus');
 
+
+
+
+            
+
+// Post/Action requests start
+
+        Route::post('/createBonus', [AdminDataController::class,'createBonus'])->name('admin.action.createBonus');
+        
+        Route::post('/addBonus', [AdminDataController::class,'addBonus'])->name('admin.action.addBonus');
+            
+
     });
     
+// Post/Action requests end
+
+
 });

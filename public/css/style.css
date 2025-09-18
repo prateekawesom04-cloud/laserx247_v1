@@ -358,14 +358,11 @@ img{
     }
 }
 /* Offcanvas header style */
-.offcanvas-header {
-    background: linear-gradient(to right, #00c6ff, #0072ff) !important;
-    color: white;
-}
+
 
 /* Offcanvas body background */
 .offcanvas-body {
-    background-color: #f8f9fa !important;
+    /* background-color: #f8f9fa !important; */
 }
 
 /* Menu items */
@@ -623,7 +620,7 @@ body {
 body {
     margin: 0;
     padding: 0;
-    background: #f0f2f3;
+    /* background: #f0f2f3; */
 }
 
 /* TOP BAR */
@@ -842,6 +839,7 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
 
 .row {
     margin: 0px;
+    justify-content: center;
 }
 
 .row>* {
@@ -850,9 +848,59 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
 }
 
 body, body a, body p, body div, body h1, body h2, body h3, body h4 {
-    color: #ffffff;
+    /* color: #ffffff; */
 }
 
-body, footer {
-   background-color: #323740 !important;
+
+
+
+/* Dark theme */
+
+
+.app_dark {
+    background: #292d2e;
+    color: #333;
+}
+
+.app_dark {
+    
+    footer {
+        background: #292d2e;
+    }
+    .app_color {
+        color: #333;
+    }
+
+    .app_bar{
+        background: #323740;
+        color: #fff;
+    }
+
+    .aap_bar_gradient{
+        background: linear-gradient(45deg, #0137d1, transparent);
+        color: #fff;
+        font-weight: 600;
+    }
+
+    a.btn{
+        background: #323740;
+        color: #fff;
+    }
+    .nav-link{
+        color: #fff;
+        background: #323738;
+        margin: 0 2px 0 2px;
+    }
+
+    .list-group-item{
+        color: #fff;
+        background: #323738;
+        border: none;
+    }
+
+    .aap_content{
+        color: #fff;
+        background: #323738;
+        border: none;
+    }
 }
