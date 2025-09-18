@@ -1,6 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg px-3 py-2 m-0"
-    style="background: linear-gradient(to right, #070047, #0052a1, #00c2ff);">
+<nav class="navbar navbar-expand-lg px-3 py-2 m-0 aap_bar_1">
     <div class="container-fluid">
         <div class="flex flex-row items-center justify-evenly">
             <!-- Logo -->

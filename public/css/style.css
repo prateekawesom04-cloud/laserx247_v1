@@ -3,6 +3,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     margin: 0;
     padding: 0;
+    color: #fff;
 }
 
 img{
@@ -389,11 +390,8 @@ img{
     opacity: 0.9;
     font-size: 0.8rem;
 }
-/* for deposit-withdrawal page */
-/* Base Styles */
-body {
-    background-color: #f5f5f5;
-}
+
+
 
 /* Layout */
 .main-container {
@@ -402,9 +400,6 @@ body {
 }
 
 /* Header Styles */
-.header {
-    background-color: #007bff;
-}
 
 .back-btn {
     background: rgba(255, 255, 255, 0.2);
@@ -472,35 +467,7 @@ body {
     border-bottom: 1px solid #e9ecef;
 }
 
-.table-row:nth-child(even) {
-    background-color: #f8f9fa;
-}
-/* Responsiveness for button groups */
-@media (max-width: 575.98px) {
-    body,
-    .container-fluid,
-    .layout-content-center,
-    .layout-container {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        width: 100% !important;
-    }
 
-    section,
-    .table-responsive,
-    .nav,
-    .bg-light,
-    .shadow-sm {
-        border-radius: 0 !important;
-    }
-
-    .bg-light,
-    .bg-white {
-        background-color: #fff !important;
-    }
-}
 
 /* Section Visibility */
 .deposit-section {
@@ -617,11 +584,6 @@ body {
     --thumb-caption: #243a48;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    /* background: #f0f2f3; */
-}
 
 /* TOP BAR */
 .casino-topbar {
@@ -848,7 +810,23 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
 }
 
 body, body a, body p, body div, body h1, body h2, body h3, body h4 {
-    /* color: #ffffff; */
+    color: inherit;
+    background-color: inherit;
+}
+
+.form-control, .form-control:focus, .form-control:hover{
+    box-shadow: none;
+    border: none;
+}
+
+
+/* Light Theme */
+
+.light{
+    .header {
+        background-color: #007bff;
+    }
+
 }
 
 
@@ -857,38 +835,51 @@ body, body a, body p, body div, body h1, body h2, body h3, body h4 {
 /* Dark theme */
 
 
-.app_dark {
+.nav-link{
+    color: #fff;
     background: #292d2e;
-    color: #333;
+    margin: 0 2px 0 2px;
 }
 
-.app_dark {
+.app_dark, body {
+    background: #323740;
+    color: #333;
+}
+.app_dark, body.app_dark {
     
-    footer {
+    footer, .app_card_box {
         background: #292d2e;
     }
+
     .app_color {
         color: #333;
     }
 
-    .app_bar{
+    .app_bar {
         background: #323740;
+        color: #fff;
+    }
+
+    .aap_bar_1{
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
         color: #fff;
     }
 
     .aap_bar_gradient{
-        background: linear-gradient(45deg, #0137d1, transparent);
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
         color: #fff;
         font-weight: 600;
     }
 
-    a.btn{
-        background: #323740;
+    a.btn, input{
+        background: #292d2e;
         color: #fff;
+        border: 1px solid #fff;
     }
+    
     .nav-link{
         color: #fff;
-        background: #323738;
+        background: #292d2e;
         margin: 0 2px 0 2px;
     }
 
@@ -898,9 +889,21 @@ body, body a, body p, body div, body h1, body h2, body h3, body h4 {
         border: none;
     }
 
-    .aap_content{
+    .app_content{
         color: #fff;
-        background: #323738;
+        background: #292d2e;
         border: none;
+    }
+
+    ::placeholder {
+        color: #fff;
+        opacity: 1; /* Firefox */
+    }
+
+    ::-ms-input-placeholder { /* Edge 12-18 */
+        color: #fff;
+    }
+    table,td {
+        
     }
 }

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Bonus;
+use App\Models\UserBank;
 
 class UserController extends Controller
 {
@@ -145,4 +147,59 @@ class UserController extends Controller
         ]);
     }
 
+    public function addBank(Request $request){
+
+        $rules = [
+            'user_uid'=>'required',
+            'account_holder'=>'required',
+            'account_number'=>'required|numeric',
+            'confirm_account_number' => 'required|same:account_number',
+            'bank_name'=>'required',
+            'ifsc_code'=>'required|max:11',
+            'upi_id'=>'required'
+        ];
+
+        
+        $validator = Validator::make($request->all(), $rules);
+        $errors = [];
+        if($validator->fails()){
+            foreach ($validator->errors()->messages() as $key => $value) {
+                $errors[] = $value[0];
+            }
+            return response()->json([
+                'message'=> $errors[0],
+                'response_code'=> '305'
+            ]);
+            
+        } else{
+
+            $userBank = UserBank::where('user_uid',$request->user_uid)->first();
+    
+            if($userBank){
+                $userBank->user_uid = $request->user_uid;
+                $userBank->account_holder = $request->account_holder;
+                $userBank->account_number = $request->account_number;
+                $userBank->bank_name = $request->bank_name;
+                $userBank->ifsc_code = $request->ifsc_code;
+                $userBank->upi_id = $request->upi_id;
+                $userBank->save();
+            } else{
+                $userBank = new UserBank();
+                $userBank->user_uid = $request->user_uid;
+                $userBank->account_holder = $request->account_holder;
+                $userBank->account_number = $request->account_number;
+                $userBank->bank_name = $request->bank_name;
+                $userBank->ifsc_code = $request->ifsc_code;
+                $userBank->upi_id = $request->upi_id;
+                $userBank->save();
+            }
+    
+            return response()->json([
+                'message'=> 'Account Updated',
+                'response_code'=> '200'
+            ]);
+
+        }
+
+    }
 }

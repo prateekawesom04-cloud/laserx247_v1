@@ -118,6 +118,12 @@ Route::middleware(['auth_check_middleware'])->group(function () {
         return view('account_pages.change_password');
     })->name('user.change_password');
 
+
+    // post requests
+    
+    Route::post('/addBank', [UserController::class,'addBank'])->name('user.addBank')->withoutMiddleware([VerifyCsrfToken::class]);
+
+
     // User Section End
 
 });
