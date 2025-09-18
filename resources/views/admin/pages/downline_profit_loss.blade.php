@@ -43,7 +43,7 @@
 
             <!-- Table + Controls Card -->
             <div class="card pl-card p-1">
-                <div class="pl-header text-center bg-primary text-white py-2 rounded">Profit & Loss Table</div>
+                <div class="pl-header text-center bg-primary text-white py-1 rounded">Profit & Loss Table</div>
 
                 <!-- Table Controls -->
                 <div class="row mb-3 d-flex flex-nowrap align-items-center">

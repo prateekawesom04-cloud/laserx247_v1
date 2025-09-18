@@ -41,7 +41,7 @@
 
             <!-- Table + Controls Card -->
             <div class="card pl-card p-1">
-                <div class="pl-header text-center bg-primary text-white py-2 rounded">Profit & Loss Table</div>
+                <div class="pl-header text-center bg-primary text-white py-1 rounded">Profit & Loss Table</div>
                 <!-- Table Controls -->
                 <div class="d-flex flex-wrap flex-nowrap align-items-center mb-3">
                     <div class="d-flex align-items-center me-3 flex-shrink-0">
@@ -73,8 +73,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="4" class="text-center text-white">No data!</td>
+                                 <tr>
+                            <td>Cricket</td>
+                            <td>+5000</td>
+                            <td>-3000</td>
+                            <td>500</td>
+                        </tr>
+                        <tr>
+                            <td>Football</td>
+                            <td>-1000</td>
+                            <td>+2000</td>
+                            <td>300</td>
+                        </tr>
+                        <tr>
+                            <td>Tennis</td>
+                            <td>+800</td>
+                            <td>-500</td>
+                            <td>100</td>
+                        </tr>
                             </tr>
                         </tbody>
                     </table>
@@ -96,3 +112,4 @@
         </div>
     </div>
 @endsection
+

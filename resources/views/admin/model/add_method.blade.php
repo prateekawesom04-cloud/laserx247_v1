@@ -4,17 +4,17 @@
         <div class="modal-content">
 
             <!-- Modal Header -->
-            <div class="modal-header py-2" style="background-color: #007bff; color: white;">
-                <h5 class="modal-title fs-6" id="mainModalLabel">Add Method</h5>
+            <div class="modal-header-dark">
+                <h5 class="modal-title" id="mainModalLabel">Add Method</h5>
                 <a type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></a>
             </div>
 
             <!-- Modal Body with Form -->
-            <div class="modal-body">
+            <div class="modal-body modal-body-dark">
                 <form id="methodForm">
                     <div class="mb-3">
                         <label for="methodType" class="form-label">Select Type</label>
-                        <select class="form-select form-select-sm" id="methodType" name="addmethodType" required>
+                        <select class="form-select form-select-sm modal-body-dark" id="methodType" name="addmethodType" required>
                             <option value="" disabled selected>Select a method</option>
                             <option value="upi">UPI</option>
                             <option value="bank">Bank</option>
@@ -25,10 +25,8 @@
                             <option value="usdt">USDT</option>
                         </select>
                     </div>
-
                     <!-- Dynamic Fields will appear here -->
                     <div id="dynamicFields"></div>
-
                     <div class="text-end mt-2">
                         <a href="javascript:0" type="submit" class="btn btn-primary btn-sm">Save</a>
                     </div>
@@ -41,10 +39,10 @@
 
 <!-- JavaScript  -->
 <script>
-    document.getElementById('methodType').addEventListener('change', function () {
+    document.getElementById('methodType').addEventListener('change', function() {
         const selected = this.value;
         const dynamicFields = document.getElementById('dynamicFields');
-        dynamicFields.innerHTML = ''; 
+        dynamicFields.innerHTML = '';
 
         if (selected === 'upi') {
             dynamicFields.innerHTML = `

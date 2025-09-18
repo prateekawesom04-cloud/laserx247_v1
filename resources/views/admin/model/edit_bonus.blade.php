@@ -1,13 +1,18 @@
 <!-- Compact Reusable Modal with Form -->
 <div class="modal fade" id="editBonusModal" tabindex="-1" aria-labelledby="editBonusModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content text-black">
-            <div class="modal-body">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header modal-header-dark">
+                <h5 class="modal-title" id="mainModalLabel">Edit Bonus</h5>
+                <a type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></a>
+            </div>
+            <div class="modal-body modal-header-dark">
                 <form id="editBonusForm">
                     <!-- Bonus Type Dropdown -->
                     <div class="mb-3">
                         <label for="bonusType" class="form-label">Bonus Type</label>
-                        <select id="bonusType" name="type" class="form-select text-black">
+                        <select id="bonusType" name="type" class="form-select">
                             <option value="0">Register</option>
                             <option value="1">Refer</option>
                             <option value="2">Admin</option>
@@ -17,19 +22,19 @@
                     <!-- Amount -->
                     <div class="mb-3">
                         <label for="amount" class="form-label">Amount</label>
-                        <input type="text" id="amount" name="amount" class="form-control text-black">
+                        <input type="text" id="amount" name="amount" class="form-control">
                     </div>
 
                     <!-- Wager Amount -->
                     <div class="mb-3">
                         <label for="wagerAmount" class="form-label">Wager Amount</label>
-                        <input type="text" id="wagerAmount" name="wager_amount" class="form-control text-black">
+                        <input type="text" id="wagerAmount" name="wager_amount" class="form-control">
                     </div>
 
                     <!-- Description -->
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <input type="text" id="description" name="description" class="form-control text-black">
+                        <input type="text" id="description" name="description" class="form-control">
                     </div>
 
                     <!-- Status -->

@@ -22,7 +22,7 @@
                         <td>1234567890</td>
                         <td>Freen</td>
                         <td><a href="#" class="btn btn-warning btn-sm px-3 py-1"data-bs-toggle="modal"
-                                        data-bs-target="#editMobileModal"data-bs-placement="top" title="Delete"><i class="fa fa-edit"></i></a></td>
+                                        data-bs-target="#editMobileModal"data-bs-placement="top" title="Edit">✍️</a></td>
                         <td>
                          <a href="#" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
                                         data-bs-target="#deleteConfirmationModal"data-bs-placement="top" title="Delete">🗑️</a></td>
