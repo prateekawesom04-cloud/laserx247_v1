@@ -106,14 +106,14 @@ class GamesController extends Controller
 
     public function sportsbook(Request $request){
         
-        $url = env('sportsbook-url');
+        $url = env('SPORTSBOOK_URL');
         $CURLOPT_RETURNTRANSFER=true;
         $CURLOPT_TIMEOUT = 30;
         $CURLOPT_MAXREDIRS = 10;
         $CURLOPT_CUSTOMREQUEST = 'GET';
         $headers = [
-            "x-rapidapi-host: ".env('x-rapidapi-host'),
-            "x-rapidapi-key: ".env('x-rapidapi-key')
+            "x-rapidapi-host: ".env('X_RAPIDAPI_HOST'),
+            "x-rapidapi-key: ".env('X_RAPIDAPI_KEY')
         ];
 
         $response = $this->callApi(
