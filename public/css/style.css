@@ -6,10 +6,9 @@ body {
     color: #fff;
 }
 
-img{
+img {
     max-width: unset;
 }
-
 
 /* width */
 ::-webkit-scrollbar {
@@ -360,7 +359,6 @@ img{
 }
 /* Offcanvas header style */
 
-
 /* Offcanvas body background */
 .offcanvas-body {
     /* background-color: #f8f9fa !important; */
@@ -390,8 +388,6 @@ img{
     opacity: 0.9;
     font-size: 0.8rem;
 }
-
-
 
 /* Layout */
 .main-container {
@@ -452,7 +448,7 @@ img{
 }
 
 .table-header {
-    background: #00bcd4 !important;
+    background: #1f2020 !important;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -466,8 +462,6 @@ img{
 .table-row {
     border-bottom: 1px solid #e9ecef;
 }
-
-
 
 /* Section Visibility */
 .deposit-section {
@@ -583,7 +577,6 @@ img{
     --search: #e41a1e;
     --thumb-caption: #243a48;
 }
-
 
 /* TOP BAR */
 .casino-topbar {
@@ -755,7 +748,8 @@ img{
 }
 
 /* Referral Code & Link */
-#referralCode,#referralCode:focus,
+#referralCode,
+#referralCode:focus,
 #referralLink:focus {
     outline: none !important;
     box-shadow: none !important;
@@ -765,7 +759,7 @@ img{
 
 /* Additional Css */
 
-.scrollbar-hide{
+.scrollbar-hide {
     -ms-overflow-style: none;
 }
 
@@ -773,14 +767,16 @@ img{
     display: none;
 }
 
-body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar { 
+body::-webkit-scrollbar,
+div::-webkit-scrollbar,
+ul::-webkit-scrollbar {
     -ms-overflow-style: none;
     /* display: none; */
     width: 2px;
     background: transparent;
 }
 
-.button__Qkvay{
+.button__Qkvay {
     display: none !important;
 }
 
@@ -804,50 +800,55 @@ body::-webkit-scrollbar,div::-webkit-scrollbar,ul::-webkit-scrollbar {
     justify-content: center;
 }
 
-.row>* {
+.row > * {
     padding: 0px;
     margin: 0px;
 }
 
-body, body a, body p, body div, body h1, body h2, body h3, body h4 {
+body,
+body a,
+body p,
+body div,
+body h1,
+body h2,
+body h3,
+body h4 {
     color: inherit;
     background-color: inherit;
 }
 
-.form-control, .form-control:focus, .form-control:hover{
+.form-control,
+.form-control:focus,
+.form-control:hover {
     box-shadow: none;
     border: none;
 }
 
-
 /* Light Theme */
 
-.light{
+.light {
     .header {
         background-color: #007bff;
     }
-
 }
-
-
-
 
 /* Dark theme */
 
-
-.nav-link{
+.nav-link {
     color: #fff;
     background: #292d2e;
     margin: 0 2px 0 2px;
 }
 
-.app_dark, body {
+.app_dark,
+body {
     background: #323740;
     color: #333;
 }
-.app_dark, body.app_dark {
-    
-    footer, .app_card_box {
+.app_dark,
+body.app_dark {
+    footer,
+    .app_card_box {
         background: #292d2e;
     }
 
@@ -860,37 +861,38 @@ body, body a, body p, body div, body h1, body h2, body h3, body h4 {
         color: #fff;
     }
 
-    .app_bar_1{
+    .app_bar_1 {
         background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
         color: #fff;
     }
 
-    .aap_bar_gradient{
+    .aap_bar_gradient {
         background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
         color: #fff;
         font-weight: 600;
     }
 
-    a.btn, input{
+    a.btn,
+    input {
         background: #292d2e;
         color: #fff;
         border: 1px solid #fff;
     }
-    
-    .nav-link{
+
+    .nav-link {
         color: #fff;
         background: #292d2e;
         margin: 0 2px 0 2px;
     }
 
-    .list-group-item{
+    .list-group-item {
         color: #fff;
         background: #1a1c1c;
         border: 1px solid #4e5052;
         border-radius: 6px;
     }
 
-    .app_content{
+    .app_content {
         color: #fff;
         background: #292d2e;
         border: none;
@@ -901,10 +903,30 @@ body, body a, body p, body div, body h1, body h2, body h3, body h4 {
         opacity: 1; /* Firefox */
     }
 
-    ::-ms-input-placeholder { /* Edge 12-18 */
+    ::-ms-input-placeholder {
+        /* Edge 12-18 */
         color: #fff;
     }
-    table,td {
-        
+
+    .table > :not(caption) > * > * {
+        background: #3e3e3e;
+        color: white;
+        font-size:  0.75rem
     }
+}
+/* additional css */
+.modal-header-dark {
+    background-color: #292d2e;
+    color: white;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.modal-body-dark {
+    background-color: #3e3e3e;
+    color: white;
+}
+.form-group-button {
+    margin-bottom: 6px;
+    margin-right: 12px;
 }

@@ -1,17 +1,15 @@
 @extends('super-master')
 
 @section('body')
-    <div class="main-container app_content rounded shadow">
+    <div class="main-container app_content rounded shadow mt-4">
         <!-- Header -->
-        <div class="header app_bar p-3 d-flex justify-content-between align-items-center rounded-top">
-            <a class="back-btn px-2 py-1 rounded" style="font-size: 10px; visibility: hidden;">BACK</a>
-            <div id="balanceInfo" class="balance-info px-2 py-1 rounded-pill" style="font-size: 14px;">Min: 500 Max: 50000
-            </div>
+        <div class="d-flex justify-content-between modal-header-dark align-items-center p-3 border-bottom">
+            <span class="px-2 py-1 rounded fw-semibold">Withdraw</span>
+            <div id="balanceInfo" class="px-2 py-1 rounded-pill" style="font-size: 14px;">Min: 500 Max: 50000</div>
         </div>
 
-
         <!-- Transaction Section -->
-        <div class="p-3 deposit-section" id="depositSection">
+        <div class="modal-body-dark p-3 deposit-section" id="depositSection">
             <h6 id="transactionHeader" class="fw-semibold text-dark mb-3" style="font-size: 13px;"></h6>
             <input type="text" class="form-control mb-3" id="depositAmount" placeholder="Enter amount..."
                 style="font-size: 12px;">
@@ -19,7 +17,7 @@
             <div class="row g-2 mb-3">
                 @foreach([500,1000,2000,4000] as $amount)
                 <div class="col-5 mb-2 mx-auto">
-                    <a class="amount-btn btn w-100" data-amount="{{$amount}}"
+                    <a class="amount-btn btn btn-dark w-100 text-white" data-amount="{{$amount}}"
                         style="font-size: 12px;">{{$amount}}</a>
                 </div>
                 @endforeach 
@@ -32,7 +30,7 @@
                         style="font-size: 11px;">SUBMIT</a></div>
             </div>
 
-            <div class="table-container rounded flex items-center justify-center">
+            <div class="table-container rounded flex items-center justify-center" style="white-space: nowrap;">
                 <div class="table-wrapper">
                     <table class="table w-100 m-0">
                         <thead class="table-header text-center py-0" style="font-size: 10px;">

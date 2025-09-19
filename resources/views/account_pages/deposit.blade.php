@@ -1,74 +1,73 @@
 @extends('super-master')
 
 @section('body')
-    <div class="main-container bg-white rounded shadow">
+    <div class="main-container app_content rounded shadow mt-4">
         <!-- Header -->
-        <div class="header text-white p-3 d-flex justify-content-between align-items-center rounded-top">
-            <a class="back-btn text-white px-2 py-1 rounded" style="font-size: 10px; visibility: hidden;">BACK</a>
-            <div id="balanceInfo" class="balance-info px-2 py-1 rounded-pill" style="font-size: 14px;">Min: 200 Max: 50000
-            </div>
+        <div class="d-flex justify-content-between modal-header-dark align-items-center p-3 border-bottom">
+            <span class="px-2 py-1 rounded fw-semibold">Deposit</span>
+            <div id="balanceInfo" class="px-2 py-1 rounded-pill" style="font-size: 14px;">Min: 200 Max: 50000</div>
         </div>
 
-
-        <!-- Transaction Section -->
-        <div class="p-3 deposit-section" id="depositSection">
-            <h6 id="transactionHeader" class="fw-semibold text-dark mb-3" style="font-size: 13px;"></h6>
-            <input type="text" class="form-control mb-3" id="depositAmount" placeholder="Enter amount..."
-                style="font-size: 12px;">
+        <!-- Deposit Section -->
+        <div class="modal-body-dark p-3">
+            <h6 class="fw-semibold mb-3" style="font-size: 13px;">Amount</h6>
 
             <div class="row g-2 mb-3">
-                <div class="col-6"><a class="amount-btn btn text-white w-100" data-amount="300"
-                        style="font-size: 12px;">300</a></div>
-                <div class="col-6"><a class="amount-btn btn text-white w-100" data-amount="500"
-                        style="font-size: 12px;">500</a></div>
-                <div class="col-6"><a class="amount-btn btn text-white w-100" data-amount="1000"
-                        style="font-size: 12px;">1000</a></div>
-                <div class="col-6"><a class="amount-btn btn text-white w-100" data-amount="2000"
-                        style="font-size: 12px;">2000</a></div>
+                <div class="col-12">
+                    <input type="text" class="form-control" id="depositAmount" placeholder="Enter amount..."
+                        style="font-size: 13px;">
+                </div>
+            </div>
+            <div class="row g-2 mb-3">
+                @foreach ([300, 500, 1000, 2000] as $amount)
+                    <div class="col-5 mb-2 mx-auto">
+                        <a class="amount-btn btn btn-dark w-100 text-white" data-amount="{{ $amount }}"
+                            style="font-size: 12px;">{{ $amount }}</a>
+                    </div>
+                @endforeach
             </div>
 
-            <div class="row g-2 mb-3 justify-content-center">
-                <!-- <div class="col-6"><a href="javascript:void(0)" class="btn btn-edit text-white w-100"
-                                style="font-size: 11px;">📝 Edit Stake</a></div> -->
-                <div class="col-6"><a href="javascript:void(0)" class="btn btn-submit text-white w-100"
-                        style="font-size: 11px;">SUBMIT</a></div>
-            </div>
-
-            <div class="table-container rounded flex items-center justify-center">
-                <div class="table-wrapper">
-                    <table class="table w-100 m-0">
-                        <thead class="table-header text-white text-center py-0" style="font-size: 10px;">
-                            <tr>
-                                <th>PAYMENT TYPE</th>
-                                <th>AMOUNT</th>
-                                <th>STATUS</th>
-                                <th>DATE</th>
-                                <th>TRANSACTION NO</th>
-                                <th>REASON</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-content">
-                            @if (count($data) > 0)
-                                @foreach ($data as $value)
-                                    <tr class="table-row text-center">
-                                        <td>{{ $value->payment_type ? 'withdraw' : 'deposit' }}</td>
-                                        <td>{{ $value->transfer_amount }}</td>
-                                        <td>{{ $value->status == 0 ? 'success' : 'processing' }}</td>
-                                        <td>{{ $value->created_at->format('Y-m-d') }}</td>
-                                        <td>{{ $value->order_sn }}</td>
-                                        <td>{{ $value->remark }}</td>
-                                    </tr>
-                                @endforeach
-                            @else
-                                <tr>
-                                    <td colspan="6" class="text-center">No Data Found</td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
+            <div class="row g-2 mb-3">
+                <div class="col-12">
+                    <a href="javascript:void(0)" class="btn btn-success text-white w-100 btn-submit"
+                        style="font-size: 13px;">SUBMIT</a>
                 </div>
             </div>
 
+            <!-- Table Section -->
+            <div class="table-responsive rounded mt-4" style="white-space: nowrap;">
+                <table class="table table-bordered text-white mb-0">
+                    <thead class="text-center">
+                        <tr>
+                            <th style="text-transform: capitalize; min-width: 110px;">Payment Type</th>
+                            <th style="min-width: 70px;">Amount</th>
+                            <th style="min-width: 90px;">Status</th>
+                            <th style="min-width: 110px;">Date</th>
+                            <th style="min-width: 150px;">Transaction No</th>
+                            <th style="min-width: 100px;">Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (count($data) > 0)
+                            @foreach ($data as $value)
+                                <tr class="text-center" style="background-color: #3e3e3e;">
+                                    <td style="text-transform: capitalize;">
+                                        {{ $value->payment_type ? 'Withdraw' : 'Deposit' }}</td>
+                                    <td>{{ $value->transfer_amount }}</td>
+                                    <td>{{ $value->status == 0 ? 'Success' : 'Processing' }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($value->created_at)->format('d M Y') }}</td>
+                                    <td style="word-break: break-word;">{{ $value->order_sn }}</td>
+                                    <td>{{ $value->remark }}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="6" class="text-center text-white">No Data Found</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection

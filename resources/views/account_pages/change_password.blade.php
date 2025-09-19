@@ -1,16 +1,14 @@
 @extends('super-master')
 
 @section('body')
-    <div class="main-container bg-white rounded shadow">
+    <div class="main-container bg-white rounded shadow mt-4">
         <!-- Header -->
-        <div class="header text-white p-3 text-center rounded-top" style="background-color: #007bff;">
-            <div class="balance-info" style="font-size: 18px;">Change Password</div>
+        <div class="modal-header-dark p-3 d-flex justify-content-center align-items-center rounded-top border-bottom">
+            <div class="balance-info px-2 py-1 rounded-pill fw-semibold">Change Password</div>
         </div>
 
-
         <!-- Change Password Section -->
-        <div class="p-3 change-password-section">
-            <h6 class="fw-semibold text-dark mb-3" style="font-size: 13px;">Update Your Password</h6>
+        <div class="modal-body-dark p-3 change-password-section">
 
             <!-- Old Password -->
             <div class="mb-3">

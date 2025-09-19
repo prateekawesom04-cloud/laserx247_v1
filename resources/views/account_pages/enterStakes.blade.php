@@ -9,20 +9,20 @@
 @endphp
 
 
-<div class="main-container bg-white rounded shadow">
+<div class="main-container bg-white rounded shadow mt-4">
     <!-- Header -->
-    <div class="header text-white p-3 d-flex justify-content-center align-items-center rounded-top">
-        Add Stake
-    </div>
+    <div class="modal-header-dark p-3 d-flex justify-content-center align-items-center rounded-top border-bottom">
+            <div class="fw-semibold balance-info px-2 py-1 text-center rounded-pill">Add Stake</div>
+        </div>
     <!-- Transaction Section -->
-    <div class="p-3 deposit-section" id="stakeSection">
+    <div class="modal-body-dark p-3 deposit-section" id="stakeSection">
         <h6 id="transactionHeader" class="fw-semibold text-dark mb-3" style="font-size: 13px;"></h6>
         <input type="text" class="form-control mb-3" id="stakeAmount" placeholder="Enter Stake..."
             style="font-size: 12px;">
 
-        <div class="row g-2 mb-3">
+        <div class="row g-2 mb-3 ">
             @foreach($stakes as $stake)
-            <div class="col-6"><a class="amount-btn btn text-white w-100" data-amount="{{$stake}}"
+            <div class="col-5 mb-2 mx-auto"><a class="amount-btn btn text-white w-100" data-amount="{{$stake}}"
                     style="font-size: 12px;">{{$stake}}</a></div>
             @endforeach
         </div>
