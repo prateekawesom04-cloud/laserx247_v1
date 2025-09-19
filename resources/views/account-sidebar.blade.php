@@ -1,5 +1,5 @@
 <!-- Account Offcanvas -->
-<div class="offcanvas offcanvas-end fw-bold !w-max" tabindex="-1" id="accountPanel" aria-labelledby="accountPanelLabel">
+<div class="offcanvas offcanvas-end fw-bold md:!w-max" tabindex="-1" id="accountPanel" aria-labelledby="accountPanelLabel">
     <!-- Header -->
     <div class="offcanvas-header app_bar flex flex-row gap-3">
         @if (!session('user_session'))
