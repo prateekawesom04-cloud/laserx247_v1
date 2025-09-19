@@ -1,4 +1,4 @@
-<nav class="navbar px-3 py-2 aap_bar_1">
+<nav class="navbar px-3 py-2 app_bar_1">
     <div class="container-fluid">
         <a href="{{route('index')}}"><img src="{{ asset('images/logo.png') }}" alt="Logo" height="40" width="100" /></a>
         <div class="d-flex ms-auto align-items-center">
