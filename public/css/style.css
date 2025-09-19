@@ -885,8 +885,9 @@ body, body a, body p, body div, body h1, body h2, body h3, body h4 {
 
     .list-group-item{
         color: #fff;
-        background: #323738;
-        border: none;
+        background: #1a1c1c;
+        border: 1px solid #4e5052;
+        border-radius: 6px;
     }
 
     .app_content{

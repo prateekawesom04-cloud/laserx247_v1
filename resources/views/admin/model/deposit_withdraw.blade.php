@@ -1,22 +1,22 @@
 <div class="modal fade balance_modal" id="balanceModal" tabindex="-1" aria-labelledby="balanceModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
+    <div class="modal-dialog modal-dialog-centered modal-sm modal-dialog-scrollable">
+        <div class="modal-content mx-2"> <!-- Added horizontal margin -->
 
             <!-- Modal Header -->
-            <div class="modal-header py-2" style="background-color: #007bff; color: white;">
+            <div class="modal-header modal-header-dark py-2">
                 <h5 class="modal-title fs-6" id="balanceModalLabel">Balance Update</h5>
                 <a type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></a>
             </div>
 
             <!-- Modal Body with the form -->
-            <div class="modal-body">
+            <div class="modal-body modal-body-dark">
                 <form id="balance_form" class="balance_form" action="#" method="POST">
                     @csrf
 
                     <!-- Balance -->
                     <div class="mb-3">
                         <label for="balance" class="form-label">Balance</label>
-                        <input type="text" name="amountbalance" class="form-control" value="" placeholder="" autocomplete="off">
+                        <input type="text" name="amountbalance" class="form-control" placeholder="Enter balance" autocomplete="off">
                     </div>
 
                     <!-- Remark -->
@@ -33,8 +33,8 @@
 
                     <!-- Buttons -->
                     <div class="d-flex justify-content-end">
-                        <a href="javascript:0" type="submit" name="action" value="deposit" class="btn btn-success me-2" style="background-color: #4CAF50; border-color: #4CAF50;">Deposit</a>
-                        <a href="javascript:0" type="submit" name="action" value="withdraw" class="btn btn-danger" style="background-color: #FF6B6B; border-color: #FF6B6B;">Withdraw</a>
+                        <a type="submit" name="action" value="deposit" class="btn btn-success me-2">Deposit</a>
+                        <a type="submit" name="action" value="withdraw" class="btn btn-danger" >Withdraw</a>
                     </div>
                 </form>
             </div>

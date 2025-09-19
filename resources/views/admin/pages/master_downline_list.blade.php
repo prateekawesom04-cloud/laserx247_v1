@@ -9,7 +9,7 @@
                 <input type="checkbox" />
             </a>
             <a href="#" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#addDownlineModal">
-                <i class="bi bi-person-plus"></i> Add Downline
+                 👨‍💼Add Downline
             </a>
         </div>
         <!-- Info Cards in Card -->

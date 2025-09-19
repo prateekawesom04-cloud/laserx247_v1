@@ -27,6 +27,7 @@
     @include('admin.model.edit_bonus')
     @include('admin.model.casino_control')
     @include('includes.ajax_call')
+     @include('js')
     @yield('js')
 </body>
 

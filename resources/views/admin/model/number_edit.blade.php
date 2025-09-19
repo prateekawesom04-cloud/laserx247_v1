@@ -4,13 +4,13 @@
     <div class="modal-content">
 
       <!-- Modal Header -->
-      <div class="modal-header py-2" style="background-color: #007bff; color: white;">
+      <div class="modal-header modal-header-dark py-2">
         <h5 class="modal-title fs-6" id="editMobileModalLabel">Edit Mobile Number</h5>
         <a type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></a>
       </div>
 
       <!-- Modal Body with Form -->
-      <div class="modal-body p-3">
+      <div class="modal-body-dark p-3">
         <form action="#" method="POST" id="editMobileForm">
           @csrf
 

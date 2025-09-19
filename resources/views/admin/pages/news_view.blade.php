@@ -29,7 +29,7 @@
                                 <td>No data</td>
                                 <td><a href="#" class="btn btn-warning btn-sm px-3 py-1"data-bs-toggle="modal"
                                         data-bs-target="#editNewsModal" data-bs-placement="top" title="Edit"><i
-                                            class="fa fa-edit"></i>
+                                            class="fa fa-edit">✍️</i>
                                     </a></td>
                                 <td> <a href="#" class="btn-sm px-3 py-1 btn-btn-danger" data-bs-toggle="modal"
                                         data-bs-target="#deleteConfirmationModal"data-bs-placement="top"

@@ -3,14 +3,14 @@
         <div class="modal-content shadow">
 
             <!-- Modal Header -->
-            <div class="modal-header bg-primary text-white py-2">
+            <div class="modal-header modal-header-dark">
                 <h5 class="modal-title" id="addDownlineModalLabel">Add Downline</h5>
-                <a type="button" class="btn-close btn-close-white btn-sm" data-bs-dismiss="modal"
+                <a type="button" class="btn-close btn-sm" data-bs-dismiss="modal"
                     aria-label="Close"></a>
             </div>
 
             <!-- Modal Body -->
-            <div class="modal-body py-3 px-3">
+            <div class="modal-body-dark py-3 px-3">
                 <form id="addDownlineForm">
                     @csrf
 

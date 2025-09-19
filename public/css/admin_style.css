@@ -469,7 +469,7 @@ td {
     color: white;
 }
 .acc-btn-submit {
-    background-color: #0e22db;
+    background-color: #0d6efd;
     color: white;
 }
 .acc-password-input {
@@ -611,4 +611,20 @@ td {
         padding-left: 0.25rem !important;
         padding-right: 0.25rem !important;
     }
+}
+/* model css */
+.modal-header-dark {
+    background-color: #292d2e;
+    color: white;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.modal-header-dark .btn-close {
+    filter: invert(1);
+    opacity: 1;
+}
+.modal-body-dark {
+    background-color: #323740;
+    color: white; 
 }
