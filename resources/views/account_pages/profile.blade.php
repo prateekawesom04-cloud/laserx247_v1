@@ -7,7 +7,7 @@
         <div class="header text-white p-3 text-center rounded-top relative flex items-center justify-between" style="background-color: #007bff;">
             <div class="flex-1"></div>
             <div class="balance-info flex-1" style="font-size: 18px;">
-                <i class="fas fa-user me-2"></i> My Profile
+                👨‍💼My Profile
             </div>
             <div class="flex items-center justify-end flex-1">
                 <div class="btn bg-white color-black mx-3 p-1 hover:!text-black">Add Bank</div>
