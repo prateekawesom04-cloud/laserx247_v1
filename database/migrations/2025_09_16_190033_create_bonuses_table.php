@@ -22,9 +22,6 @@ return new class extends Migration
             $table->timestamps();
         });
         
-        Schema::table('bonuses', function (Blueprint $table) {
-            $table->string('bonus_uid')->nullable()->after('referral_nos');
-        });
     }
 
     /**
