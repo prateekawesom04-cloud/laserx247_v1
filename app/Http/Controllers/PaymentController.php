@@ -78,12 +78,16 @@ class PaymentController extends Controller
     
             curl_close($ch);
             
-            return $response;
+            return response()->json([
+                'message'=> 'login required',
+                'response_code'=> '105',
+                'response'=>$response
+            ]);
         } else{
             
             return response()->json([
-                'error'=> 'login required',
-                'error_code'=> '105'
+                'message'=> 'login required',
+                'response_code'=> '105'
             ]);
 
         }

@@ -7,7 +7,7 @@
         @yield('head')
     </head>
 
-<body class="app_dark">
+<body id="app_dark" class="app_dark">
     <div class="app_body relative">
         <div class="flex flex-col items-center justify-between w-100">
             <div class="w-full">

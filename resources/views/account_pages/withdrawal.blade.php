@@ -1,10 +1,10 @@
 @extends('super-master')
 
 @section('body')
-    <div class="main-container bg-white rounded shadow">
+    <div class="main-container app_content rounded shadow">
         <!-- Header -->
-        <div class="header text-white p-3 d-flex justify-content-between align-items-center rounded-top">
-            <a class="back-btn text-white px-2 py-1 rounded" style="font-size: 10px; visibility: hidden;">BACK</a>
+        <div class="header app_bar p-3 d-flex justify-content-between align-items-center rounded-top">
+            <a class="back-btn px-2 py-1 rounded" style="font-size: 10px; visibility: hidden;">BACK</a>
             <div id="balanceInfo" class="balance-info px-2 py-1 rounded-pill" style="font-size: 14px;">Min: 500 Max: 50000
             </div>
         </div>
@@ -18,24 +18,24 @@
 
             <div class="row g-2 mb-3">
                 @foreach([500,1000,2000,4000] as $amount)
-                <div class="col-5">
-                    <a class="amount-btn btn text-white w-100" data-amount="{{$amount}}"
+                <div class="col-5 mb-2 mx-auto">
+                    <a class="amount-btn btn w-100" data-amount="{{$amount}}"
                         style="font-size: 12px;">{{$amount}}</a>
                 </div>
                 @endforeach 
             </div>
 
             <div class="row g-2 mb-3 justify-content-center">
-                <!-- <div class="col-6"><a href="javascript:void(0)" class="btn btn-edit text-white w-100"
+                <!-- <div class="col-6"><a href="javascript:void(0)" class="btn btn-edit w-100"
                                     style="font-size: 11px;">📝 Edit Stake</a></div> -->
-                <div class="col-6"><a href="javascript:void(0)" class="btn btn-submit text-white w-100"
+                <div class="col-6"><a href="javascript:void(0)" class="btn btn-submit w-100"
                         style="font-size: 11px;">SUBMIT</a></div>
             </div>
 
             <div class="table-container rounded flex items-center justify-center">
                 <div class="table-wrapper">
                     <table class="table w-100 m-0">
-                        <thead class="table-header text-white text-center py-0" style="font-size: 10px;">
+                        <thead class="table-header text-center py-0" style="font-size: 10px;">
                             <tr>
                                 <th>PAYMENT TYPE</th>
                                 <th>AMOUNT</th>
@@ -79,32 +79,32 @@
             
             <div class="mb-3">
                 <label for="amount" class="form-label">Account Holder</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
+                <input type="text" id="account_holder" name="account_holder" class="form-control text-black" placeholder="Account Holder">
             </div>
             
             <div class="mb-3">
                 <label for="amount" class="form-label">Account Number</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
+                <input type="text" id="amount" name="account_number" class="form-control text-black" placeholder="Account Number">
             </div>
             
             <div class="mb-3">
                 <label for="amount" class="form-label">Confirm Account Number</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
+                <input type="text" id="amount" name="confirm_account_number" class="form-control text-black" placeholder="Confirm Account Number">
             </div>
             
             <div class="mb-3">
                 <label for="amount" class="form-label">Bank Name</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
+                <input type="text" id="amount" name="bank_name" class="form-control text-black" placeholder="Bank Name">
             </div>
             
             <div class="mb-3">
                 <label for="amount" class="form-label">IFSC Code</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
+                <input type="text" id="amount" name="ifsc_code" class="form-control text-black" placeholder="IFSC Code">
             </div>
             
             <div class="mb-3">
                 <label for="amount" class="form-label">UPI ID</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
+                <input type="text" id="amount" name="upi_id" class="form-control text-black" placeholder="UPI ID">
             </div>
 
         </form>
@@ -123,8 +123,36 @@
 
 @section('js')
     <script>
+
+        $('.modal_action_btn').click(function(){
+            let formData = {};
+            formData['user_uid'] = '{{$userData->user_uid}}';
+            let form = $(this).parents('.modal').find('form');
+            
+            form.find('input').each(function(){
+                
+                formData[$(this).attr('name')] = $(this).val();
+
+            });
+
+                callApi('post', 'addBank', formData, addBank);
+            
+        });
+
+        function addBank(response){
+            if(response.response_code==200){
+                localStorage.setItem('choose_bank',true);
+                $('.modal').modal('hide');
+                alert(response.message);
+            } else{
+                alert(response.message);
+            }
+            console.log(response);
+            
+        }
+
         function paymentRequest(response) {
-            response = JSON.parse(response);
+            response = response.response;
             if (response.data['pay_url']) {
                 window.location.href = response.data['pay_url'];
             } else {
@@ -133,6 +161,12 @@
         }
 
         $('a.btn-submit').click(function(e) {
+
+            if(!localStorage.getItem('choose_bank')){
+                $('.modal').modal('show');
+                return false;
+            }
+            
             let data = {};
 
             data.payment_type = '1';
@@ -237,45 +271,3 @@
     </script>
 @endsection
 
-
-    @php
-
-    $modal_body = '
-    
-        <form id="withdrawal_details">
-            
-            <div class="mb-3">
-                <label for="amount" class="form-label">Account Holder</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
-            </div>
-            
-            <div class="mb-3">
-                <label for="amount" class="form-label">Account Number</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
-            </div>
-            
-            <div class="mb-3">
-                <label for="amount" class="form-label">Confirm Account Number</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
-            </div>
-            
-            <div class="mb-3">
-                <label for="amount" class="form-label">Bank Name</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
-            </div>
-            
-            <div class="mb-3">
-                <label for="amount" class="form-label">IFSC Code</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
-            </div>
-            
-            <div class="mb-3">
-                <label for="amount" class="form-label">UPI ID</label>
-                <input type="text" id="amount" name="amount" class="form-control text-black">
-            </div>
-
-        </form>
-    
-    ';
-
-    @endphp

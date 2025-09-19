@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{asset('css')}}/style.css">
         @yield('head')
     </head>
-<body clas="app_dark">
+<body class="app_dark">
     <div class="app_body relative">
         <div class="flex flex-col items-center justify-between w-100 h-[100vh]">
             <div class="w-full">
