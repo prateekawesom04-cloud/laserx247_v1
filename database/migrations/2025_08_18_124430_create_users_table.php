@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('referral')->nullable();
             $table->string('referral_code');
             $table->integer('referral_nos')->default(0);
-            $table->string('additional_data')->nullable();
+            $table->text('additional_data')->nullable();
             $table->timestamps();
 
         });

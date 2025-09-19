@@ -80,7 +80,7 @@ class PaymentController extends Controller
             curl_close($ch);
             
             return response()->json([
-                'message'=> 'login required',
+                'message'=> 'success',
                 'response_code'=> '105',
                 'response'=>$response
             ]);

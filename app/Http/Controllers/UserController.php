@@ -113,8 +113,8 @@ class UserController extends Controller
     }
 
     public function bonus(Request $request){
-        $bonusData = $this->user_additional_data->bonusData;
-        return view('account_pages.bonus',compact('bonusData'));
+        
+        return view('account_pages.bonus');
     }
 
     public function claimBonus(Request $request){

@@ -845,10 +845,27 @@ body {
     background: #323740;
     color: #333;
 }
-.app_dark,
-body.app_dark {
-    footer,
-    .app_card_box {
+.app_col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app_col > * {
+    margin: 0;
+    padding: 0;
+}
+.app_row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.app_dark, body.app_dark {
+    
+    footer, .app_card_box {
         background: #292d2e;
     }
 
@@ -872,8 +889,7 @@ body.app_dark {
         font-weight: 600;
     }
 
-    a.btn,
-    input {
+    .app_btn, a.btn, input{
         background: #292d2e;
         color: #fff;
         border: 1px solid #fff;
@@ -895,6 +911,7 @@ body.app_dark {
     .app_content {
         color: #fff;
         background: #292d2e;
+        background-color: #292d2e;
         border: none;
     }
 

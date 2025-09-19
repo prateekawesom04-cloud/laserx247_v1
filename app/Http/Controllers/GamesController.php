@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\AuthController;
 use App\Traits\CustomTrait;
 use App\Models\User;
+use App\Models\Transaction;
 use App\Models\Game;
 use App\Models\GameHistory;
+use App\Models\Bonus;
 
 class GamesController extends Controller
 {
@@ -129,5 +131,41 @@ class GamesController extends Controller
     }
 
 // Sports Api end
+
+    public function game_statics(Request $request){
+        $user = User::getCurrentUser();
+
+        $total_deposit = Transaction::where([
+            'user_uid'=>$user->user_uid,
+            'payment_type'=>0,
+            'status'=>1
+        ])->count();
+        
+        $total_withdraw = Transaction::where([
+            'user_uid'=>$user->user_uid,
+            'payment_type'=>1,
+            'status'=>1
+        ])->count();
+
+        $total_win = GameHistory::where('user_uid',$user->user_uid)
+        ->whereRaw('wallet_after - wallet_before > 0')
+        ->pluck('win_amount')
+        ->sum();
+        
+        $total_loss = GameHistory::where('user_uid',$user->user_uid)
+        ->whereRaw('wallet_after - wallet_before < 0')
+        ->pluck('win_amount')
+        ->sum();
+
+        $total_bonus = 0;
+        $bonusData = json_decode($user->additional_data)->bonusData;
+        foreach($bonusData as $bonus){
+            if($bonus->claim_status){
+                $total_bonus += $bonus->amount;
+            }
+        }
+        
+        return view('account_pages.game_statics',compact('total_deposit','total_withdraw','total_loss','total_bonus'));
+    }
 
 }
