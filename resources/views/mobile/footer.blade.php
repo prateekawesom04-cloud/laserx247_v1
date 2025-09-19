@@ -1,4 +1,4 @@
-<nav class="aap_bar_1 text-white fixed-bottom border-top app_footer bg-dark">
+<nav class="app_bar_1 text-white fixed-bottom border-top app_footer">
   <div class="container-fluid">
     <div class="row row-cols-5 text-center g-0">
 

@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg px-3 py-2 m-0 aap_bar_1">
+<nav class="navbar navbar-expand-lg px-3 py-2 m-0 app_bar_1">
     <div class="container-fluid">
         <div class="flex flex-row items-center justify-evenly">
             <!-- Logo -->
