@@ -44,7 +44,8 @@ class PaymentController extends Controller
             
             } elseif ($request->payment_type == 1) {
     
-                $data['currency'] = $request->currency;
+                // $data['currency'] = $request->currency;
+                $data['currency'] = "INR";
                 
             } else{
                 return False;
@@ -117,6 +118,9 @@ class PaymentController extends Controller
             $transaction->status = $request->status;
             $transaction->save();
 
+            return 'ok';
+        } else{
+            return 'no';
         }
     }
 
