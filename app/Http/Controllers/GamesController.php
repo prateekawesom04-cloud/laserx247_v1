@@ -106,14 +106,14 @@ class GamesController extends Controller
 
     public function sportsbook(Request $request){
         
-        $url = "https://sportapi7.p.rapidapi.com/api/v1/player/817181/unique-tournament/132/season/65360/ratings";
+        $url = env('sportsbook-url');
         $CURLOPT_RETURNTRANSFER=true;
         $CURLOPT_TIMEOUT = 30;
         $CURLOPT_MAXREDIRS = 10;
         $CURLOPT_CUSTOMREQUEST = 'GET';
         $headers = [
-            "x-rapidapi-host: sportapi7.p.rapidapi.com",
-            "x-rapidapi-key: 89fa56a389msh1ce4c60caf87dd5p129021jsnc2067f32cc5d"
+            "x-rapidapi-host: ".env('x-rapidapi-host'),
+            "x-rapidapi-key: ".env('x-rapidapi-key')
         ];
 
         $response = $this->callApi(
