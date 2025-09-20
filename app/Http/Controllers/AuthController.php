@@ -92,15 +92,18 @@ class AuthController extends Controller
             $bonus['amount'] = 0.00;
             $bonus['wager_amount'] = 0.00;
             $bonus['user_uid'] = $request->user_id;
-            $bonuses[] = $bonus;
+            $bonus['claim_status'] = 0;
+            $bonuses[$bonus_uid] = $bonus;
 
             if($request->referral_code){
+                $bonus = [];
                 $bonus_uid = Bonus::where('type',1)->first()->bonus_uid;
                 $bonus['bonus_uid'] = $bonus_uid;
                 $bonus['amount'] = 0.00;
                 $bonus['wager_amount'] = 0.00;
+                $bonus['claim_status'] = 0;
                 $bonus['user_uid'] = $request->user_id;
-                $bonuses[] = $bonus;
+                $bonuses[$bonus_uid] = $bonus;
 
                 $referralUser = User::getCurrentUser('referral_code',$request->referral_code);
                 $user->referral = $referralUser->phone;

@@ -158,12 +158,12 @@ class GamesController extends Controller
         ->sum();
 
         $total_bonus = 0;
-        $bonusData = json_decode($user->additional_data)->bonusData;
-        foreach($bonusData as $bonus){
-            if($bonus->claim_status){
-                $total_bonus += $bonus->amount;
-            }
-        }
+        // $bonusData = json_decode($user->additional_data)->bonusData;
+        // foreach($bonusData as $bonus){
+        //     if($bonus->claim_status){
+        //         $total_bonus += $bonus->amount;
+        //     }
+        // }
         
         return view('account_pages.game_statics',compact('total_deposit','total_withdraw','total_loss','total_bonus'));
     }
