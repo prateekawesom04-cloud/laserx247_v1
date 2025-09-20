@@ -89,7 +89,7 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control shadow-none" name="referral_code" maxlength="6" value="{{$referral_code}}" placeholder='Please Enter Referral Code' />
+                                <input type="text" class="form-control shadow-none" name="referral_code" maxlength="6" value="" placeholder='Please Enter Referral Code' />
                             </div>
                             <div class="text-end mb-3 have_referral_code">
                                 <a href="#" class="small text-info">Have a referral code?</a>

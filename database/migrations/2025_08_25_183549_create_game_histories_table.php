@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('game_histories');
         Schema::create('game_histories', function (Blueprint $table) {
             $table->id();
             $table->string('game_uid');
+            $table->string('user_uid');
             $table->string('user_ip')->nullable();
             $table->float('bet_amount');
             $table->float('win_amount')->nullable();
-            $table->string('user_uid');
             $table->string('game_round');
             $table->string('token');
             $table->float('wallet_before');

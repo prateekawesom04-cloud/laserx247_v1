@@ -845,6 +845,24 @@ body, body a, body p, body div, body h1, body h2, body h3, body h4 {
     background: #323740;
     color: #333;
 }
+
+.app_col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app_col > * {
+    margin: 0;
+    padding: 0;
+}
+.app_row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .app_dark, body.app_dark {
     
     footer, .app_card_box {
@@ -871,7 +889,7 @@ body, body a, body p, body div, body h1, body h2, body h3, body h4 {
         font-weight: 600;
     }
 
-    a.btn, input{
+    .app_btn, a.btn, input{
         background: #292d2e;
         color: #fff;
         border: 1px solid #fff;
@@ -893,6 +911,7 @@ body, body a, body p, body div, body h1, body h2, body h3, body h4 {
     .app_content{
         color: #fff;
         background: #292d2e;
+        background-color: #292d2e;
         border: none;
     }
 

@@ -15,6 +15,10 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDataController;
 
 
+
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+});
 // Route::get('/{slug}', function ($slug) {
 //     if(View::exists('pages.'.$slug)){
 //         return view('pages.'.$slug);
@@ -100,9 +104,7 @@ Route::middleware(['auth_check_middleware'])->group(function () {
 
     Route::get('/notification', [UserController::class,'notification'])->name('user.notification');
 
-    Route::get('/game_statics', function () {
-        return view('account_pages.game_statics');
-    })->name('user.game_statics');
+    Route::get('/game_statics', [GamesController::class,'game_statics'])->name('user.game_statics');
     
     
 
