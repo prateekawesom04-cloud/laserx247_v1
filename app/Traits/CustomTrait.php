@@ -37,4 +37,31 @@ trait CustomTrait {
         }
     }
 
+    // Web Scrapping
+
+    public function curlWebPage($url){
+        
+        $curl = curl_init();
+
+        // curl_setopt($curl, CURLOPT_URL,'https://www.geeksforgeeks.org/software-engineering/matlab-data-types/');
+        curl_setopt($curl, CURLOPT_URL,$url);
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            return response()->json([
+                'response'=>$err,
+                'response_code'=>'400'
+            ]);
+        } else {
+            return response()->json([
+                'response'=>$response,
+                'response_code'=>'200'
+            ]);
+        }
+    }
+
 }

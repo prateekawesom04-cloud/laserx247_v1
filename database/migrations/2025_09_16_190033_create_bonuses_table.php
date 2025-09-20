@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('amount',10,2)->nullable();
             $table->decimal('wager_amount',10,2)->nullable();
             $table->text('description')->nullable();
+            $table->string('expiry_time')->nullable();
             $table->boolean('status')->nullable();
             $table->timestamps();
         });

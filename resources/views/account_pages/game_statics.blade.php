@@ -8,17 +8,15 @@
         <div class="w-full">
             <div class="card app_content mb-2 shadow-sm border-0">
                 <div class="card-body rounded-md">
-                    <form class="app_row justify-around">
-                        <div class="app_date_range app_col col-6">
+                    <form class="app_col justify-around">
+                        <div class="app_date_range app_row c gap-4">
                             <div class="w-min">
                                 <label for="fromDate" class="form-label">From Date:</label>
-                                <input type="datetime-local" id="fromDate" name="fromDate" class="form-control"
-                                    value="2025-09-08T00:00" />
+                                <input type="datetime-local" id="fromDate" name="fromDate" class="form-control" value="2025-09-08T00:00">
                             </div>
                             <div class="w-min">
                                 <label for="toDate" class="form-label">To Date:</label>
-                                <input type="datetime-local" id="toDate" name="toDate" class="form-control"
-                                    value="2025-09-15T00:00" />
+                                <input type="datetime-local" id="toDate" name="toDate" class="form-control" value="2025-09-15T00:00">
                             </div>
                         </div>
                         <div class="app_date_range app_row justify-evenly col-6">

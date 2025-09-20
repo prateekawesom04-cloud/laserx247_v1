@@ -5,7 +5,7 @@
 
             @if (session('user_session'))
                 <!-- Notification Bell Icon -->
-                <a class="btn p-0 me-3 text-white fs-5" data-bs-toggle="offcanvas" data-bs-target="#notificationPanel"
+                <a class="me-3 text-white fs-5" data-bs-toggle="offcanvas" data-bs-target="#notificationPanel"
                     aria-controls="notificationPanel">
                     <i class="fas fa-bell"></i>
                 </a>

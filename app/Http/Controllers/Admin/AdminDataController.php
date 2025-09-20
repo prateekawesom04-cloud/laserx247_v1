@@ -42,18 +42,15 @@ class AdminDataController extends Controller
 
     }
 
-    public function addBonus($request){
+    public function assignBonus($user_uid,array $bonusData){
         
-        $bonus['bonus_uid'] = $request->bonus_uid;
-        $bonus['amount'] = $request->amount;
-        $bonus['wager_amount'] = $request->wager_amount;
 
-        $userData =  User::getCurrentUser('user_uid',$request->user_uid);
+        $userData =  User::where('user_uid',$user_uid)->first();
 
         $additional_data = json_decode($userData->additional_data,true);
 
-        $additional_data['bonusData'][] = $bonus;
-        $userData->additional_data = json_encode( $additional_data,true);
+        $additional_data['bonusData'][$bonusData['bonus_uid']] = $bonusData;
+        $userData->additional_data = json_encode( $additional_data);
         $userData->save();
 
         return response()->json([
