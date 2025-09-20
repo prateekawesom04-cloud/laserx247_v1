@@ -6,43 +6,31 @@
         <!-- Responsive Info Cards -->
         <div class="card border border-primary mb-4">
             <div class="card-body py-3">
-                <div class="row text-center small">
-                    <div class="col-4 col-lg-2 mb-3">
-                        <div class="border p-2 h-100">
+                <div class="row text-center">
+                    <!-- 1st Info Card -->
+                    <div class="col-4 col-md-4 col-lg-4 mb-2">
+                        <div class="border p-2 h-100 rounded">
                             <div class="fw-semibold">Total Balance</div>
                             <div class="text-primary">IRP {{ $userData->wallet_amount }}</div>
                         </div>
                     </div>
-                    <div class="col-4 col-lg-2 mb-3">
-                        <div class="border p-2 h-100">
+
+                    <!-- 2nd Info Card -->
+                    <div class="col-4 col-md-4 col-lg-4 mb-2">
+                        <div class="border p-2 h-100 rounded">
                             <div class="fw-semibold">Total Exposure</div>
                             <div class="text-danger">IRP ( {{ $userData->unsattled_amount }} )</div>
                         </div>
                     </div>
-                    <div class="col-4 col-lg-2 mb-3">
-                        <div class="border p-2 h-100">
+
+                    <!-- 3rd Info Card -->
+                    <div class="col-4 col-md-4 col-lg-4 mb-2">
+                        <div class="border p-2 h-100 rounded">
                             <div class="fw-semibold">Available Balance</div>
                             <div class="text-primary">IRP 1000</div>
                         </div>
                     </div>
-                    <div class="col-4 col-lg-2 mb-3">
-                        <div class="border p-2 h-100">
-                            <div class="fw-semibold">Balance</div>
-                            <div class="text-primary">IRP 1012099026.00</div>
-                        </div>
-                    </div>
-                    <div class="col-4 col-lg-2 mb-3">
-                        <div class="border p-2 h-100">
-                            <div class="fw-semibold">Total Avail. bal.</div>
-                            <div class="text-primary">IRP 1000</div>
-                        </div>
-                    </div>
-                    <div class="col-4 col-lg-2 mb-3">
-                        <div class="border p-2 h-100">
-                            <div class="fw-semibold">Upline P/L</div>
-                            <div class="text-danger">IRP 1026.00</div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -75,8 +63,8 @@
                                     placeholder="Search by client" style="min-width: 100%;">
                             </div>
                             <div class="col-6 col-lg-3">
-                                <a href="{{ route('admin.user_client_account') }}"
-                                    class="btn btn-primary btn-sm w-100">Add Client Account</a>
+                                <a href="{{ route('admin.user_client_account') }}" class="btn btn-primary btn-sm w-100">Add
+                                    Client Account</a>
                             </div>
                             <div class="col-6 col-lg-3">
                                 <a href="#" class="btn btn-primary btn-sm w-100 text-white">Inactive List</a>
@@ -149,9 +137,8 @@
                                                 title="Casino Control">
                                                 CC
                                             </a>
-                                            <a href="#" class="btn btn-sm fw-bold btn-delete"
-                                                data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal"
-                                                title="Delete">D</a>
+                                            <a href="#" class="btn btn-sm fw-bold btn-delete" data-bs-toggle="modal"
+                                                data-bs-target="#deleteConfirmationModal" title="Delete">D</a>
                                         </div>
                                     </td>
 

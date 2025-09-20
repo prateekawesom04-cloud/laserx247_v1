@@ -14,7 +14,8 @@
                 <form id="methodForm">
                     <div class="mb-3">
                         <label for="methodType" class="form-label">Select Type</label>
-                        <select class="form-select form-select-sm modal-body-dark" id="methodType" name="addmethodType" required>
+                        <select class="form-select form-select-sm modal-body-dark" id="methodType" name="addmethodType"
+                            required>
                             <option value="" disabled selected>Select a method</option>
                             <option value="upi">UPI</option>
                             <option value="bank">Bank</option>
@@ -46,11 +47,19 @@
 
         if (selected === 'upi') {
             dynamicFields.innerHTML = `
-                <div class="mb-2">
-                    <label for="upiId" class="form-label">UPI ID</label>
-                    <input type="text" class="form-control form-control-sm" id="upiId" name="upiId" required>
-                </div>
-            `;
+        <div class="mb-2">
+            <label for="upiId" class="form-label">UPI ID</label>
+            <input type="text" class="form-control form-control-sm" id="upiId" name="upiId" required>
+        </div>
+        <div class="mb-2">
+            <label for="upiHolderName" class="form-label">UPI Holder Name</label>
+            <input type="text" class="form-control form-control-sm" id="upiHolderName" name="upiHolderName" required>
+        </div>
+        <div class="mb-2">
+            <label for="upiScreenshot" class="form-label">Payment Screenshot</label>
+            <input type="file" class="form-control form-control-sm" id="upiScreenshot" name="upiScreenshot" accept="image/*" required>
+        </div>
+    `;
         } else if (selected === 'qrcode') {
             dynamicFields.innerHTML = `
                 <div class="mb-2">

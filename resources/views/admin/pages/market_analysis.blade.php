@@ -9,7 +9,6 @@
                         <tr>
                             <th class="w-50 text-start" style="min-width: 150px;">Match</th>
                             <th>1</th>
-                            <th>X</th>
                             <th>2</th>
                             <th>Options</th>
                         </tr>
@@ -30,12 +29,6 @@
                                 <div class="d-flex flex-wrap justify-content-center gap-1">
                                     <a class="btn btn-info btn-sm">9.02</a>
                                     <a class="btn btn-danger btn-sm">3.03</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-wrap justify-content-center gap-1">
-                                    <a class="btn btn-info btn-sm">8.08</a>
-                                    <a class="btn btn-danger btn-sm">8.01</a>
                                 </div>
                             </td>
                             <td>
@@ -62,12 +55,6 @@
                                 <div class="d-flex flex-wrap justify-content-center gap-1">
                                     <a class="btn btn-info btn-sm">9.02</a>
                                     <a class="btn btn-danger btn-sm">3.03</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-wrap justify-content-center gap-1">
-                                    <a class="btn btn-info btn-sm">8.08</a>
-                                    <a class="btn btn-danger btn-sm">8.01</a>
                                 </div>
                             </td>
                             <td>

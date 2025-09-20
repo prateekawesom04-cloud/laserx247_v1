@@ -11,8 +11,8 @@
                         <div class="col-6 col-md-4 col-lg-3">
                             <label for="choose-type" class="form-label">Choose Type</label>
                             <select id="choose-type" class="form-select form-select-sm">
+                                <option>Settle</option>
                                 <option>UnSettle</option>
-                            </select>
                         </div>
 
                         <div class="col-6 col-md-4 col-lg-3">
@@ -34,7 +34,7 @@
 
                         <div class="col-6 col-md-4 col-lg-3">
                             <label class="form-label d-block">&nbsp;</label>
-                            <button type="submit" class="btn btn-primary w-100 btn-sm">Get History</button>
+                            <a type="submit" class="btn btn-primary w-100 btn-sm">Get History</a>
                         </div>
                     </div>
                 </form>
