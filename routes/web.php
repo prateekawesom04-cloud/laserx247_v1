@@ -350,7 +350,7 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
 
         Route::post('/createBonus', [AdminDataController::class,'createBonus'])->name('admin.action.createBonus');
         
-        Route::post('/addBonus', [AdminDataController::class,'addBonus'])->name('admin.action.addBonus');
+        Route::post('/assignBonus', [AdminDataController::class,'assignBonus'])->name('admin.action.assignBonus');
             
 
     });

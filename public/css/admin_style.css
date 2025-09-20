@@ -7,6 +7,11 @@ body {
     background-color: #292d2e;
     color: #ffffff;
 }
+
+i.fas {
+    font-family: "Font Awesome 6 Free" !important;
+}
+
 /* Card Styling */
 .card {
     background-color: #323740 !important;

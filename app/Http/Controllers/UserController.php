@@ -136,10 +136,10 @@ class UserController extends Controller
                 'response_code'=> '405'
             ]);
         } else{
-            // add request to add amount in wallet
-            if($bonus->type == 2){
+            // add request to add amount in walletP
+            // if($bonus->type == 2){
                 $userData->wallet_amount += $bonus->amount;
-            }
+            // }
         }
         return response()->json([
             'message'=> 'Bonus Amount added to your wallet',
