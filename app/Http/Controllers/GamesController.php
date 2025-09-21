@@ -58,7 +58,7 @@ class GamesController extends Controller
             $data['wallet_amount'] = $user->wallet_amount;
             $data['game_uid'] = $request->game_id;
             $data['token'] = env('GAME_TOKEN');
-            $data['timestamp'] = date("Y-m-d H:i:s");
+            $data['timestamp'] = now()->timestamp;
                 
             $data['payload'] = (new AuthController)->aes256Encrypt(env('GAME_SECRET_KEY'), json_encode($data));
 
@@ -66,7 +66,22 @@ class GamesController extends Controller
             
             $url = 'https://bosswin.in/launch_game?'.$http_query;
             
-            
+            if($this->curlWebPage($url)->getData()->response=='SSL certificate problem: unable to get local issuer certificate'){
+                return response()->json([
+                    'err_msg'=>'Certification issue',
+                    'error_code'=> '405'
+                ]);
+            }
+
+            // Game History
+            $gameHistory = new GameHistory();
+            $gameHistory->user_uid = $user->user_uid;
+            $gameHistory->game_uid = $request->game_id;
+            $gameHistory->token = env('GAME_TOKEN');
+            $gameHistory->wallet_before = $user->wallet_amount;
+            $gameHistory->save();
+
+
             return response()->json([
                 'url'=>$url,
                 'error_code'=> '101'
@@ -82,8 +97,9 @@ class GamesController extends Controller
 
     public function launchGameCallback(Request $request) : void {
 
+        $game_bonus_id = 'game_bonus_id';
+
         $gameHistory = new GameHistory();
-        $gameHistory->user_uid = $request->mobile;
         $gameHistory->user_uid = $request->mobile;
         $gameHistory->bet_amount = $request->bet_amount;
         $gameHistory->win_amount = $request->win_amount;
@@ -95,8 +111,15 @@ class GamesController extends Controller
         $gameHistory->updated_at = date("Y-m-d H:i:s",$request->timestamp);
         $gameHistory->save();
 
-        $user = User::where('user_uid',$request->mobile);
+        $user = User::where('user_uid',$request->mobile)->first();
         $user->wallet_amount = $request->wallet_after;
+        $user_additional_data = json_decode($user->additional_data);
+        $bonusData = $user_additional_data->bonusData;
+        if(property_exists($bonusData,$game_bonus_id)){
+            $bonusData->wager_amount += $request->bet_amount;
+        }
+        $user_additional_data->bonusData = $bonusData;
+        $user->additional_data = $user_additional_data;
         $user->save();
 
     }
@@ -158,12 +181,14 @@ class GamesController extends Controller
         ->sum();
 
         $total_bonus = 0;
-        // $bonusData = json_decode($user->additional_data)->bonusData;
-        // foreach($bonusData as $bonus){
-        //     if($bonus->claim_status){
-        //         $total_bonus += $bonus->amount;
-        //     }
-        // }
+        $user_additional_data = json_decode($user->additional_data);
+        $bonusData = $user_additional_data->bonusData;
+
+        foreach($bonusData as $bonus){
+            if($bonus->claim_status){
+                $total_bonus += $bonus->amount;
+            }
+        }
         
         return view('account_pages.game_statics',compact('total_deposit','total_withdraw','total_loss','total_bonus'));
     }
