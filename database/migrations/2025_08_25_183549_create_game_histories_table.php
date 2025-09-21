@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('game_uid');
             $table->string('user_uid');
-            $table->string('user_ip')->nullable();
-            $table->float('bet_amount');
+            $table->string('user_ip');
+            $table->float('bet_amount')->nullable();
             $table->float('win_amount')->nullable();
-            $table->string('game_round');
+            $table->string('game_round')->nullable();
             $table->string('token');
-            $table->float('wallet_before');
+            $table->float('wallet_before')->nullable();
             $table->float('wallet_after')->nullable();
+            $table->string('play_time')->default(0);
             $table->timestamps();
         });
     }

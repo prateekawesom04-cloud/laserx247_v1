@@ -96,16 +96,20 @@ class AuthController extends Controller
             $bonuses[$bonus_uid] = $bonus;
 
             if($request->referral_code){
-                $bonus = [];
-                $bonus_uid = Bonus::where(['type'=>1,'status'=>1])->first()->bonus_uid;
-                $bonus['bonus_uid'] = $bonus_uid;
-                $bonus['amount'] = 0.00;
-                $bonus['wager_amount'] = 0.00;
-                $bonus['bonus_applied_date'] = date("Y-m-d H:i:s");
-                $bonus['claim_status'] = 0;
-                $bonuses[$bonus_uid] = $bonus;
 
-                $referralUser = User::getCurrentUser('referral_code',$request->referral_code);
+                $referralUser = User::getCurrentUser('referral_code',$request->referral_code)->first();
+                if($referralUser){
+                    
+                    $bonus = [];
+                    $bonus_uid = Bonus::where(['type'=>1,'status'=>1])->first()->bonus_uid;
+                    $bonus['bonus_uid'] = $bonus_uid;
+                    $bonus['amount'] = 0.00;
+                    $bonus['wager_amount'] = 0.00;
+                    $bonus['bonus_applied_date'] = date("Y-m-d H:i:s");
+                    $bonus['claim_status'] = 0;
+                    $bonuses[$bonus_uid] = $bonus;
+                
+                }
                 $user->referral = $referralUser->phone;
                 $referralUser->referral_nos += 1;
                 $referralUser->save();
