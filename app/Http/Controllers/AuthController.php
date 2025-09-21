@@ -81,7 +81,7 @@ class AuthController extends Controller
             
         } else{
 
-            $user = new User;
+            $user = new User();
             $user->phone = $request->phone;
             // $user->user_uid = rand(0000,9999).'_'.time().$request->phone;
             $user->user_uid = $request->user_id;
@@ -91,15 +91,27 @@ class AuthController extends Controller
             $bonus['bonus_uid'] = $bonus_uid;
             $bonus['amount'] = 0.00;
             $bonus['wager_amount'] = 0.00;
-            $bonus['bonus_applied_date'] = date("Y-m-d H:i:s");
+            $bonus['bonus_applied_date'] = now();
             $bonus['claim_status'] = 0;
             $bonuses[$bonus_uid] = $bonus;
 
+            $emptyObject = [];
+            $stakes = ['100','200','500','1000','2000'];
+            $emptyObject['stakes'] = $stakes;
+            $emptyObject['bonusData'] = $bonuses;
+            $user->referral_code = substr(time(),2,3).rand(000000,999999);
+            $user->additional_data = json_encode($emptyObject);
+            $user->save();
+
             if($request->referral_code){
 
-                $referralUser = User::getCurrentUser('referral_code',$request->referral_code)->first();
+                $referralUser = User::where('referral_code',$request->referral_code)->first();
                 if($referralUser){
                     
+                    $user = User::where('user_uid',$request->user_id)->first();
+                    $user->referral = $referralUser->phone;
+                    $user->save();
+
                     $bonus = [];
                     $bonus_uid = Bonus::where(['type'=>1,'status'=>1])->first()->bonus_uid;
                     $bonus['bonus_uid'] = $bonus_uid;
@@ -107,25 +119,16 @@ class AuthController extends Controller
                     $bonus['wager_amount'] = 0.00;
                     $bonus['bonus_applied_date'] = date("Y-m-d H:i:s");
                     $bonus['claim_status'] = 0;
-                    $bonuses[$bonus_uid] = $bonus;
+                    
+                    $user_additional_data = json_decode($referralUser->additional_data,true);
+                    $user_additional_data['bonusData'][$bonus_uid] = $bonus;
+                    $referralUser->referral_nos += 1;
+                    $referralUser->save();
                 
                 }
-                $user->referral = $referralUser->phone;
-                $user->referral_code = $request->referral_code;
-                $referralUser->referral_nos += 1;
-                $referralUser->save();
-            } else{
-                $user->referral_code = substr(time(),2,3).rand(000000,999999);
+            // } else{
 
             }
-            $emptyObject = [];
-            $stakes = ['100','200','500','1000','2000'];
-            $emptyObject['stakes'] = $stakes;
-            $emptyObject['bonusData'] = $bonuses;
-            
-            $user->additional_data = json_encode($emptyObject);
-            $user->save();
-
 
 
             Session::put(['user_session'=>$user->id.'_user_'.$user->user_uid]);
