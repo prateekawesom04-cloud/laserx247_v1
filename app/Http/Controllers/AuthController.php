@@ -99,7 +99,7 @@ class AuthController extends Controller
             $stakes = ['100','200','500','1000','2000'];
             $emptyObject['stakes'] = $stakes;
             $emptyObject['bonusData'] = $bonuses;
-            $user->referral_code = substr(time(),2,3).rand(000000,999999);
+            $user->referral_code = substr(time(),2,3).rand(0000,9999);
             $user->additional_data = json_encode($emptyObject);
             $user->save();
 
