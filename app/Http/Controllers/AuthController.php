@@ -110,8 +110,6 @@ class AuthController extends Controller
                     
                     $user = User::where('user_uid',$request->user_id)->first();
                     $user->referral = $referralUser->phone;
-                    $user->save();
-
                     $bonus = [];
                     $bonus_uid = Bonus::where(['type'=>1,'status'=>1])->first()->bonus_uid;
                     $bonus['bonus_uid'] = $bonus_uid;
@@ -119,9 +117,12 @@ class AuthController extends Controller
                     $bonus['wager_amount'] = 0.00;
                     $bonus['bonus_applied_date'] = date("Y-m-d H:i:s");
                     $bonus['claim_status'] = 0;
-                    
-                    $user_additional_data = json_decode($referralUser->additional_data,true);
+                    $user_additional_data = json_decode($user->additional_data,true);
                     $user_additional_data['bonusData'][$bonus_uid] = $bonus;
+                    $user->additional_data = json_encode($user_additional_data);
+                    $user->save();
+
+                    
                     $referralUser->referral_nos += 1;
                     $referralUser->save();
                 
