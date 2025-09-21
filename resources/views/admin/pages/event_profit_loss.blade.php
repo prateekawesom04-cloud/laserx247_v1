@@ -12,7 +12,7 @@
                             <label for="data-source" class="form-label">Data Source</label>
                             <select id="data-source" class="form-select form-select-sm">
                                 <option selected>LIVE DATA</option>
-                                <option>DEMO DATA</option>
+                                <option>PREVIOUS DATA</option>
                             </select>
                         </div>
                         <div class="col-6 col-md-4 col-lg-2">
@@ -32,7 +32,7 @@
                             <input type="time" id="to-time" class="form-control form-control-sm" value="23:59">
                         </div>
                         <div class="col-6 col-md-4 col-lg-2">
-                            <button type="submit" class="btn btn-primary w-100 btn-sm">Get P&L</button>
+                            <a type="submit" class="btn btn-primary w-100 btn-sm">Get P&L</a>
                         </div>
                     </div>
                 </form>

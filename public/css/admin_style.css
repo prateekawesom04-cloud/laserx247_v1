@@ -185,7 +185,7 @@ table tbody tr:hover {
     color: white !important;
     font-weight: 700;
     font-size: 13px;
-    padding: 10px 12px !important;
+    padding: 5px 12px !important;
 }
 
 .nav-link:hover {
@@ -193,10 +193,10 @@ table tbody tr:hover {
 }
 
 .active-nav {
-    background: #dddddd !important;
-    color: black !important;
+    background: #f7ffb9 !important;
+    color: #1b00ff !important;
+    border-radius: 20px 20px 20px 20px;
 }
-
 .dropdown-menu {
     position: absolute !important;
     z-index: 9999 !important;
@@ -205,8 +205,9 @@ table tbody tr:hover {
     min-width: 180px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .dropdown-menu li:not(:last-child) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light divider */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     margin-bottom: 3px;
     padding-bottom: 3px;
 }
@@ -219,6 +220,13 @@ table tbody tr:hover {
 
 .dropdown-item:hover {
     background: rgba(233, 58, 27, 0.1);
+}
+
+.badge-notification {
+    position: absolute;
+    top: 1px;
+    left: 95%;
+    transform: translateX(-50%);
 }
 
 /* Mobile scroll */
@@ -249,9 +257,11 @@ table tbody tr:hover {
         font-size: 11px;
         padding: 6px 8px !important;
     }
+    
     .dropdown-menu {
         min-width: 120px;
     }
+    
     .dropdown-item {
         font-size: 11px;
     }
@@ -631,5 +641,5 @@ td {
 }
 .modal-body-dark {
     background-color: #323740;
-    color: white; 
+    color: white;
 }

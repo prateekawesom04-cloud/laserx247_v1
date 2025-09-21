@@ -3,7 +3,7 @@
     <div class="container-fluid p-4">
 
         <!-- Add Downline Link Button -->
-        <div class="mb-3 d-flex justify-content-end gap-2">
+        {{-- <div class="mb-3 d-flex justify-content-end gap-2">
             <a href="#" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1">
                 <span>Clip summary</span>
                 <input type="checkbox" />
@@ -11,9 +11,39 @@
             <a href="#" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#addDownlineModal">
                  👨‍💼Add Downline
             </a>
-        </div>
+        </div> --}}
         <!-- Info Cards in Card -->
         <div class="card border border-primary mb-4">
+            <div class="card-body py-3">
+                <div class="row text-center">
+                    <!-- 1st Info Card -->
+                    <div class="col-4 col-md-4 col-lg-4 mb-2">
+                        <div class="border p-2 h-100 rounded">
+                            <div class="fw-semibold">Total Balance</div>
+                            <div class="text-primary">IRP {{ $userData->wallet_amount }}</div>
+                        </div>
+                    </div>
+
+                    <!-- 2nd Info Card -->
+                    <div class="col-4 col-md-4 col-lg-4 mb-2">
+                        <div class="border p-2 h-100 rounded">
+                            <div class="fw-semibold">Total Exposure</div>
+                            <div class="text-danger">IRP ( {{ $userData->unsattled_amount }} )</div>
+                        </div>
+                    </div>
+
+                    <!-- 3rd Info Card -->
+                    <div class="col-4 col-md-4 col-lg-4 mb-2">
+                        <div class="border p-2 h-100 rounded">
+                            <div class="fw-semibold">Available Balance</div>
+                            <div class="text-primary">IRP 1000</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {{-- <div class="card border border-primary mb-4">
             <div class="card-body py-3">
                 <div class="row text-center small">
                     <div class="col-4 col-lg-2 mb-3">
@@ -54,7 +84,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Table in Card -->
         <div class="card border border-primary">

@@ -32,29 +32,44 @@
 
                 <!-- Table -->
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped acc-table">
-                        <thead class="table-secondary">
-                            <tr>
-                               <th>UID</th>
-                                <th>Balance</th>
-                                <th>Available Balance</th>
-                                <th>Exposure</th>
-                                <th>Date/Time</th>
-                                <th>Remark</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>1234567890</strong></td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td class="text-danger"><b>(0)</b></td>
-                                <td>04-09-2024 11:11:11</td>
-                                <td><input type="text" class="form-control form-control-sm" value="-"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                        <table class="table table-bordered table-striped acc-table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th>UID</th>
+                                    <th>Transaction ID</th>
+                                    <th>Type</th>
+                                    <th>Balance</th>
+                                    <th>Available Balance</th>
+                                    <th>Exposure</th>
+                                    <th>Date/Time</th>
+                                    <th>Remark</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1234567890</strong></td>
+                                    <td>TXN123456</td>
+                                    <td>Upi</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td class="text-danger"><b>(0)</b></td>
+                                    <td>04-05-2024 10:16:03</td>
+                                    <td><input type="text" class="form-control form-control-sm" value="-"></td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <select class="form-select form-select-sm custom-select"
+                                                aria-label="Select status">
+                                                <option selected>Pending</option>
+                                                <option value="1">Processed</option>
+                                                <option value="2">Reject</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                 <!-- Bottom Controls -->
                 <div

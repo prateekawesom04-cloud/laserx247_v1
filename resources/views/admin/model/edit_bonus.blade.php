@@ -13,9 +13,9 @@
                     <div class="mb-3">
                         <label for="bonusType" class="form-label">Bonus Type</label>
                         <select id="bonusType" name="type" class="form-select">
-                            <option value="0">Register</option>
-                            <option value="1">Refer</option>
-                            <option value="2">Admin</option>
+                            <option value="0">Recharge</option>
+                            <option value="1">Referral</option>
+                            <option value="2">Register</option>
                         </select>
                     </div>
 

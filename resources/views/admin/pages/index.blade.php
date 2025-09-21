@@ -19,10 +19,10 @@
                                         value="2025-09-15T00:00" />
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <button type="submit" class="btn btn-primary w-100 mt-4">Submit</button>
+                                    <a type="submit" class="btn btn-primary w-100 mt-4">Submit</a>
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <button type="reset" class="btn btn-danger w-100 mt-4">Reset</button>
+                                    <a type="reset" class="btn btn-danger w-100 mt-4">Reset</a>
                                 </div>
                             </form>
                         </div>
@@ -32,37 +32,37 @@
                 <!-- Stats Cards -->
                 <div class="col-12">
                     <div class="row text-center g-3">
-                        <div class="col-4 col-md-2">
+                        <div class="col-6 col-md-2">
                             <div class="bg-info text-white p-3 rounded shadow-sm">
                                 <h6>P&L</h6>
                                 <h5>0</h5>
                             </div>
                         </div>
-                        <div class="col-4 col-md-2">
+                        <div class="col-6 col-md-2">
                             <div class="bg-warning text-white p-3 rounded shadow-sm">
                                 <h6>Commission</h6>
                                 <h5>0</h5>
                             </div>
                         </div>
-                        <div class="col-4 col-md-2">
+                        <div class="col-6 col-md-2">
                             <div class="bg-success text-white p-3 rounded shadow-sm">
                                 <h6>Deposit</h6>
                                 <h5>0</h5>
                             </div>
                         </div>
-                        <div class="col-4 col-md-2">
+                        <div class="col-6 col-md-2">
                             <div class="bg-danger text-white p-3 rounded shadow-sm">
                                 <h6>Withdrawal</h6>
                                 <h5>0</h5>
                             </div>
                         </div>
-                        <div class="col-4 col-md-2">
+                        <div class="col-6 col-md-2">
                             <div class="bg-secondary text-white p-3 rounded shadow-sm">
                                 <h6>Total Bets</h6>
                                 <h5>0</h5>
                             </div>
                         </div>
-                        <div class="col-4 col-md-2">
+                        <div class="col-6 col-md-2">
                             <div class="bg-primary text-white p-3 rounded shadow-sm">
                                 <h6>Sport P&L</h6>
                                 <h5>0</h5>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="card-body text-center">
                             <h5 class="mb-3">Active User Data</h5>
-                            <canvas id="liveChart" class="w-100" style="max-height: 250px;"></canvas>
+                            <canvas id="liveChart" class="w-100" style="max-height: 300px;"></canvas>
                         </div>
                     </div>
                 </div>
@@ -92,14 +92,13 @@
                         </div>
                         <div class="card-body text-center">
                             <h5 class="mb-3">Last Backup Profit</h5>
-                            <canvas id="backupChart" class="w-100" style="max-height: 250px;"></canvas>
+                            <canvas id="backupChart" class="w-100" style="max-height: 300px;"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
