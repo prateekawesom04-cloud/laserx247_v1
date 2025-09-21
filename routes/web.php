@@ -255,7 +255,9 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         Route::get('/', [AdminDataController::class,'index'])->name('admin.index');
 
         Route::get('/user_downline_list', [AdminDataController::class,'user_downline_list'])->name('admin.user_downline_list');
-
+        
+        Route::post('/user_client_account', [AdminDataController::class,'user_downline_list'])->name('admin.action.user_client_account');
+        
         Route::get('/master_downline_list', function () {
             return view('admin.pages.master_downline_list');
             })->name('admin.master_downline_list');
@@ -351,6 +353,8 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         Route::post('/createBonus', [AdminDataController::class,'createBonus'])->name('admin.action.createBonus');
         
         Route::post('/assignBonus', [AdminDataController::class,'assignBonus'])->name('admin.action.assignBonus');
+        
+        Route::post('/user_client_account', [AdminDataController::class,'user_client_account'])->name('admin.action.user_client_account');
             
 
     });

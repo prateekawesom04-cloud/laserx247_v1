@@ -133,11 +133,11 @@
 
             });
 
-                callApi('post', 'addBank', formData, addBank);
+                callApi('post', 'assignBank', formData, assignBank);
             
         });
 
-        function addBank(response){
+        function assignBank(response){
             if(response.response_code==200){
                 localStorage.setItem('choose_bank',true);
                 $('.modal').modal('hide');

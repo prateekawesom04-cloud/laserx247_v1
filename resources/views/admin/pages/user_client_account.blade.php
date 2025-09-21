@@ -1,9 +1,10 @@
 @extends('admin.master')
 
 @section('body')
-<div class="container-fluid py-4">
-    <form id="createAccountForm">
+<div class="container-fluid py-4 formParntClassname">
+    <form id="createAccountForm" data-url="user_client_account">
         <!-- Account Details -->
+         @csrf
         <div class="card mb-4 shadow-sm border-0">
             <div class="card-header bg-primary text-white py-1">
                 <h5 class="mb-0">
@@ -16,14 +17,16 @@
                         <label for="accountType" class="form-label">
                             <i class="fas fa-user-tag me-1 text-primary"></i> Account Type
                         </label>
-                        <input type="text" id="accountType" class="form-control border-2" value="👨‍💼 User" disabled>
+                        <select name="status" id="accountType" class="form-select border-2" required>
+                            <option value="0" selected>👨‍💼 User</option>
+                        </select>
                     </div>
 
                     <div class="col-md-6">
                         <label for="clientName" class="form-label">
                             <i class="fas fa-building me-1 text-primary"></i> Client Name
                         </label>
-                        <input id="clientName" type="text" class="form-control border-2" placeholder="Enter Client Name" required>
+                        <input name="clientName" id="clientName" type="text" class="form-control border-2" placeholder="Enter Client Name" required>
                     </div>
                 </div>
             </div>
@@ -42,20 +45,20 @@
                         <label for="username" class="form-label small">
                             <i class="fas fa-user me-1 text-success d-none d-md-inline"></i> User Name
                         </label>
-                        <input id="username" type="text" class="form-control border-2" required>
+                        <input name="user_uid" id="username" type="text" class="form-control border-2" required>
                     </div>
                     <div class="col-12 col-md-6">
-                        <label for="referenceName" class="form-label small">
-                            <i class="fas fa-user-friends me-1 text-success d-none d-md-inline"></i> Reference Name
+                        <label for="referenceCode" class="form-label small">
+                            <i class="fas fa-user-friends me-1 text-success d-none d-md-inline"></i> Reference Code
                         </label>
-                        <input id="referenceName" type="text" class="form-control border-2">
+                        <input name="referral_code" id="referenceCode" type="text" class="form-control border-2">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="password" class="form-label small">
                             <i class="fas fa-lock me-1 text-success d-none d-md-inline"></i> Password
                         </label>
                         <div class="position-relative">
-                            <input id="password" type="password" class="form-control border-2" style="padding-right: 45px;" required>
+                            <input name="password" id="password" type="password" class="form-control border-2" style="padding-right: 45px;" required>
                             <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; z-index: 10;" onclick="togglePassword('password', this)">
                                 <i class="fas fa-eye text-muted"></i>
                             </span>
@@ -66,7 +69,7 @@
                             <i class="fas fa-lock me-1 text-success d-none d-md-inline"></i> Retype Password
                         </label>
                         <div class="position-relative">
-                            <input id="confirmPassword" type="password" class="form-control border-2" style="padding-right: 45px;" required>
+                            <input name="confirm_password" id="confirmPassword" type="password" class="form-control border-2" style="padding-right: 45px;" required>
                             <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; z-index: 10;" onclick="togglePassword('confirmPassword', this)">
                                 <i class="fas fa-eye text-muted"></i>
                             </span>
@@ -89,13 +92,13 @@
                         <label for="maxBet" class="form-label small">
                             <i class="fas fa-coins me-1 text-warning d-none d-md-inline"></i> Max Bet (₹)
                         </label>
-                        <input id="maxBet" type="number" class="form-control border-2 text-center" min="0" value="0">
+                        <input name="max_bet" id="maxBet" type="number" class="form-control border-2 text-center" min="0" value="0">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="maxProfit" class="form-label small">
                             <i class="fas fa-trophy me-1 text-warning d-none d-md-inline"></i> Max Profit (₹)
                         </label>
-                        <input id="maxProfit" type="number" class="form-control border-2 text-center" min="0" value="0">
+                        <input name="max_profit" id="maxProfit" type="number" class="form-control border-2 text-center" min="0" value="0">
                     </div>
                 </div>
             </div>
@@ -114,19 +117,19 @@
                         <label for="creditRef" class="form-label small">
                             <i class="fas fa-credit-card me-1 text-dark d-none d-md-inline"></i> Credit Reference
                         </label>
-                        <input id="creditRef" type="text" class="form-control border-2">
+                        <input name="creditref" id="creditRef" type="text" class="form-control border-2">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="deposit" class="form-label small">
                             <i class="fas fa-plus-circle me-1 text-success d-none d-md-inline"></i> Add Deposit (₹)
                         </label>
-                        <input id="deposit" type="number" class="form-control border-2 text-center">
+                        <input name="wallet_amount" id="deposit" type="number" class="form-control border-2 text-center">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="depositRemark" class="form-label small">
                             <i class="fas fa-comment me-1 text-dark d-none d-md-inline"></i> Deposit Remark
                         </label>
-                        <input id="depositRemark" type="text" class="form-control border-2">
+                        <input name="remark" id="depositRemark" type="text" class="form-control border-2">
                     </div>
                 </div>
             </div>
@@ -156,14 +159,14 @@
             </div>
         </div>
 
-        <!-- Submit Button -->
-        <div class="mb-5 text-center text-md-start">
-            <a type="submit" class="btn btn-success px-4 px-md-5 py-2 py-md-1 shadow-lg w-100 w-md-auto">
-                <i class="fa-solid fa-circle-plus me-2"></i>
-                Create Account
-            </a>
-        </div>
     </form>
+    <!-- Submit Button -->
+    <div class="mb-5 text-center text-md-start">
+        <a type="submit" class="submitForm btn btn-success px-4 px-md-5 py-2 py-md-1 shadow-lg w-100 w-md-auto">
+            <i class="fa-solid fa-circle-plus me-2"></i>
+            Create Account
+        </a>
+    </div>
 </div>
 
 <script>
@@ -181,5 +184,13 @@ function togglePassword(inputId, eyeIcon) {
         icon.classList.add('fa-eye');
     }
 }
+
 </script>
+@endsection
+
+@section('js')
+<script>
+    
+</script>
+
 @endsection
