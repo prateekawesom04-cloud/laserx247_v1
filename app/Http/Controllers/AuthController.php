@@ -111,6 +111,7 @@ class AuthController extends Controller
                 
                 }
                 $user->referral = $referralUser->phone;
+                $user->referral_code = $request->referral_code;
                 $referralUser->referral_nos += 1;
                 $referralUser->save();
             } else{
