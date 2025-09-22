@@ -2,25 +2,31 @@
 
 @section('body')
     <div class="container-fluid p-4">
-
         <!-- Date Range Card -->
-        <div class="card mb-3">
+       <div class="card mb-3">
             <div class="card-body">
-                <div class="row g-3 align-items-center">
-                    <div class="col-auto">FROM</div>
-                    <div class="col-sm-auto">
-                        <input type="date" class="form-control" value="2025-09-01" />
+                <div class="row gx-3 gy-2 align-items-end">
+                    <!-- From Date -->
+                    <div class="col-6 col-md-3">
+                        <label for="fromDate" class="form-label">From Date:</label>
+                        <input type="text" id="fromDate" name="fromDate" class="form-control" value="2025-09-08T00:00" />
                     </div>
-                    <div class="col-auto">TO</div>
-                    <div class="col-sm-auto">
-                        <input type="date" class="form-control" value="2025-09-02" />
+
+                    <!-- To Date -->
+                    <div class="col-6 col-md-3">
+                        <label for="toDate" class="form-label">To Date:</label>
+                        <input type="text" id="toDate" name="toDate" class="form-control" value="2025-09-15T00:00" />
                     </div>
-                    <div class="col-sm-auto">
-                        <a class="btn btn-primary">Get Commission</a>
+
+                    <!-- Get Commission Button -->
+                    <div class="col-12 col-md-3">
+                        <label class="form-label d-none d-md-block">&nbsp;</label>
+                        <a class="btn btn-primary w-100">Get Commission</a>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <!-- Tabs and Table Card -->
         <div class="card">
@@ -34,28 +40,22 @@
                 <!-- Tabs -->
                 <ul class="nav nav-tabs mb-3" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active text-dark" id="fancy-tab" data-bs-toggle="tab" data-bs-target="#fancy"
-                            type="button" role="tab">Fancy</a>
+                        <a class="nav-link active text-dark" id="fancy-tab" data-bs-toggle="tab" data-bs-target="#fancy" type="button" role="tab">Fancy</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link text-dark" id="matka-tab" data-bs-toggle="tab" data-bs-target="#matka"
-                            type="button" role="tab">Matka</a>
+                        <a class="nav-link text-dark" id="matka-tab" data-bs-toggle="tab" data-bs-target="#matka" type="button" role="tab">Matka</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link text-dark" id="casino-tab" data-bs-toggle="tab" data-bs-target="#casino"
-                            type="button" role="tab">Casino</a>
+                        <a class="nav-link text-dark" id="casino-tab" data-bs-toggle="tab" data-bs-target="#casino" type="button" role="tab">Casino</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link text-dark" id="binary-tab" data-bs-toggle="tab" data-bs-target="#binary"
-                            type="button" role="tab">Binary</a>
+                        <a class="nav-link text-dark" id="binary-tab" data-bs-toggle="tab" data-bs-target="#binary" type="button" role="tab">Binary</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link text-dark" id="sportbook-tab" data-bs-toggle="tab" data-bs-target="#sportbook"
-                            type="button" role="tab">Sportbook</a>
+                        <a class="nav-link text-dark" id="sportbook-tab" data-bs-toggle="tab" data-bs-target="#sportbook" type="button" role="tab">Sportbook</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link text-dark" id="bookmaker-tab" data-bs-toggle="tab" data-bs-target="#bookmaker"
-                            type="button" role="tab">Bookmaker</a>
+                        <a class="nav-link text-dark" id="bookmaker-tab" data-bs-toggle="tab" data-bs-target="#bookmaker" type="button" role="tab">Bookmaker</a>
                     </li>
                 </ul>
 
@@ -102,14 +102,13 @@
                     <!-- Other Tabs -->
                     <div class="tab-pane fade" id="matka" role="tabpanel" aria-labelledby="matka-tab">No data!</div>
                     <div class="tab-pane fade" id="casino" role="tabpanel" aria-labelledby="casino-tab">No data!</div>
-                    <div class="tab-pane fade" id="binary" role="tabpanel" aria-labelledby="binary-tab">No data!
-                    </div>
-                    <div class="tab-pane fade" id="sportbook" role="tabpanel" aria-labelledby="sportbook-tab">No data!
-                    </div>
-                    <div class="tab-pane fade" id="bookmaker" role="tabpanel" aria-labelledby="bookmaker-tab">No data!
-                    </div>
+                    <div class="tab-pane fade" id="binary" role="tabpanel" aria-labelledby="binary-tab">No data!</div>
+                    <div class="tab-pane fade" id="sportbook" role="tabpanel" aria-labelledby="sportbook-tab">No data!</div>
+                    <div class="tab-pane fade" id="bookmaker" role="tabpanel" aria-labelledby="bookmaker-tab">No data!</div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
+

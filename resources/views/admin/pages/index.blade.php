@@ -10,12 +10,12 @@
                             <form class="row gy-3 gx-3">
                                 <div class="col-6 col-md-3">
                                     <label for="fromDate" class="form-label">From Date:</label>
-                                    <input type="datetime-local" id="fromDate" name="fromDate" class="form-control"
+                                    <input type="text" id="fromDate" name="fromDate" class="form-control"
                                         value="2025-09-08T00:00" />
                                 </div>
                                 <div class="col-6 col-md-3">
                                     <label for="toDate" class="form-label">To Date:</label>
-                                    <input type="datetime-local" id="toDate" name="toDate" class="form-control"
+                                    <input type="text" id="toDate" name="toDate" class="form-control"
                                         value="2025-09-15T00:00" />
                                 </div>
                                 <div class="col-6 col-md-3">
@@ -104,6 +104,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
+
+        // Chart.js code
         const charts = [{
                 id: 'liveChart',
                 value: {{ $user }},
