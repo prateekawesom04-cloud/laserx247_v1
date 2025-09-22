@@ -1,16 +1,19 @@
 <script>
-    
-// search function
-//  document.getElementById("search").addEventListener("input", function () {
-//         let val = this.value.toLowerCase();
-//         console.log(val);
-        
-//         document.querySelectorAll("table tbody tr").forEach(tr => {
-//             if (tr.cells.length === 1) return;
-//             tr.style.display = tr.textContent.toLowerCase().includes(val) ? "" : "none";
-//         });
-//     });
+ $(document).ready(function(){
+       
+    if(document.getElementById("search")){
+        document.getElementById("search").addEventListener("input", function () {
+               let val = this.value.toLowerCase();
+               
+               document.querySelectorAll("table tbody tr").forEach(tr => {
+                   if (tr.cells.length === 1) return;
+                   tr.style.display = tr.textContent.toLowerCase().includes(val) ? "" : "none";
+               });
+           });
 
+    }
+
+ });
 
 $('.submitForm').click(function(){
     submitForm('formParntClassname');

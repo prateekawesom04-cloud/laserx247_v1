@@ -55,7 +55,7 @@
                     <div class="col-12">
                         <div class="row gx-3 gy-2">
                             <div class="col-6 col-lg-3">
-                                <input type="search" class="form-control form-control-sm border-primary"
+                                <input id="search" type="search" class="form-control form-control-sm border-primary"
                                     placeholder="Search" style="min-width: 100%;">
                             </div>
                             <div class="col-6 col-lg-3">
