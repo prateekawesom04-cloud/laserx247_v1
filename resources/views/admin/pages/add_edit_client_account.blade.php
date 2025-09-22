@@ -1,9 +1,9 @@
 @extends('admin.master')
 
 @section('body')
-<div class="container-fluid py-4">
-    <form id="createAccountForm">
-
+<div class="container-fluid py-4 formParntClassname">
+    <form id="createAccountForm" data-url="add_edit_client_account">
+    @csrf
         <!-- Account Details -->
         <div class="card mb-4 shadow-sm border-0">
             <div class="card-header bg-primary text-white py-1">
@@ -17,20 +17,20 @@
                         <label for="accountType" class="form-label small">
                             <i class="fas fa-user-tag me-1 text-primary d-none d-md-inline"></i> Account Type
                         </label>
-                        <select id="accountType" class="form-select border-2" required>
-                            <option selected disabled>Select User Type</option>
-                            <option value="admin">👤 Admin</option>
-                            <option value="super_admin">⭐ Super Admin</option>
-                            <option value="super_master">🎯 Super Master</option>
-                            <option value="master">🔧 Master</option>
-                            <option value="agent">🤝 Agent</option>
+                        <select name="status" name="" id="accountType" class="form-select border-2" required>
+                            <option value="4" selected>Select User Type</option>
+                            <option value="0">👤 Admin</option>
+                            <option value="1">⭐ Super Admin</option>
+                            <option value="2">🎯 Super Master</option>
+                            <option value="3">🔧 Master</option>
+                            <option value="4">🤝 Agent</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="clientName" class="form-label small">
                             <i class="fas fa-building me-1 text-primary d-none d-md-inline"></i> Client Name
                         </label>
-                        <input id="clientName" type="text" class="form-control border-2" placeholder="Enter Client Name" required>
+                        <input name="clientName" id="clientName" type="text" class="form-control border-2" placeholder="Enter Client Name" required>
                     </div>
                 </div>
             </div>
@@ -49,20 +49,20 @@
                         <label for="username" class="form-label small">
                             <i class="fas fa-user me-1 text-success d-none d-md-inline"></i> User Name
                         </label>
-                        <input id="username" type="text" class="form-control border-2" required>
+                        <input name="user_uid" id="username" type="text" class="form-control border-2" required>
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="referenceName" class="form-label small">
-                            <i class="fas fa-user-friends me-1 text-success d-none d-md-inline"></i> Reference Name
+                            <i class="fas fa-user-friends me-1 text-success d-none d-md-inline"></i> Reference Code
                         </label>
-                        <input id="referenceName" type="text" class="form-control border-2">
+                        <input name="referral_code" id="referenceName" type="text" class="form-control border-2">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="password" class="form-label small">
                             <i class="fas fa-lock me-1 text-success d-none d-md-inline"></i> Password
                         </label>
                         <div class="position-relative">
-                            <input id="password" type="password" class="form-control border-2" style="padding-right: 45px;" required>
+                            <input name="password" id="password" type="password" class="form-control border-2" style="padding-right: 45px;" required>
                             <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; z-index: 10;" onclick="togglePassword('password', this)">
                                 <i class="fas fa-eye text-muted"></i>
                             </span>
@@ -73,7 +73,7 @@
                             <i class="fas fa-lock me-1 text-success d-none d-md-inline"></i> Retype Password
                         </label>
                         <div class="position-relative">
-                            <input id="confirmPassword" type="password" class="form-control border-2" style="padding-right: 45px;" required>
+                            <input name="confirm_password" id="confirmPassword" type="password" class="form-control border-2" style="padding-right: 45px;" required>
                             <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; z-index: 10;" onclick="togglePassword('confirmPassword', this)">
                                 <i class="fas fa-eye text-muted"></i>
                             </span>
@@ -96,7 +96,7 @@
                         <label for="commission" class="form-label small">
                             <i class="fas fa-chart-line me-1 text-info d-none d-md-inline"></i> Commission M.O
                         </label>
-                        <input id="commission" type="number" class="form-control border-2 text-center" min="0" max="100" value="1" placeholder="Enter commission percentage">
+                        <input name="commission_amount" id="commission" type="number" class="form-control border-2 text-center" min="0" max="100" value="1" placeholder="Enter commission percentage">
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                         <label for="sharing" class="form-label small">
                             <i class="fas fa-handshake me-1 text-secondary d-none d-md-inline"></i> Downline Sharing
                         </label>
-                        <input id="sharing" type="number" class="form-control border-2 text-center" min="0" max="100" placeholder="Enter sharing percentage">
+                        <input name="sharing_percentage" id="sharing" type="number" class="form-control border-2 text-center" min="0" max="100" placeholder="Enter sharing percentage">
                     </div>
                 </div>
             </div>
@@ -134,19 +134,19 @@
                         <label for="creditRef" class="form-label small">
                             <i class="fas fa-credit-card me-1 text-dark d-none d-md-inline"></i> Credit Reference
                         </label>
-                        <input id="creditRef" type="text" class="form-control border-2">
+                        <input name="creditRef" id="creditRef" type="text" class="form-control border-2">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="deposit" class="form-label small">
                             <i class="fas fa-plus-circle me-1 text-success d-none d-md-inline"></i> Add Deposit (₹)
                         </label>
-                        <input id="deposit" type="number" class="form-control border-2 text-center">
+                        <input name="wallet_amount" id="deposit" type="number" class="form-control border-2 text-center">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="depositRemark" class="form-label small">
                             <i class="fas fa-comment me-1 text-dark d-none d-md-inline"></i> Deposit Remark
                         </label>
-                        <input id="depositRemark" type="text" class="form-control border-2">
+                        <input name="remark" id="depositRemark" type="text" class="form-control border-2">
                     </div>
                 </div>
             </div>
@@ -166,7 +166,7 @@
                             <i class="fas fa-key me-1 text-danger d-none d-md-inline"></i> Master Password
                         </label>
                         <div class="position-relative">
-                            <input id="masterPassword" type="password" class="form-control border-2" style="padding-right: 45px;" required>
+                            <input name="masterPassword" id="masterPassword" type="password" class="form-control border-2" style="padding-right: 45px;" required>
                             <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; z-index: 10;" onclick="togglePassword('masterPassword', this)">
                                 <i class="fas fa-eye text-muted"></i>
                             </span>
@@ -178,7 +178,7 @@
 
         <!-- Submit Button -->
         <div class="text-center text-md-start mb-5">
-            <a type="submit" class="btn btn-success px-4 px-md-5 py-2 py-md-1 shadow-lg w-100 w-md-auto">
+            <a type="submit" class="btn btn-success px-4 px-md-5 py-2 py-md-1 shadow-lg w-100 w-md-auto submitForm">
                 <i class="fa-solid fa-circle-plus me-2"></i>
                 Create Account
             </a>

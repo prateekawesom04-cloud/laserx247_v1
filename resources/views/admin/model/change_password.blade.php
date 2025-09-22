@@ -13,30 +13,30 @@
       <div class="modal-body-dark p-3">
         <form action="#" method="POST" id="changePasswordForm">
           @csrf
-
+              <input name="phone" type="hidden" id="old_password" class="form-control" value="{{$userData->phone}}">
           <div class="row">
             <!-- Old Password -->
             <div class="form-group col-md-6 mb-3">
               <label for="old_password">Old Password</label>
-              <input type="password" name="old_password" id="old_password" class="form-control" placeholder="...">
+              <input name="oldPassword" type="password" id="old_password" class="form-control" placeholder="...">
             </div>
 
             <!-- New Password -->
             <div class="form-group col-md-6 mb-3">
               <label for="new_password">New Password</label>
-              <input type="password" name="new_password" id="new_password" class="form-control" placeholder="...">
+              <input name="newPassword" type="password" id="new_password" class="form-control" placeholder="...">
             </div>
           </div>
 
           <!-- Confirm Password -->
           <div class="form-group mb-4">
             <label for="confirm_password">Confirm Password</label>
-            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="...">
+            <input name="confirmPassword" type="password" id="confirm_password" class="form-control" placeholder="...">
           </div>
 
           <!-- Buttons -->
           <div class="form-group text-end">
-            <a href="javascript:0" class="btn btn-primary" onclick="document.getElementById('changePasswordForm').submit(); return false;">Confirm</a>
+            <a href="javascript:0" class="btn btn-primary changePassword">Confirm</a>
             <a href="javascript:0" class="btn btn-secondary" data-bs-dismiss="modal">No</a>
           </div>
         </form>

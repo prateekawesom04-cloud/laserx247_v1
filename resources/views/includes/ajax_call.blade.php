@@ -65,6 +65,8 @@
         let form = $('.submitForm').parents(`.${formParntClassname}`).find('form');
         let url = $(form).attr('data-url');
         
+        formData['previous_url'] = '{{url()->previous()}}';
+        
         form.find('input').each(function(){
             
             formData[$(this).attr('name')] = $(this).val();

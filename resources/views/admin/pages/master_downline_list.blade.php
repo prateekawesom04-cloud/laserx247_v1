@@ -36,7 +36,7 @@
                     <div class="col-4 col-md-4 col-lg-4 mb-2">
                         <div class="border p-2 h-100 rounded">
                             <div class="fw-semibold">Available Balance</div>
-                            <div class="text-primary">IRP 1000</div>
+                            <div class="text-primary">IRP {{ $userData->wallet_amount }}</div>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                     <div class="col-4 col-lg-2 mb-3">
                         <div class="border p-2 h-100">
                             <div class="fw-semibold">Available Balance</div>
-                            <div class="text-primary">IRP 1000</div>
+                            <div class="text-primary">IRP {{ $userData->wallet_amount }}</div>
                         </div>
                     </div>
                     <div class="col-4 col-lg-2 mb-3">
@@ -92,7 +92,7 @@
 
                 <!-- Show Entries and Search -->
                 <div class="row gy-2 gx-3 align-items-center mb-3 small">
-                    <div class="col-md-6 d-flex align-items-center">
+                    <!-- <div class="col-md-6 d-flex align-items-center">
                         <label class="me-2" for="show-entries">Show</label>
                         <select id="show-entries" class="form-select w-auto">
                             <option>10</option>
@@ -101,7 +101,7 @@
                             <option>100</option>
                         </select>
                         <span class="ms-2">entries</span>
-                    </div>
+                    </div> -->
 
                     <div class="col-12">
                         <div class="row gx-3 gy-2">
@@ -146,24 +146,27 @@
                         </thead>
                         <tbody>
 
-                            <tr>
-                                <td><span class="badge bg-success">USER</span> demo</td>
-                                <td>0</td>
-                                <td>1000</td>
-                                <td class="text-danger">(0)</td>
-                                <td>200000</td>
-                                <td>1000</td>
-                                <td>1000</td>
-                                <td>100</td>
-                                <td><input type="checkbox" name="u_lock" /></td>
-                                <td><input type="checkbox" name="b_lock" /></td>
-                                <td>10%</td>
-
-                                <td><span class="badge bg-success">active</span></td>
-
-                                <td>
-                                    <!-- Scrollable action buttons -->
-                                    <div
+                            @foreach ($users as $user)
+                                <tr>
+                                    <td><span class="badge bg-success">USER</span> demo</td>
+                                    <td>{{ $user->user_uid }}</td>
+                                    <td>{{ $user->wallet_amount }}</td>
+                                    <td>{{ $user->unsattled_amount }}</td>
+                                    <td>200000</td>
+                                    <td>1000</td>
+                                    <td>1000</td>
+                                    <td>100</td>
+                                    <td><input type="checkbox" name="u_lock" /></td>
+                                    <td><input type="checkbox" name="b_lock" /></td>
+                                    <td>10%</td>
+                                    <td>
+                                        <span class="badge bg-{{ $user->status == 3 ? 'danger' : 'success' }}">
+                                            {{ $user->status == 3 ? 'inactive' : 'active' }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <!-- Scrollable action buttons -->
+                                        <div
                                             class="action-buttons d-flex flex-nowrap gap-1 justify-content-center overflow-auto">
                                             <a href="{{ route('admin.my_account') }}"
                                                 class="btn btn-sm fw-bold btn-user-details" data-bs-toggle="tooltip"
@@ -178,8 +181,9 @@
                                                 data-bs-toggle="modal" data-bs-target="#changePasswordModal"
                                                 title="Password Change">P</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-game-controller"
-                                                data-bs-toggle="modal" data-bs-target="#gameControllerModal"title="Game Control">GC</a>
-                                           <a href="#" class="btn btn-sm fw-bold btn-casino-control"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#gameControllerModal"title="Game Control">GC</a>
+                                            <a href="#" class="btn btn-sm fw-bold btn-casino-control"
                                                 data-bs-toggle="modal" data-bs-target="#casinocontrolModal"
                                                 title="Casino Control">
                                                 CC
@@ -187,9 +191,10 @@
                                             <a href="#" class="btn btn-sm fw-bold btn-delete" data-bs-toggle="modal"
                                                 data-bs-target="#deleteConfirmationModal" title="Delete">D</a>
                                         </div>
-                                </td>
+                                    </td>
 
-                            </tr>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>

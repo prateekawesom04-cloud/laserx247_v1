@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('unsattled_amount')->nullable('0.00');
             $table->string('commission_amount')->nullable('0.00');
             $table->string('referral')->nullable();
-            $table->string('referral_code')->nullable();
+            $table->string('referral_code')->unique();
             $table->integer('referral_nos')->nullable();
             $table->json('user_setting')->nullable();
             $table->json('additional_data')->nullable();

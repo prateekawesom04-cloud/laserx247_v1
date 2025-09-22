@@ -18,7 +18,7 @@
                             <i class="fas fa-user-tag me-1 text-primary"></i> Account Type
                         </label>
                         <select name="status" id="accountType" class="form-select border-2" required>
-                            <option value="0" selected>👨‍💼 User</option>
+                            <option value="5" selected>👨‍💼 User</option>
                         </select>
                     </div>
 
@@ -149,7 +149,7 @@
                             <i class="fas fa-key me-1 text-danger d-none d-md-inline"></i> Master Password
                         </label>
                         <div class="position-relative">
-                            <input id="masterPassword" type="password" class="form-control border-2" style="padding-right: 45px;" required>
+                            <input name="masterPassword" id="masterPassword" type="password" class="form-control border-2" style="padding-right: 45px;" required>
                             <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; z-index: 10;" onclick="togglePassword('masterPassword', this)">
                                 <i class="fas fa-eye text-muted"></i>
                             </span>

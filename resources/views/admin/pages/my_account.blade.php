@@ -53,12 +53,12 @@
                         <div class="card-header bg-primary text-white fw-bold">Account Details</div>
                         <div class="card-body p-0">
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
-                                <div class="fw-bold">Name</div>
-                                <div class="text-break">agplaycrick99</div>
+                                <div class="fw-bold">User Id</div>
+                                <div class="text-break">{{$userData->user_uid}}</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Commission</div>
-                                <div>0</div>
+                                <div>{{$userData->commission_amount}}</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Rolling Commission</div>
@@ -91,7 +91,7 @@
                                 <div>100</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
-                                <div class="fw-bold">Mobile Number</div>
+                                <div class="fw-bold">{{$userData->phone}}</div>
                                 <div>0</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center px-3 py-2">
@@ -139,17 +139,27 @@
                                     <thead class="table-primary">
                                         <tr>
                                             <th class="text-nowrap">Date/Time</th>
-                                            <th class="text-nowrap">Deposit</th>
-                                            <th class="text-nowrap">Withdraw</th>
+                                            <th class="text-nowrap">Type</th>
                                             <th class="text-nowrap">Balance</th>
                                             <th class="text-nowrap">Remarks</th>
-                                            <th class="text-nowrap">From/To</th>
+                                            <!-- <th class="text-nowrap">From/To</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if($transactions!='')
+                                        @foreach($transactions as $transaction)
+                                        <tr>
+                                            <td class="text-center py-4">{{$transaction->updated_at}}</td>
+                                            <td class="text-center py-4">{{($transaction->payment_type==0)?'Deposit':'Withdraw'}}</td>
+                                            <td class="text-center py-4">{{$transaction->transfer_amount}}</td>
+                                            <td class="text-center py-4">{{$transaction->remark}}</td>
+                                        </tr>
+                                        @endforeach
+                                        @else
                                         <tr>
                                             <td colspan="6" class="text-center py-4">No data!</td>
                                         </tr>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -174,19 +184,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="text-nowrap">04-05-2024 10:16:03</td>
-                                            <td class="text-success fw-bold text-nowrap">Login Successful</td>
-                                            <td>0/0/0</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-nowrap">03-05-2024 17:44:10</td>
-                                            <td class="text-success fw-bold text-nowrap">Login Successful</td>
-                                            <td>0/0/0</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-nowrap">03-05-2024 10:51:24</td>
-                                            <td class="text-success fw-bold text-nowrap">Login Successful</td>
-                                            <td>Rajasthan/India</td>
+                                            <td class="text-nowrap">{{$userData->created_at}}</td>
+                                            <td class="text-success fw-bold text-nowrap">{{$userData->status}}</td>
+                                            <td>India</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -201,6 +201,7 @@
 @endsection
 
 <!-- JS to toggle sections -->
+ @section('js')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const links = document.querySelectorAll('.sidebar-link');
@@ -227,4 +228,40 @@
             });
         });
     });
+
+    
+    $('a.changePassword').click(function(){
+        let oldPassword = $('input[name=oldPassword]').val();
+        let newPassword = $('input[name=newPassword]').val();
+        let confirmPassword = $('input[name=confirmPassword]').val();
+        let data = {
+            oldPassword: oldPassword,
+            newPassword: newPassword,
+            confirmPassword: confirmPassword
+        };
+        
+        if (oldPassword.length < 6) {
+            alert('Please enter correct password');
+            return false;
+        } else if (newPassword.length < 6) {
+            alert('Please enter new strong password');
+            return false;
+        } else if (newPassword != confirmPassword) {
+            alert('please confirm correct password');
+            return false;
+        } else {
+            callApi('post', 'changePassword', data, changePassword);
+        }
+
+    });
+
+    function changePassword(response){
+        if(response == true){
+            window.location.reload(true);
+        } else{
+            alert(response.error);
+        }   
+    }
+
 </script>
+@endsection

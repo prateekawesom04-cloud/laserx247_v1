@@ -200,6 +200,7 @@ Route::post('paymentRequest', [PaymentController::class,'paymentRequest'])->name
 Route::post('paymentCallback', [PaymentController::class,'paymentCallback'])->name('paymentCallback')->withoutMiddleware([VerifyCsrfToken::class]);
 
 
+
 // Api Calls
 
 Route::get('getOtp', [AuthController::class,'getOtp'])->name('getOtp');
@@ -256,15 +257,13 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
 
         Route::get('/user_downline_list', [AdminDataController::class,'user_downline_list'])->name('admin.user_downline_list');
         
-        Route::post('/user_client_account', [AdminDataController::class,'user_downline_list'])->name('admin.action.user_client_account');
+        Route::post('/user_client_account', [AdminDataController::class,'submitForm'])->name('admin.action.user_client_account');
         
-        Route::get('/master_downline_list', function () {
-            return view('admin.pages.master_downline_list');
-            })->name('admin.master_downline_list');
+        Route::get('/master_downline_list', [AdminDataController::class,'master_downline_list'])->name('admin.master_downline_list');
 
-        Route::get('/my_account', function () {
-            return view('admin.pages.my_account');
-            })->name('admin.my_account');
+        Route::post('/add_edit_client_account', [AdminDataController::class,'submitForm'])->name('admin.action.add_edit_client_account');
+        
+        Route::get('/my_account', [AdminDataController::class,'my_account'])->name('admin.my_account');
 
         Route::get('/event_profit_loss', function () {
         return view('admin.pages.event_profit_loss');
@@ -290,13 +289,9 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         return view('admin.pages.market_analysis');
             })->name('admin.market_analysis');
 
-        Route::get('/deposit', function () {
-        return view('admin.pages.deposit');
-            })->name('admin.deposit');
+        Route::get('/deposit', [AdminDataController::class,'deposit'])->name('admin.deposit');
 
-        Route::get('/withdraw', function () {
-        return view('admin.pages.withdraw');
-            })->name('admin.withdraw');
+        Route::get('/withdraw', [AdminDataController::class,'withdraw'])->name('admin.withdraw');
 
             Route::get('/payments', function () {
         return view('admin.pages.payments');
@@ -355,6 +350,9 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         Route::post('/assignBonus', [AdminDataController::class,'assignBonus'])->name('admin.action.assignBonus');
         
         Route::post('/user_client_account', [AdminDataController::class,'user_client_account'])->name('admin.action.user_client_account');
+
+        
+        Route::post('updateModelData', [AdminDataController::class,'updateModelData'])->name('updateModelData')->withoutMiddleware([VerifyCsrfToken::class]);
             
 
     });

@@ -24,6 +24,15 @@
         }
     }
 
+    
+    function ajax_response_reload(response) {
+        if (response.response_code == '200') {
+            window.location.href = "/";
+        } else {
+            alert(response.error);
+        }
+    }
+
     // $('a[data-formtype=register]').click(function(e){
     //     registerUser();
     // });

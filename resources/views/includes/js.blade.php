@@ -17,7 +17,17 @@ $('.submitForm').click(function(){
 });
 
 function adminForms(response){
-    alert(response);
-    window.href.location = response.redirect;
+    alert(response.redirect);
+    window.location.href = response.redirect;
 }
+
+
+function ajax_response_reload(response) {
+    if (response.response_code == '200') {
+        window.location.href = response.redirect;
+    } else {
+        alert(response.error);
+    }
+}
+
 </script>

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Session;
+use App\Models\Transaction;
+use App\Models\Activity;
 
 class User extends Authenticatable
 {
@@ -66,6 +68,14 @@ class User extends Authenticatable
         } else{
             return False;
         }
+    }
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class,'user_uid');
+    }
+    
+    public function activity(){
+        return $this->hasMany(Activity::class,'user_uid');
     }
 
 }
