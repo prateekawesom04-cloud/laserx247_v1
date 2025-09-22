@@ -41,25 +41,25 @@
                         <div class="col-6 col-md-2">
                             <div class="bg-warning text-white p-3 rounded shadow-sm">
                                 <h6>Commission</h6>
-                                <h5>0</h5>
+                                <h5>{{$userData->commission_amount}}</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-2">
                             <div class="bg-success text-white p-3 rounded shadow-sm">
                                 <h6>Deposit</h6>
-                                <h5>0</h5>
+                                <h5>{{$userData->wallet_amount}}</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-2">
                             <div class="bg-danger text-white p-3 rounded shadow-sm">
                                 <h6>Withdrawal</h6>
-                                <h5>0</h5>
+                                <h5>{{$userData->wallet_amount}}</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-2">
                             <div class="bg-secondary text-white p-3 rounded shadow-sm">
                                 <h6>Total Bets</h6>
-                                <h5>0</h5>
+                                <h5>{{ $userTotal }}</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-2">
