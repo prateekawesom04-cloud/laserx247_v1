@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Content Area -->
             <div class="col-12 col-lg-9">
 
@@ -63,10 +63,12 @@
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Rolling Commission</div>
                                 <div class="d-flex gap-2">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#rollingCommissionModal" title="Edit">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#rollingCommissionModal"
+                                        title="Edit">
                                         <i class="fas fa-pen-to-square text-primary"></i>
                                     </a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#agentrollingCommissionModal" title="View">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#agentrollingCommissionModal"
+                                        title="View">
                                         <i class="fas fa-eye text-primary"></i>
                                     </a>
                                 </div>
@@ -74,7 +76,8 @@
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Agent Rolling Commission</div>
                                 <div>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#agentrollingCommissionModal" title="View">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#agentrollingCommissionModal"
+                                        title="View">
                                         <i class="fas fa-eye text-primary"></i>
                                     </a>
                                 </div>
@@ -95,7 +98,9 @@
                                 <div class="fw-bold">Password</div>
                                 <div class="d-flex align-items-center gap-2">
                                     <span>*********</span>
-                                    <i class="fas fa-pen-to-square text-primary" style="cursor: pointer;" title="Edit Password" data-bs-toggle="modal" data-bs-target="#changePasswordModal"></i>
+                                    <i class="fas fa-pen-to-square text-primary" style="cursor: pointer;"
+                                        title="Edit Password" data-bs-toggle="modal"
+                                        data-bs-target="#changePasswordModal"></i>
                                 </div>
                             </div>
                         </div>
@@ -115,10 +120,14 @@
                                     </select>
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <input type="date" class="form-control bg-dark text-white border-secondary" value="2025-09-02">
+
+                                    <input type="text" id="fromDate" name="fromDate" class="form-control"
+                                        value="2025-09-08T00:00" />
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <input type="date" class="form-control bg-dark text-white border-secondary" value="2025-09-02">
+
+                                    <input type="text" id="toDate" name="toDate" class="form-control"
+                                        value="2025-09-15T00:00" />
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <button class="btn btn-primary w-100">Get Statement</button>

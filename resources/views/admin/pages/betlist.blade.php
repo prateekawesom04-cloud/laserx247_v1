@@ -23,13 +23,15 @@
                         </div>
 
                         <div class="col-6 col-md-4 col-lg-3">
-                            <label for="from-date" class="form-label">From Date</label>
-                            <input type="date" id="from-date" class="form-control form-control-sm" value="2025-09-02">
+                            <label for="fromDate" class="form-label">From Date:</label>
+                            <input type="text" id="fromDate" name="fromDate" class="form-control"
+                                value="2025-09-08T00:00" />
                         </div>
 
                         <div class="col-6 col-md-4 col-lg-3">
-                            <label for="to-date" class="form-label">To Date</label>
-                            <input type="date" id="to-date" class="form-control form-control-sm" value="2025-09-02">
+                            <label for="toDate" class="form-label">To Date:</label>
+                            <input type="text" id="toDate" name="toDate" class="form-control"
+                                value="2025-09-15T00:00" />
                         </div>
 
                         <div class="col-6 col-md-4 col-lg-3">
