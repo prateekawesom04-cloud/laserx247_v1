@@ -19,6 +19,10 @@ $('.submitForm').click(function(){
     submitForm('formParntClassname');
 });
 
+$('.submit_modal').click(function(){
+    submitFormGlobal(this);
+});
+
 function adminForms(response){
     alert(response.redirect);
     window.location.href = response.redirect;

@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\Bonus;
 use App\Models\Transaction;
 use App\Models\Activity;
+use App\Models\Payment;
 
 class AdminDataController extends Controller
 {
@@ -20,6 +21,7 @@ class AdminDataController extends Controller
     protected $model_map = [
             'users'=>'App\Models\User',
             'transactions'=>'App\Models\Transaction',
+            'payments'=>'App\Models\Payment',
         ];
 
     public function index(){
@@ -65,9 +67,13 @@ class AdminDataController extends Controller
 
     // admin pages
     
-    public function user_downline_list(){
-
+    public function user_downline_list(Request $request){
         $users = User::whereIn('status', [4,5])->get();
+        return view('admin.pages.user_downline_list',compact('users'));
+    }
+    
+    public function inactive_user_downline_list(Request $request){
+        $users = User::where('status', 6)->get();
         return view('admin.pages.user_downline_list',compact('users'));
     }
 
@@ -100,7 +106,9 @@ class AdminDataController extends Controller
     }
 
     
-    public function getDataDateRange(Request $request){
+    public function getDateRangeData(Request $request){
+
+        dd($request->all());
 
         return response()->json([
             'redirect'=> $request->previous_url,
@@ -108,6 +116,52 @@ class AdminDataController extends Controller
         ]);
     }
 
+    public function createModelData(Request $request){
+
+        if ($request->hasFile('payment_method_uid')) {
+            $file = $request->file('payment_method_uid');
+            $request->payment_method_uid = '/img/'.time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('uploads', $request->payment_method_uid, 'public'); // Store in 'public/uploads'
+
+        }
+        
+        $table = $this->model_map[$request->m_key];
+        
+        $table = new $table();
+        
+        $tableName = $table->getTable();
+        $columns = Schema::getColumnListing($tableName);
+        array_splice($columns, 0, 1);
+        array_splice($columns, count($columns)-2, 2);
+        
+        foreach ($columns as $key => $value) {
+            $table->{$value} = $request->{$value};
+        }
+        if(property_exists($table,'additional_data')){
+            $table->additional_data = json_encode($request->all());
+        }
+
+        $table->save();
+
+        return response()->json([
+            'redirect'=> $request->previous_url,
+            'response_code'=>'200'
+        ]);
+    }
+
+    public function getModelData(Request $request){
+        
+        $table = $this->model_map[$request->update_data_model_key];
+        
+        $table = new $table();
+        $table = $table->where($request->search_data_key,$request->search_data_value)->get();
+        
+        return response()->json([
+            'redirect'=> $request->previous_url,
+            'response_code'=>'200'
+        ]);
+    }
+    
     public function updateModelData(Request $request){
         
         $table = $this->model_map[$request->update_data_model_key];
@@ -156,5 +210,15 @@ class AdminDataController extends Controller
         ])->get();
         // dd($transactions);
         return view('admin.pages.withdraw',compact('transactions'));
+    }
+    
+    public function payments(){
+        $payments = Payment::all();
+        return view('admin.pages.payments',compact('payments'));
+    }
+
+    public function commission(){
+        
+        return view('admin.pages.commission',compact('transactions'));
     }
 }

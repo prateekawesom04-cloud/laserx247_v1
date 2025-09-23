@@ -4,6 +4,7 @@
         @include('head')
 
     <link rel="stylesheet" href="{{asset('css')}}/style.css">
+    <script src="//code.jivosite.com/widget/O2AMREX4Ch" async></script>
         @yield('head')
     </head>
 <body class="app_dark">

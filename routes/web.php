@@ -256,6 +256,8 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         Route::get('/', [AdminDataController::class,'index'])->name('admin.index');
 
         Route::get('/user_downline_list', [AdminDataController::class,'user_downline_list'])->name('admin.user_downline_list');
+
+        Route::get('/inactive_user_downline_list', [AdminDataController::class,'inactive_user_downline_list'])->name('admin.inactive_user_downline_list');
         
         Route::post('/user_client_account', [AdminDataController::class,'submitForm'])->name('admin.action.user_client_account');
         
@@ -293,10 +295,9 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
 
         Route::get('/withdraw', [AdminDataController::class,'withdraw'])->name('admin.withdraw');
 
-            Route::get('/payments', function () {
-        return view('admin.pages.payments');
-            })->name('admin.payments');
+        Route::get('/payments', [AdminDataController::class,'payments'])->name('admin.payments');
 
+        Route::get('/commission', [AdminDataController::class,'commission'])->name('admin.commission');
 
             Route::get('/commission', function () {
         return view('admin.pages.commission');
@@ -350,9 +351,14 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         Route::post('/assignBonus', [AdminDataController::class,'assignBonus'])->name('admin.action.assignBonus');
         
         Route::post('/user_client_account', [AdminDataController::class,'user_client_account'])->name('admin.action.user_client_account');
-
+        
+        Route::post('createModelData', [AdminDataController::class,'createModelData'])->name('createModelData')->withoutMiddleware([VerifyCsrfToken::class]);
+        
+        Route::post('getModelData', [AdminDataController::class,'getModelData'])->name('getModelData')->withoutMiddleware([VerifyCsrfToken::class]);
         
         Route::post('updateModelData', [AdminDataController::class,'updateModelData'])->name('updateModelData')->withoutMiddleware([VerifyCsrfToken::class]);
+        
+        Route::post('getDateRangeData', [AdminDataController::class,'getDateRangeData'])->name('getDateRangeData')->withoutMiddleware([VerifyCsrfToken::class]);
             
 
     });

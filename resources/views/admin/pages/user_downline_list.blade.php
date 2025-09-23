@@ -67,7 +67,7 @@
                                     Client Account</a>
                             </div>
                             <div class="col-6 col-lg-3">
-                                <a href="#" class="btn btn-primary btn-sm w-100 text-white">Inactive List</a>
+                                <a href="{{route('admin.inactive_user_downline_list')}}" class="btn btn-primary btn-sm w-100 text-white">Inactive List</a>
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                                     <td>10%</td>
                                     <td>
                                         <span class="badge bg-{{ $user->status == 3 ? 'danger' : 'success' }}">
-                                            {{ $user->status == 3 ? 'inactive' : 'active' }}
+                                            {{ $user->status == 6 ? 'inactive' : 'active' }}
                                         </span>
                                     </td>
                                     <td>

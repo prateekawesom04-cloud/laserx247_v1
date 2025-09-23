@@ -10,11 +10,11 @@
             </div>
 
             <!-- Modal Body with Form -->
-            <div class="modal-body modal-body-dark">
-                <form id="methodForm">
+            <div class="modal-body modal-body-dark formParntClassname">
+                <form id="methodForm" data-m_key="payments">
                     <div class="mb-3">
                         <label for="methodType" class="form-label">Select Type</label>
-                        <select class="form-select form-select-sm modal-body-dark" id="methodType" name="addmethodType"
+                        <select class="form-select form-select-sm modal-body-dark" id="methodType" name="payment_method"
                             required>
                             <option value="" disabled selected>Select a method</option>
                             <option value="upi">UPI</option>
@@ -29,7 +29,7 @@
                     <!-- Dynamic Fields will appear here -->
                     <div id="dynamicFields"></div>
                     <div class="text-end mt-2">
-                        <a href="javascript:0" type="submit" class="btn btn-primary btn-sm">Save</a>
+                        <a href="javascript:void(0)" type="submit" class="btn btn-primary btn-sm submit_modal">Save</a>
                     </div>
                 </form>
             </div>
@@ -49,51 +49,47 @@
             dynamicFields.innerHTML = `
         <div class="mb-2">
             <label for="upiId" class="form-label">UPI ID</label>
-            <input type="text" class="form-control form-control-sm" id="upiId" name="upiId" required>
+            <input type="text" class="form-control form-control-sm" id="upiId" name="payment_method_uid" required>
         </div>
         <div class="mb-2">
             <label for="upiHolderName" class="form-label">UPI Holder Name</label>
-            <input type="text" class="form-control form-control-sm" id="upiHolderName" name="upiHolderName" required>
-        </div>
-        <div class="mb-2">
-            <label for="upiScreenshot" class="form-label">Payment Screenshot</label>
-            <input type="file" class="form-control form-control-sm" id="upiScreenshot" name="upiScreenshot" accept="image/*" required>
+            <input type="text" class="form-control form-control-sm" id="upiHolderName" name="holder_name" required>
         </div>
     `;
         } else if (selected === 'qrcode') {
             dynamicFields.innerHTML = `
                 <div class="mb-2">
                     <label for="qrUpload" class="form-label">Upload QR Code</label>
-                    <input type="file" class="form-control form-control-sm" id="qrUpload" name="qrUpload" accept="image/*" required>
+                    <input type="file" class="form-control form-control-sm" id="qrUpload" name="payment_method_uid" accept="image/*" required>
                 </div>
             `;
         } else if (selected === 'bank') {
             dynamicFields.innerHTML = `
                 <div class="mb-2">
                     <label for="accountName" class="form-label">Account Holder Name</label>
-                    <input type="text" class="form-control form-control-sm" id="accountName" name="accountName" required>
+                    <input type="text" class="form-control form-control-sm" id="accountName" name="holder_name" required>
                 </div>
                 <div class="mb-2">
                     <label for="accountNumber" class="form-label">Account Number</label>
-                    <input type="text" class="form-control form-control-sm" id="accountNumber" name="accountNumber" required>
+                    <input type="text" class="form-control form-control-sm" id="accountNumber" name="payment_method_uid" required>
                 </div>
                 <div class="mb-2">
                     <label for="ifsc" class="form-label">IFSC Code</label>
-                    <input type="text" class="form-control form-control-sm" id="ifsc" name="ifsc" required>
+                    <input type="text" class="form-control form-control-sm" id="ifsc" name="ifsc_code" required>
                 </div>
             `;
         } else if (selected === 'phonepe' || selected === 'gpay' || selected === 'paytm') {
             dynamicFields.innerHTML = `
                 <div class="mb-2">
                     <label for="mobileNumber" class="form-label">Mobile Number</label>
-                    <input type="text" class="form-control form-control-sm" id="mobileNumber" name="mobileNumber" required>
+                    <input type="text" class="form-control form-control-sm" id="mobileNumber" name="payment_method_uid" required>
                 </div>
             `;
         } else if (selected === 'usdt') {
             dynamicFields.innerHTML = `
                 <div class="mb-2">
                     <label for="usdtId" class="form-label">USDT Wallet Id</label>
-                    <input type="text" class="form-control form-control-sm" id="usdtId" name="usdtId" required>
+                    <input type="text" class="form-control form-control-sm" id="usdtId" name="payment_method_uid" required>
                 </div>
             `;
         }

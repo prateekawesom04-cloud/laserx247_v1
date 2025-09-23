@@ -35,6 +35,9 @@
         $.ajax({
             type: type,
             url: url,
+            processData: false,
+            contentType: false,
+            enctype: "multipart/form-data",
             data: data,
             beforeSend: () => {
                 if (beforeAction) beforeAction();
@@ -81,6 +84,16 @@
         }
 
         callAdminApi('post', `{{url('/admin')}}/${url}`, formData, adminForms);
+    }
+    
+    function submitFormGlobal(btn){
+        let form = $(btn).parents('.formParntClassname').find('form');
+
+        let formData = new FormData(form[0]);
+        formData.append('m_key', $(form).attr('data-m_key'));
+        formData.append('previous_url', '{{url()->current()}}');
+
+        callAdminApi('post', `{{url('/admin')}}/createModelData`, formData, ajax_response_reload);
     }
     
 </script>

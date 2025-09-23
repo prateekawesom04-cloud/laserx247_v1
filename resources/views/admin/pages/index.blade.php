@@ -4,7 +4,7 @@
         <div class="mobile-padding py-4">
             <div class="row g-4">
                 <!-- Date Filter Card -->
-                <div class="col-12">
+                <!-- <div class="col-12">
                     <div class="card mb-2 shadow-sm border-0">
                         <div class="card-body">
                             <form class="row gy-3 gx-3">
@@ -27,7 +27,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Stats Cards -->
                 <div class="col-12">

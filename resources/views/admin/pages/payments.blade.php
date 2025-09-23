@@ -35,14 +35,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($payments as $payment)
                                     <tr>
-                                        <td>QRCODE</td>
-                                        <td>-</td>
+                                        <td>{{$payment->payment_method}}</td>
+                                        <td>{{$payment->holder_name}}</td>
                                         <td>
+                                            @if(str_contains($payment->payment_method_uid, 'img'))
                                             <img src="" alt="White QR" class="img-fluid qr-img">
+                                            @else
+                                            {{$payment->payment_method_uid}}
+                                            @endif
                                         </td>
-                                        <td>-</td>
-                                        <td><span class="status-active">Active</span></td>
+                                        <td>{{$payment->ifsc_code}}</td>
+                                        <td>{{($payment->status)?'active':'inactive'}}</td>
                                         <td>
                                             <div class="d-flex justify-content-center align-items-center gap-2 flex-nowrap">
                                                 <a class="btn btn-sm btn-outline-danger" title="Delete">🗑️</a>
@@ -52,21 +57,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>UPI</td>
-                                        <td>Backy</td>
-                                        <td>rebeccabacky@fbl</td>
-                                        <td>-</td>
-                                        <td><span class="status-active">Active</span></td>
-                                        <td>
-                                            <div class="d-flex justify-content-center align-items-center gap-2 flex-nowrap">
-                                                <a class="btn btn-sm btn-outline-danger" title="Delete">🗑️</a>
-                                                <div class="form-check form-switch m-0">
-                                                    <input class="form-check-input" type="checkbox" checked>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
 
                                 </tbody>
                             </table>
