@@ -64,26 +64,13 @@
     }
 
     function submitForm(formParntClassname){
-        let formData = {};
         let form = $('.submitForm').parents(`.${formParntClassname}`).find('form');
+        let formData = new FormData(form[0]);
         let url = $(form).attr('data-url');
         
-        formData['previous_url'] = '{{url()->previous()}}';
-        
-        form.find('input').each(function(){
-            
-            formData[$(this).attr('name')] = $(this).val();
+        formData.append('previous_url', '{{url()->previous()}}');
 
-        });
-        
-        if(form.find('select').length > 0){
-            form.find('select').each(function(){
-                
-            formData[$(this).attr('name')] = $(this).find("option:selected").val();
-            });
-        }
-
-        callAdminApi('post', `{{url('/admin')}}/${url}`, formData, adminForms);
+        callAdminApi('post', `{{url('/admin')}}/${url}`, formData, ajax_response_reload);
     }
     
     function submitFormGlobal(btn){

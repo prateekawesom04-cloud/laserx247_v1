@@ -295,10 +295,6 @@ td .d-flex {
 }
 
 /* Responsive fix for long buttons */
-.table td,
-.table th {
-    white-space: nowrap;
-}
 
 .table-responsive-sm {
     overflow-x: auto;

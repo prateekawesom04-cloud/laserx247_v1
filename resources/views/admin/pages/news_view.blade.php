@@ -25,20 +25,35 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($news as $newses)
                             <tr>
-                                <td>No data</td>
+                                <td>{{$newses}}</td>
                                 <td><a href="#" class="btn btn-warning btn-sm px-3 py-1"data-bs-toggle="modal"
-                                        data-bs-target="#editNewsModal" data-bs-placement="top" title="Edit"><i
-                                            class="fa fa-edit">✍️</i>
+                                        data-bs-target="#editNewsModal" data-bs-placement="top" title="Edit">
+                                        ✍️
                                     </a></td>
                                 <td> <a href="#" class="btn-sm px-3 py-1 btn-btn-danger" data-bs-toggle="modal"
                                         data-bs-target="#deleteConfirmationModal"data-bs-placement="top"
                                         title="Delete">🗑️</a></td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </form>
         </div>
     </div>
+@endsection
+
+@section('js')
+
+<script>
+    $('.add_news').on('click',function(){
+        
+        let formData = new FormData($(this).parents('form')[0]);
+        
+        callAdminApi('post', `{{url('/admin')}}/update_news`, formData, ajax_response_reload);
+    });
+</script>
+
 @endsection

@@ -54,11 +54,11 @@
                         <div class="card-body p-0">
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">User Id</div>
-                                <div class="text-break">{{$userData->user_uid}}</div>
+                                <div class="text-break">{{$user->user_uid}}</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Commission</div>
-                                <div>{{$userData->commission_amount}}</div>
+                                <div>{{$user->commission_amount}}</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Rolling Commission</div>
@@ -88,11 +88,11 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Partnership</div>
-                                <div>100</div>
+                                <div>{{$user->partnership_percentage}}</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
-                                <div class="fw-bold">{{$userData->phone}}</div>
-                                <div>0</div>
+                                <div class="fw-bold">Mobile Number</div>
+                                <div>{{$user->phone}}</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center px-3 py-2">
                                 <div class="fw-bold">Password</div>
@@ -184,8 +184,8 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="text-nowrap">{{$userData->created_at}}</td>
-                                            <td class="text-success fw-bold text-nowrap">{{$userData->status}}</td>
+                                            <td class="text-nowrap">{{$user->created_at}}</td>
+                                            <td class="text-success fw-bold text-nowrap">{{$user->status}}</td>
                                             <td>India</td>
                                         </tr>
                                     </tbody>

@@ -80,7 +80,6 @@
                         <thead class="table-light sticky-top">
                             <tr>
                                 <th>Username</th>
-                                <th>Credit Ref.</th>
                                 <th>Balance</th>
                                 <th>Exposure</th>
                                 <th>Exposure Limit</th>
@@ -97,8 +96,7 @@
                         <tbody>
                             @foreach ($users as $user)
                                 <tr>
-                                    <td><span class="badge bg-success">USER</span> demo</td>
-                                    <td>{{ $user->user_uid }}</td>
+                                    <td><span class="badge bg-success">USER</span> {{ $user->user_uid }}</td>
                                     <td>{{ $user->wallet_amount }}</td>
                                     <td>{{ $user->unsattled_amount }}</td>
                                     <td>200000</td>
@@ -117,7 +115,7 @@
                                         <!-- Scrollable action buttons -->
                                         <div
                                             class="action-buttons d-flex flex-nowrap gap-1 justify-content-center overflow-auto">
-                                            <a href="{{ route('admin.my_account') }}"
+                                            <a href="{{ route('admin.my_account',$user->user_uid) }}"
                                                 class="btn btn-sm fw-bold btn-user-details" data-bs-toggle="tooltip"
                                                 title="User Details">U</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-deposit-collection"

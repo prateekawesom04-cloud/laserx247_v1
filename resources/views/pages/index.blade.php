@@ -11,8 +11,9 @@
                     <span class="me-2"><i class="fas fa-microphone text-warning"></i></span>
                     <strong class="me-2">News:</strong>
                     <marquee class="flex-grow-1">
-                        🔥 Breaking News: Welcome to Laser247 - Your Ultimate Sports Betting Destination! &nbsp;&nbsp;&nbsp;
-                        🔥 Enjoy Fast Deposits, Secure Betting & 24/7 Live Games!
+                        @foreach($news as $newses)
+                        🔥 {{$newses}} &nbsp;&nbsp;&nbsp;
+                        @endforeach
                     </marquee>
                 </div>
     

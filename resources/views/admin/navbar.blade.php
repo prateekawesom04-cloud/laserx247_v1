@@ -18,7 +18,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.my_account') }}">👨‍💼My Account</a>
+                <a class="nav-link" href="{{ route('admin.my_account',$userData->user_uid) }}">👨‍💼My Account</a>
             </li>
 
             <li class="nav-item dropdown">

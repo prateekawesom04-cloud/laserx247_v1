@@ -259,13 +259,10 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
 
         Route::get('/inactive_user_downline_list', [AdminDataController::class,'inactive_user_downline_list'])->name('admin.inactive_user_downline_list');
         
-        Route::post('/user_client_account', [AdminDataController::class,'submitForm'])->name('admin.action.user_client_account');
         
         Route::get('/master_downline_list', [AdminDataController::class,'master_downline_list'])->name('admin.master_downline_list');
-
-        Route::post('/add_edit_client_account', [AdminDataController::class,'submitForm'])->name('admin.action.add_edit_client_account');
         
-        Route::get('/my_account', [AdminDataController::class,'my_account'])->name('admin.my_account');
+        Route::get('/my_account/{user_uid}', [AdminDataController::class,'my_account'])->name('admin.my_account');
 
         Route::get('/event_profit_loss', function () {
         return view('admin.pages.event_profit_loss');
@@ -299,17 +296,11 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
 
         Route::get('/commission', [AdminDataController::class,'commission'])->name('admin.commission');
 
-            Route::get('/commission', function () {
-        return view('admin.pages.commission');
-            })->name('admin.commission');
+        Route::get('/news_view', [AdminDataController::class,'news_view'])->name('admin.news_view');
 
             Route::get('/admin_fund', function () {
         return view('admin.pages.admin_fund');
             })->name('admin.admin_fund');
-
-            Route::get('/news_view', function () {
-        return view('admin.pages.news_view');
-            })->name('admin.news_view');
 
             Route::get('/user_general_setting', function () {
         return view('admin.pages.user_general_setting');
@@ -346,11 +337,13 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
 
 // Post/Action requests start
 
+        Route::post('/user_client_account', [AdminDataController::class,'submitForm'])->name('admin.action.user_client_account');
+
+        Route::post('/add_edit_client_account', [AdminDataController::class,'submitForm'])->name('admin.action.add_edit_client_account');
+
         Route::post('/createBonus', [AdminDataController::class,'createBonus'])->name('admin.action.createBonus');
         
         Route::post('/assignBonus', [AdminDataController::class,'assignBonus'])->name('admin.action.assignBonus');
-        
-        Route::post('/user_client_account', [AdminDataController::class,'user_client_account'])->name('admin.action.user_client_account');
         
         Route::post('createModelData', [AdminDataController::class,'createModelData'])->name('createModelData')->withoutMiddleware([VerifyCsrfToken::class]);
         
@@ -359,6 +352,8 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         Route::post('updateModelData', [AdminDataController::class,'updateModelData'])->name('updateModelData')->withoutMiddleware([VerifyCsrfToken::class]);
         
         Route::post('getDateRangeData', [AdminDataController::class,'getDateRangeData'])->name('getDateRangeData')->withoutMiddleware([VerifyCsrfToken::class]);
+        
+        Route::post('update_news', [AdminDataController::class,'update_news'])->name('update_news')->withoutMiddleware([VerifyCsrfToken::class]);
             
 
     });
