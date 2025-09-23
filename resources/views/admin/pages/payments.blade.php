@@ -41,7 +41,7 @@
                                         <td>{{$payment->holder_name}}</td>
                                         <td>
                                             @if(str_contains($payment->payment_method_uid, 'img'))
-                                            <img src="" alt="White QR" class="img-fluid qr-img">
+                                            <img src="{{asset('storage').$payment->payment_method_uid}}" alt="" srcset="" class="w-15">
                                             @else
                                             {{$payment->payment_method_uid}}
                                             @endif

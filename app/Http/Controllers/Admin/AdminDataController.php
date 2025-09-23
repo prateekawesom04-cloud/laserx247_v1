@@ -118,10 +118,11 @@ class AdminDataController extends Controller
 
     public function createModelData(Request $request){
 
-        if ($request->hasFile('payment_method_uid')) {
+        // if ($request->hasFile('payment_method_uid')) {
+        if (!empty($request->allFiles())) {
             $file = $request->file('payment_method_uid');
             $request->payment_method_uid = '/img/'.time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('uploads', $request->payment_method_uid, 'public'); // Store in 'public/uploads'
+            $filePath = $file->storeAs('', $request->payment_method_uid, 'public'); // Store in 'public/uploads'
 
         }
         
