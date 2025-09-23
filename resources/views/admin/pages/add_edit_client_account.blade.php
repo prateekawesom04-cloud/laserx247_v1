@@ -84,7 +84,7 @@
         </div>
 
         <!-- Commission -->
-        <div class="card mb-4 shadow-sm border-0">
+        <!-- <div class="card mb-4 shadow-sm border-0">
             <div class="card-header bg-info text-white py-1">
                 <h5 class="mb-0 fs-6">
                     <i class="fa-solid fa-percent me-2"></i> Commission: Cricket / Soccer / Tennis
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Partnership Sharing -->
         <div class="card mb-4 shadow-sm border-0">
@@ -115,7 +115,7 @@
                         <label for="sharing" class="form-label small">
                             <i class="fas fa-handshake me-1 text-secondary d-none d-md-inline"></i> Downline Sharing
                         </label>
-                        <input name="sharing_percentage" id="sharing" type="number" class="form-control border-2 text-center" min="0" max="100" placeholder="Enter sharing percentage">
+                        <input name="partnership_percentage" id="sharing" type="number" class="form-control border-2 text-center" min="0" max="100" placeholder="Enter sharing percentage">
                     </div>
                 </div>
             </div>

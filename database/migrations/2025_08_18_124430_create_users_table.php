@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('wallet_amount')->nullable('0.00');
             $table->string('unsattled_amount')->nullable('0.00');
             $table->string('commission_amount')->nullable('0.00');
+            $table->string('partnership_percentage')->nullable('0.00');
             $table->string('referral')->nullable();
             $table->string('referral_code')->unique();
             $table->integer('referral_nos')->nullable();
