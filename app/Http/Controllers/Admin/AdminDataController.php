@@ -71,16 +71,6 @@ class AdminDataController extends Controller
 
 
     // admin pages
-    
-    public function user_downline_list(Request $request){
-        $users = User::whereIn('status', [4,5])->get();
-        return view('admin.pages.user_downline_list',compact('users'));
-    }
-    
-    public function inactive_user_downline_list(Request $request){
-        $users = User::where('status', 6)->get();
-        return view('admin.pages.user_downline_list',compact('users'));
-    }
 
     public function submitForm(Request $request){
         $user = User::getCurrentUser();
@@ -186,6 +176,16 @@ class AdminDataController extends Controller
             'redirect'=> $request->previous_url,
             'response_code'=>'200'
         ]);
+    }
+    
+    public function user_downline_list(Request $request){
+        $users = User::whereIn('status', [5])->get();
+        return view('admin.pages.user_downline_list',compact('users'));
+    }
+    
+    public function inactive_user_downline_list(Request $request){
+        $users = User::where('status', 6)->get();
+        return view('admin.pages.user_downline_list',compact('users'));
     }
 
     public function master_downline_list(){
