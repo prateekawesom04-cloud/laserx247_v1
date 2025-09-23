@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use App\Models\Appdata;
 
 class CustomSessionMiddleware
 {
@@ -28,8 +29,14 @@ class CustomSessionMiddleware
         
         $providers = json_decode($providers);
         
+        $domain = $request->host();
+
+        $news = Appdata::where('app_domain',$domain)->first();
+        $news = json_decode($news->additional_data)->news;
+        
         View::share('_GAMES',$_GAMES);
         View::share('providers',$providers);
+        View::share('news',$news);
 
         $userData = User::getCurrentUser();
         
