@@ -8,11 +8,14 @@ use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Schema;
 use Stevebauman\Location\Facades\Location;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Bonus;
 use App\Models\Transaction;
 use App\Models\Activity;
 use App\Models\Payment;
+use App\Models\Appdata;
+use App\Models\GameHistory;
 
 class AdminDataController extends Controller
 {
@@ -25,6 +28,8 @@ class AdminDataController extends Controller
         ];
 
     public function index(){
+        
+        $gameHistory = GameHistory::where('');
         $user = User::whereIn('status', [1,2,3])->count();
         $userTotal = User::all()->count();
         return view('admin.pages.index',compact('user','userTotal'));
@@ -78,8 +83,13 @@ class AdminDataController extends Controller
     }
 
     public function submitForm(Request $request){
-
-
+        $user = User::getCurrentUser();
+        if(!Hash::check($request->masterPassword,$user->password)){
+            return response()->json([
+                'error'=> 'wrong master password',
+                'response_code'=>'400'
+            ]);
+        }
         $user = new User();
 
         // $user = User::whereIn('status', [1,2])->first();
@@ -220,6 +230,32 @@ class AdminDataController extends Controller
 
     public function commission(){
         
-        return view('admin.pages.commission',compact('transactions'));
+        return view('admin.pages.commission');
+    }
+    
+    public function news_view(Request $request){
+        $domain = $request->host();
+        $news = Appdata::where('app_domain',$domain)->first();
+        $newsData = json_decode($news->additional_data,true);
+        $news = $newsData['news'];
+        return view('admin.pages.news_view',compact('news'));
+    }
+      
+    public function update_news(Request $request){
+        $domain = $request->host();
+        $news = Appdata::where('app_domain',$domain)->first();
+        // if($news->additional_data){
+            $newsData = json_decode($news->additional_data,true);
+        // }
+
+        $newsData['news'][] = $request->news;
+  
+        $news->additional_data = json_encode($newsData);
+        $news->save();
+
+        return response()->json([
+            'redirect'=> url()->previous(),
+            'response_code'=>'200'
+        ]);
     }
 }
