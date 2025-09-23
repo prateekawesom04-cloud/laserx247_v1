@@ -197,10 +197,10 @@ class AdminDataController extends Controller
     public function my_account(Request $request){
 
         $user = User::getCurrentUser();
-        $activity = Activity::where('user_uid',$user->user_uid)->get();
-        $transactions = Transaction::where('user_uid',$user->user_uid)->get();
+        $activity = Activity::where('user_uid',$request->user_uid)->get();
+        $transactions = Transaction::where('user_uid',$request->user_uid)->get();
         // dd($transactions);
-        return view('admin.pages.my_account',compact('activity','transactions'));
+        return view('admin.pages.my_account',compact('user','activity','transactions'));
     }
     
     public function deposit(){
