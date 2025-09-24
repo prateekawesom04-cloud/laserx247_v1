@@ -168,7 +168,7 @@
                                         <!-- Scrollable action buttons -->
                                         <div
                                             class="action-buttons d-flex flex-nowrap gap-1 justify-content-center overflow-auto">
-                                            <a href="{{ route('admin.my_account') }}"
+                                            <a href="{{ route('admin.my_account',$user->user_uid) }}"
                                                 class="btn btn-sm fw-bold btn-user-details" data-bs-toggle="tooltip"
                                                 title="User Details">U</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-deposit-collection"
