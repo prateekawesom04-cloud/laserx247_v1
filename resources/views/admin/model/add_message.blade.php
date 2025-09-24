@@ -17,14 +17,13 @@
                     <!-- Description Field -->
                     <div class="form-group mb-4">
                         <label for="description">Description</label>
-                        <input type="text" name="adddescription" id="description" class="form-control"
+                        <input type="text" name="news" id="description" class="form-control"
                             placeholder="Description...">
                     </div>
 
                     <!-- Buttons -->
                     <div class="form-group text-end">
-                        <a href="javascript:0" class="btn btn-dark"
-                            onclick="document.getElementById('addMessageForm').submit(); return false;">Add</a>
+                        <a href="javascript:0" class="btn btn-dark add_news">Add</a>
                         <a href="javascript:0" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
                     </div>
                 </form>

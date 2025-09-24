@@ -31,12 +31,15 @@ class CustomSessionMiddleware
         
         $domain = $request->host();
 
-        $news = Appdata::where('app_domain',$domain)->first();
-        $news = json_decode($news->additional_data)->news;
+        $appdata = Appdata::where('app_domain',$domain)->first();
+        if($appdata->additional_data){
+            $additional_data = json_decode($appdata->additional_data);
+            $news = $additional_data->marquee;
+            View::share('news',$news);
+        }
         
         View::share('_GAMES',$_GAMES);
         View::share('providers',$providers);
-        View::share('news',$news);
 
         $userData = User::getCurrentUser();
         

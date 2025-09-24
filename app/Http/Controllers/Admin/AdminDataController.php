@@ -28,11 +28,17 @@ class AdminDataController extends Controller
         ];
 
     public function index(){
+        $user = User::getCurrentUser();
+        $gameData = GameHistory::join('users','users.user_uid','=','game_histories.user_uid')->where('admin_uid',$user->user_uid)->get();
+        $p_l = 0;
+        foreach($gameData as $g_user){
+            $p_l+=$g_user->bet_amount;
+        }
         
-        $gameHistory = GameHistory::where('');
         $user = User::whereIn('status', [1,2,3])->count();
         $userTotal = User::all()->count();
-        return view('admin.pages.index',compact('user','userTotal'));
+        $totalBets = count($gameData);
+        return view('admin.pages.index',compact('user','userTotal','p_l','totalBets'));
     }
 
     public function createBonus(Request $request){
@@ -235,23 +241,48 @@ class AdminDataController extends Controller
     
     public function news_view(Request $request){
         $domain = $request->host();
-        $news = Appdata::where('app_domain',$domain)->first();
-        $newsData = json_decode($news->additional_data,true);
-        $news = $newsData['news'];
+        $news  = [];
+        $appData = Appdata::where('app_domain',$domain)->first();
+        $additional_data = json_decode($appData->additional_data);
+        if($additional_data != ''){
+            if(property_exists($additional_data,'marquee')){
+                $news = $additional_data->marquee;
+            }
+        }
+        // dd($news);
         return view('admin.pages.news_view',compact('news'));
     }
       
     public function update_news(Request $request){
+        $newsData = [];
         $domain = $request->host();
-        $news = Appdata::where('app_domain',$domain)->first();
-        // if($news->additional_data){
-            $newsData = json_decode($news->additional_data,true);
-        // }
+        $appData = Appdata::where('app_domain',$domain)->first();
+        $additional_data = json_decode($appData->additional_data,true);
+        $newsData['news_id'] = isset($additional_data['marquee'])?count($additional_data['marquee']):0;
+        $newsData['news'] = $request->news;
+        // dd($newsData);
+        if(isset($request->news_id)){
+            $additional_data['marquee'][$request->news_id]['news'] = $request->news;
+        } else{
+            $additional_data['marquee'][] = $newsData;
+        }
+        $appData->additional_data = json_encode($additional_data);
+        $appData->save();
 
-        $newsData['news'][] = $request->news;
-  
-        $news->additional_data = json_encode($newsData);
-        $news->save();
+        return response()->json([
+            'redirect'=> url()->previous(),
+            'response_code'=>'200'
+        ]);
+    }
+
+    public function delete_news(Request $request){
+        $newsData = [];
+        $domain = $request->host();
+        $appData = Appdata::where('app_domain',$domain)->first();
+        $additional_data = json_decode($appData->additional_data,true);
+        unset($additional_data['marquee'][$request->news_id]);
+        $appData->additional_data = json_encode($additional_data);
+        $appData->save();
 
         return response()->json([
             'redirect'=> url()->previous(),

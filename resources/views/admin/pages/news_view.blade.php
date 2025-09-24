@@ -27,13 +27,12 @@
                         <tbody>
                             @foreach($news as $newses)
                             <tr>
-                                <td>{{$newses}}</td>
-                                <td><a href="#" class="btn btn-warning btn-sm px-3 py-1"data-bs-toggle="modal"
-                                        data-bs-target="#editNewsModal" data-bs-placement="top" title="Edit">
+                                <td>{{$newses->news}}</td>
+                                <td><a href="#" data-news_id="{{$newses->news_id}}" class="btn btn-warning btn-sm px-3 py-1 news_edit"data-bs-toggle="modal"
+                                        data-bs-target="#editNewsModal{{$newses->news_id}}" data-bs-placement="top" title="Edit">
                                         ✍️
                                     </a></td>
-                                <td> <a href="#" class="btn-sm px-3 py-1 btn-btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#deleteConfirmationModal"data-bs-placement="top"
+                                <td> <a href="#" class="btn-sm px-3 py-1 btn-btn-danger delete_news" data-news_id="{{$newses->news_id}}" data-bs-placement="top"
                                         title="Delete">🗑️</a></td>
                             </tr>
                             @endforeach
@@ -52,6 +51,22 @@
         
         let formData = new FormData($(this).parents('form')[0]);
         
+        callAdminApi('post', `{{url('/admin')}}/update_news`, formData, ajax_response_reload);
+    });
+    
+    // $('.news_edit').on('click',function(){
+
+    // });
+
+    $('.delete_news').on('click',function(){
+        let formData = new FormData();
+        formData.append('news_id',$(this).attr('data-news_id'));
+        callAdminApi('post', `{{url('/admin')}}/delete_news`, formData, ajax_response_reload);
+    });
+    
+    $('.update_news').on('click',function(){
+        let formData = new FormData($(this).parents('form')[0]);
+        formData.append('news_id',$(this).attr('data-news_id'));
         callAdminApi('post', `{{url('/admin')}}/update_news`, formData, ajax_response_reload);
     });
 </script>

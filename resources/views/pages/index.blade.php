@@ -12,7 +12,7 @@
                     <strong class="me-2">News:</strong>
                     <marquee class="flex-grow-1">
                         @foreach($news as $newses)
-                        🔥 {{$newses}} &nbsp;&nbsp;&nbsp;
+                        🔥 {{$newses->news}} &nbsp;&nbsp;&nbsp;
                         @endforeach
                     </marquee>
                 </div>

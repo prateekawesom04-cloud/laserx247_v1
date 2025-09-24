@@ -354,6 +354,8 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         Route::post('getDateRangeData', [AdminDataController::class,'getDateRangeData'])->name('getDateRangeData')->withoutMiddleware([VerifyCsrfToken::class]);
         
         Route::post('update_news', [AdminDataController::class,'update_news'])->name('update_news')->withoutMiddleware([VerifyCsrfToken::class]);
+        
+        Route::post('delete_news', [AdminDataController::class,'delete_news'])->name('delete_news')->withoutMiddleware([VerifyCsrfToken::class]);
             
 
     });

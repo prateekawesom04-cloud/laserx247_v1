@@ -35,15 +35,15 @@
                         <div class="col-6 col-md-2">
                             <div class="bg-info text-white p-3 rounded shadow-sm">
                                 <h6>P&L</h6>
-                                <h5>0</h5>
+                                <h5>{{$p_l}}</h5>
                             </div>
                         </div>
-                        <div class="col-6 col-md-2">
+                        <!-- <div class="col-6 col-md-2">
                             <div class="bg-warning text-white p-3 rounded shadow-sm">
                                 <h6>Commission</h6>
                                 <h5>{{$userData->commission_amount}}</h5>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-6 col-md-2">
                             <div class="bg-success text-white p-3 rounded shadow-sm">
                                 <h6>Deposit</h6>
@@ -59,15 +59,15 @@
                         <div class="col-6 col-md-2">
                             <div class="bg-secondary text-white p-3 rounded shadow-sm">
                                 <h6>Total Bets</h6>
-                                <h5>{{ $userTotal }}</h5>
+                                <h5>{{ $totalBets }}</h5>
                             </div>
                         </div>
-                        <div class="col-6 col-md-2">
+                        <!-- <div class="col-6 col-md-2">
                             <div class="bg-primary text-white p-3 rounded shadow-sm">
                                 <h6>Sport P&L</h6>
                                 <h5>0</h5>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
