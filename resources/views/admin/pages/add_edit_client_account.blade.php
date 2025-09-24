@@ -26,12 +26,12 @@
                             <option value="4">🤝 Agent</option>
                         </select>
                     </div>
-                    <div class="col-12 col-md-6">
+                    <!-- <div class="col-12 col-md-6">
                         <label for="clientName" class="form-label small">
                             <i class="fas fa-building me-1 text-primary d-none d-md-inline"></i> Client Name
                         </label>
                         <input name="clientName" id="clientName" type="text" class="form-control border-2" placeholder="Enter Client Name" required>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
                 <div class="row g-3 g-md-4">
                     <div class="col-12 col-md-6">
                         <label for="username" class="form-label small">
-                            <i class="fas fa-user me-1 text-success d-none d-md-inline"></i> User Name
+                            <i class="fas fa-user me-1 text-success d-none d-md-inline"></i> User Uid
                         </label>
                         <input name="user_uid" id="username" type="text" class="form-control border-2" required>
                     </div>

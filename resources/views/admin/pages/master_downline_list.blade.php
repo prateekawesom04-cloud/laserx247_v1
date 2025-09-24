@@ -158,7 +158,7 @@
                                     <td>100</td>
                                     <td><input type="checkbox" name="u_lock" /></td>
                                     <td><input type="checkbox" name="b_lock" /></td>
-                                    <td>10%</td>
+                                    <td>{{ $user->partnership_percentage }} %</td>
                                     <td>
                                         <span class="badge bg-{{ $user->status == 3 ? 'danger' : 'success' }}">
                                             {{ $user->status == 3 ? 'inactive' : 'active' }}
