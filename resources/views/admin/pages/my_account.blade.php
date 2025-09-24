@@ -98,7 +98,7 @@
                                 <div class="fw-bold">Password</div>
                                 <div class="d-flex align-items-center gap-2">
                                     <span>*********</span>
-                                    <i class="fas fa-pen-to-square text-primary" style="cursor: pointer;"
+                                    <i data-user_uid="{{ $user->user_uid }}" class="fas fa-pen-to-square text-primary submit_user_modal" style="cursor: pointer;"
                                         title="Edit Password" data-bs-toggle="modal"
                                         data-bs-target="#changePasswordModal"></i>
                                 </div>
@@ -225,38 +225,7 @@
     });
 
     
-    $('a.changePassword').click(function(){
-        let oldPassword = $('input[name=oldPassword]').val();
-        let newPassword = $('input[name=newPassword]').val();
-        let confirmPassword = $('input[name=confirmPassword]').val();
-        let data = {
-            oldPassword: oldPassword,
-            newPassword: newPassword,
-            confirmPassword: confirmPassword
-        };
-        
-        if (oldPassword.length < 6) {
-            alert('Please enter correct password');
-            return false;
-        } else if (newPassword.length < 6) {
-            alert('Please enter new strong password');
-            return false;
-        } else if (newPassword != confirmPassword) {
-            alert('please confirm correct password');
-            return false;
-        } else {
-            callApi('post', 'changePassword', data, changePassword);
-        }
 
-    });
-
-    function changePassword(response){
-        if(response == true){
-            window.location.reload(true);
-        } else{
-            alert(response.error);
-        }   
-    }
 
     // Transaction Data
 

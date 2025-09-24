@@ -52,9 +52,14 @@ function getModelData(form,search_data_value,action){
 let user_action_id = '';
 
 $('.submit_user_modal').click(function(){
-    submitUserUpdates(this,user_action_id);
+    $('#changePasswordForm input[name=user_uid]').val($(this).attr('data-user_uid'));
 });
 
+$('a.changePassword').click(function(){
+    
+    submitUserUpdates(this,changePassword);       
+
+});
 
 
 
@@ -71,18 +76,27 @@ function globalFormSubmit(){
     callAdminApi('post', `{{url('/admin')}}/${url}`, formData, ajax_response_reload);
 }
 
-function submitUserUpdates(btn,user_uid){
-    let form = $(btn).parents('.formParntClassname').find('form');
-    let url = $(form).attr('data-url');
+function submitUserUpdates(btn,action){
+    let form = $(btn).parents('.submitUserPassword').find('form');
+    let url = $(form[0]).attr('data-url');
     let formData = new FormData(form[0]);
-    formData.append('m_key', $(form).attr('data-m_key'));
-    formData.append('user_uid', user_uid);
+    // formData.append('m_key', $(form).attr('data-m_key'));
+    // formData.append('user_uid', user_uid);
     formData.append('previous_url', '{{url()->current()}}');
 
-    callAdminApi('post', `{{url('/admin')}}/${url}`, formData, ajax_response_reload);
+    callAdminApi('post', `{{url('/admin')}}/${url}`, formData, action);
 }
 
 
+    function changePassword(response){
+        console.log('response---',response.error_code);
+        
+        if(response.error_code == 200){
+            window.location.reload(true);
+        } else{
+            alert(response.error);
+        }   
+    }
 
 
 

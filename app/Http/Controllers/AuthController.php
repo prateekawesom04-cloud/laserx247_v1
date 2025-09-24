@@ -178,7 +178,7 @@ class AuthController extends Controller
     }
 
     public function changePassword(Request $request){
-        
+        // dd($request->all());
         $rules = [
             'oldPassword' => 'required',
             'newPassword' => 'required|min:6',
@@ -191,11 +191,24 @@ class AuthController extends Controller
             foreach ($validator->errors()->messages() as $key => $value) {
                 $errors[] = $value[0];
             }
-            return response()->json($errors);
+            return response()->json([
+                'error'=>$errors[0]
+            ]);
         } else{
-            $user = User::where([
-                'phone'=>$request->phone
-            ])->first();
+            if($request->phone){
+                $user = User::where([
+                    'phone'=>$request->phone
+                ])->first();
+            } else if($request->user_uid){
+                $user = User::where([
+                'phone'=>$request->user_uid
+                ])->first();
+            } else{
+                return response()->json([
+                    'error'=> 'Provide Some Id',
+                    'error_code'=> '402'
+                ]);
+            }
             $user = User::getCurrentUser();
             if(!Hash::check($request->oldPassword,$user->password)){
                 return response()->json([
@@ -206,7 +219,10 @@ class AuthController extends Controller
             $user->password = Hash::make($request->newPassword);
             $user->save();
             
-            return True;
+            return response()->json([
+                'error'=> 'success',
+                'error_code'=> '200'
+            ]);
             
         }
 

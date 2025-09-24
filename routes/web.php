@@ -341,6 +341,8 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         
         Route::post('/updateWallet', [AdminDataController::class,'updateWallet'])->name('admin.action.updateWallet');
 
+        Route::post('changePassword', [AuthController::class,'changePassword'])->name('changePassword')->withoutMiddleware([VerifyCsrfToken::class]);
+
         Route::post('/submitUserUpdates', [AdminDataController::class,'submitUserUpdates'])->name('admin.action.submitUserUpdates');
 
         Route::post('/add_edit_client_account', [AdminDataController::class,'submitForm'])->name('admin.action.add_edit_client_account');

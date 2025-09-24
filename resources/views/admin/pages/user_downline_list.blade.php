@@ -124,8 +124,8 @@
                                             <a href="#" class="btn btn-sm fw-bold btn-withdrawal"
                                                 data-bs-toggle="modal" data-bs-target="#withdrawModal"
                                                 title="Withdrawal">W</a>
-                                            <a href="#" class="btn btn-sm fw-bold btn-password-change"
-                                                data-bs-toggle="modal" data-bs-target="#changePasswordModal"
+                                            <a href="#" class="btn btn-sm fw-bold btn-password-change submit_user_modal"
+                                                data-bs-toggle="modal" data-user_uid="{{ $user->user_uid }}" data-bs-target="#changePasswordModal"
                                                 title="Password Change">P</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-game-controller"
                                                 data-bs-toggle="modal"
@@ -162,15 +162,16 @@
         });
 
 
-        $('.user_actions a').on('click',function(){
-            user_action_id = $(this).parent().attr('data-user_uid');
-            console.log('user_action_id--',user_action_id);
+        // $('.user_actions a').on('click',function(){
+        //     user_action_id = $(this).parent().attr('data-user_uid');
+        //     console.log('user_action_id--',user_action_id);
             
-        });
+        // });
+        
 
-        $('.btn-password-change').click(function(){
-            $('#changePasswordModal'),find('form').attr('data-url');
-        });
+        // $('.btn-password-change').click(function(){
+        //     $('#changePasswordModal').find('form').attr('data-url','');
+        // });
 
     </script>
 @endsection
