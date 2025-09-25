@@ -10,10 +10,17 @@
                     <div class="row g-3 align-items-end">
                         <div class="col-6 col-md-4 col-lg-2">
                             <label for="data-source" class="form-label">Data Source</label>
-                            <select id="data-source" class="form-select form-select-sm">
-                                <option selected>LIVE DATA</option>
-                                <option>PREVIOUS DATA</option>
-                            </select>
+                                <form class="filter_data">
+                                    @csrf
+                                    <input type="hidden" name="user_uid" value="{{$userData->user_uid}}">
+                                    <select name="filter_type" class="form-control bg-dark text-white border-secondary filter_type">
+                                        <option value="0">Deposit</option>
+                                        <option value="1">Withdrawal</option>
+                                        @foreach($providers as $provider)
+                                        <option value="{{$provider->provider}}">{{$provider->provider}}</option>
+                                        @endforeach
+                                    </select>
+                                </form>
                         </div>
                         <div class="col-6 col-md-4 col-lg-2">
                             <label for="fromDate" class="form-label">From Date:</label>
@@ -65,8 +72,8 @@
                 </div>
 
                 <!-- Table -->
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                <div class="table-responsive table_div">
+                    {{-- <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Sport Name</th>
@@ -96,7 +103,7 @@
                             </tr>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> --}}
                 </div>
 
                 <!-- Pagination -->
@@ -114,4 +121,17 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+<script>
+    
+    let form = $('.filter_type').parents('form');
+    let formData = new FormData(form[0]);
+    
+    $(document).ready(function(){
+        callAdminApi('post', `{{url('/admin')}}/userStatments`, formData, transactionList);
+    });
+
+</script>
 @endsection

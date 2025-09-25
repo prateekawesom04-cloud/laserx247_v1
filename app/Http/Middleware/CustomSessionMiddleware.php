@@ -40,8 +40,14 @@ class CustomSessionMiddleware
         
         View::share('_GAMES',$_GAMES);
         View::share('providers',$providers);
-
-        $userData = User::getCurrentUser();
+        $userData='';
+        if(Session::has('admin_session')){
+            $userData = explode('_user_',Session::get('admin_session'));
+            $userData = $userData[1];
+            $userData = User::getCurrentUser('user_uid', $userData);            
+        } else{
+            $userData = User::getCurrentUser();
+        }
         
         if(!empty($userData)){
 

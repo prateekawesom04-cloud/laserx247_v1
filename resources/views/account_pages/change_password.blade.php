@@ -82,7 +82,9 @@
     });
 
     function changePassword(response){
-        if(response == true){
+        console.log('response---',response.error_code);
+        
+        if(response.error_code == 200){
             window.location.reload(true);
         } else{
             alert(response.error);

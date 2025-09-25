@@ -54,7 +54,7 @@
                                     <td style="text-transform: capitalize;">
                                         {{ $value->payment_type ? 'Withdraw' : 'Deposit' }}</td>
                                     <td>{{ $value->transfer_amount }}</td>
-                                    <td>{{ $value->status == 0 ? 'Success' : 'Processing' }}</td>
+                                    <td>{{ $value->status == 2 ? 'Success' : 'Processing' }}</td>
                                     <td>{{ \Carbon\Carbon::parse($value->created_at)->format('d M Y') }}</td>
                                     <td style="word-break: break-word;">{{ $value->order_sn }}</td>
                                     <td>{{ $value->remark }}</td>

@@ -10,8 +10,9 @@
 
             <!-- Modal Body with the form -->
             <div class="modal-body modal-body-dark formParntClassname">
-                <form id="balance_form" class="balance_form" data-m_key="users" data-url="updateWallet">
+                <form id="balance_form" class="balance_form form">
                     @csrf
+                    <input name="user_uid" type="hidden" id="user_uid" class="form-control" value="">
                     <input type="hidden" name="payment_type" value="0">
                     <!-- Balance -->
                     <div class="mb-3">
@@ -33,7 +34,7 @@
 
                     <!-- Buttons -->
                     <div class="d-flex justify-content-end">
-                        <a type="submit" name="action" value="deposit" class="btn btn-success me-2 submit_user_modal">Deposit</a>
+                        <a type="submit" name="action" value="deposit" class="btn btn-success me-2 updateWallet">Deposit</a>
                         <!-- <a type="submit" name="action" value="withdraw" class="btn btn-danger" >Withdraw</a> -->
                     </div>
                 </form>
@@ -56,8 +57,9 @@
 
             <!-- Modal Body with the form -->
             <div class="modal-body modal-body-dark formParntClassname">
-                <form id="balance_form" class="balance_form" data-m_key="users" data-url="updateWallet">
+                <form id="balance_form" class="balance_form form">
                     @csrf
+                    <input name="user_uid" type="hidden" id="user_uid" class="form-control" value="">
                     <input type="hidden" name="payment_type" value="1">
                     <!-- Balance -->
                     <div class="mb-3">
@@ -79,7 +81,7 @@
 
                     <!-- Buttons -->
                     <div class="d-flex justify-content-end">
-                        <a type="submit" name="action" value="deposit" class="btn btn-success me-2 submit_user_modal">Deposit</a>
+                        <a type="submit" name="action" value="deposit" class="btn btn-success me-2 updateWallet">Withdraw</a>
                         <!-- <a type="submit" name="action" value="withdraw" class="btn btn-danger" >Withdraw</a> -->
                     </div>
                 </form>

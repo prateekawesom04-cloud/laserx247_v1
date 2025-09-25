@@ -201,7 +201,7 @@ class AuthController extends Controller
                 ])->first();
             } else if($request->user_uid){
                 $user = User::where([
-                'phone'=>$request->user_uid
+                'user_uid'=>$request->user_uid
                 ])->first();
             } else{
                 return response()->json([
@@ -209,7 +209,8 @@ class AuthController extends Controller
                     'error_code'=> '402'
                 ]);
             }
-            $user = User::getCurrentUser();
+            // $user = User::getCurrentUser();
+            // dd($user);
             if(!Hash::check($request->oldPassword,$user->password)){
                 return response()->json([
                     'error'=> 'Old Password Mismatched',

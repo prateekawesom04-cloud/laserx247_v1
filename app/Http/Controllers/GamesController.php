@@ -75,6 +75,7 @@ class GamesController extends Controller
 
             // Game History
             $gameHistory = new GameHistory();
+            // $gameHistory->user_uid = $user->provider;
             $gameHistory->user_uid = $user->user_uid;
             $gameHistory->game_uid = $request->game_id;
             $gameHistory->token = env('GAME_TOKEN');
@@ -182,11 +183,13 @@ class GamesController extends Controller
 
         $total_bonus = 0;
         $user_additional_data = json_decode($user->additional_data);
-        $bonusData = $user_additional_data->bonusData;
-
-        foreach($bonusData as $bonus){
-            if($bonus->claim_status){
-                $total_bonus += $bonus->amount;
+        if(property_exists('bonusData',$user_additional_data)){
+            $bonusData = $user_additional_data->bonusData;
+    
+            foreach($bonusData as $bonus){
+                if($bonus->claim_status){
+                    $total_bonus += $bonus->amount;
+                }
             }
         }
         

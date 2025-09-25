@@ -130,44 +130,48 @@
                         <thead class="table-light sticky-top">
                             <tr>
                                 <th>Username</th>
-                                <th>Credit Ref.</th>
                                 <th>Balance</th>
                                 <th>Exposure</th>
-                                <th>Exposure Limit</th>
+                                <!-- <th>Exposure Limit</th> -->
                                 <th>Avail .Bal.</th>
-                                <th>Ref. P/L</th>
+                                <!-- <th>Ref. P/L</th> -->
                                 <th>Partnership</th>
                                 <th>U Lock</th>
                                 <th>B Lock</th>
-                                <th>My %</th>
+                                <!-- <th>My %</th> -->
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach ($users as $user)
                                 <tr>
-                                    <td><span class="badge bg-success">USER</span> demo</td>
-                                    <td>{{ $user->user_uid }}</td>
+                                    <td>
+                                        @php
+                                        $userRoles = ['admin','super admin','super master','master','agent','user'];
+                                        @endphp
+                                        <a href="{{route('admin.user_downline_list',$user->user_uid)}}"> 
+                                            <span class="badge bg-success">{{$userRoles[$user->status]}}</span class="text-white"> {{ $user->user_uid }}
+                                        </a>
+                                    </td>
                                     <td>{{ $user->wallet_amount }}</td>
                                     <td>{{ $user->unsattled_amount }}</td>
-                                    <td>200000</td>
-                                    <td>1000</td>
-                                    <td>1000</td>
-                                    <td>100</td>
+                                    <!-- <td>200000</td> -->
+                                    <td>{{$user->wallet_amount - $user->unsattled_amount }}</td>
+                                    <!-- <td>1000</td> -->
+                                    <td>{{$user->partnership_percentage }}</td>
                                     <td><input type="checkbox" name="u_lock" /></td>
                                     <td><input type="checkbox" name="b_lock" /></td>
-                                    <td>{{ $user->partnership_percentage }} %</td>
+                                    <!-- <td>10%</td> -->
                                     <td>
                                         <span class="badge bg-{{ $user->status == 3 ? 'danger' : 'success' }}">
-                                            {{ $user->status == 3 ? 'inactive' : 'active' }}
+                                            {{ $user->status == 6 ? 'inactive' : 'active' }}
                                         </span>
                                     </td>
                                     <td>
                                         <!-- Scrollable action buttons -->
                                         <div
-                                            class="action-buttons d-flex flex-nowrap gap-1 justify-content-center overflow-auto">
+                                            class="action-buttons d-flex flex-nowrap gap-1 justify-content-center overflow-auto user_actions" data-user_uid="{{ $user->user_uid }}">
                                             <a href="{{ route('admin.my_account',$user->user_uid) }}"
                                                 class="btn btn-sm fw-bold btn-user-details" data-bs-toggle="tooltip"
                                                 title="User Details">U</a>
@@ -175,10 +179,10 @@
                                                 data-bs-toggle="modal" data-bs-target="#balanceModal"
                                                 title="Deposit / Collection">D/C</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-withdrawal"
-                                                data-bs-toggle="modal" data-bs-target="#balanceModal"
+                                                data-bs-toggle="modal" data-bs-target="#withdrawModal"
                                                 title="Withdrawal">W</a>
-                                            <a href="#" class="btn btn-sm fw-bold btn-password-change"
-                                                data-bs-toggle="modal" data-bs-target="#changePasswordModal"
+                                            <a href="#" class="btn btn-sm fw-bold btn-password-change submit_user_modal"
+                                                data-bs-toggle="modal" data-user_uid="{{ $user->user_uid }}" data-bs-target="#changePasswordModal"
                                                 title="Password Change">P</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-game-controller"
                                                 data-bs-toggle="modal"
@@ -188,14 +192,13 @@
                                                 title="Casino Control">
                                                 CC
                                             </a>
-                                            <a href="#" class="btn btn-sm fw-bold btn-delete" data-bs-toggle="modal"
+                                            <a href="{{route('admin.action.deleteUser',$user->user_uid)}}" class="btn btn-sm fw-bold btn-delete" data-bs-toggle="modal"
                                                 data-bs-target="#deleteConfirmationModal" title="Delete">D</a>
                                         </div>
                                     </td>
 
                                 </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>

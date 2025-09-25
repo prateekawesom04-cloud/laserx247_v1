@@ -10,11 +10,12 @@
 
       <!-- Modal Body with Form -->
       <div class="modal-body-dark">
-        <form action="#" method="POST" id="deleteForm">
+        <form action="#" id="deleteForm">
           @csrf
+              <input name="user_uid" type="hidden" id="user_uid" class="form-control" value="">
             <div class="col-12">
               <label for="casino-datetime" class="form-label">Master Password</label>
-              <input type="text" class="form-control" id="password">
+              <input name="masterPassword" type="text" class="form-control" id="password">
             </div>
           </div> 
           <div class="text-center mb-3">
@@ -23,7 +24,7 @@
 
           <div class="d-flex justify-content-end">
             <!-- Delete button-->
-            <a href="javascript:0" class="btn btn-danger" onclick="document.getElementById('deleteForm').submit();">Delete</a>
+            <a href="javascript:0" class="btn btn-danger confirmDelete">Delete</a>
           </div>
         </form>
       </div>

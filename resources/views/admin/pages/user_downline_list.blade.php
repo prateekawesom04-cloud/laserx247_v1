@@ -118,11 +118,11 @@
                                             <a href="{{ route('admin.my_account',$user->user_uid) }}"
                                                 class="btn btn-sm fw-bold btn-user-details" data-bs-toggle="tooltip"
                                                 title="User Details">U</a>
-                                            <a href="#" class="btn btn-sm fw-bold btn-deposit-collection"
-                                                data-bs-toggle="modal" data-bs-target="#balanceModal"
+                                            <a href="#" class="btn btn-sm fw-bold btn-deposit-collection updateWalletBtn"
+                                                data-bs-toggle="modal" data-user_uid="{{ $user->user_uid }}" data-bs-target="#balanceModal"
                                                 title="Deposit / Collection">D/C</a>
-                                            <a href="#" class="btn btn-sm fw-bold btn-withdrawal"
-                                                data-bs-toggle="modal" data-bs-target="#withdrawModal"
+                                            <a href="#" class="btn btn-sm fw-bold btn-withdrawal updateWalletBtn"
+                                                data-bs-toggle="modal" data-user_uid="{{ $user->user_uid }}" data-bs-target="#withdrawModal"
                                                 title="Withdrawal">W</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-password-change submit_user_modal"
                                                 data-bs-toggle="modal" data-user_uid="{{ $user->user_uid }}" data-bs-target="#changePasswordModal"
@@ -135,7 +135,7 @@
                                                 title="Casino Control">
                                                 CC
                                             </a>
-                                            <a href="#" class="btn btn-sm fw-bold btn-delete" data-bs-toggle="modal"
+                                            <a href="javascript:void(0)" class="btn btn-sm fw-bold btn-delete deleteUser" data-user_uid="{{ $user->user_uid }}" data-bs-toggle="modal"
                                                 data-bs-target="#deleteConfirmationModal" title="Delete">D</a>
                                         </div>
                                     </td>

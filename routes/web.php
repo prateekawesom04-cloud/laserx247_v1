@@ -255,7 +255,7 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
 
         Route::get('/', [AdminDataController::class,'index'])->name('admin.index');
 
-        Route::get('/user_downline_list', [AdminDataController::class,'user_downline_list'])->name('admin.user_downline_list');
+        Route::get('/user_downline_list/{user_uid}', [AdminDataController::class,'user_downline_list'])->name('admin.user_downline_list');
 
         Route::get('/inactive_user_downline_list', [AdminDataController::class,'inactive_user_downline_list'])->name('admin.inactive_user_downline_list');
 
@@ -339,9 +339,15 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
 
         Route::post('/user_client_account', [AdminDataController::class,'submitForm'])->name('admin.action.user_client_account');
         
+        Route::post('/userStatments', [AdminDataController::class,'userStatments'])->name('admin.action.userStatments');
+        
+        Route::post('/userGameHistory', [AdminDataController::class,'userGameHistory'])->name('admin.action.userGameHistory');
+        
         Route::post('/updateWallet', [AdminDataController::class,'updateWallet'])->name('admin.action.updateWallet');
 
         Route::post('changePassword', [AuthController::class,'changePassword'])->name('changePassword')->withoutMiddleware([VerifyCsrfToken::class]);
+        
+        Route::post('deleteUser', [AdminDataController::class,'deleteUser'])->name('admin.action.deleteUser')->withoutMiddleware([VerifyCsrfToken::class]);
 
         Route::post('/submitUserUpdates', [AdminDataController::class,'submitUserUpdates'])->name('admin.action.submitUserUpdates');
 

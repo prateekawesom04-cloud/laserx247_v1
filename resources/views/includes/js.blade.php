@@ -55,6 +55,39 @@ $('.submit_user_modal').click(function(){
     $('#changePasswordForm input[name=user_uid]').val($(this).attr('data-user_uid'));
 });
 
+$('.updateWalletBtn').click(function(){
+    console.log($(this).attr('data-user_uid'));
+    
+    $('.form input[name=user_uid]').val($(this).attr('data-user_uid'));
+});
+
+$('.updateWallet').click(function(){
+    let form = $(this).parents('.form');
+    let formData = new FormData(form[0]);
+    
+    callAdminApi('post', `{{url('/admin')}}/updateWallet`, formData, formResponse);
+});
+
+$('.deleteUser').click(function(){
+    $('#deleteForm input[name=user_uid]').val($(this).attr('data-user_uid'));
+});
+
+$('.confirmDelete').click(function(){
+    let form = $('#deleteForm');
+    let formData = new FormData(form[0]);
+    
+    callAdminApi('post', `{{url('/admin')}}/deleteUser`, formData, deleteResponse);
+});
+
+function deleteResponse(response){
+    
+    if(response.response_code == 200){
+        window.location.reload(true);
+    } else{
+        alert(response.error);
+    }   
+}
+
 $('a.changePassword').click(function(){
     
     submitUserUpdates(this,changePassword);       
@@ -98,6 +131,110 @@ function submitUserUpdates(btn,action){
         }   
     }
 
+    function formResponse(response){
+        
+        if(response.response_code == 200){
+            window.location.reload(true);
+        } else{
+            alert(response.error);
+        }   
+    }
 
+
+    
+
+    // Transaction Data
+
+    function transactionList(response) {
+        
+        let table = `
+            <table class="table table-bordered table-striped table-dark mb-0">
+                <thead class="table-primary">
+                    <tr>
+                        <th class="text-nowrap">Date/Time</th>
+                        <th class="text-nowrap">Type</th>
+                        <th class="text-nowrap">Balance</th>
+                        <th class="text-nowrap">Remarks</th>
+                    </tr>
+                </thead>
+                <tbody class="transaction_statement">
+                    <tr>
+                        <td colspan="6" class="text-center py-4">No data!</td>
+                    </tr>
+                </tbody>
+            </table>
+        `;
+        $('.table_div').html(table);
+
+        if(response.response_code != 200) return false;
+        let data = response.data;
+        html = '';
+        $(data).each(function(item){
+        console.log(this);
+            html += `<tr>
+                        <td class="text-center py-4">${(new Date(this.updated_at).toLocaleDateString("hi-IN"))}</td>
+                        <td class="text-center py-4">${(this.payment_type==0)?'Deposit':'Withdraw'}</td>
+                        <td class="text-center py-4">${this.transfer_amount}</td>
+                        <td class="text-center py-4">${this.remark}</td>
+                    </tr>`;
+        });
+
+        $('.transaction_statement').html(html);
+    }
+
+    
+    function sports(response) {
+        
+        let table = `
+            <table class="table table-bordered table-striped table-dark mb-0">
+                <thead class="table-primary">
+                    <tr>
+                        <th class="text-nowrap">Date/Time</th>
+                        <th class="text-nowrap">Provider</th>
+                        <th class="text-nowrap">Game Id</th>
+                        <th class="text-nowrap">Bet Amount</th>
+                        <th class="text-nowrap">Win Amount</th>
+                    </tr>
+                </thead>
+                <tbody class="game_statement">
+                    <tr>
+                        <td colspan="6" class="text-center py-4">No data!</td>
+                    </tr>
+                </tbody>
+            </table>
+        `;
+        $('.table_div').html(table);
+        
+        if(response.response_code != 200) return false;
+        let data = response.data;
+        html = '';
+        $(data).each(function(item){
+            html += `<tr>
+                        <td class="text-center py-4">${(new Date(this.created_at).toLocaleDateString("hi-IN"))}</td>
+                        <td class="text-center py-4">${this.provider}</td>
+                        <td class="text-center py-4">${this.game_uid}</td>
+                        <td class="text-center py-4">${this.bet_amount}</td>
+                        <td class="text-center py-4">${this.win_amount}</td>
+                    </tr>`;
+        });
+
+        $('.game_statement').html(html);
+    }
+
+    
+
+    $('.filter_type').on('change',function(){
+        let form = $(this).parents('form');
+        let formData = new FormData(form[0]);
+
+        if($(this).val()==0 || $(this).val()==1){
+            callAdminApi('post', `{{url('/admin')}}/userStatments`, formData, transactionList);
+
+            // getModelData(form,$(this).val(),transactionList);
+        }else{
+            callAdminApi('post', `{{url('/admin')}}/userGameHistory`, formData, sports);
+            // getModelData(form,$(this).val(),sports);
+        }
+    });
 
 </script>

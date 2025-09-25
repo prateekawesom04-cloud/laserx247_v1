@@ -115,11 +115,15 @@
 
                             <div class="row mb-3 g-2">
                                 <div class="col-12 col-md-4">
-                                    <form data-m_key="transactions" data-search_data_key="payment_type" >
+                                    <form class="filter_data">
+                                        @csrf
                                         <input type="hidden" name="user_uid" value="{{$user->user_uid}}">
-                                        <select name="payment_type" class="form-control bg-dark text-white border-secondary payment_type">
+                                        <select name="filter_type" class="form-control bg-dark text-white border-secondary filter_type">
                                             <option value="0">Deposit</option>
                                             <option value="1">Withdrawal</option>
+                                            @foreach($providers as $provider)
+                                            <option value="{{$provider->provider}}">{{$provider->provider}}</option>
+                                            @endforeach
                                         </select>
                                     </form>
                                 </div>
@@ -138,23 +142,8 @@
                                 </div>
                             </div>
 
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-dark mb-0">
-                                    <thead class="table-primary">
-                                        <tr>
-                                            <th class="text-nowrap">Date/Time</th>
-                                            <th class="text-nowrap">Type</th>
-                                            <th class="text-nowrap">Balance</th>
-                                            <th class="text-nowrap">Remarks</th>
-                                            <!-- <th class="text-nowrap">From/To</th> -->
-                                        </tr>
-                                    </thead>
-                                    <tbody class="transaction_statement">
-                                        <tr>
-                                            <td colspan="6" class="text-center py-4">No data!</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="table-responsive table_div">
+                                
                             </div>
 
                         </div>
@@ -226,35 +215,12 @@
 
     
 
-
-    // Transaction Data
-
-    function transactionList(response) {
-        
-        if(response.response_code != 200) return false;
-        let data = response.data;
-        html = '';
-        $(data).each(function(item){
-        console.log(this);
-            html += `<tr>
-                        <td class="text-center py-4">${(new Date(this.updated_at).toLocaleDateString("hi-IN"))}</td>
-                        <td class="text-center py-4">${(this.payment_type==0)?'Deposit':'Withdraw'}</td>
-                        <td class="text-center py-4">${this.transfer_amount}</td>
-                        <td class="text-center py-4">${this.remark}</td>
-                    </tr>`;
-        });
-
-        $('.transaction_statement').html(html);
-    }
-
-    $('.payment_type').on('change',function(){
-        let form = $(this).parents('form');
-        getModelData(form,$(this).val(),transactionList);
-    });
     
+    let form = $('.filter_type').parents('form');
+    let formData = new FormData(form[0]);
     $(document).ready(function(){
-        let form = $('.payment_type').parents('form');
-        getModelData(form,0,transactionList);
+        callAdminApi('post', `{{url('/admin')}}/userStatments`, formData, transactionList);
     });
+
 </script>
 @endsection

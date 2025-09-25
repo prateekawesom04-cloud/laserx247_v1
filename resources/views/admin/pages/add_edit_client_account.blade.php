@@ -4,6 +4,7 @@
 <div class="container-fluid py-4 formParntClassname">
     <form id="createAccountForm" data-url="add_edit_client_account">
     @csrf
+        <input type="hidden" name="admin_uid" value="{{$userData->user_uid}}">
         <!-- Account Details -->
         <div class="card mb-4 shadow-sm border-0">
             <div class="card-header bg-primary text-white py-1">
