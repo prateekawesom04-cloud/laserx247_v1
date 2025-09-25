@@ -14,7 +14,7 @@ class AdminAuthController extends Controller
     public function login(Request $request){
         
         $user = User::where('user_uid',$request->username)
-        ->whereIn('status', [0,1])
+        ->whereIn('status', [0,1,2,3,4])
         ->first();
         
         if(empty($user)){
