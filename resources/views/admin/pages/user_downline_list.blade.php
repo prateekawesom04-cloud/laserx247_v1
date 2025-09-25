@@ -27,7 +27,7 @@
                     <div class="col-4 col-md-4 col-lg-4 mb-2">
                         <div class="border p-2 h-100 rounded">
                             <div class="fw-semibold">Available Balance</div>
-                            <div class="text-primary">IRP 1000</div>
+                            <div class="text-primary">IRP {{$userData->wallet_amount - $userData->unsattled_amount }}</div>
                         </div>
                     </div>
 
@@ -82,13 +82,13 @@
                                 <th>Username</th>
                                 <th>Balance</th>
                                 <th>Exposure</th>
-                                <th>Exposure Limit</th>
+                                <!-- <th>Exposure Limit</th> -->
                                 <th>Avail .Bal.</th>
-                                <th>Ref. P/L</th>
+                                <!-- <th>Ref. P/L</th> -->
                                 <th>Partnership</th>
                                 <th>U Lock</th>
                                 <th>B Lock</th>
-                                <th>My %</th>
+                                <!-- <th>My %</th> -->
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -99,13 +99,13 @@
                                     <td><span class="badge bg-success">USER</span> {{ $user->user_uid }}</td>
                                     <td>{{ $user->wallet_amount }}</td>
                                     <td>{{ $user->unsattled_amount }}</td>
-                                    <td>200000</td>
-                                    <td>1000</td>
-                                    <td>1000</td>
-                                    <td>100</td>
+                                    <!-- <td>200000</td> -->
+                                    <td>{{$user->wallet_amount - $user->unsattled_amount }}</td>
+                                    <!-- <td>1000</td> -->
+                                    <td>{{$user->partnership_percentage }}</td>
                                     <td><input type="checkbox" name="u_lock" /></td>
                                     <td><input type="checkbox" name="b_lock" /></td>
-                                    <td>10%</td>
+                                    <!-- <td>10%</td> -->
                                     <td>
                                         <span class="badge bg-{{ $user->status == 3 ? 'danger' : 'success' }}">
                                             {{ $user->status == 6 ? 'inactive' : 'active' }}
@@ -114,7 +114,7 @@
                                     <td>
                                         <!-- Scrollable action buttons -->
                                         <div
-                                            class="action-buttons d-flex flex-nowrap gap-1 justify-content-center overflow-auto">
+                                            class="action-buttons d-flex flex-nowrap gap-1 justify-content-center overflow-auto user_actions" data-user_uid="{{ $user->user_uid }}">
                                             <a href="{{ route('admin.my_account',$user->user_uid) }}"
                                                 class="btn btn-sm fw-bold btn-user-details" data-bs-toggle="tooltip"
                                                 title="User Details">U</a>
@@ -122,7 +122,7 @@
                                                 data-bs-toggle="modal" data-bs-target="#balanceModal"
                                                 title="Deposit / Collection">D/C</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-withdrawal"
-                                                data-bs-toggle="modal" data-bs-target="#balanceModal"
+                                                data-bs-toggle="modal" data-bs-target="#withdrawModal"
                                                 title="Withdrawal">W</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-password-change"
                                                 data-bs-toggle="modal" data-bs-target="#changePasswordModal"
@@ -151,7 +151,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@section('js')
     <script>
         // Bootstrap 5 Tooltip Init
         document.addEventListener('DOMContentLoaded', function() {
@@ -160,5 +160,17 @@
                 new bootstrap.Tooltip(tooltipTriggerEl);
             });
         });
+
+
+        $('.user_actions a').on('click',function(){
+            user_action_id = $(this).parent().attr('data-user_uid');
+            console.log('user_action_id--',user_action_id);
+            
+        });
+
+        $('.btn-password-change').click(function(){
+            $('#changePasswordModal'),find('form').attr('data-url');
+        });
+
     </script>
 @endsection

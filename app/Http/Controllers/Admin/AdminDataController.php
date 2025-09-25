@@ -27,6 +27,15 @@ class AdminDataController extends Controller
             'payments'=>'App\Models\Payment',
         ];
 
+    public function checkMasterPassword($masterPassword){
+            
+        $user = User::getCurrentUser();
+        if(!Hash::check($masterPassword,$user->password)){
+            return false;
+        }
+        return true;
+    }
+    
     public function index(){
         $user = User::getCurrentUser();
         $gameData = GameHistory::join('users','users.user_uid','=','game_histories.user_uid')->where('admin_uid',$user->user_uid)->get();
@@ -39,6 +48,50 @@ class AdminDataController extends Controller
         $userTotal = User::all()->count();
         $totalBets = count($gameData);
         return view('admin.pages.index',compact('user','userTotal','p_l','totalBets'));
+    }
+    
+    public function user_downline_list(Request $request){
+        $users = User::whereIn('status', [5])->get();
+        return view('admin.pages.user_downline_list',compact('users'));
+    }
+    
+    public function inactive_user_downline_list(Request $request){
+        $users = User::where('status', 6)->get();
+        return view('admin.pages.user_downline_list',compact('users'));
+    }
+
+    public function updateWallet(Request $request){
+        if(!$this->checkMasterPassword($request->masterPassword)){
+            return response()->json([
+                'error'=> 'wrong master password',
+                'response_code'=>'400'
+            ]);
+        }
+        $user = User::where('user_uid',$request->user_uid)->first();
+        if($request->payment_type == 0){
+            $user->wallet_amount += $request->transfer_amount;
+        } else{
+            $user->wallet_amount -= $request->transfer_amount;
+        }
+        $user->save();
+        
+        $transaction = new Transaction();
+        $transaction->user_uid = $user->user_uid;
+        // $transaction->user_uid = '121';
+        $transaction->order_sn = time().date("Ymd")."_p_".time().rand(0000,9999);
+        $transaction->transfer_amount = $request->transfer_amount;
+        $transaction->ip = $request->ip();
+        $transaction->status = 1;
+        $transaction->payment_type = $request->payment_type;
+        $transaction->currency = "INR";
+        $transaction->remark = $request->remark;
+        $transaction->save();
+
+        return response()->json([
+            'response'=> 'data updated',
+            'response_code'=>'200',
+            'redirect'=>$request->previous_url
+        ]);
     }
 
     public function createBonus(Request $request){
@@ -78,7 +131,7 @@ class AdminDataController extends Controller
 
     // admin pages
 
-    public function submitForm(Request $request){
+    public function submitForm(Request $request){   
         $user = User::getCurrentUser();
         if(!Hash::check($request->masterPassword,$user->password)){
             return response()->json([
@@ -158,12 +211,16 @@ class AdminDataController extends Controller
 
     public function getModelData(Request $request){
         
-        $table = $this->model_map[$request->update_data_model_key];
-        
+        $table = $this->model_map[$request->m_key];
         $table = new $table();
-        $table = $table->where($request->search_data_key,$request->search_data_value)->get();
+        $table = $table->where([
+            $request->search_data_key=>$request->search_data_value,
+            'user_uid'=>$request->user_uid
+            ])->get();
+        // dd($table);
         
         return response()->json([
+            'data'=> $table,
             'redirect'=> $request->previous_url,
             'response_code'=>'200'
         ]);
@@ -171,7 +228,7 @@ class AdminDataController extends Controller
     
     public function updateModelData(Request $request){
         
-        $table = $this->model_map[$request->update_data_model_key];
+        $table = $this->model_map[$request->m_key];
         
         $table = new $table();
         $table = $table->where($request->search_data_key,$request->search_data_value)->first();
@@ -183,15 +240,31 @@ class AdminDataController extends Controller
             'response_code'=>'200'
         ]);
     }
-    
-    public function user_downline_list(Request $request){
-        $users = User::whereIn('status', [5])->get();
-        return view('admin.pages.user_downline_list',compact('users'));
-    }
-    
-    public function inactive_user_downline_list(Request $request){
-        $users = User::where('status', 6)->get();
-        return view('admin.pages.user_downline_list',compact('users'));
+     
+    public function submitUserUpdates(Request $request){
+        
+        $table = $this->model_map[$request->m_key];
+        $table = new $table();
+        $tableName = $table->getTable();
+        
+        $table = $table->where($request->search_data_key,$request->search_data_value)->first();
+        dd($table);
+        $columns = Schema::getColumnListing($tableName);
+        array_splice($columns, 0, 1);
+        array_splice($columns, count($columns)-2, 2);
+        
+        foreach ($columns as $key => $value) {
+            if(isset($request->{$value})){
+                $table->{$value} = $request->{$value};
+            }
+        }
+
+        $table->save();
+        
+        return response()->json([
+            'redirect'=> $request->previous_url,
+            'response_code'=>'200'
+        ]);
     }
 
     public function master_downline_list(){
@@ -202,7 +275,8 @@ class AdminDataController extends Controller
     
     public function my_account(Request $request){
 
-        $user = User::getCurrentUser();
+        // $userData = User::getCurrentUser();
+        $user = User::where('user_uid',$request->user_uid)->first();
         $activity = Activity::where('user_uid',$request->user_uid)->get();
         $transactions = Transaction::where('user_uid',$request->user_uid)->get();
         // dd($transactions);

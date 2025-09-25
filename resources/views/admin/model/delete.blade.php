@@ -12,7 +12,11 @@
       <div class="modal-body-dark">
         <form action="#" method="POST" id="deleteForm">
           @csrf
-
+            <div class="col-12">
+              <label for="casino-datetime" class="form-label">Master Password</label>
+              <input type="text" class="form-control" id="password">
+            </div>
+          </div> 
           <div class="text-center mb-3">
              <p class="mb-3 text-white fw-semibold fs-6">Are you sure you want to delete this item?</p>
           </div>

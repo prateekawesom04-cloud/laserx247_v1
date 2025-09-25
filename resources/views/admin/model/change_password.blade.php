@@ -13,7 +13,7 @@
       <div class="modal-body-dark p-3">
         <form action="#" method="POST" id="changePasswordForm">
           @csrf
-              <input name="phone" type="hidden" id="old_password" class="form-control" value="{{$userData->phone}}">
+              <input name="phone" type="hidden" id="old_password" class="form-control" value="*********">
           <div class="row">
             <!-- Old Password -->
             <div class="form-group col-md-6 mb-3">

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('user_uid');
             $table->string('ip');
-            $table->boolean('login_status')->default(true);
             $table->timestamps();
         });
     }

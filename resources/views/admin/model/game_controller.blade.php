@@ -32,8 +32,9 @@
                     <!-- Game 3 -->
                     <div class="form-check form-switch mb-3">
                         <input class="form-check-input" type="checkbox" id="game3Switch" checked>
-                        <label class="form-check-label fw-semibold" for="game3Switch">Chess</label>
+                        <label class="form-check-label fw-semibold" for="game3Switch">Tennis</label>
                     </div>
+                    
                 </div>
 
             </form>

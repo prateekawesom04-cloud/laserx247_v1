@@ -258,7 +258,11 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         Route::get('/user_downline_list', [AdminDataController::class,'user_downline_list'])->name('admin.user_downline_list');
 
         Route::get('/inactive_user_downline_list', [AdminDataController::class,'inactive_user_downline_list'])->name('admin.inactive_user_downline_list');
-        
+
+        Route::get('/user_client_account', function () {
+            return view('admin.pages.user_client_account');
+        })->name('admin.user_client_account');
+
         
         Route::get('/master_downline_list', [AdminDataController::class,'master_downline_list'])->name('admin.master_downline_list');
         
@@ -275,10 +279,6 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
              Route::get('/add_edit_client_account', function () {
         return view('admin.pages.add_edit_client_account');
             })->name('admin.add_edit_client_account');
-
-               Route::get('/user_client_account', function () {
-        return view('admin.pages.user_client_account');
-            })->name('admin.user_client_account');
 
         Route::get('/betlist', function () {
         return view('admin.pages.betlist');
@@ -338,6 +338,10 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
 // Post/Action requests start
 
         Route::post('/user_client_account', [AdminDataController::class,'submitForm'])->name('admin.action.user_client_account');
+        
+        Route::post('/updateWallet', [AdminDataController::class,'updateWallet'])->name('admin.action.updateWallet');
+
+        Route::post('/submitUserUpdates', [AdminDataController::class,'submitUserUpdates'])->name('admin.action.submitUserUpdates');
 
         Route::post('/add_edit_client_account', [AdminDataController::class,'submitForm'])->name('admin.action.add_edit_client_account');
 

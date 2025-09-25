@@ -20,7 +20,7 @@ $('.submitForm').click(function(){
 });
 
 $('.submit_modal').click(function(){
-    submitFormGlobal(this);
+    submitFormGlobal(this,{{$userData->user_uid}});
 });
 
 function adminForms(response){
@@ -36,5 +36,54 @@ function ajax_response_reload(response) {
         alert(response.error);
     }
 }
+
+function getModelData(form,search_data_value,action){
+
+
+    let formData = new FormData(form[0]);
+    formData.append('m_key', $(form).attr('data-m_key'));
+    formData.append('search_data_key', $(form).attr('data-search_data_key'));
+    formData.append('search_data_value', search_data_value);
+    formData.append('previous_url', '{{url()->previous()}}');
+    callAdminApi('post', `{{url('/admin')}}/getModelData`, formData, action);
+}
+
+
+let user_action_id = '';
+
+$('.submit_user_modal').click(function(){
+    submitUserUpdates(this,user_action_id);
+});
+
+
+
+
+
+// new code
+
+function globalFormSubmit(){
+    let form = $('.submitForm').parents(`.globalForm`).find('form');
+    let formData = new FormData(form[0]);
+    let url = $(form).attr('data-url');
+    
+    formData.append('previous_url', '{{url()->previous()}}');
+
+    callAdminApi('post', `{{url('/admin')}}/${url}`, formData, ajax_response_reload);
+}
+
+function submitUserUpdates(btn,user_uid){
+    let form = $(btn).parents('.formParntClassname').find('form');
+    let url = $(form).attr('data-url');
+    let formData = new FormData(form[0]);
+    formData.append('m_key', $(form).attr('data-m_key'));
+    formData.append('user_uid', user_uid);
+    formData.append('previous_url', '{{url()->current()}}');
+
+    callAdminApi('post', `{{url('/admin')}}/${url}`, formData, ajax_response_reload);
+}
+
+
+
+
 
 </script>

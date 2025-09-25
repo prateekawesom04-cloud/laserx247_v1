@@ -16,10 +16,18 @@
           <div class="row mb-3">
             <div class="col-6">
               <label for="casino-name" class="form-label">Casino Name</label>
-              <input type="text" class="form-control form-control-sm" id="casino-name" placeholder="Enter casino name">
+              <select class="form-select form-select-sm" id="casino-status">
+                <option value="">Select Provider</option>
+                <option value="active">Ezuki</option>
+                <option value="inactive">Playtech</option>
+              </select>
             </div>
             <div class="col-6">
-              <label for="casino-status" class="form-label">Casino Status</label>
+              <label for="casino-status" class="form-label">Search game</label>
+              <input type="text" class="form-control form-control-sm" id="casino-name" placeholder="Enter Game">
+            </div>
+            <div class="col-6">
+              <label for="casino-status" class="form-label">Game Status</label>
               <select class="form-select form-select-sm" id="casino-status">
                 <option value="">Select Status</option>
                 <option value="active">Active</option>
@@ -29,7 +37,7 @@
           </div>
 
           <!-- Max Bets + Start Date -->
-          <div class="row mb-3">
+          <!-- <div class="row mb-3">
             <div class="col-6">
               <label for="max-bets" class="form-label">Max Bets Allowed</label>
               <input type="number" class="form-control form-control-sm" id="max-bets" placeholder="Enter max bet amount">
@@ -38,13 +46,13 @@
               <label for="casino-datetime" class="form-label">Start Date & Time</label>
               <input type="datetime-local" class="form-control form-control-sm" id="casino-datetime">
             </div>
-          </div>
+          </div> -->
 
           <!-- Remarks Field -->
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="remarks" class="form-label">Remarks</label>
             <textarea class="form-control form-control-sm" id="remarks" rows="3" placeholder="Enter remarks or additional info"></textarea>
-          </div>
+          </div> -->
 
         </form>
 

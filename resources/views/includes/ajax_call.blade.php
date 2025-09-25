@@ -73,14 +73,17 @@
         callAdminApi('post', `{{url('/admin')}}/${url}`, formData, ajax_response_reload);
     }
     
-    function submitFormGlobal(btn){
+    function submitFormGlobal(btn,user_uid){
         let form = $(btn).parents('.formParntClassname').find('form');
 
         let formData = new FormData(form[0]);
         formData.append('m_key', $(form).attr('data-m_key'));
+        formData.append('user_uid', user_uid);
         formData.append('previous_url', '{{url()->current()}}');
 
         callAdminApi('post', `{{url('/admin')}}/createModelData`, formData, ajax_response_reload);
     }
+
+    
     
 </script>
