@@ -16,7 +16,10 @@
                     <input type="hidden" name="payment_type" value="0">
                     <!-- Balance -->
                     <div class="mb-3">
-                        <label for="balance" class="form-label">Balance</label>
+                        <div class="flex flex-row justify-between items-center">
+                            <label for="balance" class="form-label">Balance</label>
+                            <label for="balance" class="form-label">Available Balance <span class="userBalance"></span></label>
+                        </div>
                         <input type="text" name="transfer_amount" class="form-control" placeholder="Enter balance" autocomplete="off">
                     </div>
 
@@ -63,7 +66,10 @@
                     <input type="hidden" name="payment_type" value="1">
                     <!-- Balance -->
                     <div class="mb-3">
-                        <label for="balance" class="form-label">Balance</label>
+                        <div class="flex flex-row justify-between items-center">
+                            <label for="balance" class="form-label">Balance</label>
+                            <label for="balance" class="form-label">Available Balance <span class="userBalance"></span></label>
+                        </div>
                         <input type="text" name="transfer_amount" class="form-control" placeholder="Enter balance" autocomplete="off">
                     </div>
 

@@ -43,6 +43,7 @@
     
     $('.depositWallet').on('click',function(){
         $('.balance_form input[name=user_uid]').val($(this).attr('data-user_uid'));
+        $('.userBalance').text($(this).attr('data-user_wallet'))
     });
     $('.withdrawWallet').on('click',function(){
         $('.balance_form input[name=user_uid]').val($(this).attr('data-user_uid'));

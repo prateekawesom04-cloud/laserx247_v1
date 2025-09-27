@@ -176,10 +176,10 @@
                                                 class="btn btn-sm fw-bold btn-user-details" data-bs-toggle="tooltip"
                                                 title="User Details">U</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-deposit-collection updateWalletModel depositWallet"
-                                                data-bs-toggle="modal" data-user_uid="{{ $user->user_uid }}" data-bs-target="#balanceModal"
+                                                data-bs-toggle="modal" data-user_wallet="{{ $user->wallet_amount }}" data-user_uid="{{ $user->user_uid }}" data-bs-target="#balanceModal"
                                                 title="Deposit / Collection">D/C</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-withdrawal updateWalletModel withdrawWallet"
-                                                data-bs-toggle="modal" data-user_uid="{{ $user->user_uid }}" data-bs-target="#withdrawModal"
+                                                data-bs-toggle="modal" data-user_wallet="{{ $user->wallet_amount }}" data-user_uid="{{ $user->user_uid }}" data-bs-target="#withdrawModal"
                                                 title="Withdrawal">W</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-password-change changePasswordModel"
                                                 data-bs-toggle="modal" data-user_uid="{{ $user->user_uid }}" data-bs-target="#changePasswordModal"
