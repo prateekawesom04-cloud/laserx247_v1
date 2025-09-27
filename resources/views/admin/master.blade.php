@@ -28,6 +28,7 @@
     @include('admin.model.casino_control')
     @include('includes.ajax_call')
     @include('includes.js')
+    @include('includes.admin_js')
     @yield('js')
 </body>
 

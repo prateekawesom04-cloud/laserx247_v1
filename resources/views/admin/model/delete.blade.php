@@ -13,13 +13,13 @@
         <form action="#" id="deleteForm">
           @csrf
               <input name="user_uid" type="hidden" id="user_uid" class="form-control" value="">
-            <div class="col-12">
+            <div class="col-12 mb-2">
               <label for="casino-datetime" class="form-label">Master Password</label>
               <input name="masterPassword" type="text" class="form-control" id="password">
             </div>
           </div> 
           <div class="text-center mb-3">
-             <p class="mb-3 text-white fw-semibold fs-6">Are you sure you want to delete this item?</p>
+             <p class="mb-3 text-dark fw-semibold fs-6">Are you sure you want to delete this item?</p>
           </div>
 
           <div class="d-flex justify-content-end">

@@ -85,7 +85,7 @@
                                 <!-- <th>Exposure Limit</th> -->
                                 <th>Avail .Bal.</th>
                                 <!-- <th>Ref. P/L</th> -->
-                                <th>Partnership</th>
+                                <!-- <th>Partnership</th> -->
                                 <th>U Lock</th>
                                 <th>B Lock</th>
                                 <!-- <th>My %</th> -->
@@ -102,7 +102,7 @@
                                     <!-- <td>200000</td> -->
                                     <td>{{$user->wallet_amount - $user->unsattled_amount }}</td>
                                     <!-- <td>1000</td> -->
-                                    <td>{{$user->partnership_percentage }}</td>
+                                    <!-- <td>{{$user->partnership_percentage }}</td> -->
                                     <td><input type="checkbox" name="u_lock" /></td>
                                     <td><input type="checkbox" name="b_lock" /></td>
                                     <!-- <td>10%</td> -->
@@ -118,13 +118,13 @@
                                             <a href="{{ route('admin.my_account',$user->user_uid) }}"
                                                 class="btn btn-sm fw-bold btn-user-details" data-bs-toggle="tooltip"
                                                 title="User Details">U</a>
-                                            <a href="#" class="btn btn-sm fw-bold btn-deposit-collection updateWalletBtn"
+                                            <a href="#" class="btn btn-sm fw-bold btn-deposit-collection updateWalletModel depositWallet"
                                                 data-bs-toggle="modal" data-user_uid="{{ $user->user_uid }}" data-bs-target="#balanceModal"
                                                 title="Deposit / Collection">D/C</a>
-                                            <a href="#" class="btn btn-sm fw-bold btn-withdrawal updateWalletBtn"
+                                            <a href="#" class="btn btn-sm fw-bold btn-withdrawal updateWalletModel withdrawWallet"
                                                 data-bs-toggle="modal" data-user_uid="{{ $user->user_uid }}" data-bs-target="#withdrawModal"
                                                 title="Withdrawal">W</a>
-                                            <a href="#" class="btn btn-sm fw-bold btn-password-change submit_user_modal"
+                                            <a href="#" class="btn btn-sm fw-bold btn-password-change changePasswordModel"
                                                 data-bs-toggle="modal" data-user_uid="{{ $user->user_uid }}" data-bs-target="#changePasswordModal"
                                                 title="Password Change">P</a>
                                             <a href="#" class="btn btn-sm fw-bold btn-game-controller"

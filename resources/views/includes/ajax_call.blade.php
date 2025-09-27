@@ -66,6 +66,8 @@
     function submitForm(formParntClassname){
         let form = $('.submitForm').parents(`.${formParntClassname}`).find('form');
         let formData = new FormData(form[0]);
+        console.log('formData------',formData);
+        
         let url = $(form).attr('data-url');
         
         formData.append('previous_url', '{{url()->previous()}}');

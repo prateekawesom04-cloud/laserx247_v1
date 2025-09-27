@@ -98,7 +98,7 @@
                                 <div class="fw-bold">Password</div>
                                 <div class="d-flex align-items-center gap-2">
                                     <span>*********</span>
-                                    <i data-user_uid="{{ $user->user_uid }}" class="fas fa-pen-to-square text-primary submit_user_modal" style="cursor: pointer;"
+                                    <i data-user_uid="{{ $user->user_uid }}" class="fas fa-pen-to-square text-primary changePasswordModel" style="cursor: pointer;"
                                         title="Edit Password" data-bs-toggle="modal"
                                         data-bs-target="#changePasswordModal"></i>
                                 </div>

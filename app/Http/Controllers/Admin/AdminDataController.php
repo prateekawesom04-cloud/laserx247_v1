@@ -50,12 +50,6 @@ class AdminDataController extends Controller
         return view('admin.pages.index',compact('user','userTotal','p_l','totalBets'));
     }
     
-    public function user_downline_list(Request $request,$user_uid){
-        $users = User::where([
-            'admin_uid'=>$user_uid
-        ])->get();
-        return view('admin.pages.user_downline_list',compact('users'));
-    }
     
     public function inactive_user_downline_list(Request $request){
         $users = User::where('status', 6)->get();
@@ -85,40 +79,6 @@ class AdminDataController extends Controller
             'data'=> $table,
             'redirect'=> url()->previous(),
             'response_code'=>'200'
-        ]);
-    }
-
-    public function updateWallet(Request $request){
-        if(!$this->checkMasterPassword($request->masterPassword)){
-            return response()->json([
-                'error'=> 'wrong master password',
-                'response_code'=>'400'
-            ]);
-        }
-        $user = User::where('user_uid',$request->user_uid)->first();
-        if($request->payment_type == 0){
-            $user->wallet_amount += $request->transfer_amount;
-        } else{
-            $user->wallet_amount -= $request->transfer_amount;
-        }
-        $user->save();
-        
-        $transaction = new Transaction();
-        $transaction->user_uid = $user->user_uid;
-        // $transaction->user_uid = '121';
-        $transaction->order_sn = time().date("Ymd")."_p_".time().rand(0000,9999);
-        $transaction->transfer_amount = $request->transfer_amount;
-        $transaction->ip = $request->ip();
-        $transaction->status = 2;
-        $transaction->payment_type = $request->payment_type;
-        $transaction->currency = "INR";
-        $transaction->remark = $request->remark;
-        $transaction->save();
-
-        return response()->json([
-            'response'=> 'data updated',
-            'response_code'=>'200',
-            'redirect'=>$request->previous_url
         ]);
     }
 
@@ -295,23 +255,7 @@ class AdminDataController extends Controller
         ]);
     }
 
-    public function master_downline_list(Request $request){
-        $admin = User::getCurrentUser();
-        $users = User::where([
-            'admin_uid'=>$admin->user_uid
-        ])->get();
-        return view('admin.pages.master_downline_list',compact('users'));
-    }
-    
-    public function my_account(Request $request){
-
-        // $userData = User::getCurrentUser();
-        $user = User::where('user_uid',$request->user_uid)->first();
-        $activity = Activity::where('user_uid',$request->user_uid)->get();
-        $transactions = Transaction::where('user_uid',$request->user_uid)->get();
-        // dd($transactions);
-        return view('admin.pages.my_account',compact('user','activity','transactions'));
-    }
+   
     
     public function deposit(){
         $user = User::getCurrentUser();

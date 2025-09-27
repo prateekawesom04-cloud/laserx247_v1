@@ -20,11 +20,22 @@
                         </label>
                         <select name="status" name="" id="accountType" class="form-select border-2" required>
                             <option value="4" selected>Select User Type</option>
-                            <option value="0">👤 Admin</option>
+                            @if($userData->status<1)
                             <option value="1">⭐ Super Admin</option>
                             <option value="2">🎯 Super Master</option>
                             <option value="3">🔧 Master</option>
+                            <option value="4">👤 Agent</option>
+                            @elseif($userData->status<2)
+                            <option value="2">🎯 Super Master</option>
+                            <option value="3">🔧 Master</option>
                             <option value="4">🤝 Agent</option>
+                            <option value="5">👤 User</option>
+                            @elseif($userData->status<3)
+                            <option value="4">🤝 Agent</option>
+                            <option value="5">👤 User</option>
+                            @else
+                            <option value="5">👤 User</option>
+                            @endif
                         </select>
                     </div>
                     <!-- <div class="col-12 col-md-6">
@@ -56,7 +67,7 @@
                         <label for="referenceName" class="form-label small">
                             <i class="fas fa-user-friends me-1 text-success d-none d-md-inline"></i> Reference Code
                         </label>
-                        <input name="referral_code" id="referenceName" type="text" class="form-control border-2">
+                        <input name="referral_code" id="referenceName" type="text" class="form-control border-2" value="{{rand(000000,111111)}}">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="password" class="form-label small">
@@ -179,7 +190,7 @@
 
         <!-- Submit Button -->
         <div class="text-center text-md-start mb-5">
-            <a type="submit" class="btn btn-success px-4 px-md-5 py-2 py-md-1 shadow-lg w-100 w-md-auto submitForm">
+            <a type="submit" class="add_user_client btn btn-success px-4 px-md-5 py-2 py-md-1 shadow-lg w-100 w-md-auto">
                 <i class="fa-solid fa-circle-plus me-2"></i>
                 Create Account
             </a>

@@ -52,7 +52,7 @@
                         <label for="referenceCode" class="form-label small">
                             <i class="fas fa-user-friends me-1 text-success d-none d-md-inline"></i> Reference Code (optional)
                         </label>
-                        <input name="referral_code" id="referenceCode" type="text" class="form-control border-2">
+                        <input name="referral_code" id="referenceCode" type="text" class="form-control border-2" value="{{rand(000000,111111)}}">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="password" class="form-label small">
@@ -114,19 +114,19 @@
             </div>
             <div class="card-body">
                 <div class="row g-3 g-md-4">
-                    <div class="col-12 col-md-4">
+                    <!-- <div class="col-12 col-md-4">
                         <label for="creditRef" class="form-label small">
                             <i class="fas fa-credit-card me-1 text-dark d-none d-md-inline"></i> Credit Reference
                         </label>
                         <input name="creditref" id="creditRef" type="text" class="form-control border-2">
-                    </div>
-                    <div class="col-12 col-md-4">
+                    </div> -->
+                    <div class="col-12 col-md-6">
                         <label for="deposit" class="form-label small">
                             <i class="fas fa-plus-circle me-1 text-success d-none d-md-inline"></i> Add Deposit (₹)
                         </label>
                         <input name="wallet_amount" id="deposit" type="number" class="form-control border-2 text-center">
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-6">
                         <label for="depositRemark" class="form-label small">
                             <i class="fas fa-comment me-1 text-dark d-none d-md-inline"></i> Deposit Remark
                         </label>
@@ -163,7 +163,7 @@
     </form>
     <!-- Submit Button -->
     <div class="mb-5 text-center text-md-start">
-        <a type="submit" class="submitForm btn btn-success px-4 px-md-5 py-2 py-md-1 shadow-lg w-100 w-md-auto">
+        <a class="add_user_client btn btn-success px-4 px-md-5 py-2 py-md-1 shadow-lg w-100 w-md-auto">
             <i class="fa-solid fa-circle-plus me-2"></i>
             Create Account
         </a>

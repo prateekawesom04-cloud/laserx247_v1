@@ -10,7 +10,7 @@
 
             <!-- Modal Body with the form -->
             <div class="modal-body modal-body-dark formParntClassname">
-                <form id="balance_form" class="balance_form form">
+                <form id="balance_form_deposit" class="balance_form form">
                     @csrf
                     <input name="user_uid" type="hidden" id="user_uid" class="form-control" value="">
                     <input type="hidden" name="payment_type" value="0">
@@ -29,12 +29,12 @@
                     <!-- Your Password -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Your Password</label>
-                        <input type="password" name="masterPassword" class="form-control">
+                        <input type="password" name="master_password" class="form-control">
                     </div>
 
                     <!-- Buttons -->
                     <div class="d-flex justify-content-end">
-                        <a type="submit" name="action" value="deposit" class="btn btn-success me-2 updateWallet">Deposit</a>
+                        <a type="submit" name="action" value="deposit" class="btn btn-success me-2 updateWalletSubmit">Deposit</a>
                         <!-- <a type="submit" name="action" value="withdraw" class="btn btn-danger" >Withdraw</a> -->
                     </div>
                 </form>
@@ -57,7 +57,7 @@
 
             <!-- Modal Body with the form -->
             <div class="modal-body modal-body-dark formParntClassname">
-                <form id="balance_form" class="balance_form form">
+                <form id="balance_form_withdraw" class="balance_form form">
                     @csrf
                     <input name="user_uid" type="hidden" id="user_uid" class="form-control" value="">
                     <input type="hidden" name="payment_type" value="1">
@@ -76,12 +76,12 @@
                     <!-- Your Password -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Your Password</label>
-                        <input type="password" name="masterPassword" class="form-control">
+                        <input type="password" name="master_password" class="form-control">
                     </div>
 
                     <!-- Buttons -->
                     <div class="d-flex justify-content-end">
-                        <a type="submit" name="action" value="deposit" class="btn btn-success me-2 updateWallet">Withdraw</a>
+                        <a type="submit" name="action" value="deposit" class="btn btn-success me-2 updateWalletSubmit">Withdraw</a>
                         <!-- <a type="submit" name="action" value="withdraw" class="btn btn-danger" >Withdraw</a> -->
                     </div>
                 </form>

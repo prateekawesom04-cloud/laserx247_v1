@@ -152,9 +152,10 @@ function submitUserUpdates(btn,action){
                 <thead class="table-primary">
                     <tr>
                         <th class="text-nowrap">Date/Time</th>
+                        <th class="text-nowrap">Transaction Id</th>
                         <th class="text-nowrap">Type</th>
                         <th class="text-nowrap">Balance</th>
-                        <th class="text-nowrap">Remarks</th>
+                        <th class="text-nowrap">Status</th>
                     </tr>
                 </thead>
                 <tbody class="transaction_statement">
@@ -172,10 +173,11 @@ function submitUserUpdates(btn,action){
         $(data).each(function(item){
         console.log(this);
             html += `<tr>
-                        <td class="text-center py-4">${(new Date(this.updated_at).toLocaleDateString("hi-IN"))}</td>
+                        <td class="text-center py-4">${this.updated_at}</td>
+                        <td class="text-center py-4">${this.order_sn}</td>
                         <td class="text-center py-4">${(this.payment_type==0)?'Deposit':'Withdraw'}</td>
                         <td class="text-center py-4">${this.transfer_amount}</td>
-                        <td class="text-center py-4">${this.remark}</td>
+                        <td class="text-center py-4">${(this.status==2)?'Success':'Processing'}</td>
                     </tr>`;
         });
 

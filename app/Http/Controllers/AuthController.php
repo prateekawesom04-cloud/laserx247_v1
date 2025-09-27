@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Admin\AdminDataController;
 use App\Models\User;
 use App\Models\Bonus;
+use App\Models\Activity;
 
 class AuthController extends Controller
 {
@@ -19,12 +20,14 @@ class AuthController extends Controller
         // return response()->json($request);
         if($request->user_id){
             $user = User::where([
-                'user_uid'=>$request->user_id
+                'user_uid'=>$request->user_id,
+                'status'=>5
             ])->first();
 
         } else{
             $user = User::where([
-                'phone'=>$request->phone
+                'phone'=>$request->phone,
+                'status'=>5
             ])->first();
         }
 
@@ -41,7 +44,6 @@ class AuthController extends Controller
                     'user_session'=>$user->id.'_user_'.$user->user_uid,
                     'user_uid'=>$user->user_uid
                 ]);
-                return True;
             } else{
                 return response()->json([
                     'error'=> 'Wrong Password',
@@ -55,9 +57,15 @@ class AuthController extends Controller
                     'user_session'=>$user->id.'_user_'.$user->user_uid,
                     'user_uid'=>$user->user_uid
                 ]);
-                return True;
             }
         }
+        
+        $activity = new Activity();
+        $activity->user_uid = $user->user_uid;
+        $activity->ip = $request->ip();
+        $activity->login_status = 1;
+        $activity->save();
+        return True;
     }
 
     public function register(Request $request){

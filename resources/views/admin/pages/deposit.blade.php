@@ -63,8 +63,8 @@
                                         <div class="dropdown">
                                             <select name="status" data-order_sn="{{$transaction->order_sn}}" class="transaction_status form-select form-select-sm custom-select"
                                                 aria-label="Select status">
-                                                <option value="2" {{($transaction->status==2)?'selected':''}}>Pending</option>
-                                                <option value="1" {{($transaction->status==1)?'selected':''}}>Processed</option>
+                                                <!-- <option value="2" {{($transaction->status==2)?'selected':''}}>Pending</option> -->
+                                                <option value="1" {{($transaction->status==1)?'selected':''}}>Accept</option>
                                                 <option value="0" {{($transaction->status==0)?'selected':''}}>Reject</option>
                                             </select>
                                         </div>
