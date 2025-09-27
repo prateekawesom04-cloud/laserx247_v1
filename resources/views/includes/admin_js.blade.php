@@ -119,11 +119,11 @@
         $(element).parent().append('<div class="input_error text-red-600"></div>');
         $(element).get(0).scrollIntoView({behavior: 'smooth'});
         $(element).focus();
-        $(element).siblings('.input_error').html('Please Enter value');
+        $(element).siblings('.input_error').html(`Please Enter ${$(element).attr('name')}`);
     }
 
     // form validations
-    $('input').on('input',function(){
+    $('input').on('keyup',function(){
         $(this).siblings('.input_error').remove();
     });
 
