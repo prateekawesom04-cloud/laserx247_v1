@@ -18,20 +18,20 @@
             <!-- Old Password -->
             <div class="form-group col-md-6 mb-3">
               <label for="old_password">New Password</label>
-              <input name="password" type="password" id="old_password" class="form-control" placeholder="...">
+              <input name="password" type="password" id="old_password" class="form-control">
             </div>
 
             <!-- New Password -->
             <div class="form-group col-md-6 mb-3">
               <label for="confirm_password">Confirm Password</label>
-              <input name="confirm_password" type="password" id="confirm_password" class="form-control" placeholder="...">
+              <input name="confirm_password" type="password" id="confirm_password" class="form-control">
             </div>
           </div>
 
           <!-- Confirm Password -->
           <div class="form-group mb-4">
             <label for="master_password">Master Password</label>
-            <input name="master_password" type="password" id="master_password" class="form-control" placeholder="...">
+            <input name="master_password" type="password" id="master_password" class="form-control">
           </div>
 
           <!-- Buttons -->

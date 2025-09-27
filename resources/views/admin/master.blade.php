@@ -26,6 +26,7 @@
     @include('admin.model.number_edit')
     @include('admin.model.edit_bonus')
     @include('admin.model.casino_control')
+    @include('admin.model.responseModel')
     @include('includes.ajax_call')
     @include('includes.js')
     @include('includes.admin_js')

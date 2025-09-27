@@ -12,7 +12,7 @@
                     </div> -->
 
                     <!-- Desktop Navigation -->
-                    <ul class="list-group list-group-flush mb-0 d-none d-lg-block bg-dark">
+                    <ul class="list-group list-group-flush mb-0 bg-dark">
                         <li>
                             <a href="javascript:void(0);"
                                 class="list-group-item list-group-item-action sidebar-link active bg-dark text-white"
@@ -23,15 +23,17 @@
                                 class="list-group-item list-group-item-action sidebar-link bg-dark text-white"
                                 data-target="statement">Account Statement</a>
                         </li>
+                        @if($user->status==5)
                         <li>
                             <a href="javascript:void(0);"
                                 class="list-group-item list-group-item-action sidebar-link bg-dark text-white"
                                 data-target="activity">Activity Log</a>
                         </li>
+                        @endif
                     </ul>
 
                     <!-- Mobile/Tablet Navigation -->
-                    <div class="d-block d-lg-none p-2 bg-dark">
+                    <div class="d-block d-none p-2 bg-dark">
                         <div class="d-flex gap-1">
                             <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-link active flex-fill"
                                 data-target="profile">Profile</a>
@@ -86,10 +88,12 @@
                                 <div class="fw-bold">Currency</div>
                                 <div>INR</div>
                             </div>
+                            @if($user->status==5)
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Partnership</div>
                                 <div>{{$user->partnership_percentage}}</div>
                             </div>
+                            @endif
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Mobile Number</div>
                                 <div>{{$user->phone}}</div>
@@ -160,7 +164,7 @@
                                     <thead class="table-primary">
                                         <tr>
                                             <th class="text-nowrap">Login Date & Time</th>
-                                            <th class="text-nowrap">Login Status</th>
+                                            <th class="text-nowrap">IP</th>
                                             <th class="text-nowrap">City/State/Country</th>
                                         </tr>
                                     </thead>
@@ -168,8 +172,8 @@
                                         @foreach($activity as $activity)
                                         <tr>
                                             <td class="text-nowrap">{{$activity->created_at}}</td>
-                                            <td class="text-success fw-bold text-nowrap">{{$activity->status}}</td>
                                             <td>{{$activity->ip}}</td>
+                                            <td class="text-success fw-bold text-nowrap">Patna</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

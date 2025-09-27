@@ -19,7 +19,7 @@
                             <i class="fas fa-user-tag me-1 text-primary d-none d-md-inline"></i> Account Type
                         </label>
                         <select name="status" name="" id="accountType" class="form-select border-2" required>
-                            <option value="4" selected>Select User Type</option>
+                            <option value="" selected>Select User Type</option>
                             @if($userData->status<1)
                             <option value="1">⭐ Super Admin</option>
                             <option value="2">🎯 Super Master</option>
@@ -67,7 +67,7 @@
                         <label for="referenceName" class="form-label small">
                             <i class="fas fa-user-friends me-1 text-success d-none d-md-inline"></i> Reference Code
                         </label>
-                        <input name="referral_code" id="referenceName" type="text" class="form-control border-2" value="{{rand(000000,111111)}}">
+                        <input name="referral_code" id="referenceName" type="text" class="form-control border-2" value="{{rand(100000,111111)}}">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="password" class="form-label small">

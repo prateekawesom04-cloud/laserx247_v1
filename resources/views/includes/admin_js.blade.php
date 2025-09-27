@@ -4,17 +4,33 @@
         let exitLoop = true;
         let formData = new FormData($('#createAccountForm')[0]);
         let formInputs = $('#createAccountForm input');
-        
-        $(formInputs).each(function(){
-            if($(this).val() == ''){
-                alert('please provide all fields');
+
+        let form =  document.getElementById('createAccountForm');
+
+        for(var i=0; i < form.elements.length; i++){
+            var e = form.elements[i];
+            if($(e).val() == ''){
+                // ajaxResponseModal('please provide all fields');
                 exitLoop = false;
+                scrollToElement($(e));
                 return false;
             }
+        }
+
+        // $(formInputs).each(function(){
+        //     console.log($(this).attr('name'),"-----$(this).val()---",$(this).val());
             
-        });
+        //     if($(this).val() == ''){
+        //         // ajaxResponseModal('please provide all fields');
+        //         exitLoop = false;
+        //         scrollToElement($(this));
+        //         return false;
+        //     }
+            
+        // });
+
         if(exitLoop){
-            callAdminApi('post', `{{url('/admin')}}/add_user_client`, formData, ajaxResponse);
+            callAdminApi('post', `{{url('/admin')}}/add_user_client`, formData, ajaxResponseModal);
         }
         
     });
@@ -30,14 +46,15 @@
         
         $(formInputs).each(function(){
             if($(this).val() == ''){
-                alert('please provide all fields');
+                ajaxResponseModal('please provide all fields');
                 exitLoop = false;
+                scrollToElement($(this));
                 return false;
             }
             
         });
         if(exitLoop){
-            callAdminApi('post', `{{url('/admin')}}/updateUserPassword`, formData, ajaxResponseModel);
+            callAdminApi('post', `{{url('/admin')}}/updateUserPassword`, formData, ajaxResponseModal);
         }
     });
     
@@ -58,14 +75,15 @@
             console.log("$(this).val()====",$(this).val());
             
             if($(this).val() == ''){
-                alert('please provide all fields');
+                ajaxResponseModal('please provide all fields');
                 exitLoop = false;
+                scrollToElement($(this));
                 return false;
             }
             
         });
         if(exitLoop){
-            callAdminApi('post', `{{url('/admin')}}/updateWallet`, formData, ajaxResponseModel);
+            callAdminApi('post', `{{url('/admin')}}/updateWallet`, formData, ajaxResponseModal);
         }
     });
 
@@ -82,11 +100,34 @@
     }
 
     
-    function ajaxResponseModel(response){
-        if(response.response_code == 200){
-            window.location.href = '{{url()->current()}}';
+    function ajaxResponseModal(response){
+        $('.modal').modal('hide');
+        $('#responseModal').modal('show');
+        if(response.message){
+            $('#responseModal .model_body').html(response.message);
+            if(response.response_code == 200){
+                $('#responseModal .btn-close').click(function(){
+                    window.location.href = '{{url()->current()}}';
+                });
+            }
+        } else{
+            $('#responseModal .model_body').html(response);
         }
-        alert(response.message);
     }
 
+    function scrollToElement(element){
+        $(element).parent().append('<div class="input_error text-red-600"></div>');
+        $(element).get(0).scrollIntoView({behavior: 'smooth'});
+        $(element).focus();
+        $(element).siblings('.input_error').html('Please Enter value');
+    }
+
+    // form validations
+    $('input').on('input',function(){
+        $(this).siblings('.input_error').remove();
+    });
+
+    $('select').on('change',function(){
+        $(this).siblings('.input_error').remove();
+    });
 </script>

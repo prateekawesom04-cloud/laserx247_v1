@@ -286,6 +286,9 @@ table tbody tr:hover {
 .table .btn-sm {
     min-width: 36px;
     padding: 0.25rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Prevent overflow stacking on mobile */

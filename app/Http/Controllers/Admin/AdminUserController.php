@@ -79,7 +79,7 @@ class AdminUserController extends Controller
         $existingUser = User::where('user_uid', $request->user_uid)->first();
         if($existingUser){
             return response()->json([
-                'message'=> 'Dublicate User',
+                'message'=> 'User Already Present',
                 'response_code'=>'300'
             ]);
         }
@@ -101,7 +101,7 @@ class AdminUserController extends Controller
         } catch(QueryException $e){
             if ($e->errorInfo[1] == 1062) {
                 return response()->json([
-                    'message'=> 'Dublicate User',
+                    'message'=> 'User Already Present',
                     'response_code'=>'300'
                 ]);
             }
