@@ -129,9 +129,9 @@
         if(response.message){
             $('#responseModal .model_body').html(response.message);
             if(response.response_code == 200){
-                $('#responseModal .btn-close').click(function(){
-                    window.location.href = '{{url()->current()}}';
-                });
+                setTimeout(() => {
+                        window.location.href = '{{url()->current()}}';
+                }, 1000);
             }
         } else{
             $('#responseModal .model_body').html(response);

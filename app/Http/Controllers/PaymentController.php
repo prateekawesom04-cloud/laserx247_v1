@@ -26,6 +26,7 @@ class PaymentController extends Controller
             $transaction->user_uid = $user->user_uid;
             // $transaction->user_uid = '121';
             $transaction->order_sn = $data['order_sn'];
+            $transaction->wallet_before = $user->wallet_before;
             $transaction->transfer_amount = $request->money;
             $transaction->ip = $request->ip();
             $transaction->status = 2;

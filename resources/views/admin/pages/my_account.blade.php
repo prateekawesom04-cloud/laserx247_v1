@@ -183,17 +183,28 @@
                                     <thead class="table-primary">
                                         <tr>
                                             <th class="text-nowrap">Date/Time</th>
-                                            <th class="text-nowrap">Transfer Type</th>
-                                            <th class="text-nowrap">Transfer</th>
+                                            <th class="text-nowrap">Total Balance</th>
+                                            <th class="text-nowrap">Deposit</th>
+                                            <th class="text-nowrap">WithDraw</th>
+                                            <th class="text-nowrap">Available Balance</th>
                                             <th class="text-nowrap">Remark</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($transactions as $transaction)
+                                            @php
+                                                if($transaction->payment_type){
+                                                    $available_balance = (int) $transaction->wallet_before - (int) $transaction->transfer_amount;
+                                                } else{
+                                                    $available_balance = (int) $transaction->wallet_before + (int) $transaction->transfer_amount;
+                                                }
+                                            @endphp
                                         <tr>
                                             <td class="text-nowrap">{{$transaction->created_at}}</td>
-                                            <td>{{($transaction->payment_type)?'Withdraw':'Deposit'}}</td>
-                                            <td>{{$transaction->transfer_amount}}</td>
+                                            <td>{{$transaction->wallet_before}}</td>
+                                            <td>{{($transaction->payment_type)?'-':$transaction->transfer_amount}}</td>
+                                            <td>{{($transaction->payment_type)?$transaction->transfer_amount:'-'}}</td>
+                                            <td>{{$available_balance}}</td>
                                             <td class="text-success fw-bold text-nowrap">Patna</td>
                                         </tr>
                                         @endforeach

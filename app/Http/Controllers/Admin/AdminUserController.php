@@ -204,6 +204,7 @@ class AdminUserController extends Controller
             ]);
         }
         $user = User::where('user_uid',$request->user_uid)->first();
+        $wallet_before = $user->wallet_amount;
         if($request->payment_type == 0){
             $user->wallet_amount += $request->transfer_amount;
         } else{
@@ -214,6 +215,7 @@ class AdminUserController extends Controller
         $transaction = new Transaction();
         $transaction->user_uid = $user->user_uid;
         $transaction->order_sn = time()."_p_".time().rand(0000,9999);
+        $transaction->wallet_before = $wallet_before;
         $transaction->transfer_amount = $request->transfer_amount;
         $transaction->ip = $request->ip();
         $transaction->status = 2;

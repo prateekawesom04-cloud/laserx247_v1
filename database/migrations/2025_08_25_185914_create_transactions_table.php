@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('user_uid');
             $table->string('order_sn');
+            $table->string('wallet_before');
             $table->string('transfer_amount');
             $table->string('ip');
             $table->tinyInteger('status');
