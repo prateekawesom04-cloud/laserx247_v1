@@ -90,7 +90,7 @@ class AdminUserController extends Controller
             array_splice($columns, 0, 1);
             array_splice($columns, count($columns)-2, 2);
 
-            $request->phone = rand(0000000000,1111111111);
+            $request->phone = 0;
 
             foreach ($columns as $key => $value) {
                 $user->{$value} = $request->{$value};
@@ -108,7 +108,7 @@ class AdminUserController extends Controller
         }
         
         return response()->json([
-            'message'=> 'User Created',
+            'message'=> 'User Created Successfully',
             'response_code'=>'200'
         ]);
 
@@ -118,10 +118,46 @@ class AdminUserController extends Controller
 
         // $userData = User::getCurrentUser();
         $user = User::where('user_uid',$request->user_uid)->first();
-        $activity = Activity::where('user_uid',$request->user_uid)->get();
-        $transactions = Transaction::where('user_uid',$request->user_uid)->get();
-        // dd($transactions);
-        return view('admin.pages.my_account',compact('user','activity','transactions'));
+        $activities = Activity::where('user_uid',$request->user_uid)->get();
+        $transactions = Transaction::where('user_uid',$request->user_uid)->orderBy('payment_type')->get();
+        
+        
+        return view('admin.pages.my_account',compact('user','activities','transactions'));
+    }
+    
+    public function updateUserPhone(Request $request){
+        
+        $rules = [
+            'phone' => 'required|integer|digits:10',
+        ];
+        
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            foreach ($validator->errors()->messages() as $key => $value) {
+                $errors[] = $value[0];
+            }
+            return response()->json([
+                'message'=> $errors[0],
+                'response_code'=> '105'
+            ]);
+            
+        }
+
+        if(!$this->checkMasterPassword($request->master_password)){
+            return response()->json([
+                'message'=> 'wrong master password',
+                'response_code'=>'400'
+            ]);
+        }
+        
+        $user = User::where('user_uid',$request->user_uid)->first();
+        $user->phone = $request->phone;
+        $user->save();
+
+        return response()->json([
+            'message'=> 'Password Updated',
+            'response_code'=>'200'
+        ]);
     }
     
     public function updateUserPassword(Request $request){
@@ -187,7 +223,7 @@ class AdminUserController extends Controller
         $transaction->save();
 
         return response()->json([
-            'message'=> 'Wallet updated',
+            'message'=> 'Balance Updated Successfully',
             'response_code'=>'200'
         ]);
     }

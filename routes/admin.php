@@ -49,6 +49,8 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         
         Route::post('/add_user_client', [AdminUserController::class,'add_user_client'])->name('admin.action.add_user_client');
         
+        Route::post('/updateUserPhone', [AdminUserController::class,'updateUserPhone'])->name('admin.action.updateUserPhone');
+        
         Route::post('/updateUserPassword', [AdminUserController::class,'updateUserPassword'])->name('admin.action.updateUserPassword');
         
         Route::post('/updateWallet', [AdminUserController::class,'updateWallet'])->name('admin.action.updateWallet');

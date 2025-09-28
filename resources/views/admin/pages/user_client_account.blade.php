@@ -44,7 +44,7 @@
                 <div class="row g-3 g-md-4">
                     <div class="col-12 col-md-6">
                         <label for="username" class="form-label small">
-                            <i class="fas fa-user me-1 text-success d-none d-md-inline"></i> User Uid
+                            <i class="fas fa-user me-1 text-success d-none d-md-inline"></i> User id
                         </label>
                         <input name="user_uid" id="username" type="text" class="form-control border-2" required>
                     </div>

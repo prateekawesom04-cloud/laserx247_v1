@@ -171,7 +171,6 @@ function submitUserUpdates(btn,action){
         let data = response.data;
         html = '';
         $(data).each(function(item){
-        console.log(this);
             html += `<tr>
                         <td class="text-center py-4">${this.updated_at}</td>
                         <td class="text-center py-4">${this.order_sn}</td>

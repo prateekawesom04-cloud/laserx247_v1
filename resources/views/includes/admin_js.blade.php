@@ -35,6 +35,29 @@
         
     });
 
+    $('.changePhoneModal').on('click',function(){
+        $('#changePhoneForm input[name=user_uid]').val($(this).attr('data-user_uid'));
+    });
+
+    $('.changePhoneSubmit').on('click',function(){
+        let exitLoop = true;
+        let formData = new FormData($('#changePhoneForm')[0]);
+        let formInputs = $('#changePhoneForm input');
+        
+        $(formInputs).each(function(){
+            if($(this).val() == ''){
+                ajaxResponseModal(`Please Enter ${$(this).attr('name')}`);
+                exitLoop = false;
+                scrollToElement($(this));
+                return false;
+            }
+            
+        });
+        if(exitLoop){
+            callAdminApi('post', `{{url('/admin')}}/updateUserPhone`, formData, ajaxResponseModal);
+        }
+    });
+
     $('.changePasswordModel').on('click',function(){
         $('#changePasswordFormModel input[name=user_uid]').val($(this).attr('data-user_uid'));
     });
@@ -46,7 +69,7 @@
         
         $(formInputs).each(function(){
             if($(this).val() == ''){
-                ajaxResponseModal('please provide all fields');
+                ajaxResponseModal(`Please Enter ${$(this).attr('name')}`);
                 exitLoop = false;
                 scrollToElement($(this));
                 return false;
@@ -75,7 +98,7 @@
             console.log("$(this).val()====",$(this).val());
             
             if($(this).val() == ''){
-                ajaxResponseModal('please provide all fields');
+                ajaxResponseModal(`Please Enter ${$(this).attr('name')}`);
                 exitLoop = false;
                 scrollToElement($(this));
                 return false;
@@ -101,7 +124,7 @@
 
     
     function ajaxResponseModal(response){
-        $('.modal').modal('hide');
+        // $('.modal').modal('hide');
         $('#responseModal').modal('show');
         if(response.message){
             $('#responseModal .model_body').html(response.message);

@@ -23,6 +23,11 @@
                                 class="list-group-item list-group-item-action sidebar-link bg-dark text-white"
                                 data-target="statement">Account Statement</a>
                         </li>
+                        <li>
+                            <a href="javascript:void(0);"
+                                class="list-group-item list-group-item-action sidebar-link bg-dark text-white"
+                                data-target="deposit_withdrawal">Deposit & Withdraw</a>
+                        </li>
                         @if($user->status==5)
                         <li>
                             <a href="javascript:void(0);"
@@ -40,6 +45,8 @@
                             <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-link flex-fill"
                                 data-target="statement">Statement</a>
                             <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-link flex-fill"
+                                data-target="deposit_withdrawal">Deposit & Withdraw</a>
+                            <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-link flex-fill"
                                 data-target="activity">Activity</a>
                         </div>
                     </div>
@@ -55,7 +62,7 @@
                         <div class="card-header bg-primary text-white fw-bold">Account Details</div>
                         <div class="card-body p-0">
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
-                                <div class="fw-bold">User Id</div>
+                                <div class="fw-bold">Name</div>
                                 <div class="text-break">{{$user->user_uid}}</div>
                             </div>
                             <!-- <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
@@ -88,23 +95,35 @@
                                 <div class="fw-bold">Currency</div>
                                 <div>INR</div>
                             </div>
+                            <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
+                                <div class="fw-bold">Exposure Limit</div>
+                                <div>{{$user->unsattled_amount}}</div>
+                            </div>
                             @if($user->status!=5)
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Partnership</div>
                                 <div>{{$user->partnership_percentage}}</div>
                             </div>
                             @endif
+                            @if($user->phone)
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Mobile Number</div>
-                                <div>{{$user->phone}}</div>
+                                <div>{{$user->phone}} <span>
+                                    <i data-user_uid="{{ $user->user_uid }}" class="fas fa-pen-to-square text-primary changePhoneModal" style="cursor: pointer;"
+                                        title="Update Phone" data-bs-toggle="modal"
+                                        data-bs-target="#changePhoneModal">
+                                    </i>
+                                </span></div>
                             </div>
+                            @endif
                             <div class="d-flex justify-content-between align-items-center px-3 py-2">
                                 <div class="fw-bold">Password</div>
                                 <div class="d-flex align-items-center gap-2">
                                     <span>*********</span>
                                     <i data-user_uid="{{ $user->user_uid }}" class="fas fa-pen-to-square text-primary changePasswordModel" style="cursor: pointer;"
                                         title="Edit Password" data-bs-toggle="modal"
-                                        data-bs-target="#changePasswordModal"></i>
+                                        data-bs-target="#changePasswordModal">
+                                    </i>
                                 </div>
                             </div>
                         </div>
@@ -154,6 +173,37 @@
                     </div>
                 </div>
 
+                <!-- Deposit Withdrawal Section -->
+                <div id="deposit-withdrawal-section" style="display: none;">
+                    <div class="card shadow-sm bg-dark text-white">
+                        <div class="card-header bg-primary text-white fw-bold">Deposit & Withdraw</div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-dark mb-0">
+                                    <thead class="table-primary">
+                                        <tr>
+                                            <th class="text-nowrap">Date/Time</th>
+                                            <th class="text-nowrap">Transfer Type</th>
+                                            <th class="text-nowrap">Transfer</th>
+                                            <th class="text-nowrap">Remark</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($transactions as $transaction)
+                                        <tr>
+                                            <td class="text-nowrap">{{$transaction->created_at}}</td>
+                                            <td>{{($transaction->payment_type)?'Withdraw':'Deposit'}}</td>
+                                            <td>{{$transaction->transfer_amount}}</td>
+                                            <td class="text-success fw-bold text-nowrap">Patna</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Activity Log Section -->
                 <div id="activity-section" style="display: none;">
                     <div class="card shadow-sm bg-dark text-white">
@@ -169,7 +219,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($activity as $activity)
+                                        @foreach($activities as $activity)
                                         <tr>
                                             <td class="text-nowrap">{{$activity->created_at}}</td>
                                             <td>{{$activity->ip}}</td>
@@ -196,6 +246,7 @@
         const sections = {
             profile: document.getElementById('profile-section'),
             statement: document.getElementById('statement-section'),
+            deposit_withdrawal: document.getElementById('deposit-withdrawal-section'),
             activity: document.getElementById('activity-section'),
         };
 
