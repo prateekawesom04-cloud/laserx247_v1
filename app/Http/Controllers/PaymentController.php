@@ -26,11 +26,12 @@ class PaymentController extends Controller
             $transaction->user_uid = $user->user_uid;
             // $transaction->user_uid = '121';
             $transaction->order_sn = $data['order_sn'];
-            $transaction->wallet_before = $user->wallet_before;
+            $transaction->wallet_before = $user->wallet_amount;
             $transaction->transfer_amount = $request->money;
             $transaction->ip = $request->ip();
-            $transaction->status = 2;
+            $transaction->status = 1;
             $transaction->payment_type = $request->payment_type;
+            $transaction->manual = 1;
             $transaction->currency = "INR";
             $transaction->remark = "remark001";
             $transaction->save();
@@ -81,8 +82,8 @@ class PaymentController extends Controller
             curl_close($ch);
             
             return response()->json([
-                'message'=> 'success',
-                'response_code'=> '105',
+                'message'=> 'Deposit Request Created Succesfully',
+                'response_code'=> '200',
                 'response'=>$response
             ]);
         } else{
@@ -117,6 +118,7 @@ class PaymentController extends Controller
 
             $transaction->transfer_amount = $request->money;
             $transaction->status = $request->status;
+            $transaction->manual = 0;
             $transaction->save();
 
             return 'ok';
@@ -125,4 +127,45 @@ class PaymentController extends Controller
         }
     }
 
+    public function createDepositRequest(Request $request){
+            $user = User::getCurrentUser();
+            $transaction = new Transaction();
+            $transaction->user_uid = $user->user_uid;
+            $transaction->order_sn = $request->order_sn;
+            $transaction->wallet_before = $user->wallet_before;
+            $transaction->transfer_amount = $request->transfer_amount;
+            $transaction->ip = $request->ip();
+            $transaction->status = 1;
+            $transaction->payment_type = 0;
+            $transaction->manual = 1;
+            $transaction->currency = "INR";
+            $transaction->remark = "remark001";
+            $transaction->save();
+
+            return response()->json([
+                'message'=>'Deposit Request Created Succesfully',
+                'response_code'=> 200
+            ]);
+    }
+    
+    public function createWithdrawalRequest(Request $request){
+            $user = User::getCurrentUser();
+            $transaction = new Transaction();
+            $transaction->user_uid = $user->user_uid;
+            $transaction->order_sn = time().$request->order_sn;
+            $transaction->wallet_before = $user->wallet_before;
+            $transaction->transfer_amount = $request->transfer_amount;
+            $transaction->ip = $request->ip();
+            $transaction->status = 1;
+            $transaction->payment_type = 1;
+            $transaction->manual = 1;
+            $transaction->currency = "INR";
+            $transaction->remark = "remark001";
+            $transaction->save();
+
+            return response()->json([
+                'message'=>'Deposit Request Created Succesfully',
+                'response_code'=> 200
+            ]);
+    }
 }

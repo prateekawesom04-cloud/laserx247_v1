@@ -22,6 +22,7 @@
             <div class="footer_part w-full">
                 @include('footer')
             </div>
+        @include('includes.app_toast')
         </div>
         @include('includes.ajax_call')
         @include('js')

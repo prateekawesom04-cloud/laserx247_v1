@@ -35,62 +35,57 @@
                         <table class="table table-bordered table-striped acc-table">
                             <thead class="table-secondary">
                                 <tr>
+                                    <th>Date/Time</th>
                                     <th>UID</th>
                                     <th>Transaction ID</th>
-                                    <th>Type</th>
-                                    <th>Balance</th>
-                                    <th>Date/Time</th>
+                                    <th>Total Balance</th>
+                                    <th>Deposit</th>
+                                    <th>WithDraw</th>
+                                    <th>Available Balance</th>
+                                    <th>Screenshot</th>
+                                    <th>Status</th>
                                     <th>Remark</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($transactions!='')
                                 @foreach($transactions as $transaction)
+                                    @php
+                                        if($transaction->payment_type){
+                                            $available_balance = (int) $transaction->wallet_before - (int) $transaction->transfer_amount;
+                                        } else{
+                                            $available_balance = (int) $transaction->wallet_before + (int) $transaction->transfer_amount;
+                                        }
+                                    @endphp
                                 <tr>
-                                    <td><strong>{{$transaction->user_uid}}</strong></td>
-                                    <td>{{$transaction->order_sn}}</td>
-                                    <td>{{($transaction->payment_type==0)?'Deposit':'Withdraw'}}</td>
-                                    <td>{{$transaction->transfer_amount}}</td>
                                     <td>{{$transaction->created_at}}</td>
+                                    <td>{{$transaction->user_uid}}</td>
+                                    <td>{{$transaction->order_sn}}</td>
+                                    <td>{{$transaction->wallet_before}}</td>
+                                    <td>{{($transaction->payment_type)?'-':$transaction->transfer_amount}}</td>
+                                    <td>{{($transaction->payment_type)?$transaction->transfer_amount:'-'}}</td>
+                                    <td>{{$available_balance}}</td>
+                                    <td>--</td>
+                                    <td>{{($transaction->status==2)?'Success':(($transaction->status==1)?'Processing':'Failed')}}</td>
                                     <td>{{$transaction->remark}}</td>
                                     <td>
-                                        <div class="dropdown">
-                                            <select name="status" data-order_sn="{{$transaction->order_sn}}" class="transaction_status form-select form-select-sm custom-select"
-                                                aria-label="Select status">
-                                                <option value="2" {{($transaction->status==2)?'selected':''}}>Pending</option>
-                                                <option value="1" {{($transaction->status==1)?'selected':''}}>Processed</option>
-                                                <option value="0" {{($transaction->status==0)?'selected':''}}>Reject</option>
-                                            </select>
-                                        </div>
+                                        <flex class="flex flex-row items-center justify-evenly">
+                                            <div class="p-[.1rem]">
+                                                <i data-order_sn="{{ $transaction->order_sn }}" class="fas fa-circle-xmark text-danger" style="cursor: pointer;" title="reject" data-bs-toggle="modal"
+                                                    data-bs-target="#updateTransaction">
+                                                </i>
+                                            </div>
+                                            <div class="p-[.1rem]">
+                                                <i data-order_sn="{{ $transaction->order_sn }}" class="fas fa-check text-primary" style="cursor: pointer;" title="approve" data-bs-toggle="modal"
+                                                    data-bs-target="#updateTransaction">
+                                                </i>
+                                            </div>
+
+                                        </flex>
                                     </td>
+                                    
                                 </tr>
                                 @endforeach
-                                @else
-                                <tr>
-                                    <td><strong>1234567890</strong></td>
-                                    <td>TXN123456</td>
-                                    <td>Upi</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td class="text-danger"><b>(0)</b></td>
-                                    <td>04-05-2024 10:16:03</td>
-                                    <td>
-                                        <img src="" alt="White QR" class="img-fluid qr-img">
-                                    </td>
-                                    <td><input type="text" class="form-control form-control-sm" value="-"></td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <select class="form-select form-select-sm custom-select"
-                                                aria-label="Select status">
-                                                <option selected>Pending</option>
-                                                <option value="1">Processed</option>
-                                                <option value="2">Reject</option>
-                                            </select>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endif
                             </tbody>
                         </table>
                     </div>

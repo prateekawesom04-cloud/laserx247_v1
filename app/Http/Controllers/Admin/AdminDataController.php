@@ -259,19 +259,25 @@ class AdminDataController extends Controller
     
     public function deposit(){
         $user = User::getCurrentUser();
-        $transactions = Transaction::where([
-            'user_uid'=>$user->user_uid,
-            'payment_type'=>0
-        ])->get();
-        // dd($transactions);
+        $transactions = User::join('transactions','transactions.user_uid','=','users.user_uid')
+        ->select('transactions.*','users.admin_uid')
+        ->where([
+            'admin_uid'=>$user->user_uid,
+            'payment_type'=>0,
+            'manual'=>1
+        ])
+        ->get();
         return view('admin.pages.deposit',compact('transactions'));
     }
     
     public function withdraw(){
         $user = User::getCurrentUser();
-        $transactions = Transaction::where([
-            'user_uid'=>$user->user_uid,
-            'payment_type'=>1
+        $transactions = User::join('transactions','transactions.user_uid','=','users.user_uid')
+        ->select('transactions.*','users.admin_uid')
+        ->where([
+            'admin_uid'=>$user->user_uid,
+            'payment_type'=>1,
+            'manual'=>1
         ])->get();
         // dd($transactions);
         return view('admin.pages.withdraw',compact('transactions'));

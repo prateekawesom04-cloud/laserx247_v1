@@ -15,13 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('user_uid');
             $table->string('order_sn');
-            $table->string('wallet_before');
+            $table->string('wallet_before')->nullable();
             $table->string('transfer_amount');
             $table->string('ip');
             $table->tinyInteger('status');
             $table->tinyInteger('payment_type');
+            $table->tinyInteger('manual');
             $table->string('currency');
             $table->string('remark');
+            $table->json('additional_data');
             $table->timestamps();
         });
     }

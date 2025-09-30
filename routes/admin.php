@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDataController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\TransactionController;
 
 
 
@@ -54,6 +55,8 @@ Route::middleware(['admin_auth_check_middleware'])->group(function () {
         Route::post('/updateUserPassword', [AdminUserController::class,'updateUserPassword'])->name('admin.action.updateUserPassword');
         
         Route::post('/updateWallet', [AdminUserController::class,'updateWallet'])->name('admin.action.updateWallet');
+        
+        Route::post('/updateTransaction', [TransactionController::class,'updateTransaction'])->name('admin.action.updateTransaction')->withoutMiddleware([VerifyCsrfToken::class]);
 
         Route::get('/inactive_user_downline_list', [AdminDataController::class,'inactive_user_downline_list'])->name('admin.inactive_user_downline_list');
 

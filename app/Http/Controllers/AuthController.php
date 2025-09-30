@@ -93,6 +93,7 @@ class AuthController extends Controller
             $user->phone = $request->phone;
             // $user->user_uid = rand(0000,9999).'_'.time().$request->phone;
             $user->user_uid = $request->user_id;
+            $user->status = 5;
             $user->password = Hash::make($request->password);
             $bonuses = [];
             $bonus_uid = Bonus::where(['type'=>0,'status'=>1])->first()->bonus_uid;
@@ -110,13 +111,15 @@ class AuthController extends Controller
             $user->referral_code = substr(time(),2,3).rand(0000,9999);
             $user->additional_data = json_encode($emptyObject);
             $user->save();
-
+            
             if($request->referral_code){
 
                 $referralUser = User::where('referral_code',$request->referral_code)->first();
                 if($referralUser){
-                    
                     $user = User::where('user_uid',$request->user_id)->first();
+                    if($referralUser->status<5){
+                        $user->admin_uid = $referralUser->user_uid;
+                    }
                     $user->referral = $referralUser->phone;
                     $bonus = [];
                     $bonus_uid = Bonus::where(['type'=>1,'status'=>1])->first()->bonus_uid;

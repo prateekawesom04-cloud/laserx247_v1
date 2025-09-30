@@ -65,9 +65,9 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="referenceName" class="form-label small">
-                            <i class="fas fa-user-friends me-1 text-success d-none d-md-inline"></i> Reference Code
+                            <i class="fas fa-user-friends me-1 text-success d-none d-md-inline"></i> Reference Code (Optional)
                         </label>
-                        <input name="referral_code" id="referenceName" type="text" class="form-control border-2" value="{{rand(100000,111111)}}">
+                        <input name="referral_code" id="referenceName" type="text" class="form-control border-2" value="{{substr(uniqid().rand(1000,1111),4)}}">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="password" class="form-label small">

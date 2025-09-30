@@ -43,11 +43,13 @@ Route::middleware(['auth_middleware'])->group(function () {
 
         }
 
-        Session::flush();
+        // Session::flush();
 
         return view('pages.register',compact('referral_code'));
 
     })->name('pages.register');
+    
+    Route::get('/refer/{referral_code}', [UserController::class,'referral_code'])->name('user.referral_code');
 
 });
 
@@ -81,8 +83,6 @@ Route::middleware(['auth_check_middleware'])->group(function () {
     Route::get('/transaction', [UserController::class,'transaction'])->name('user.transaction');
 
     Route::get('/refer_rewards', [UserController::class,'refer_rewards'])->name('user.refer_rewards');
-
-    Route::get('/refer/{referral_code}', [UserController::class,'referral_code'])->name('user.referral_code');
 
     Route::get('/wallet', function () {
         return view('account_pages.wallet');

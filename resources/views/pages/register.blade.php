@@ -59,11 +59,11 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control shadow-none" name="user_id" value="{{rand(000000, 999999)}}" />
+                                <input type="text" class="form-control shadow-none" name="user_id" value="{{time().rand(000, 999)}}" />
                             </div>
-                            <div class="text-end mb-3">
+                            <!-- <div class="text-end mb-3">
                                 <a href="javascript:void(0)" class="small text-info set_user_id">Want to set UserID?</a>
-                            </div>
+                            </div> -->
 
                             <!-- Password -->
                             <div class="input-group mb-3">
@@ -89,7 +89,7 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control shadow-none" name="referral_code" maxlength="6" value="" placeholder='Please Enter Referral Code' />
+                                <input type="text" class="form-control shadow-none" name="referral_code" value="{{Session::get('referral_code')}}" placeholder='Please Enter Referral Code' />
                             </div>
                             <div class="text-end mb-3 have_referral_code">
                                 <a href="#" class="small text-info">Have a referral code?</a>

@@ -17,7 +17,9 @@ class UserController extends Controller
 
     public function __construct(){
         $this->currentUser = User::getCurrentUser();
-        $this->user_additional_data = json_decode($this->currentUser->additional_data);
+        if($this->currentUser){
+            $this->user_additional_data = json_decode($this->currentUser->additional_data);
+        }
     }
 
     public function profile(Request $request){
@@ -99,7 +101,8 @@ class UserController extends Controller
     }
 
     public function referral_code(Request $request,$referral_code){
-        session('referral_code',$referral_code);
+        Session::put(['referral_code'=>$referral_code]);
+        // dd(Session::get('referral_code'));
         return redirect('register');
     }
 

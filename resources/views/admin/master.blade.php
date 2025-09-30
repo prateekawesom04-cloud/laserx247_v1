@@ -31,6 +31,7 @@
     @include('includes.ajax_call')
     @include('includes.js')
     @include('includes.admin_js')
+    @include('includes.app_toast')
     @yield('js')
 </body>
 

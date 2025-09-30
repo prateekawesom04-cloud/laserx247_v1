@@ -108,12 +108,18 @@
                             @if($user->phone)
                             <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
                                 <div class="fw-bold">Mobile Number</div>
-                                <div>{{$user->phone}} <span>
+                                <div>{{($user->phone)?$user->phone:0}} <span>
                                     <i data-user_uid="{{ $user->user_uid }}" class="fas fa-pen-to-square text-primary changePhoneModal" style="cursor: pointer;"
                                         title="Update Phone" data-bs-toggle="modal"
                                         data-bs-target="#changePhoneModal">
                                     </i>
                                 </span></div>
+                            </div>
+                            @endif
+                            @if($user->status!=5)
+                            <div class="d-flex justify-content-between align-items-center border-bottom px-3 py-2">
+                                <div class="fw-bold">Refer</div>
+                                <div>{{route('user.referral_code',$user->referral_code)}}</div>
                             </div>
                             @endif
                             <div class="d-flex justify-content-between align-items-center px-3 py-2">

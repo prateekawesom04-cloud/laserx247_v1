@@ -10,7 +10,6 @@
         for(var i=0; i < form.elements.length; i++){
             var e = form.elements[i];
             if($(e).val() == ''){
-                // ajaxResponseModal('please provide all fields');
                 exitLoop = false;
                 scrollToElement($(e));
                 return false;
@@ -125,16 +124,19 @@
     
     function ajaxResponseModal(response){
         // $('.modal').modal('hide');
-        $('#responseModal').modal('show');
+        // $('#responseModal').modal('show');
         if(response.message){
-            $('#responseModal .model_body').html(response.message);
+            // $('#responseModal .model_body').html(response.message);
             if(response.response_code == 200){
+                responseToast(response.message,'bg-success');
                 setTimeout(() => {
                         window.location.href = '{{url()->current()}}';
                 }, 1000);
+            } else{
+                responseToast(response.message,'bg-danger');
             }
         } else{
-            $('#responseModal .model_body').html(response);
+            responseToast(response,'bg-warning');
         }
     }
 
@@ -153,4 +155,16 @@
     $('select').on('change',function(){
         $(this).siblings('.input_error').remove();
     });
+
+    // update transaction
+    $('.reject_deposit').on('click',function(){
+        formData = {};
+        callApi('post', `admin/updateTransaction`, {order_sn:$(this).attr('data-order_sn'),updateKey:'status',status:0}, ajaxResponseModal);
+    });
+    
+    $('.approve_deposit').on('click',function(){
+        formData = {};
+        callApi('post', `admin/updateTransaction`, {order_sn:$(this).attr('data-order_sn'),updateKey:'status',status:2}, ajaxResponseModal);
+    });
+
 </script>

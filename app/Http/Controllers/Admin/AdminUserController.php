@@ -90,7 +90,7 @@ class AdminUserController extends Controller
             array_splice($columns, 0, 1);
             array_splice($columns, count($columns)-2, 2);
 
-            $request->phone = 0;
+            $request->phone = NULL;
 
             foreach ($columns as $key => $value) {
                 $user->{$value} = $request->{$value};
@@ -213,13 +213,14 @@ class AdminUserController extends Controller
         $user->save();
         
         $transaction = new Transaction();
-        $transaction->user_uid = $user->user_uid;
+        $transaction->user_uid = $request->user_uid;
         $transaction->order_sn = time()."_p_".time().rand(0000,9999);
         $transaction->wallet_before = $wallet_before;
         $transaction->transfer_amount = $request->transfer_amount;
         $transaction->ip = $request->ip();
         $transaction->status = 2;
         $transaction->payment_type = $request->payment_type;
+        $transaction->manual = 0;
         $transaction->currency = "INR";
         $transaction->remark = $request->remark;
         $transaction->save();

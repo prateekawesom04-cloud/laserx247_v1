@@ -42,12 +42,12 @@
 
                             <!-- Tabs -->
                             <div class="d-flex mb-3 gap-2">
-                                <a type="button" class="btn btn-light flex-fill fw-bold" aria-pressed="false">Phone</a>
-                                <!-- <a type="button" class="btn btn-primary flex-fill fw-bold" aria-pressed="true">User ID</a> -->
+                                <a type="button" class="btn btn-light flex-fill fw-bold login_btn" data-login="login_phone" aria-pressed="false">Phone</a>
+                                <a type="button" class="btn btn-primary flex-fill fw-bold login_btn" data-login="login_user_id" aria-pressed="true">User ID</a>
                             </div>
 
                             <!-- Phone -->
-                            <div class="mb-3 text-start login_phone">
+                            <div class="mb-3 text-start login_phone login_input">
                                 <div class="input-group">
                                     <span class="input-group-text bg-white text-dark border-0"><i class="bi bi-phone"></i>
                                         +91</span>
@@ -58,12 +58,12 @@
                             </div>
                             
                             <!-- User Id -->
-                            <div class="mb-3 text-start login_user_id" style="display:none;">
+                            <div class="mb-3 text-start login_user_id login_input" style="display:none;">
                                 <div class="input-group user_id_input">
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control shadow-none" name="user_id" value="" />
+                                <input type="text" class="form-control shadow-none" name="user_id" value="" placeholder="Enter User Id" />
                                 <a class="btn btn-dark getOtp" type="button" style="display:none;">Get OTP</a>
                                 </div>
                             </div>
@@ -207,6 +207,11 @@
             }
 
         })
+
+        $('.login_btn').click(function(){
+            $('.login_input').hide();
+            $(`.${$(this).attr('data-login')}`).show();
+        });
         
 
     </script>

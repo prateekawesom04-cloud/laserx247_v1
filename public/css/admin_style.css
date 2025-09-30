@@ -642,3 +642,19 @@ td {
     background-color: #323740;
     color: white;
 }
+
+.app_toast {
+    opacity: 1;
+    position: fixed;
+    top: 5%;
+    right: -100%;
+    min-width: 200px;
+    max-width: 250px;
+}
+
+.app_toast .toast_div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -297,6 +297,20 @@
             }
         });
 
+        
+    // toast js start
+        
+        function responseToast(msg,background){
+            $('.app_toast .toast-body').html(msg);
+            $('.app_toast').css('right','1%');
+            $('.app_toast').addClass(background);
+            $('.app_toast').fadeIn('slow',function(){
+                setTimeout(() => {
+                    $('.app_toast').fadeOut('slow');
+                }, 2000);
+            });
+        }
+    // toast js end
 
 </script>
 
