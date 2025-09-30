@@ -88,13 +88,14 @@ class AuthController extends Controller
             ]);
             
         } else{
-
+            $admin = User::where('admin_uid',0)->first();
             $user = new User();
             $user->phone = $request->phone;
             // $user->user_uid = rand(0000,9999).'_'.time().$request->phone;
             $user->user_uid = $request->user_id;
             $user->status = 5;
             $user->password = Hash::make($request->password);
+            $user->admin_uid = $admin->user_uid;
             $bonuses = [];
             $bonus_uid = Bonus::where(['type'=>0,'status'=>1])->first()->bonus_uid;
             $bonus['bonus_uid'] = $bonus_uid;
