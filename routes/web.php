@@ -195,7 +195,9 @@ Route::post('launchGame/callback', [GamesController::class,'launchGameCallback']
 
 Route::get('sportsbook', [GamesController::class,'sportsbook'])->name('sportsbook')->withoutMiddleware([VerifyCsrfToken::class]);
 
-Route::post('paymentRequest', [PaymentController::class,'paymentRequest'])->name('paymentRequest')->withoutMiddleware([VerifyCsrfToken::class]);
+Route::post('paymentGatewayMethod', [PaymentController::class,'paymentGatewayMethod'])->name('paymentGatewayMethod')->withoutMiddleware([VerifyCsrfToken::class]);
+
+Route::post('depositRequest', [PaymentController::class,'depositRequest'])->name('depositRequest')->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::post('paymentCallback', [PaymentController::class,'paymentCallback'])->name('paymentCallback')->withoutMiddleware([VerifyCsrfToken::class]);
 

@@ -10,7 +10,40 @@ use App\Models\User;
 class PaymentController extends Controller
 {
     //
-    public function paymentRequest(Request $request){
+
+    public function depositRequest(Request $request){
+        // dd($request->all());
+        $user = User::getCurrentUser();
+
+        if (!empty($request->allFiles())) {
+            $file = $request->file('payment_proof');
+            $request->payment_proof = '/'.$user->admin_uid.'/'.time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('', $request->payment_proof, 'public'); // Store in 'public/uploads'
+
+        }
+
+        $transaction = new Transaction();
+        $transaction->user_uid = $user->user_uid;
+        // $transaction->user_uid = '121';
+        $transaction->order_sn = $request->order_sn;
+        $transaction->wallet_before = $user->wallet_amount;
+        $transaction->transfer_amount = $request->transfer_amount;
+        $transaction->ip = $request->ip();
+        $transaction->status = 1;
+        $transaction->payment_type = 0;
+        $transaction->manual = 1;
+        $transaction->currency = "INR";
+        $transaction->remark = "user created deposit request";
+        $transaction->payment_proof = $request->payment_proof;
+        $transaction->save();
+        
+        return response()->json([
+            'message'=> 'Deposit Request Created Succesfully',
+            'response_code'=> '200'
+        ]);
+    }
+
+    public function paymentGatewayMethod(Request $request){
         
         $data = [];
         $data['app_id'] = env('LG_PAY_APP_ID');
@@ -128,44 +161,44 @@ class PaymentController extends Controller
     }
 
     public function createDepositRequest(Request $request){
-            $user = User::getCurrentUser();
-            $transaction = new Transaction();
-            $transaction->user_uid = $user->user_uid;
-            $transaction->order_sn = $request->order_sn;
-            $transaction->wallet_before = $user->wallet_before;
-            $transaction->transfer_amount = $request->transfer_amount;
-            $transaction->ip = $request->ip();
-            $transaction->status = 1;
-            $transaction->payment_type = 0;
-            $transaction->manual = 1;
-            $transaction->currency = "INR";
-            $transaction->remark = "remark001";
-            $transaction->save();
+        $user = User::getCurrentUser();
+        $transaction = new Transaction();
+        $transaction->user_uid = $user->user_uid;
+        $transaction->order_sn = $request->order_sn;
+        $transaction->wallet_before = $user->wallet_before;
+        $transaction->transfer_amount = $request->transfer_amount;
+        $transaction->ip = $request->ip();
+        $transaction->status = 1;
+        $transaction->payment_type = 0;
+        $transaction->manual = 1;
+        $transaction->currency = "INR";
+        $transaction->remark = "remark001";
+        $transaction->save();
 
-            return response()->json([
-                'message'=>'Deposit Request Created Succesfully',
-                'response_code'=> 200
-            ]);
+        return response()->json([
+            'message'=>'Deposit Request Created Succesfully',
+            'response_code'=> 200
+        ]);
     }
     
     public function createWithdrawalRequest(Request $request){
-            $user = User::getCurrentUser();
-            $transaction = new Transaction();
-            $transaction->user_uid = $user->user_uid;
-            $transaction->order_sn = time().$request->order_sn;
-            $transaction->wallet_before = $user->wallet_before;
-            $transaction->transfer_amount = $request->transfer_amount;
-            $transaction->ip = $request->ip();
-            $transaction->status = 1;
-            $transaction->payment_type = 1;
-            $transaction->manual = 1;
-            $transaction->currency = "INR";
-            $transaction->remark = "remark001";
-            $transaction->save();
+        $user = User::getCurrentUser();
+        $transaction = new Transaction();
+        $transaction->user_uid = $user->user_uid;
+        $transaction->order_sn = time().$request->order_sn;
+        $transaction->wallet_before = $user->wallet_before;
+        $transaction->transfer_amount = $request->transfer_amount;
+        $transaction->ip = $request->ip();
+        $transaction->status = 1;
+        $transaction->payment_type = 1;
+        $transaction->manual = 1;
+        $transaction->currency = "INR";
+        $transaction->remark = "remark001";
+        $transaction->save();
 
-            return response()->json([
-                'message'=>'Deposit Request Created Succesfully',
-                'response_code'=> 200
-            ]);
+        return response()->json([
+            'message'=>'Deposit Request Created Succesfully',
+            'response_code'=> 200
+        ]);
     }
 }

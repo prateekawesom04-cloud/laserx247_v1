@@ -65,7 +65,7 @@
                                     <td>{{($transaction->payment_type)?'-':$transaction->transfer_amount}}</td>
                                     <td>{{($transaction->payment_type)?$transaction->transfer_amount:'-'}}</td>
                                     <td>{{$available_balance}}</td>
-                                    <td>--</td>
+                                    <td><img src="{{asset('storage').$transaction->payment_proof}}" class="img-fluid rounded" style="width:40px;" onerror="$(this).remove()"></td>
                                     <td>{{($transaction->status==2)?'Success':(($transaction->status==1)?'Processing':'Failed')}}</td>
                                     <td>{{$transaction->remark}}</td>
                                     <td>

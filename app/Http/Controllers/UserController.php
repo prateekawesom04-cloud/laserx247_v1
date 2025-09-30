@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Bonus;
+use App\Models\Payment;
 use App\Models\UserBank;
 
 class UserController extends Controller
@@ -49,11 +50,13 @@ class UserController extends Controller
     public function deposit(Request $request){
         
         $user = $this->currentUser;
+        $agent = User::where('user_uid',$user->admin_uid)->where('status','>',0)->where('status','<',5)->first();
         $data = Transaction::where([
             'user_uid'=>$user->user_uid,
             'payment_type'=>'0'
         ])->get();
-        return view('account_pages.deposit',compact('data'));
+        $payments = Payment::where('admin_uid',$user->admin_uid)->get();
+        return view('account_pages.deposit',compact('data','agent','payments'));
 
     }
     

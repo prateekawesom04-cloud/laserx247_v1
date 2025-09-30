@@ -123,10 +123,7 @@
 
     
     function ajaxResponseModal(response){
-        // $('.modal').modal('hide');
-        // $('#responseModal').modal('show');
         if(response.message){
-            // $('#responseModal .model_body').html(response.message);
             if(response.response_code == 200){
                 responseToast(response.message,'bg-success');
                 setTimeout(() => {

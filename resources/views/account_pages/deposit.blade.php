@@ -72,19 +72,12 @@
             <!-- Scrollable Cards -->
             <div class="deposit-page-card-scroll-wrapper mb-3">
                 <div class="deposit-page-scrollable-cards">
-                    <div class="deposit-page-payment-card tab-btn active" data-tab="whatsapp">
-                        <div class="deposit-page-card-title">WhatsApp <br>Deposit</div>
-                        <img src="https://img.icons8.com/color/48/000000/whatsapp.png" class="deposit-page-card-icon" />
+                    @foreach($payments as $payment)
+                    <div class="deposit-page-payment-card tab-btn active" data-tab="{{$payment->payment_method}}">
+                        <div class="deposit-page-card-title">{{$payment->payment_method}}</div>
+                        <!-- <img src="https://img.icons8.com/color/48/000000/whatsapp.png" class="deposit-page-card-icon" /> -->
                     </div>
-                    <div class="deposit-page-payment-card tab-btn" data-tab="account">
-                        <div class="deposit-page-card-title">Account</div>
-                        <img src="https://img.icons8.com/color/48/000000/bank.png" class="deposit-page-card-icon" />
-                    </div>
-                    <div class="deposit-page-payment-card tab-btn" data-tab="upi">
-                        <div class="deposit-page-card-title">UPI</div>
-                        <img src="https://img.icons8.com/color/48/000000/google-pay-india.png"
-                            class="deposit-page-card-icon" />
-                    </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -92,130 +85,70 @@
             <div class="deposit-page-tab-content-area">
 
                 <!-- WhatsApp Tab -->
-                <div id="whatsapp-tab" class="deposit-page-tab-content-box">
-                    <div class="bg-dark p-3 rounded text-white">
-                        <p>For WhatsApp deposit, contact support via WhatsApp.</p>
-                    </div>
-                </div>
-
-                <!-- Account Tab -->
-                <div id="account-tab" class="deposit-page-tab-content-box deposit-page-d-none">
-                    <div class="bg-dark p-3 rounded text-white">
-                        <div class="deposit-page-info-row">
-                            <span>Bank Name:</span>
-                            <span class="deposit-page-value">Kotur Viyas bnk</span>
-                            <a class="deposit-page-copy-btn" data-copy="..."><i class="fa-regular fa-copy"></i></a>
-                        </div>
-                        <hr class="deposit-page-divider">
-                        <div class="deposit-page-info-row">
-                            <span>A/C No:</span>
-                            <span class="deposit-page-value">131304000000001</span>
-                            <a class="deposit-page-copy-btn" data-copy="..."><i class="fa-regular fa-copy"></i></a>
-                        </div>
-                        <hr class="deposit-page-divider">
-                        <div class="deposit-page-info-row">
-                            <span>IFSC Code:</span>
-                            <span class="deposit-page-value">KVBL0001313</span>
-                            <a class="deposit-page-copy-btn" data-copy="..."><i class="fa-regular fa-copy"></i></a>
-                        </div>
-                        <hr class="deposit-page-divider">
-                        <div class="deposit-page-info-row">
-                            <span>Account Name:</span>
-                            <span class="deposit-page-value">Mr Hinson mohammed</span>
-                            <a class="deposit-page-copy-btn" data-copy="..."><i class="fa-regular fa-copy"></i></a>
-                        </div>
-                        <hr class="deposit-page-divider">
-                        <div class="deposit-page-info-row"><span>Min Amount:</span><span
-                                class="deposit-page-value">300</span></div>
-                        <hr class="deposit-page-divider">
-                        <div class="deposit-page-info-row"><span>Max Amount:</span><span
-                                class="deposit-page-value">100000</span></div>
-                    </div>
-                </div>
-
-                <!-- UPI Tab -->
-                <div id="upi-tab" class="deposit-page-tab-content-box deposit-page-d-none">
-                    <div class="bg-dark p-3 rounded text-white">
-                        <div class="deposit-page-info-row">
-                            <span>Name:</span>
-                            <span class="deposit-page-value">Rahul Sharma</span>
-                            <a class="deposit-page-copy-btn" data-copy="..."><i class="fa-regular fa-copy"></i></a>
-                        </div>
-                        <hr class="deposit-page-divider">
-                        <div class="deposit-page-info-row">
-                            <span>UPI ID:</span>
-                            <span class="deposit-page-value">rahul@upi</span>
-                            <a class="deposit-page-copy-btn" data-copy="..."><i class="fa-regular fa-copy"></i></a>
-                        </div>
-                        <hr class="deposit-page-divider">
-                        <div class="deposit-page-info-row"><span>Min Amount:</span><span
-                                class="deposit-page-value">200</span></div>
-                        <hr class="deposit-page-divider">
-                        <div class="deposit-page-info-row"><span>Max Amount:</span><span
-                                class="deposit-page-value">100000</span></div>
-                        <hr class="deposit-page-divider">
-                        <div class="text-center mt-2">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=rahul@upi&size=120x120"
-                                alt="QR Code" class="img-fluid rounded">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row gx-3 mt-3 mb-3">
-                <!-- Common Section (col-12) -->
-                <div class="col-12 mb-3">
-                    <div class="row gx-3">
-                        <!-- 1. How to Transfer UPI to Bank -->
-                        <div class="col-md-6">
-                            <div class="bg-dark p-2 rounded text-white text-center common-deposit-text-size h-100">
-                                <h6 class="fw-semibold mb-2">How to Transfer UPI to Bank</h6>
-                                <p class="mb-0">
-                                    Click here:
-                                    <a href="https://www.upitobank.info" target="_blank" class="text-info">
-                                        www.upitobank.info
-                                    </a>
-                                </p>
+                @foreach($payments as $payment)
+                    @if(str_contains($payment->payment_method_uid, 'img/'))
+                    <!-- UPI Tab -->
+                    <div id="{{$payment->payment_method}}-tab" class="deposit-page-tab-content-box deposit-page-d-none">
+                        <div class="bg-dark p-3 rounded text-white">
+                            <!-- <div class="deposit-page-info-row">
+                                <span>Holder Name:</span>
+                                <span class="deposit-page-value">{{$payment->holder_name}}</span>
+                                <a class="deposit-page-copy-btn" data-copy="..."><i class="fa-regular fa-copy"></i></a>
                             </div>
-                        </div>
-
-                        <!-- 2. Payment Related Issues -->
-                        <div class="col-md-6">
-                            <div class="bg-dark p-2 rounded text-white text-center common-deposit-text-size h-100">
-                                <h6 class="fw-semibold mb-2">For Payment Related Issues</h6>
-                                <a href="https://wa.me/919999999999" target="_blank" class="btn btn-success">
-                                    <i class="fab fa-whatsapp"></i> Contact on WhatsApp
-                                </a>
+                            <hr class="deposit-page-divider"> -->
+                            <div class="text-center mt-2">
+                                <img src="{{asset('storage').$payment->payment_method_uid}}"
+                                    alt="QR Code" class="img-fluid rounded">
                             </div>
                         </div>
                     </div>
-                </div>
+                    @else
+                    <div id="{{$payment->payment_method}}-tab" class="deposit-page-tab-content-box deposit-page-d-none">
+                        <div class="bg-dark p-3 rounded text-white">
+                            <div class="deposit-page-info-row">
+                                <span>Holder Name:</span>
+                                <span class="deposit-page-value">{{$payment->holder_name}}</span>
+                                <a class="deposit-page-copy-btn" data-copy="..."><i class="fa-regular fa-copy"></i></a>
+                            </div>
+                            <hr class="deposit-page-divider">
+                            <div class="deposit-page-info-row">
+                                <span>Payment Id:</span>
+                                <span class="deposit-page-value">{{$payment->payment_method_uid}}</span>
+                                <a class="deposit-page-copy-btn" data-copy="..."><i class="fa-regular fa-copy"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                @endforeach
             </div>
 
-            <!-- 3. Unique Transaction Reference Card -->
-            <div class="bg-dark p-3 rounded text-white mt-3 mb-3 common-deposit-text-size">
-                <div class="mb-3">
-                    <label for="utrNumber" class="form-label">Unique Transaction Reference (UTR)</label>
-                    <input type="text" id="utrNumber" class="form-control"
-                        placeholder="Enter 6 to 12 Digit UTR Number">
-                </div>
-            </div>
+            <form id="depositRequest">
 
-            <!-- 4. Payment Proof Upload Card -->
-            <div class="bg-dark p-2 rounded text-white mt-3 mb-3 common-deposit-text-size">
-                <div class="mb-3">
-                    <label class="form-label">Upload Your Payment Proof</label>
-                    <input type="file" id="paymentProof" class="form-control">
+                <!-- 3. Unique Transaction Reference Card -->
+                <div class="bg-dark p-3 rounded text-white mt-3 mb-3 common-deposit-text-size">
+                    <div class="mb-3">
+                        <label for="utrNumber" class="form-label">Unique Transaction Reference (UTR)</label>
+                        <input name="order_sn" type="text" id="utrNumber" class="form-control"
+                            placeholder="Enter 6 to 12 Digit UTR Number">
+                    </div>
                 </div>
-            </div>
-
-            <!-- 5. Amount Card -->
-            <div class="bg-dark p-2 rounded text-white mt-3 mb-3 common-deposit-text-size">
-                <div class="mb-3">
-                    <label for="utrAmount" class="form-label">Amount</label>
-                    <input type="text" id="utrAmount" class="form-control" placeholder="Enter Amount">
+    
+                <!-- 4. Payment Proof Upload Card -->
+                <div class="bg-dark p-2 rounded text-white mt-3 mb-3 common-deposit-text-size">
+                    <div class="mb-3">
+                        <label class="form-label">Upload Your Payment Proof</label>
+                        <input name="payment_proof" type="file" id="paymentProof" class="form-control">
+                    </div>
                 </div>
-            </div>
+    
+                <!-- 5. Amount Card -->
+                <div class="bg-dark p-2 rounded text-white mt-3 mb-3 common-deposit-text-size">
+                    <div class="mb-3">
+                        <label for="utrAmount" class="form-label">Amount</label>
+                        <input name="transfer_amount" type="text" id="transfer_amount" class="form-control" placeholder="Enter Amount">
+                    </div>
+                </div>
+            </form>
 
             <!-- 6. Terms and Conditions Card -->
             <div class="form-check mb-4 common-deposit-text-size">
@@ -226,7 +159,7 @@
                 </label>
             </div>
 
-            <a class="btn btn-success w-100 mb-3">SUBMIT</a>
+            <a class="btn btn-success w-100 mb-3 createManualRequest">SUBMIT</a>
 
         </div>
 
@@ -325,7 +258,7 @@
 
 @section('js')
     <script>
-        function paymentRequest(response) {
+        function paymentGatewayMethod(response) {
             response = JSON.parse(response.response);
             if (response.data['pay_url']) {
                 window.location.href = response.data['pay_url'];
@@ -345,11 +278,15 @@
             data.money = amount;
 
             // Make API call
-            callApi('post', 'paymentRequest', data, paymentRequest);
-
-            // Optional: switch section
-            $('#deposit-section').addClass('d-none');
-            $('#new-section').removeClass('d-none');
+            @if($agent)
+                // callApi('post', 'paymentGatewayMethod', data, paymentGatewayMethod);
+                // Optional: switch section
+                $('#deposit-section').addClass('d-none');
+                $('#new-section').removeClass('d-none');
+            @else
+                callApi('post', 'paymentGatewayMethod', data, paymentGatewayMethod);
+            @endif
+            
         } else {
             alert('Please Enter Amount more than 200');
         }
@@ -360,6 +297,7 @@
         $('.amount-btn').removeClass('active');
         $(this).addClass('active');
         $('#depositAmount').val($(this).attr('data-amount'));
+        $('#transfer_amount').val($(this).attr('data-amount'));
     });
 
     // Copy button
@@ -376,5 +314,15 @@
         $('.deposit-page-tab-content-box').addClass('deposit-page-d-none');
         $('#' + tab + '-tab').removeClass('deposit-page-d-none');
     });
+
+    $(document).ready(function(){
+        $($('.deposit-page-tab-content-box')[0]).removeClass('deposit-page-d-none');
+    });
+
+    $('.createManualRequest').on('click',function(){
+        let formData = new FormData($('#depositRequest')[0]);
+        callAdminApi('post', 'depositRequest', formData, ajaxResponseModal);
+    });
+    
 </script>
 @endsection

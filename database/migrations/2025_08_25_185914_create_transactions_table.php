@@ -23,6 +23,7 @@ return new class extends Migration
             $table->tinyInteger('manual');
             $table->string('currency');
             $table->string('remark');
+            $table->string('payment_proof')->nullable();
             $table->json('additional_data');
             $table->timestamps();
         });

@@ -20,7 +20,7 @@ $('.submitForm').click(function(){
 });
 
 $('.submit_modal').click(function(){
-    submitFormGlobal(this,{{$userData->user_uid}});
+    submitFormGlobal(this,'{{$userData->user_uid}}');
 });
 
 function adminForms(response){

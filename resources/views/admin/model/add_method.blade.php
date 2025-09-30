@@ -12,6 +12,7 @@
             <!-- Modal Body with Form -->
             <div class="modal-body modal-body-dark formParntClassname">
                 <form id="methodForm" data-m_key="payments">
+                    <input type="hidden" name="status" value="1">
                     <div class="mb-3">
                         <label for="methodType" class="form-label">Select Type</label>
                         <select class="form-select form-select-sm modal-body-dark" id="methodType" name="payment_method"
