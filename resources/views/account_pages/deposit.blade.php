@@ -98,7 +98,7 @@
                             <hr class="deposit-page-divider"> -->
                             <div class="text-center mt-2">
                                 <img src="{{asset('storage').$payment->payment_method_uid}}"
-                                    alt="QR Code" class="img-fluid rounded">
+                                    alt="QR Code" class="img-fluid rounded" style="max-height:400px;">
                             </div>
                         </div>
                     </div>
