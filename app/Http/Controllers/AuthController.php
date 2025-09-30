@@ -18,13 +18,13 @@ class AuthController extends Controller
     public function login(Request $request){
         // dd('request',$request);
         // return response()->json($request);
-        if($request->user_id){
+        if($request->user_uid){
             $user = User::where([
-                'user_uid'=>$request->user_id,
+                'user_uid'=>$request->user_uid,
                 'status'=>5
             ])->first();
 
-        } else{
+        } else if($request->phone){
             $user = User::where([
                 'phone'=>$request->phone,
                 'status'=>5

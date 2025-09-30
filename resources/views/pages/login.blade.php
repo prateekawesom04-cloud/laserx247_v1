@@ -63,7 +63,7 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control shadow-none" name="user_id" value="" placeholder="Enter User Id" />
+                                <input type="text" class="form-control shadow-none" name="user_uid" value="" placeholder="Enter User Id" />
                                 <a class="btn btn-dark getOtp" type="button" style="display:none;">Get OTP</a>
                                 </div>
                             </div>
@@ -161,10 +161,12 @@
 
         function loginUser() {
             let phoneRegex = '/^\d{10}$/';
+            let user_uid = $('input[name=user_uid]').val();
             let phone = $('input[name=phone]').val();
             let password = $('input[name=password]').val();
 
             let pdata = {
+                user_uid: $('input[name=user_uid]').val(),
                 phone: $('input[name=phone]').val(),
                 password: $('input[name=password]').val(),
                 otp: $('input[type=radio]:checked').val()
