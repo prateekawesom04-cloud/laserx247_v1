@@ -321,8 +321,24 @@
 
     $('.createManualRequest').on('click',function(){
         let formData = new FormData($('#depositRequest')[0]);
-        callAdminApi('post', 'depositRequest', formData, ajaxResponseModal);
+        callAdminApi('post', 'depositRequest', formData, createManualRequest);
     });
+
+        
+    function createManualRequest(response){
+        if(response.message){
+            if(response.response_code == 200){
+                responseToast(response.message,'bg-success');
+                setTimeout(() => {
+                        window.location.href = '{{url('/')}}';
+                }, 1000);
+            } else{
+                responseToast(response.message,'bg-danger');
+            }
+        } else{
+            responseToast(response,'bg-warning');
+        }
+    }
     
 </script>
 @endsection
