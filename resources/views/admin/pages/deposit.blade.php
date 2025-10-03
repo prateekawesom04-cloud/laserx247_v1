@@ -51,11 +51,16 @@
                             <tbody>
                                 @foreach($transactions as $transaction)
                                     @php
+                                    if($transaction->status==2){
                                         if($transaction->payment_type){
                                             $available_balance = (int) $transaction->wallet_before - (int) $transaction->transfer_amount;
                                         } else{
                                             $available_balance = (int) $transaction->wallet_before + (int) $transaction->transfer_amount;
                                         }
+
+                                    } else{
+                                        $available_balance = (int) $transaction->wallet_before;
+                                    }
                                     @endphp
                                 <tr>
                                     <td>{{$transaction->created_at}}</td>
