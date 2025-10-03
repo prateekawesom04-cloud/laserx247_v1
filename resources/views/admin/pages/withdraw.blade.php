@@ -91,12 +91,12 @@
                     </div>
 
                 <!-- Bottom Controls -->
-                <div
+                {{-- <div
                     class="d-flex flex-column flex-md-row justify-content-between align-items-stretch align-items-md-center gap-2 mt-3">
                     <a class="btn acc-btn-clear w-100 w-md-auto">Clear All</a>
                     <input type="password" class="form-control acc-password-input w-100 w-md-auto" placeholder="•••••••">
                     <a class="btn acc-btn-submit w-100 w-md-auto">Submit Payment</a>
-                </div>
+                </div> --}}
 
                 <!-- Entry Info -->
                 <div class="mt-3 text-end">

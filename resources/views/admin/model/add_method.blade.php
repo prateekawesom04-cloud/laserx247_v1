@@ -60,6 +60,10 @@
         } else if (selected === 'qrcode') {
             dynamicFields.innerHTML = `
                 <div class="mb-2">
+                    <label for="accountName" class="form-label">Account Holder Name</label>
+                    <input type="text" class="form-control form-control-sm" id="accountName" name="holder_name" required>
+                </div>
+                <div class="mb-2">
                     <label for="qrUpload" class="form-label">Upload QR Code</label>
                     <input type="file" class="form-control form-control-sm" id="qrUpload" name="payment_method_uid" accept="image/*" required>
                 </div>
@@ -82,12 +86,20 @@
         } else if (selected === 'phonepe' || selected === 'gpay' || selected === 'paytm') {
             dynamicFields.innerHTML = `
                 <div class="mb-2">
+                    <label for="accountName" class="form-label">Account Holder Name</label>
+                    <input type="text" class="form-control form-control-sm" id="accountName" name="holder_name" required>
+                </div>
+                <div class="mb-2">
                     <label for="mobileNumber" class="form-label">Mobile Number</label>
                     <input type="text" class="form-control form-control-sm" id="mobileNumber" name="payment_method_uid" required>
                 </div>
             `;
         } else if (selected === 'usdt') {
             dynamicFields.innerHTML = `
+                <div class="mb-2">
+                    <label for="accountName" class="form-label">Account Holder Name</label>
+                    <input type="text" class="form-control form-control-sm" id="accountName" name="holder_name" required>
+                </div>
                 <div class="mb-2">
                     <label for="usdtId" class="form-label">USDT Wallet Id</label>
                     <input type="text" class="form-control form-control-sm" id="usdtId" name="payment_method_uid" required>
