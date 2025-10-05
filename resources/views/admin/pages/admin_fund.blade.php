@@ -7,15 +7,11 @@
             <h4 class="mb-0">Admin Fund</h4>
         </div>
         <form class="px-4">
+            <input type="hidden" name="user_uid" value="{{$userData->user_uid}}">
             <!-- Group 1: Current Balance, Remarks, Total Balance -->
             <div class="mb-3">
                 <label for="currentBalance" class="form-label">Current Balance</label>
                 <input type="text" class="form-control" id="currentBalance" value="{{$userData->wallet_amount}}" disabled>
-            </div>
-
-            <div class="mb-3">
-                <label for="remarks" class="form-label">Remarks</label>
-                <input type="text" class="form-control" id="remarks" placeholder="Enter Remark..">
             </div>
 
             <div class="mb-3">
@@ -26,21 +22,35 @@
             <!-- Group 2: Password, Deposit Fund -->
             <div class="row mb-3">
                 <div class="col-12 col-md-6">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter Password..">
+                    <label for="depositFund" class="form-label">Deposit Fund</label>
+                    <input type="number" name="depositFund" class="form-control" id="depositFund" placeholder="Enter Deposit..">
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <label for="depositFund" class="form-label">Deposit Fund</label>
-                    <input type="number" class="form-control" id="depositFund" placeholder="Enter Deposit..">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="masterPassword" class="form-control" id="password" placeholder="Enter Password..">
                 </div>
+
             </div>
 
             <!-- Submit Button -->
             <div class="text-center">
-                <a type="submit" class="btn btn-primary w-100 mb-2 py-2">Submit</a>
+                <a type="submit" class="btn btn-primary w-100 mb-2 py-2 addFund">Submit</a>
             </div>
         </form>
     </div>
 </div>
+@endsection
+
+@section('js')
+
+<script>
+    $('.addFund').click(function(){
+        // $(this).addClass('disabled');
+        let formData = new FormData($('form')[0]);
+        callAdminApi('post','{{route("addFund")}}',formData,ajaxResponse);
+    });
+    
+</script>
+
 @endsection

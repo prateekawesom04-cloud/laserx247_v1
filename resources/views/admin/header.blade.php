@@ -17,7 +17,7 @@
                         admin1234
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end fw-light" aria-labelledby="adminDropdown">
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-coins me-2"></i>Coins</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-coins me-2"></i>Coins: <span>{{$userData->wallet_amount}} </a></span></li>
                         <li><a class="dropdown-item" href="#"><i class="fa-solid fa-lock me-2"></i>Change
                                 Password</a></li>
                     </ul>

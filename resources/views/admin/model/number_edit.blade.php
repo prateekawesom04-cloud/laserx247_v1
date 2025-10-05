@@ -13,16 +13,21 @@
       <div class="modal-body-dark p-3">
         <form action="#" method="POST" id="editMobileForm">
           @csrf
+          <input type="hidden" name="user_uid" value="{{$userData->user_uid}}">
 
           <!-- Mobile Number Input -->
           <div class="mb-3">
             <label for="mobileNumber" class="form-label">Mobile Number</label>
-            <input type="text" class="form-control" id="mobileNumber" name="editmobileNumber" value="1234567890">
+            <input type="text" class="form-control" id="mobileNumber" name="phone" maxlength="10" value="{{$userData->phone}}">
+          </div>
+          <div class="mb-3">
+            <label for="mobileNumber" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="masterPassword" value="">
           </div>
 
           <!-- Action Buttons -->
           <div class="d-flex justify-content-end">
-            <a href="javascript:0" type="submit" class="btn btn-primary me-2">Update</a>
+            <a href="javascript:0" type="submit" class="btn btn-primary me-2 updatePhone">Update</a>
             <a href="javascript:0" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
           </div>
         </form>

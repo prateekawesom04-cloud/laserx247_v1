@@ -14,22 +14,35 @@
                         <th scope="col">Mobile</th>
                         <th scope="col">User Name</th>
                         <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
+                        <!-- <th scope="col">Delete</th> -->
                     </tr>
                 </thead>
                 <tbody id="bannerTableBody">
                     <tr>
-                        <td>1234567890</td>
-                        <td>Freen</td>
+                        <td>{{$userData->phone}}</td>
+                        <td>{{$userData->user_uid}}</td>
                         <td><a href="#" class="btn btn-warning btn-sm px-3 py-1"data-bs-toggle="modal"
                                         data-bs-target="#editMobileModal"data-bs-placement="top" title="Edit">✍️</a></td>
-                        <td>
+                        <!-- <td>
                          <a href="#" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                                        data-bs-target="#deleteConfirmationModal"data-bs-placement="top" title="Delete">🗑️</a></td>
+                                        data-bs-target="#deleteConfirmationModal"data-bs-placement="top" title="Delete">🗑️</a></td> -->
                     </tr>
                 </tbody>
             </table>
         </form>
     </div>
 </div>
+@endsection
+
+@section('js')
+
+<script>
+    $('.updatePhone').click(function(){
+        // $(this).addClass('disabled');
+        let formData = new FormData($('#editMobileForm')[0]);
+        callAdminApi('post','{{route("updatePhone")}}',formData,ajaxResponse1);
+    });
+    
+</script>
+
 @endsection

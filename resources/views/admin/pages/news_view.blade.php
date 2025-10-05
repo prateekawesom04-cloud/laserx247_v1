@@ -10,7 +10,7 @@
                 <!-- Add Message Button on the right side -->
                 <div class="d-flex justify-content-end mb-3 p-2">
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMessageModal">
-                        Add Message
+                        Add News
                     </a>
                 </div>
 

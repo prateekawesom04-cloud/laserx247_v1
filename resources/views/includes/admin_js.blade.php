@@ -118,7 +118,14 @@
         if(response.response_code == 200){
             window.location.href = '{{url()->previous()}}';
         }
-        alert(response.message);
+        responseToast(response.message,'bg-warning');
+    }
+    
+    function ajaxResponse1(response){
+        if(response.response_code == 200){
+            window.location.href = '{{url()->current()}}';
+        }
+        responseToast(response.message,'bg-warning');
     }
 
     

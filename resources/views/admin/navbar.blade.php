@@ -62,7 +62,9 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">⚙️My Setting</a>
                 <ul class="dropdown-menu">
+                    @if($userData->status==0)
                     <li><a class="dropdown-item" href="{{ route('admin.admin_fund') }}">💰Admin Fund</a></li>
+                    @endif
                     <li><a class="dropdown-item" href="{{ route('admin.news_view') }}">📰News</a></li>
                     <li>
                         <a class="dropdown-item" href="{{ route('admin.user_general_setting') }}">👥User General

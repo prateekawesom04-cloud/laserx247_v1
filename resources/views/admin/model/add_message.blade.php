@@ -6,7 +6,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header modal-header-dark py-2">
-                <h5 class="modal-title fs-6" id="addMessageModalLabel">Add Message</h5>
+                <h5 class="modal-title fs-6" id="addMessageModalLabel">Enter News</h5>
                 <a type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></a>
             </div>
             <!-- Modal Body with Form -->

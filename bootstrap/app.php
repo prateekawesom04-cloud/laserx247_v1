@@ -17,13 +17,14 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         //
         $middleware->web(append: [
-            \App\Http\Middleware\CustomSessionMiddleware::class,
+            // \App\Http\Middleware\CustomSessionMiddleware::class,
         ]);
 
         $middleware->alias([
             'auth_middleware' => \App\Http\Middleware\AuthMiddleware::class,
             'auth_check_middleware' => \App\Http\Middleware\AuthCheckMiddleware::class,
             'custom_session_middleware' => \App\Http\Middleware\CustomSessionMiddleware::class,
+            'custom_admin_session_middleware' => \App\Http\Middleware\CustomAdminSessionMiddleware::class,
             'admin_auth_middleware' => \App\Http\Middleware\AdminAuthMiddleware::class,
             'admin_auth_check_middleware' => \App\Http\Middleware\AdminAuthCheckMiddleware::class,
         ]);

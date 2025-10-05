@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Appdata;
 
-class CustomSessionMiddleware
+class CustomAdminSessionMiddleware
 {
     /**
      * Handle an incoming request.
@@ -31,8 +31,15 @@ class CustomSessionMiddleware
         
         $domain = $request->host();
 
-        $userData = User::getCurrentUser();
-        // dd($userData);
+        $userData='';
+        if(Session::has('admin_session')){
+            $userData = explode('_user_',Session::get('admin_session'));
+            $userData = $userData[1];
+            $userData = User::getCurrentUser('user_uid', $userData);           
+        } else{
+            $userData = User::getCurrentUser();
+        }
+        
         if(!empty($userData)){
 
             $userAdmin = User::where('user_uid', $userData->admin_uid)->whereIn('status',[1,2,3,4])->first();

@@ -294,12 +294,31 @@ class AdminDataController extends Controller
         return view('admin.pages.commission');
     }
     
+    public function addFund(Request $request){
+        if(!$this->checkMasterPassword($request->masterPassword)){
+            return response()->json([
+                'error'=> 'wrong master password',
+                'response_code'=>'400'
+            ]);
+        }
+        $user = User::where('user_uid',$request->user_uid)->first();
+        $user->wallet_amount += $request->depositFund;
+        $user->save();
+        return response()->json([
+            'error'=> 'Fund Added Successfully',
+            'response_code'=>'200'
+        ]);
+    }
+    
+
     public function news_view(Request $request){
         $domain = $request->host();
         $news  = [];
-        $appData = Appdata::where('app_domain',$domain)->first();
+        // $appData = Appdata::where('app_domain',$domain)->first();
+        $appData = User::getCurrentUser();
         $additional_data = json_decode($appData->additional_data);
-        if($additional_data != ''){
+        // dd($additional_data);
+        if($additional_data){
             if(property_exists($additional_data,'marquee')){
                 $news = $additional_data->marquee;
             }
@@ -311,7 +330,8 @@ class AdminDataController extends Controller
     public function update_news(Request $request){
         $newsData = [];
         $domain = $request->host();
-        $appData = Appdata::where('app_domain',$domain)->first();
+        // $appData = Appdata::where('app_domain',$domain)->first();
+        $appData = User::getCurrentUser();
         $additional_data = json_decode($appData->additional_data,true);
         $newsData['news_id'] = isset($additional_data['marquee'])?count($additional_data['marquee']):0;
         $newsData['news'] = $request->news;
@@ -333,7 +353,8 @@ class AdminDataController extends Controller
     public function delete_news(Request $request){
         $newsData = [];
         $domain = $request->host();
-        $appData = Appdata::where('app_domain',$domain)->first();
+        // $appData = Appdata::where('app_domain',$domain)->first();
+        $appData = User::getCurrentUser();
         $additional_data = json_decode($appData->additional_data,true);
         unset($additional_data['marquee'][$request->news_id]);
         $appData->additional_data = json_encode($additional_data);
@@ -341,6 +362,22 @@ class AdminDataController extends Controller
 
         return response()->json([
             'redirect'=> url()->previous(),
+            'response_code'=>'200'
+        ]);
+    }
+
+    public function updatePhone(Request $request){
+        if(!$this->checkMasterPassword($request->masterPassword)){
+            return response()->json([
+                'error'=> 'wrong master password',
+                'response_code'=>'400'
+            ]);
+        }
+        $user = User::where('user_uid',$request->user_uid)->first();
+        $user->phone = $request->phone;
+        $user->save();
+        return response()->json([
+            'error'=> 'Phone Updated Successfully',
             'response_code'=>'200'
         ]);
     }

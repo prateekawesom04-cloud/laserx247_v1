@@ -7,6 +7,8 @@
         <div class="container-fluid">
             <div class="">
                 <!-- News Bar -->
+                 @if($userData)
+                 @if(count($news))
                 <div class="text-white d-flex align-items-center w-100 px-2" style="background:#000;">
                     <span class="me-2"><i class="fas fa-microphone text-warning"></i></span>
                     <strong class="me-2">News:</strong>
@@ -16,6 +18,8 @@
                         @endforeach
                     </marquee>
                 </div>
+                @endif
+                @endif
     
                 <!-- Main Banner -->
                 <div class="p-0">
