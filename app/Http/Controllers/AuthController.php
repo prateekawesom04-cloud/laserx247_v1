@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Admin\AdminDataController;
+use App\Models\User;
+use App\Models\Bonus;
+use App\Models\Activity;
 
 class AuthController extends Controller
 {
@@ -15,9 +18,18 @@ class AuthController extends Controller
     public function login(Request $request){
         // dd('request',$request);
         // return response()->json($request);
-        $user = User::where([
-            'phone'=>$request->phone
-        ])->first();
+        if($request->user_uid){
+            $user = User::where([
+                'user_uid'=>$request->user_uid,
+                'status'=>5
+            ])->first();
+
+        } else if($request->phone){
+            $user = User::where([
+                'phone'=>$request->phone,
+                'status'=>5
+            ])->first();
+        }
 
         if(empty($user)){
             return response()->json([
@@ -25,21 +37,39 @@ class AuthController extends Controller
                 'error_code'=> '104'
             ]);
         }
-        if(Hash::check($request->password,$user->password)){
-            Session::put([
-                'user_session'=>$user->id.'_user_'.$user->user_uid,
-                'user_uid'=>$user->user_uid
-            ]);
-            return True;
+        if($request->otp!=1){
+
+            if(Hash::check($request->password,$user->password)){
+                Session::put([
+                    'user_session'=>$user->id.'_user_'.$user->user_uid,
+                    'user_uid'=>$user->user_uid
+                ]);
+            } else{
+                return response()->json([
+                    'error'=> 'Wrong Password',
+                    'error_code'=> '105'
+                ]);
+            }
+
         } else{
-            return response()->json([
-                'error'=> 'Wrong Password',
-                'error_code'=> '105'
-            ]);
+            if(Session::get('login_otp_'.$request->phone.'verified')){
+                Session::put([
+                    'user_session'=>$user->id.'_user_'.$user->user_uid,
+                    'user_uid'=>$user->user_uid
+                ]);
+            }
         }
+        
+        $activity = new Activity();
+        $activity->user_uid = $user->user_uid;
+        $activity->ip = $request->ip();
+        $activity->login_status = 1;
+        $activity->save();
+        return True;
     }
 
     public function register(Request $request){
+        
         $rules = [
             'phone' => 'required|numeric|digits:10',
             'password' => 'required|min:6',
@@ -57,15 +87,70 @@ class AuthController extends Controller
                 'error_code'=> '105'
             ]);
             
-            // return response()->json($errors);
         } else{
-            $user = new User;
+            $admin = User::where('admin_uid',0)->first();
+            $user = new User();
             $user->phone = $request->phone;
-            $user->user_uid = $request->phone.'_'.date("Y_m_d");
+            // $user->user_uid = rand(0000,9999).'_'.time().$request->phone;
+            $user->user_uid = $request->user_id;
+            $user->status = 5;
             $user->password = Hash::make($request->password);
+            $user->admin_uid = $admin->user_uid;
+            $bonuses = [];
+            $bonus_uid = Bonus::where(['type'=>0,'status'=>1])->first()->bonus_uid;
+            $bonus['bonus_uid'] = $bonus_uid;
+            $bonus['amount'] = 0.00;
+            $bonus['wager_amount'] = 0.00;
+            $bonus['bonus_applied_date'] = now();
+            $bonus['claim_status'] = 0;
+            $bonuses[$bonus_uid] = $bonus;
+
+            $emptyObject = [];
+            $stakes = ['100','200','500','1000','2000'];
+            $emptyObject['stakes'] = $stakes;
+            $emptyObject['bonusData'] = $bonuses;
+            $user->referral_code = substr(time(),2,3).rand(0000,9999);
+            $user->additional_data = json_encode($emptyObject);
             $user->save();
+            
+            if($request->referral_code){
+
+                $referralUser = User::where('referral_code',$request->referral_code)->first();
+                if($referralUser){
+                    $user = User::where('user_uid',$request->user_id)->first();
+                    if($referralUser->status<5){
+                        $user->admin_uid = $referralUser->user_uid;
+                    }
+                    $user->referral = $referralUser->phone;
+                    $bonus = [];
+                    $bonus_uid = Bonus::where(['type'=>1,'status'=>1])->first()->bonus_uid;
+                    $bonus['bonus_uid'] = $bonus_uid;
+                    $bonus['amount'] = 0.00;
+                    $bonus['wager_amount'] = 0.00;
+                    $bonus['bonus_applied_date'] = date("Y-m-d H:i:s");
+                    $bonus['claim_status'] = 0;
+                    $user_additional_data = json_decode($user->additional_data,true);
+                    $user_additional_data['bonusData'][$bonus_uid] = $bonus;
+                    $user->additional_data = json_encode($user_additional_data);
+                    $user->save();
+
+                    
+                    $referralUser->referral_nos += 1;
+                    $referralUser->save();
+                
+                }
+            // } else{
+
+            }
+
 
             Session::put(['user_session'=>$user->id.'_user_'.$user->user_uid]);
+
+            // foreach ($bonuses as $bonus) {
+                
+            //     (new AdminDataController())->assignBonus($request->user_id,$bonus);
+            // }
+
             return True;
             // return redirect()->route('index');
             
@@ -87,7 +172,10 @@ class AuthController extends Controller
             foreach ($validator->errors()->messages() as $key => $value) {
                 $errors[] = $value[0];
             }
-            return response()->json($errors);
+            return response()->json([
+                'error'=> $errors[0],
+                'error_code'=> '105'
+            ]);
         } else{
             $user = User::where([
                 'phone'=>$request->phone
@@ -101,30 +189,179 @@ class AuthController extends Controller
 
     }
 
-    public function getOtp($phone){
-
-        $otp = random_int(100000, 999999);
-
-        session('user_otp',$otp);
-        session('otp_expiry_time',time() + (5 * 60));
-        return $otp;
+    public function changePassword(Request $request){
+        // dd($request->all());
+        $rules = [
+            'oldPassword' => 'required',
+            'newPassword' => 'required|min:6',
+            'confirmPassword' => 'required|same:newPassword',
+        ];
+        
+        $validator = Validator::make($request->all(), $rules);
+        $errors = [];
+        if($validator->fails()){
+            foreach ($validator->errors()->messages() as $key => $value) {
+                $errors[] = $value[0];
+            }
+            return response()->json([
+                'error'=>$errors[0]
+            ]);
+        } else{
+            if($request->phone){
+                $user = User::where([
+                    'phone'=>$request->phone
+                ])->first();
+            } else if($request->user_uid){
+                $user = User::where([
+                'user_uid'=>$request->user_uid
+                ])->first();
+            } else{
+                return response()->json([
+                    'error'=> 'Provide Some Id',
+                    'error_code'=> '402'
+                ]);
+            }
+            // $user = User::getCurrentUser();
+            // dd($user);
+            if(!Hash::check($request->oldPassword,$user->password)){
+                return response()->json([
+                    'error'=> 'Old Password Mismatched',
+                    'error_code'=> '401'
+                ]);
+            }
+            $user->password = Hash::make($request->newPassword);
+            $user->save();
+            
+            return response()->json([
+                'error'=> 'success',
+                'error_code'=> '200'
+            ]);
+            
+        }
 
     }
 
-    public function verifyOtp($otp){
+    // public function getOtp(Request $request){
 
-        if (time() < session('otp_expiry_time')){
-            if($otp == session('user_otp')){
-                return True;
+    //     $otp = random_int(100000, 999999);
+
+    //     Session::put('user_otp_'.$request->phone,$otp);
+    //     Session::put('otp_expiry_time',time() + (60));
+
+    //     $data = [
+    //         'APIKey'=>env('SMS_API_KEY'),
+    //         // 'user'=>'awesomecart',
+    //         // 'password'=>'Awesomecart@612',
+    //         'senderid'=>'AWSMCT',
+    //         'channel'=>'Trans',
+    //         'DCS'=>0,
+    //         'flashsms'=>0,
+    //         'number'=>$request->phone,
+    //         'text'=>'Your OTP is '.$otp.'. This code is valid for the next 10 min. Please enter it on the website/app for login AWESOMCART. Regards, AWSMCT',
+    //         'route'=>'2',
+    //         'peid'=>'1701169875173062064',
+    //         'DLTTemplateId'=>'1707174046951830675'
+    //     ];
+
+    //     $string = http_build_query($data);
+
+    //     $smsUrl = "http://bulksms.actinnsol.com/api/mt/SendSMS?".$string;
+
+    //     $ch = curl_init();
+        
+    //     curl_setopt($ch, CURLOPT_URL, $smsUrl);
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //     $response = curl_exec($ch);
+    //     if (curl_errno($ch)) {
+    //         echo 'cURL Error: ' . curl_error($ch);
+    //     }
+    //     curl_close($ch);
+
+    //     return response()->json([
+    //         'phone'=>$request->phone,
+    //         'smsResponse'=>$response
+    //     ]);
+    // }
+    
+    public function getOtp(Request $request){
+        
+        if($request->otptype == 'login'){
+            $user = User::where([
+                'phone'=>$request->phone
+            ])->first();
+            
+            if(!$user){
+                return response()->json([
+                    'error'=> 'User not found',
+                    'error_code'=> '104'
+                ]);
             }
         }
-        return False;
         
+        $otp = random_int(100000, 999999);
+
+        Session::put('user'.$request->otptype.'_otp_'.$request->phone,$otp);
+        Session::put($request->otptype.'otp_expiry_time',time() + (60));
+
+        $data = [
+            'APIKey'=>env('SMS_API_KEY'),
+            // 'user'=>'awesomecart',
+            // 'password'=>'Awesomecart@612',
+            'senderid'=>'AWSMCT',
+            'channel'=>'Trans',
+            'DCS'=>0,
+            'flashsms'=>0,
+            'number'=>$request->phone,
+            'text'=>'Your OTP is '.$otp.'. This code is valid for the next 10 min. Please enter it on the website/app for login AWESOMCART. Regards, AWSMCT',
+            'route'=>'2',
+            'peid'=>'1701169875173062064',
+            'DLTTemplateId'=>'1707174046951830675'
+        ];
+
+        $string = http_build_query($data);
+
+        $smsUrl = "http://bulksms.actinnsol.com/api/mt/SendSMS?".$string;
+
+        $ch = curl_init();
+        
+        curl_setopt($ch, CURLOPT_URL, $smsUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        if (curl_errno($ch)) {
+            echo 'cURL Error: ' . curl_error($ch);
+        }
+        curl_close($ch);
+
+        return response()->json([
+            'phone'=>$request->phone,
+            'smsResponse'=>$response
+        ]);
+    }
+
+    public function verifyOtp(Request $request){
+        if (time() < session($request->otptype.'otp_expiry_time')){
+            if($request->otp == Session::get('user'.$request->otptype.'_otp_'.$request->phone)){
+                Session::put([
+                    $request->otptype.'_otp_'.$request->phone.'verified'=>True
+                ]);
+                return response()->json([
+                    'error'=> 'otp matched',
+                    'err_code'=>101
+                ]);
+            } else{
+                return response()->json([
+                    'error'=> 'otp mismatched'
+                ]);
+            }
+        }
+        return response()->json([
+            'error'=> 'otp expired'
+        ]);
     }
 
     public function demoLogin(){
-        Session::put(['user_session'=>'demo_user']);
-        return True;
+        Session::put(['user_session'=>'demo_user_demo']);
+        return redirect()->route('index');
     }
 
     public function validateData($data) {
@@ -136,7 +373,12 @@ class AuthController extends Controller
         
     }
 
+
+
+
+    // -----------------------------------
     // Additional authentication functions
+    // -----------------------------------
 
     
 	public function generate_jwt($headers, $payload, $secret = 'testing_jwt') {
@@ -214,4 +456,5 @@ class AuthController extends Controller
         $string = trim($string) . "&key=" . $key;
         return strtoupper(md5($string));
     }
+
 }

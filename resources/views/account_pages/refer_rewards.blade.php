@@ -1,4 +1,4 @@
-@extends('master')
+@extends('super-master')
 
 @section('body')
     <div class="container-xl py-4">
@@ -11,12 +11,14 @@
             <strong>Refer And Rewards.</strong><br>
             <small>Copy your code, share it with your friends.</small>
         </div>
+        
 
-        <!-- Referral code-->
+
+        <!-- Referral link -->
         <div class="mb-3">
-            <label for="referralCode" class="form-label">Your Referral Code:</label>
+            <label for="referralLink" class="form-label">Refer Link</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="referralCode" placeholder="Enter Referral Code" readonly>
+                <input type="text" class="form-control" id="referralLink" placeholder="Enter Referral Link" value="{{ url('/refer')}}/{{ $data->referral_code }}" readonly>
                 <button class="btn btn-dark" type="button">Copy</button>
             </div>
         </div>
@@ -41,16 +43,6 @@
                     style="width: 40px; height: 40px; border-radius: 6px;">
                     <i class="fab fa-telegram-plane"></i>
                 </a>
-            </div>
-        </div>
-
-
-        <!-- Referral link -->
-        <div class="mb-3">
-            <label for="referralLink" class="form-label">Refer Link</label>
-            <div class="input-group">
-                <input type="text" class="form-control" id="referralLink" placeholder="Enter Referral Link" readonly>
-                <button class="btn btn-dark" type="button">Copy</button>
             </div>
         </div>
 

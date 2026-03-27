@@ -1,5 +1,5 @@
 <!-- Sidebar (Bootstrap Only) -->
-<aside class="bg-light border p-2" style="width:250px; font-family: Calibri, 'Trebuchet MS';">
+<aside class="bg-light border p-2 w-100" style="font-family: Calibri, 'Trebuchet MS';">
     <div class="accordion" id="sportsAccordion">
 
         <!-- Cricket -->

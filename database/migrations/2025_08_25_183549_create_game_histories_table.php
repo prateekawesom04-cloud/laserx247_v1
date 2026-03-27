@@ -13,14 +13,16 @@ return new class extends Migration
     {
         Schema::create('game_histories', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('user_ip');
             $table->string('game_uid');
-            $table->string('game_round');
-            $table->float('bet_amount');
-            $table->float('win_amount');
-            $table->float('wallet_before');
-            $table->float('wallet_after');
+            $table->string('user_uid');
+            $table->string('user_ip');
+            $table->float('bet_amount')->nullable();
+            $table->float('win_amount')->nullable();
+            $table->string('game_round')->nullable();
+            $table->string('token');
+            $table->float('wallet_before')->nullable();
+            $table->float('wallet_after')->nullable();
+            $table->string('play_time')->default(0);
             $table->timestamps();
         });
     }

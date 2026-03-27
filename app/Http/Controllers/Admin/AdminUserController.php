@@ -1,0 +1,234 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Stevebauman\Location\Facades\Location;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
+use App\Models\User;
+use App\Models\Bonus;
+use App\Models\Transaction;
+use App\Models\Activity;
+use App\Models\Payment;
+use App\Models\Appdata;
+use App\Models\GameHistory;
+
+class AdminUserController extends Controller
+{
+    //
+    
+    public function checkMasterPassword($masterPassword){
+            
+        $user = User::getCurrentUser();
+        if(!Hash::check($masterPassword,$user->password)){
+            return false;
+        }
+        return true;
+    }
+
+    public function user_downline_list(Request $request,$user_uid){
+        $users = User::where([
+            'admin_uid'=>$user_uid,
+            'status'=>5
+        ])->get();
+        return view('admin.pages.user_downline_list',compact('users'));
+    }
+
+    public function master_downline_list(Request $request){
+        $admin = User::getCurrentUser();
+        // dd($admin);
+        $users = User::where([
+            'admin_uid'=>$admin->user_uid
+        ])
+        ->whereIn('status',[1,2,3,4])
+        ->get();
+        return view('admin.pages.master_downline_list',compact('users'));
+    }
+
+    public function add_user_client(Request $request){
+        
+        $rules = [
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|same:password',
+        ];
+        
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+            foreach ($validator->errors()->messages() as $key => $value) {
+                $errors[] = $value[0];
+            }
+            return response()->json([
+                'message'=> $errors[0],
+                'response_code'=> '105'
+            ]);
+            
+        }
+
+        if(!$this->checkMasterPassword($request->masterPassword)){
+            return response()->json([
+                'message'=> 'wrong master password',
+                'response_code'=>'400'
+            ]);
+        }
+        
+        $existingUser = User::where('user_uid', $request->user_uid)->first();
+        if($existingUser){
+            return response()->json([
+                'message'=> 'User Already Present',
+                'response_code'=>'300'
+            ]);
+        }
+        try {
+            $user = new User();
+            $tableName = (new User())->getTable();
+            $columns = Schema::getColumnListing($tableName);
+            array_splice($columns, 0, 1);
+            array_splice($columns, count($columns)-2, 2);
+
+            $request->phone = NULL;
+
+            foreach ($columns as $key => $value) {
+                $user->{$value} = $request->{$value};
+            }
+            
+            $user->user_setting = json_encode($request->all());
+            $user->save();
+        } catch(QueryException $e){
+            if ($e->errorInfo[1] == 1062) {
+                return response()->json([
+                    'message'=> 'User Already Present',
+                    'response_code'=>'300'
+                ]);
+            }
+        }
+        
+        return response()->json([
+            'message'=> 'User Created Successfully',
+            'response_code'=>'200'
+        ]);
+
+    }
+ 
+    public function my_account(Request $request){
+
+        // $userData = User::getCurrentUser();
+        $user = User::where('user_uid',$request->user_uid)->first();
+        $activities = Activity::where('user_uid',$request->user_uid)->get();
+        $transactions = Transaction::where('user_uid',$request->user_uid)->orderBy('payment_type')->get();
+        
+        
+        return view('admin.pages.my_account',compact('user','activities','transactions'));
+    }
+    
+    public function updateUserPhone(Request $request){
+        
+        $rules = [
+            'phone' => 'required|integer|digits:10',
+        ];
+        
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            foreach ($validator->errors()->messages() as $key => $value) {
+                $errors[] = $value[0];
+            }
+            return response()->json([
+                'message'=> $errors[0],
+                'response_code'=> '105'
+            ]);
+            
+        }
+
+        if(!$this->checkMasterPassword($request->master_password)){
+            return response()->json([
+                'message'=> 'wrong master password',
+                'response_code'=>'400'
+            ]);
+        }
+        
+        $user = User::where('user_uid',$request->user_uid)->first();
+        $user->phone = $request->phone;
+        $user->save();
+
+        return response()->json([
+            'message'=> 'Password Updated',
+            'response_code'=>'200'
+        ]);
+    }
+    
+    public function updateUserPassword(Request $request){
+        
+        $rules = [
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|same:password',
+        ];
+        
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            foreach ($validator->errors()->messages() as $key => $value) {
+                $errors[] = $value[0];
+            }
+            return response()->json([
+                'message'=> $errors[0],
+                'response_code'=> '105'
+            ]);
+            
+        }
+
+        if(!$this->checkMasterPassword($request->master_password)){
+            return response()->json([
+                'message'=> 'wrong master password',
+                'response_code'=>'400'
+            ]);
+        }
+        
+        $user = User::where('user_uid',$request->user_uid)->first();
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return response()->json([
+            'message'=> 'Password Updated',
+            'response_code'=>'200'
+        ]);
+    }
+    
+    public function updateWallet(Request $request){
+        if(!$this->checkMasterPassword($request->master_password)){
+            return response()->json([
+                'message'=> 'wrong master password',
+                'response_code'=>'400'
+            ]);
+        }
+        $user = User::where('user_uid',$request->user_uid)->first();
+        $wallet_before = $user->wallet_amount;
+        if($request->payment_type == 0){
+            $user->wallet_amount += $request->transfer_amount;
+        } else{
+            $user->wallet_amount -= $request->transfer_amount;
+        }
+        $user->save();
+        
+        $transaction = new Transaction();
+        $transaction->user_uid = $request->user_uid;
+        $transaction->order_sn = time()."_p_".time().rand(0000,9999);
+        $transaction->wallet_before = $wallet_before;
+        $transaction->transfer_amount = $request->transfer_amount;
+        $transaction->ip = $request->ip();
+        $transaction->status = 2;
+        $transaction->payment_type = $request->payment_type;
+        $transaction->manual = 0;
+        $transaction->currency = "INR";
+        $transaction->remark = $request->remark;
+        $transaction->save();
+
+        return response()->json([
+            'message'=> 'Balance Updated Successfully',
+            'response_code'=>'200'
+        ]);
+    }
+
+}

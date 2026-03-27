@@ -6,63 +6,87 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\AuthController;
+use App\Traits\CustomTrait;
+use App\Models\User;
+use App\Models\Transaction;
+use App\Models\Game;
+use App\Models\GameHistory;
+use App\Models\Bonus;
 
 class GamesController extends Controller
 {
+    use CustomTrait;
     //
     public function gameList(Request $request){
+        if($request->providers) {
+            $games_1 = Storage::disk('local')->get('games_data/'.$request->providers[0].'.json');
+            $games_1 = array_slice(json_decode($games_1, true),0,4);
 
-        $games = Storage::disk('local')->get('games_data/'.$request->provider.'.json');
+            $games_2 = Storage::disk('local')->get('games_data/'.$request->providers[1].'.json');
+            $games_2 = array_slice(json_decode($games_2, true),0,4);
+
+            $games = array_merge($games_1,$games_2);
+        } else{
+            
+            $games = Storage::disk('local')->get('games_data/'.$request->provider.'.json');
+            $games = json_decode($games, true);
+
+        }
         
         // $games = json_decode($games);
-
-        $games = json_decode($games, true);
-        $games = array_slice($games, 0, 6);
+        
+        $games = array_slice($games, $request->game_index*16, 16);
         return response()->json([
             'provider'=> $request->provider,
-            'games'=> $games
+            'games'=> $games,
+            'game_index'=>$request->game_index+1
         ]);
     }
 
+// Game Launch using Bosswin start
+
     public function launchGame(Request $request){
-        // $user = User::where([
-        //     'user_uid'=>session('user_uid')
-        // ])->first();
+        
+        $user = User::getCurrentUser();
         
         $data = [];
 
-        if(1){
-        // if(session('user_uid')){
-            $data['user_id'] = '345456';
-            // $data['wallet_amount'] = $user->wallet_amount;
-            $data['wallet_amount'] = '565.67';
-            $data['game_uid'] = '2fa9a84d096d6ff0bab53f81b79876c8';
+        // if(1){
+        if(!empty($user)){
+            
+            $data['user_id'] = $user->user_uid;
+            $data['wallet_amount'] = $user->wallet_amount;
+            $data['game_uid'] = $request->game_id;
             $data['token'] = env('GAME_TOKEN');
-            $data['timestamp'] = time();
-            // dd(json_encode($data));
-            $payload= json_encode($data);
-
-            $iv_length = openssl_cipher_iv_length('AES-256-CBC');
-            $iv = openssl_random_pseudo_bytes($iv_length);
-
-            $data['payload'] = base64_encode(
-                    openssl_encrypt(
-                        json_encode($data,JSON_UNESCAPED_SLASHES),
-                        'AES-256-CBC',
-                        env('GAME_SECRET_KEY'),
-                        OPENSSL_RAW_DATA,$iv
-                    )
-                );
-            // dd($data);
-            // $data['payload'] = (new AuthController)->aes256Encrypt(env('GAME_SECRET_KEY'), $payload);
+            $data['timestamp'] = now()->timestamp;
+                
+            $data['payload'] = (new AuthController)->aes256Encrypt(env('GAME_SECRET_KEY'), json_encode($data));
 
             $http_query = http_build_query($data);
-            // dd($http_query);
-            $url = 'https://colourforge.in?'.$http_query;
-
-            // return redirect($url);
             
-            return $url;
+            $url = 'https://bosswin.in/launch_game?'.$http_query;
+            
+            if($this->curlWebPage($url)->getData()->response=='SSL certificate problem: unable to get local issuer certificate'){
+                return response()->json([
+                    'err_msg'=>'Certification issue',
+                    'error_code'=> '405'
+                ]);
+            }
+
+            // Game History
+            $gameHistory = new GameHistory();
+            // $gameHistory->user_uid = $user->provider;
+            $gameHistory->user_uid = $user->user_uid;
+            $gameHistory->game_uid = $request->game_id;
+            $gameHistory->token = env('GAME_TOKEN');
+            $gameHistory->wallet_before = $user->wallet_amount;
+            $gameHistory->save();
+
+
+            return response()->json([
+                'url'=>$url,
+                'error_code'=> '101'
+            ]);
         } else {
             return response()->json([
                 'err_msg'=>'Please Login',
@@ -70,8 +94,106 @@ class GamesController extends Controller
             ]);
         }
 
+    }
 
-        // https://bosswin.in/launch_game?user_id=225&wallet_amount=939.45&game_uid=ba2adf72179e1ead9e3dae8f0a7d4c07&token=2a4ee16f-c3c1-4c0c-94cd-b7ca28&timestamp=1756285833432&payload=OGpH%2FxBHdnAF%2BHCLiFFof%2BnENwQE3h848ji2zlNbmP3e6W%2FZimD91bkVO2w7ZKCwAo3Rvr9wKwd4kg9RAx0US2b%2Fl5ku0bQGBV0aicf2MiFS12bYZgrY3avL7IEF6MONbtug7s1E07nioR0FkGhnNa2%2BXEYqTnBkrkB5%2Fomdv1TFCedUxNahkMcwgvMC8GPOWe%2BaG7Z1P4pHBKM0Tmriyg%3D%3D", returnType: 1
+    public function launchGameCallback(Request $request) : void {
+
+        $game_bonus_id = 'game_bonus_id';
+
+        $gameHistory = new GameHistory();
+        $gameHistory->user_uid = $request->mobile;
+        $gameHistory->bet_amount = $request->bet_amount;
+        $gameHistory->win_amount = $request->win_amount;
+        $gameHistory->game_uid = $request->game_uid;
+        $gameHistory->game_round = $request->game_round;
+        $gameHistory->token = $request->token;
+        $gameHistory->wallet_before = $request->wallet_before;
+        $gameHistory->wallet_after = $request->wallet_after;
+        $gameHistory->updated_at = date("Y-m-d H:i:s",$request->timestamp);
+        $gameHistory->save();
+
+        $user = User::where('user_uid',$request->mobile)->first();
+        $user->wallet_amount = $request->wallet_after;
+        $user_additional_data = json_decode($user->additional_data);
+        $bonusData = $user_additional_data->bonusData;
+        if(property_exists($bonusData,$game_bonus_id)){
+            $bonusData->wager_amount += $request->bet_amount;
+        }
+        $user_additional_data->bonusData = $bonusData;
+        $user->additional_data = $user_additional_data;
+        $user->save();
 
     }
+
+// Game Launch using Bosswin end
+
+
+// Sports Api start
+
+    public function sportsbook(Request $request){
+        
+        $url = env('SPORTSBOOK_URL');
+        $CURLOPT_RETURNTRANSFER=true;
+        $CURLOPT_TIMEOUT = 30;
+        $CURLOPT_MAXREDIRS = 10;
+        $CURLOPT_CUSTOMREQUEST = 'GET';
+        $headers = [
+            "x-rapidapi-host: ".env('X_RAPIDAPI_HOST'),
+            "x-rapidapi-key: ".env('X_RAPIDAPI_KEY')
+        ];
+
+        $response = $this->callApi(
+            $url,
+            $CURLOPT_RETURNTRANSFER,
+            $CURLOPT_TIMEOUT,
+            $CURLOPT_MAXREDIRS,
+            $CURLOPT_CUSTOMREQUEST,
+            $headers
+        );
+
+        dd($response['response']);
+    }
+
+// Sports Api end
+
+    public function game_statics(Request $request){
+        $user = User::getCurrentUser();
+
+        $total_deposit = Transaction::where([
+            'user_uid'=>$user->user_uid,
+            'payment_type'=>0,
+            'status'=>1
+        ])->count();
+        
+        $total_withdraw = Transaction::where([
+            'user_uid'=>$user->user_uid,
+            'payment_type'=>1,
+            'status'=>1
+        ])->count();
+
+        $total_win = GameHistory::where('user_uid',$user->user_uid)
+        ->whereRaw('wallet_after - wallet_before > 0')
+        ->pluck('win_amount')
+        ->sum();
+        
+        $total_loss = GameHistory::where('user_uid',$user->user_uid)
+        ->whereRaw('wallet_after - wallet_before < 0')
+        ->pluck('win_amount')
+        ->sum();
+
+        $total_bonus = 0;
+        $user_additional_data = json_decode($user->additional_data);
+        if(property_exists('bonusData',$user_additional_data)){
+            $bonusData = $user_additional_data->bonusData;
+    
+            foreach($bonusData as $bonus){
+                if($bonus->claim_status){
+                    $total_bonus += $bonus->amount;
+                }
+            }
+        }
+        
+        return view('account_pages.game_statics',compact('total_deposit','total_withdraw','total_loss','total_bonus'));
+    }
+
 }

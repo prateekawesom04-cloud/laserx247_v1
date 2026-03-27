@@ -4,55 +4,201 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
+use App\Models\Transaction;
+use App\Models\User;
 
 class PaymentController extends Controller
 {
     //
-    public function paymentRequest(Request $request){
-        $data = [];
 
-        $data['app_id'] = env('LG_PAY_APP_ID');
-        $data['trade_type'] = 'INRUPI';
-        $data['order_sn'] = date("Y-m-d")."_p_".time();
-        $data['money'] = $request->money;
-        $data['notify_url'] = 'https://okwingame.world/#/wallet/RechargeHistory';
-        $data['ip'] = '0.0.0.0';
-        $data['remark'] = "remark001";
+    public function depositRequest(Request $request){
+        // dd($request->all());
+        $user = User::getCurrentUser();
 
-        $data['sign'] = (new AuthController)->md5_sign($data, env('LG_PAY_SECRET_KEY'));
+        if (!empty($request->allFiles())) {
+            $file = $request->file('payment_proof');
+            $request->payment_proof = '/'.$user->admin_uid.'/'.time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('', $request->payment_proof, 'public'); // Store in 'public/uploads'
+
+        }
+
+        $transaction = new Transaction();
+        $transaction->user_uid = $user->user_uid;
+        // $transaction->user_uid = '121';
+        $transaction->order_sn = $request->order_sn;
+        $transaction->wallet_before = $user->wallet_amount;
+        $transaction->transfer_amount = $request->transfer_amount;
+        $transaction->ip = $request->ip();
+        $transaction->status = 1;
+        $transaction->payment_type = 0;
+        $transaction->manual = 1;
+        $transaction->currency = "INR";
+        $transaction->remark = "user created deposit request";
+        $transaction->payment_proof = $request->payment_proof;
+        $transaction->save();
         
-        // Prepare cURL request
-        $url = "https://www.lg-pay.com/api".$request->payment_type."/order";
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            "Content-Type: application/x-www-form-urlencoded"
+        return response()->json([
+            'message'=> 'Deposit Request Created Succesfully',
+            'response_code'=> '200'
         ]);
+    }
 
-        $response = curl_exec($ch);
-
-        if (curl_errno($ch)) {
-            return curl_error($ch);
-        } 
-
-        curl_close($ch);
+    public function paymentGatewayMethod(Request $request){
         
-        return $response;
+        $data = [];
+        $data['app_id'] = env('LG_PAY_APP_ID');
+        $data['order_sn'] = time().date("Ymd")."_p_".time().rand(0000,9999);
+        $data['money'] = $request->money*100;
+        $data['notify_url'] = url('/').'/paymentCallback';
+
+        $user = User::getCurrentUser();
+        
+        if($user){
+
+            $transaction = new Transaction();
+            $transaction->user_uid = $user->user_uid;
+            // $transaction->user_uid = '121';
+            $transaction->order_sn = $data['order_sn'];
+            $transaction->wallet_before = $user->wallet_amount;
+            $transaction->transfer_amount = $request->money;
+            $transaction->ip = $request->ip();
+            $transaction->status = 1;
+            $transaction->payment_type = $request->payment_type;
+            $transaction->manual = 1;
+            $transaction->currency = "INR";
+            $transaction->remark = "remark001";
+            $transaction->save();
+    
+            // if(session('user_uid')){}
+            
+            if($request->payment_type == 0){
+    
+                $data['trade_type'] = 'INRUPI';
+                $data['ip'] = $request->ip();
+                $data['remark'] = "remark001";
+            
+            } elseif ($request->payment_type == 1) {
+    
+                // $data['currency'] = $request->currency;
+                $data['currency'] = "INR";
+                
+            } else{
+                return False;
+            }
+    
+            $data['sign'] = (new AuthController)->md5_sign($data, env('LG_PAY_SECRET_KEY'));
+            
+            $payment_type = ($request->payment_type==1) ? 'deposit' : 'order';
+            
+            $url = "https://www.lg-pay.com/api/".$payment_type."/create";
+            
+            $ch = curl_init();
+    
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                "Content-Type: application/x-www-form-urlencoded"
+            ]);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+            curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_DEFAULT);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 120);
+    
+            $response = curl_exec($ch);
+    
+            if (curl_errno($ch)) {
+                return curl_error($ch);
+            } 
+    
+            curl_close($ch);
+            
+            return response()->json([
+                'message'=> 'Deposit Request Created Succesfully',
+                'response_code'=> '200',
+                'response'=>$response
+            ]);
+        } else{
+            
+            return response()->json([
+                'message'=> 'login required',
+                'response_code'=> '105'
+            ]);
+
+        }
 
     }
 
     public function paymentCallback(Request $request){
-        $post_sign = $_POST['sign'];
-        $sign = md5_sign($_POST,env('LG_PAY_SECRET_KEY'),['sign']);
-        if($sign == $post_sign){
-            
 
-            return $request->all();
+        $data =[];
+
+        $data['order_sn'] = $request->order_sn;
+        $data['money'] = $request->money;
+        $data['status'] = $request->status;
+        $data['pay_time'] = $request->pay_time;
+        $data['msg'] = $request->msg;
+        $data['remark'] = $request->remark;
+
+        // $model = YourModel::findOrFail($id);
+        // $model->fill(request()->all());
+        // $model->save();
+
+        $sign = md5_sign($data,env('LG_PAY_SECRET_KEY'));
+        if($sign == $request->sign){
+            $transaction = Transaction::where('order_sn',$request->order_sn);
+
+            $transaction->transfer_amount = $request->money;
+            $transaction->status = $request->status;
+            $transaction->manual = 0;
+            $transaction->save();
+
+            return 'ok';
+        } else{
+            return 'no';
         }
     }
 
+    public function createDepositRequest(Request $request){
+        $user = User::getCurrentUser();
+        $transaction = new Transaction();
+        $transaction->user_uid = $user->user_uid;
+        $transaction->order_sn = $request->order_sn;
+        $transaction->wallet_before = $user->wallet_before;
+        $transaction->transfer_amount = $request->transfer_amount;
+        $transaction->ip = $request->ip();
+        $transaction->status = 1;
+        $transaction->payment_type = 0;
+        $transaction->manual = 1;
+        $transaction->currency = "INR";
+        $transaction->remark = "remark001";
+        $transaction->save();
+
+        return response()->json([
+            'message'=>'Deposit Request Created Succesfully',
+            'response_code'=> 200
+        ]);
+    }
+    
+    public function createWithdrawalRequest(Request $request){
+        $user = User::getCurrentUser();
+        $transaction = new Transaction();
+        $transaction->user_uid = $user->user_uid;
+        $transaction->order_sn = time().$request->order_sn;
+        $transaction->wallet_before = $user->wallet_before;
+        $transaction->transfer_amount = $request->transfer_amount;
+        $transaction->ip = $request->ip();
+        $transaction->status = 1;
+        $transaction->payment_type = 1;
+        $transaction->manual = 1;
+        $transaction->currency = "INR";
+        $transaction->remark = "remark001";
+        $transaction->save();
+
+        return response()->json([
+            'message'=>'Deposit Request Created Succesfully',
+            'response_code'=> 200
+        ]);
+    }
 }

@@ -5,9 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login page</title>
-    <link rel="stylesheet" href="{{asset('css')}}/style.css">
     <link rel="stylesheet" href="{{asset('css')}}/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css')}}/tailwind.min.css">
+    <link rel="stylesheet" href="{{asset('css')}}/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <script src="{{asset('js')}}/jquery-3.7.1.min.js"></script>
+    <script src="{{asset('js')}}/tailwind.min.js"></script>
+    <script src="//code.jivosite.com/widget/O2AMREX4Ch" async></script>
 </head>
 
 <body class="vh-100 d-flex align-items-center justify-content-center"
@@ -22,7 +26,7 @@
 
                     <!-- Left side -->
                     <div
-                        class="col-12 col-md-5 d-flex flex-column align-items-center justify-content-center text-center p-4 text-white"
+                        class="col-12 col-md-5 d-flex flex-column align-items-center justify-content-center text-center p-4 text-white d-none d-md-block"
                         style="background: linear-gradient(180deg, #001f4d, #0a2345);">
                         <h2 class="fw-bold mb-3 text-uppercase fs-4 fs-md-3 fs-lg-2">
                             <span class="text-primary">GAME</span><span class="text-white">WIN</span><span
@@ -34,41 +38,65 @@
 
                     <!-- Right side (Form) -->
                     <div class="col-12 col-md-7 bg-transparent p-4 text-white">
-                        <form id="LoginForm"> 
+                        <form id="LoginForm" value="login"> 
 
                             <!-- Tabs -->
                             <div class="d-flex mb-3 gap-2">
-                                <button type="button" class="btn btn-light flex-fill fw-bold" aria-pressed="false">Phone</button>
-                                <button type="button" class="btn btn-primary flex-fill fw-bold" aria-pressed="true">User ID</button>
+                                <a type="button" class="btn btn-light flex-fill fw-bold login_btn" data-login="login_phone" aria-pressed="false">Phone</a>
+                                <a type="button" class="btn btn-primary flex-fill fw-bold login_btn" data-login="login_user_id" aria-pressed="true">User ID</a>
                             </div>
 
                             <!-- Phone -->
-                            <div class="mb-3 text-start">
+                            <div class="mb-3 text-start login_phone login_input">
                                 <div class="input-group">
                                     <span class="input-group-text bg-white text-dark border-0"><i class="bi bi-phone"></i>
                                         +91</span>
-                                    <input type="text" class="form-control border-0" name="phone" placeholder="Enter Phone Number" />
+                                    <input type="text" class="form-control border-start-0 shadow-none" name="phone"
+                                    placeholder="Enter Phone Number" maxlength="10" style="border-radius: 5px;border-top-left-radius: 0;border-bottom-left-radius:0;" />
+                                <a class="btn btn-dark getOtp" type="button" style="display:none;">Get OTP</a>
+                                </div>
+                            </div>
+                            
+                            <!-- User Id -->
+                            <div class="mb-3 text-start login_user_id login_input" style="display:none;">
+                                <div class="input-group user_id_input">
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-key"></i>
+                                </span>
+                                <input type="text" class="form-control shadow-none" name="user_uid" value="" placeholder="Enter User Id" />
+                                <a class="btn btn-dark getOtp" type="button" style="display:none;">Get OTP</a>
                                 </div>
                             </div>
 
                             <!-- Radio -->
                             <div class="d-flex gap-3 mb-3 flex-wrap">
                                 <div>
-                                    <input type="radio" name="loginType" id="passwordOption" checked />
+                                    <input type="radio" name="loginType" id="l_password" value="0" checked />
                                     <label for="passwordOption" class="ms-1">Password</label>
                                 </div>
                                 <div>
-                                    <input type="radio" name="loginType" id="otpOption" />
+                                    <input type="radio" name="loginType" id="l_otp" value="1" />
                                     <label for="otpOption" class="ms-1">OTP</label>
                                 </div>
                             </div>
 
                             <!-- Password -->
-                            <div class="mb-3">
-                                <div class="input-group">
+                            <div id="" class="l_password mb-3 radio_input">
+                                <div class="input-group ">
                                     <span class="input-group-text bg-white text-dark border-0"><i
                                             class="bi bi-lock"></i></span>
-                                    <input type="password" class="form-control border-0" name="password" placeholder="Enter Password" />
+                                    <input type="password" class="form-control shadow-none" name="password" placeholder="Enter Password" />
+                                    <a href="javascript:void(0)" class="btn btn-outline-secondary p_eye" type="button" style="font-size: 12px;">👁️</a>
+                                </div>
+                            </div>
+                            
+                            <!-- otp -->
+                            <div id="" class="l_otp text-start mb-3 otp_input radio_input" style="display:none;" value="1">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white">
+                                        <i class="bi bi-key"></i>
+                                    </span>
+                                    <input type="text" class="form-control shadow-none" name="otp" maxlength="6" placeholder="Enter OTP" disabled />
                                 </div>
                             </div>
 
@@ -79,33 +107,116 @@
 
                             <!-- Buttons -->
                             <div class="d-flex gap-2 mb-3 flex-wrap">
-                                <button type="submit" class="btn btn-dark flex-grow-1 fw-bold">Login</button>
-                                <button type="button" class="btn btn-info flex-grow-1 fw-bold">Log In With Demo ID</button>
+                                <a href="javascript:void(0)" class="btn btn-dark flex-grow-1 fw-bold loginUser">Login</a>
+                                <a href="{{ url('demoLogin') }}" class="btn btn-info flex-grow-1 fw-bold">Log In With Demo ID</a>
                             </div>
 
                             <!-- WhatsApp -->
-                            <p class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</p>
-                            <a href="javascript:void(0)" class="btn btn-success w-100 mb-3">📱 Whatsapp Now</a>
+                            <!-- <p class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</p> -->
+                            
+                            <a href="javascript:void(0)" class="btn btn-success w-100 mb-3 chat_support !flex flex-row justify-center items-center gap-2">
+                                <div class="support_icon min-w-min">
+                                    <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset="">
+                                </div>
+                                <div class="support_text min-w-min">Support</div>
+                                <!-- <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset=""> Support -->
+                            </a>
 
                             <!-- Social login -->
                             <p class="text-center small mb-2">Or Login With</p>
                             <div class="d-flex justify-content-center gap-3 mb-3 flex-wrap">
-                                <a href="javascript:void(0)" class="btn btn-primary"><i class="bi bi-telegram"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-danger"><i class="bi bi-instagram"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-info"><i class="bi bi-facebook"></i></a>
+                                <a href="https://web.telegram.org/k/" class="btn btn-primary"><i class="bi bi-telegram"></i></a>
+                                <a href="https://www.instagram.com/" class="btn btn-danger"><i class="bi bi-instagram"></i></a>
+                                <a href="https://www.facebook.com/" class="btn btn-info"><i class="bi bi-facebook"></i></a>
                             </div>
 
                             <!-- Register -->
                             <div class="text-center small">
-                                Don’t have an account? <a href="#" class="fw-bold text-info">Register</a>
+                                Don’t have an account? <a href="register" class="fw-bold text-info">Register</a>
                             </div>
 
                         </form>
-                    </div> <!-- End of Right Side -->
+                    </div> 
                 </div>
             </div>
         </div>
     </div>
+    
+@include('includes.ajax_call')
+@include('js')
+    <script>
+        
+        let otpVerified = false;
+
+        let data = {
+            phone: $('input[name=phone]').val(),
+            otp: '',
+            otpTimer: null,
+            otpTimeLeft: 60,
+            localStorage: $('form').attr('value'),
+            login_type: $('#passwordOption').val()
+        };
+
+        // Login User Start
+
+        function loginUser() {
+            let phoneRegex = '/^\d{10}$/';
+            let user_uid = $('input[name=user_uid]').val();
+            let phone = $('input[name=phone]').val();
+            let password = $('input[name=password]').val();
+
+            let pdata = {
+                user_uid: $('input[name=user_uid]').val(),
+                phone: $('input[name=phone]').val(),
+                password: $('input[name=password]').val(),
+                otp: $('input[type=radio]:checked').val()
+            }
+            
+
+            // if (!phone.match(phoneRegex)) {
+            //     alert('Please Enter Correct Phone Number');
+            //     return false;
+            // } else 
+            if(data.otp){
+                callApi('post', 'login', pdata, register_loginResponse);
+            } else{
+                if (password.length < 6) {
+                    alert('Please Enter Minimum 6 digit password');
+                    return false;
+                } else {
+                    callApi('post', 'login', pdata, register_loginResponse);
+                }
+            }
+        }
+
+        // Login User End
+
+
+        $('a.loginUser').click(function(e) {
+            loginUser();
+        });
+
+        $('input[type=radio]').click(function(){
+            $('.radio_input').hide();
+            $('.getOtp').hide();
+            $('.radio_input').find('input').attr('disabled','true');
+            $(`.${$(this).attr('id')}`).find('input').removeAttr('disabled');
+            data.login_type = $(this).val();
+            
+            $(`.${$(this).attr('id')}`).show();
+            if($(this).val() == 1){
+                $('.getOtp').show();
+            }
+
+        })
+
+        $('.login_btn').click(function(){
+            $('.login_input').hide();
+            $(`.${$(this).attr('data-login')}`).show();
+        });
+        
+
+    </script>
 </body>
 
 </html>

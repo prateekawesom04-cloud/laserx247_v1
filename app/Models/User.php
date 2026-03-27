@@ -6,6 +6,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Session;
+use App\Models\Transaction;
+use App\Models\Activity;
 
 class User extends Authenticatable
 {
@@ -45,4 +48,34 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public static function getCurrentUser($key=NULL,$value=NULL){
+        if($key != NULL && $value != NULL){
+
+            return static::where($key, $value)->first();
+
+        }
+        
+        $userData = Session::get('user_session');
+        if(!empty($userData)){
+            $userData = explode('_user_',$userData);
+            $userData = $userData[1];
+            return static::where('user_uid', $userData)->first();
+        } else if(Session::has('admin_session')){
+            $userData = explode('_user_',Session::get('admin_session'));
+            $userData = $userData[1];
+            return static::where('user_uid', $userData)->first();
+        } else{
+            return False;
+        }
+    }
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class,'user_uid');
+    }
+    
+    public function activity(){
+        return $this->hasMany(Activity::class,'user_uid');
+    }
+
 }

@@ -1,10 +1,10 @@
-@extends('master')
+@extends('super-master')
 
 @section('body')
     <div class="wallet-main-container bg-white rounded shadow">
         <!-- Header -->
         <div class="wallet-header text-white p-3 d-flex justify-content-between align-items-center rounded-top">
-            <button class="wallet-back-btn text-white px-2 py-1 rounded" style="font-size: 10px;">BACK</button>
+            <a class="wallet-back-btn text-white px-2 py-1 rounded" style="font-size: 10px;">BACK</a>
             <div class="wallet-balance-info px-2 py-1" style="font-size: 14px;">Min: 100 Max: 50000</div>
         </div>
 
@@ -16,21 +16,21 @@
                 max="50000" style="font-size: 12px;" />
 
             <div class="row g-2 mb-3">
-                <div class="col-6"><button class="wallet-amount-btn btn text-white w-100" data-amount="300"
-                        style="font-size: 12px;">300</button></div>
-                <div class="col-6"><button class="wallet-amount-btn btn text-white w-100" data-amount="500"
-                        style="font-size: 12px;">500</button></div>
-                <div class="col-6"><button class="wallet-amount-btn btn text-white w-100" data-amount="1000"
-                        style="font-size: 12px;">1000</button></div>
-                <div class="col-6"><button class="wallet-amount-btn btn text-white w-100" data-amount="2000"
-                        style="font-size: 12px;">2000</button></div>
+                <div class="col-6"><a class="wallet-amount-btn btn text-white w-100" data-amount="300"
+                        style="font-size: 12px;">300</a></div>
+                <div class="col-6"><a class="wallet-amount-btn btn text-white w-100" data-amount="500"
+                        style="font-size: 12px;">500</a></div>
+                <div class="col-6"><a class="wallet-amount-btn btn text-white w-100" data-amount="1000"
+                        style="font-size: 12px;">1000</a></div>
+                <div class="col-6"><a class="wallet-amount-btn btn text-white w-100" data-amount="2000"
+                        style="font-size: 12px;">2000</a></div>
             </div>
 
             <div class="row g-2 mb-3">
-                <div class="col-6"><button class="wallet-btn-edit btn text-white w-100" id="walletEditStakeBtn"
-                        style="font-size: 11px;">📝 Edit Stake</button></div>
-                <div class="col-6"><button class="wallet-btn-submit btn text-white w-100"
-                        style="font-size: 11px;">SUBMIT</button></div>
+                <div class="col-6"><a class="wallet-btn-edit btn text-white w-100" id="walletEditStakeBtn"
+                        style="font-size: 11px;">📝 Edit Stake</a></div>
+                <div class="col-6"><a class="wallet-btn-submit btn text-white w-100"
+                        style="font-size: 11px;">SUBMIT</a></div>
             </div>
 
             <!-- Table -->
@@ -67,20 +67,100 @@
                 min="100" max="50000" style="font-size: 13px;" />
 
             <div class="row g-2 mb-3">
-                <div class="col-6"><button class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
-                        data-modal-amount="300">300</button></div>
-                <div class="col-6"><button class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
-                        data-modal-amount="500">500</button></div>
-                <div class="col-6"><button class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
-                        data-modal-amount="1000">1000</button></div>
-                <div class="col-6"><button class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
-                        data-modal-amount="2000">2000</button></div>
+                <div class="col-6"><a class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
+                        data-modal-amount="300">300</a></div>
+                <div class="col-6"><a class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
+                        data-modal-amount="500">500</a></div>
+                <div class="col-6"><a class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
+                        data-modal-amount="1000">1000</a></div>
+                <div class="col-6"><a class="btn btn-outline-secondary w-100 wallet-modal-amount-btn"
+                        data-modal-amount="2000">2000</a></div>
             </div>
 
             <div class="d-flex justify-content-between">
-                <button class="btn btn-light w-50 me-2" id="walletCancelModalBtn">Cancel</button>
-                <button class="btn btn-dark w-50" id="walletSaveModalBtn">Save</button>
+                <a class="btn btn-light w-50 me-2" id="walletCancelModalBtn">Cancel</a>
+                <a class="btn btn-dark w-50" id="walletSaveModalBtn">Save</a>
             </div>
         </div>
     </div>
 @endsection
+<script>
+    function initWalletPage() {
+    const walletEditBtn = document.getElementById('walletEditStakeBtn');
+    const walletModal = document.getElementById('walletEditModal');
+    const walletModalInput = document.getElementById('walletModalInputAmount');
+    const walletCancelBtn = document.getElementById('walletCancelModalBtn');
+    const walletSaveBtn = document.getElementById('walletSaveModalBtn');
+    const walletInput = document.getElementById('walletAmount');
+    const walletAmountBtns = document.querySelectorAll('.wallet-amount-btn');
+    const walletModalAmountBtns = document.querySelectorAll('.wallet-modal-amount-btn');
+
+    const minAmount = 100;
+    const maxAmount = 50000;
+
+    function openModal() {
+        walletModalInput.value = walletInput.value || '';
+        walletModal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        walletModal.style.display = 'none';
+        walletModalAmountBtns.forEach(btn => btn.classList.remove('active'));
+    }
+
+    function handleModalAmountClick(event) {
+        walletModalAmountBtns.forEach(btn => btn.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        walletModalInput.value = event.currentTarget.getAttribute('data-modal-amount');
+    }
+
+    function handleSave() {
+        const amount = walletModalInput.value.trim();
+        if (!amount || isNaN(amount) || amount < minAmount || amount > maxAmount) {
+            alert(`Please enter a valid amount between ${minAmount} and ${maxAmount}.`);
+            return;
+        }
+
+        walletInput.value = amount;
+
+        walletAmountBtns.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-amount') === amount) {
+                btn.classList.add('active');
+            }
+        });
+
+        closeModal();
+    }
+
+    function handleWalletInputChange() {
+        walletAmountBtns.forEach(btn => btn.classList.remove('active'));
+    }
+
+    function handleWalletAmountClick(event) {
+        walletAmountBtns.forEach(btn => btn.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        walletInput.value = event.currentTarget.getAttribute('data-amount');
+    }
+
+    function setupEventListeners() {
+        walletEditBtn.addEventListener('click', openModal);
+        walletCancelBtn.addEventListener('click', closeModal);
+        walletSaveBtn.addEventListener('click', handleSave);
+        walletInput.addEventListener('input', handleWalletInputChange);
+
+        walletModalAmountBtns.forEach(btn =>
+            btn.addEventListener('click', handleModalAmountClick)
+        );
+
+        walletAmountBtns.forEach(btn =>
+            btn.addEventListener('click', handleWalletAmountClick)
+        );
+    }
+
+    setupEventListeners();
+}
+
+// Call this on DOM ready
+document.addEventListener('DOMContentLoaded', initWalletPage);
+</script>

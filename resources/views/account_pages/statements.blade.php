@@ -1,35 +1,31 @@
-@extends('master')
+@extends('super-master')
 
 @section('body')
-    <div class="main-container bg-white rounded shadow">
+    <div class="main-container bg-white rounded shadow mt-4">
         <!-- Header -->
-        <div class="header text-white p-3 d-flex justify-content-between align-items-center rounded-top">
-            <button class="back-btn text-white px-2 py-1 rounded" style="font-size: 10px;">BACK</button>
-            <div class="balance-info px-2 py-1 rounded-pill" style="font-size: 14px;">Account Statement</div>
+        <div class="modal-header-dark p-3 d-flex justify-content-center align-items-center rounded-top border-bottom">
+            <div class="balance-info px-2 py-1 rounded-pill fw-semibold">Filter Your Account Statement</div>
         </div>
-
         <!-- Filter Form -->
-        <div class="p-3">
-            <h6 class="fw-semibold text-dark mb-3" style="font-size: 13px;">Filter Your Statement</h6>
-
+        <div class="modal-body-dark p-3">
             <form method="GET" action="">
-                <div class="row g-2 mb-3 align-items-end">
+                <div class="row g-0 mb-3 align-items-end form-group-button">
                     <!-- From Date -->
-                    <div class="col-md-6">
+                    <div class="col-5 mb-2 mx-auto">
                         <label for="from_date" class="form-label" style="font-size: 12px;">From Date</label>
                         <input type="date" class="form-control" id="from_date" name="from_date"
                             value="{{ request('from_date') ?? date('Y-m-d') }}" style="font-size: 12px;">
                     </div>
 
                     <!-- To Date -->
-                    <div class="col-md-6">
+                    <div class="col-5 mb-2 mx-auto">
                         <label for="to_date" class="form-label" style="font-size: 12px;">To Date</label>
                         <input type="date" class="form-control" id="to_date" name="to_date"
                             value="{{ request('to_date') ?? date('Y-m-d') }}" style="font-size: 12px;">
                     </div>
 
                     <!-- Type -->
-                    <div class="col-md-6">
+                    <div class="col-5 mb-2 mx-auto">
                         <label for="type" class="form-label" style="font-size: 12px;">Type</label>
                         <select class="form-select" id="type" name="type" style="font-size: 12px;">
                             <option value="all">All</option>
@@ -60,12 +56,11 @@
                             <option value="election">Election</option>
                             <option value="kabaddi">Kabaddi</option>
                         </select>
-
                     </div>
-                    <div class="col-md-6">
-                        <button type="submit" class="btn btn-submit text-white w-100" style="font-size: 11px;">
+                    <div class="col-5 mb-2 mx-auto">
+                        <a type="submit" class="btn btn-submit text-white w-100" style="font-size: 11px;">
                             Get Statement
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -73,7 +68,7 @@
         </div>
 
         <!-- Table Section -->
-        <div class="table-container rounded">
+        <div class="modal-body-dark table-container rounded">
             <div class="table-wrapper">
                 <div class="table-header text-white text-center py-0" style="font-size: 10px;">
                     <div class="row g-1 mx-0">
@@ -88,7 +83,7 @@
                     </div>
                 </div>
                 <div class="table-content">
-                    <div class="text-center py-3 text-muted fst-italic" style="font-size: 11px;">No Data Found</div>
+                    <div class="text-center py-3 text-white fst-italic" style="font-size: 11px;">No Data Found</div>
                 </div>
             </div>
         </div>

@@ -1,44 +1,43 @@
-<?php
-    
-    $providers = Storage::disk('local')->get('games_data/providers.json');
-    
-    $providers = json_decode($providers);
-
-?>
 @extends('super-master')
 @section('body')
-    <!-- News Bar + Banner -->
-    <div class="container-fluid px-0">
-        <div class="container px-2 my-2">
-            <!-- News Bar -->
-            <div class="text-white d-flex align-items-center w-100 px-2" style="background:#000;">
-                <span class="me-2"><i class="fas fa-microphone text-warning"></i></span>
-                <strong class="me-2">News:</strong>
-                <marquee class="flex-grow-1">
-                    🔥 Breaking News: Welcome to Laser247 - Your Ultimate Sports Betting Destination! &nbsp;&nbsp;&nbsp;
-                    🔥 Enjoy Fast Deposits, Secure Betting & 24/7 Live Games!
-                </marquee>
-            </div>
 
-            <!-- Main Banner -->
-            <div class="p-0">
-                <img src="{{ asset('images/slider1.gif') }}" class="img-fluid d-block w-100" alt="Popular Events">
+<!-- News Bar + Banner -->
+    <div class="">
+        
+        <div class="container-fluid">
+            <div class="">
+                <!-- News Bar -->
+                 @if($userData)
+                 @if(count($news))
+                <div class="text-white d-flex align-items-center w-100 px-2" style="background:#000;">
+                    <span class="me-2"><i class="fas fa-microphone text-warning"></i></span>
+                    <strong class="me-2">News:</strong>
+                    <marquee class="flex-grow-1">
+                        @foreach($news as $newses)
+                        🔥 {{$newses->news}} &nbsp;&nbsp;&nbsp;
+                        @endforeach
+                    </marquee>
+                </div>
+                @endif
+                @endif
+    
+                <!-- Main Banner -->
+                <div class="p-0">
+                    <img src="{{ asset('images/slider1.gif') }}" class="img-fluid d-block w-100" alt="Popular Events">
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Sports & Sports Book -->
-    <div class="container-fluid px-0">
-        <div class="container px-2 my-2">
-            <div class="row g-2">
+    
+        <!-- Sports & Sports Book -->
+        <div class="container-fluid">
+            <div class="row w-100 mx-auto">
                 <!-- Sports -->
-                <div class="col-md-6 position-relative">
+                <div class="col-md-6 position-relative !p-[1px]">
                     <img src="{{ asset('images/banner-sport1.png') }}" alt="Sports" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Sports</div>
-                    <div class="position-absolute top-0 end-0 bg-dark bg-opacity-75 text-white p-2 rounded overflow-auto"
-                        style="max-height:200px; width:150px;">
+                    <div class="py-1 font-bold aap_bar_gradient">Sports</div>
+                    <div class="position-absolute top-0 end-0 bg-black bg-opacity-75 h-full text-white p-2 rounded flex flex-col">
                         <div class="fw-bold text-danger mb-1">(🔴) LIVE</div>
-                        <ul class="list-unstyled small mb-0">
+                        <ul class="list-unstyled small mb-0 overflow-auto">
                             <li class="d-flex justify-content-between border-bottom">Cricket <span>23</span></li>
                             <li class="d-flex justify-content-between border-bottom">Football <span>14</span></li>
                             <li class="d-flex justify-content-between border-bottom">Tennis <span>12</span></li>
@@ -52,88 +51,158 @@
                         </ul>
                     </div>
                 </div>
-
+    
                 <!-- Sports Book -->
-                <div class="col-md-6">
+                <div class="col-md-6 !p-[1px]">
                     <img src="{{ asset('images/sportbook.png') }}" alt="Sports Book" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Sports Book</div>
+                    <div class="aap_bar_gradient py-1 font-bold">Sports Book</div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Aviator & Mines -->
-    <div class="container-fluid px-0">
-        <div class="container px-2 my-2">
-            <div class="row g-2">
-                <div class="col-md-6">
+    
+        <!-- Aviator & Mines -->
+        <div class="container-fluid">
+            <div class="row w-full mx-auto">
+                <div class="col-6 !p-[1px] launch_game cursor-pointer" data-game_id="a04d1f3eb8ccec8a4823bdf18e3f0e84">
                     <img src="{{ asset('images/aviator-730-280.gif') }}" alt="Aviator" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Aviator</div>
+                    <div class="aap_bar_gradient py-1">Aviator</div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-6 !p-[1px] launch_game cursor-pointer" data-game_id="5c4a12fb0a9b296d9b0d5f9e1cd41d65">
                     <img src="{{ asset('images/evoplay-730-280.gif') }}" alt="Mines" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">Mines</div>
+                    <div class="aap_bar_gradient py-1">Mines</div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+        
 
-    <!-- New Launch -->
-    <div class="container-fluid px-0">
-        <div class="container px-2 my-3">
-            @foreach ($providers as $provider)
-                <div class="bg-dark text-white py-2 px-3 d-flex justify-content-between align-items-center mt-4">
-                    <div>{{ $provider->title }}</div>
-                    <a href="{{ url('providers_games') }}/{{ strtolower(explode('provider=', $provider->link)[1]) }}"
-                        class="btn btn-sm btn-outline-light">View All</a>
-                </div>
-                <div class="row g-2 mt-2 game_list"
-                    data-provider='{{ strtolower(explode('provider=', $provider->link)[1]) }}'>
-                    <div class="col-6 col-md-3">
-                        <img src="{{ asset('images/rps.webp') }}" alt="Rock Paper Scissors" class="img-fluid w-100">
-                        <div class="bg-dark text-white py-1">Rock Paper Scissors</div>
+    <!-- new changes start -->
+
+        <div class="app_index text-white">
+            <div class="container-fluid">
+                <div class="row pb-5 justify-center items-center">
+                    
+                    <div class="d-flex flex-column">
+
+                        <!-- game List -->
+                    @foreach ($providers as $key=>$provider)
+                        @if(count($providers) - $key > 2)
+                        <div class="app_card d-flex flex-column w-100 mb-[1px]">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 aap_bar_gradient">
+                                <!-- <div class="d-flex flex-row gap-3 justify-content-start">
+                                </div> -->
+                                <div class="font-bold">{{$provider->title}}</div>
+                                <div class="d-flex flex-row gap-1 justify-content-end">
+                                    <a href="javascript:void(0)" class="games_scroll d-flex items-center justify-content-center bg-[#212529] rounded-circle" data-scroll="-150" style="height: 22px;width: 22px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 6l-6 6l6 6"></path></svg>
+                                    </a>
+                                    <a href="javascript:void(0)" class="games_scroll d-flex align-items-center justify-content-center bg-[#212529] text-success rounded-circle" data-scroll="150" style="height: 22px;width: 22px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 6l6 6l-6 6"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="all_games flex flex-col w-full overflow-x-auto app_scroller scrollbar-hide">
+                                <div class="app_games flex flex-row w-screen game_list items-center" data-provider="{{ strtolower(explode('provider=', $provider->link)[1]) }}">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        @endif
+                    @endforeach
+                            
+                        <div class="app_card d-flex flex-column mb-[1px]">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 aap_bar_gradient">
+                                <!-- <div class="d-flex flex-row gap-3 justify-content-start">
+                                </div> -->
+                                <div class="font-bold">Evo Play and Playtech</div>
+                                <div class="d-flex flex-row gap-1 justify-content-end">
+                                    <a href="javascript:void(0)" class="games_scroll d-flex items-center justify-content-center bg-[#212529] rounded-circle" data-scroll="-150" style="height: 22px;width: 22px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 6l-6 6l6 6"></path></svg>
+                                    </a>
+                                    <a href="javascript:void(0)" class="games_scroll d-flex align-items-center justify-content-center bg-[#212529] text-success rounded-circle" data-scroll="150" style="height: 22px;width: 22px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 6l6 6l-6 6"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="all_games flex flex-row w-full overflow-x-auto app_scroller scrollbar-hide">
+                                <div class="app_games flex flex-row game_list items-center" data-provider="evoplay_playtech">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        
+                        <!-- provider List -->
+                        <div class="app_card d-flex flex-column w-100 mb-3 app_scroller">
+                            <div class="d-flex flex-row justify-content-between items-center px-1 py-1 aap_bar_gradient">
+                                <div class="d-flex flex-row gap-3 justify-content-start">
+                                    <div class="font-bold">Game Providers</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row flex-wrap justify-center w-100 gap-2">
+                                @foreach ($providers as $provider)
+                                <div class="p-2">
+                                    <img src="{{$provider->img}}" alt="" srcset="" class="w-32 bg-gray-900 h-16 rounded-lg shadow">
+                                </div>
+                                @endforeach
+                            </div>
+                            <div class="app_providers flex flex-row">
+                            </div>
+
+                        </div>
+
+
                     </div>
-                </div>
-                <div class="text-center mt-3">
-                    <a class="btn btn-primary btn-sm load-more-btn">Load More</a>
-                </div>
-            @endforeach
-
-        </div>
-
-        <!-- License Info -->
-        <div class="container-sm w-50 my-3">
-            <div class="row border rounded p-2 align-items-center">
-                <!-- Left Image -->
-                <div class="col-3 text-center border-end">
-                    <img src="{{ asset('images/gc.png') }}" alt="GC Logo" class="img-fluid" style="max-height:50px;">
-                </div>
-
-                <!-- Right Image + Text -->
-                <div class="col-9 d-flex align-items-center">
-                    <img src="{{ asset('images/lice.png') }}" alt="License Logo" class="img-fluid me-2"
-                        style="max-height:50px;">
-                    <p class="mb-0 fs-7"style="font-size: 0.75rem;">
-                        LaserX247 is the trading name of Sports Target B.V., a company incorporated and regulated in Curaçao
-                        under company number 148053 with its registered office at Fransche Bloemweg 4, Willemstad, Curaçao.
-                    </p>
+                    
                 </div>
             </div>
         </div>
 
-        <p class="fs-7 mb-1 container-sm w-50 text-center"style="font-size: 0.75rem;">
-            Our website works best in the newest and last prior version of these browsers: Google Chrome. Firefox
-        </p>
+    <!-- new changes end -->
+
+    </div>
+
+
         <script>
+
+            $('.games_scroll').click(function(e){
+
+                let games_scroller = $(this);
+                let currentScroller = $(this).parents('.app_card').find('.app_scroller');
+                
+                $(currentScroller).animate({
+                    scrollLeft: '+='+$(games_scroller).attr('data-scroll')
+                },300);
+            });
+
             $(document).ready(function() {
 
-                @foreach ($providers as $provider)
+                @foreach ($providers as $key=>$provider)
+                @if(count($providers) - $key > 2)
                     callApi('get', 'gameList', {
-                        'provider': "{{ strtolower(explode('provider=', $provider->link)[1]) }}"
+                        'provider': "{{ strtolower(explode('provider=', $provider->link)[1]) }}",
+                        'game_index':0
                     }, gameList);
+                @endif
                 @endforeach
 
+                callApi('get', 'gameList', {
+                        'provider': 'evoplay_playtech',
+                        'providers': [
+                            "{{ strtolower(explode('provider=', $providers[count($providers)-1]->link)[1]) }}",
+                            "{{ strtolower(explode('provider=', $providers[count($providers)-2]->link)[1]) }}"
+                        ],
+                        'game_index':0
+                    }, gameList);
+
+            });
+
+            $('body').on('click','a.load-more-btn',function(e){
+                let data ={};
+                data.provider = $(this).attr('data-provider');
+                data.game_index = $(this).attr('data-game_index');
+                
+                callApi('get','gameList',data,gameList);
             });
         </script>
     @endsection

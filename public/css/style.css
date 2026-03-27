@@ -3,6 +3,36 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     margin: 0;
     padding: 0;
+    color: #fff;
+}
+
+i.fas {
+    font-family: "Font Awesome 6 Free" !important;
+}
+
+img {
+    max-width: unset;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 /* Sidebar Styles */
@@ -332,14 +362,10 @@ body {
     }
 }
 /* Offcanvas header style */
-.offcanvas-header {
-    background: linear-gradient(to right, #00c6ff, #0072ff) !important;
-    color: white;
-}
 
 /* Offcanvas body background */
 .offcanvas-body {
-    background-color: #f8f9fa !important;
+    /* background-color: #f8f9fa !important; */
 }
 
 /* Menu items */
@@ -366,11 +392,6 @@ body {
     opacity: 0.9;
     font-size: 0.8rem;
 }
-/* for deposit-withdrawal page */
-/* Base Styles */
-body {
-    background-color: #f5f5f5;
-}
 
 /* Layout */
 .main-container {
@@ -379,9 +400,6 @@ body {
 }
 
 /* Header Styles */
-.header {
-    background-color: #007bff;
-}
 
 .back-btn {
     background: rgba(255, 255, 255, 0.2);
@@ -404,14 +422,23 @@ body {
 .amount-btn.active {
     background: #00bcd4;
     border-color: #00bcd4;
+    color: black !important; /* force text color to black on hover/active */
 }
 
+/* Submit buttons */
 .btn-edit {
     background: #00bcd4;
+    color: white;
 }
 
 .btn-submit {
     background: #4caf50;
+    color: white;
+}
+
+.btn-edit:hover,
+.btn-submit:hover {
+    color: black !important;
 }
 
 /* homw and all Table Styles */
@@ -425,7 +452,7 @@ body {
 }
 
 .table-header {
-    background: #00bcd4 !important;
+    background: #1f2020 !important;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -439,37 +466,6 @@ body {
 .table-row {
     border-bottom: 1px solid #e9ecef;
 }
-
-.table-row:nth-child(even) {
-    background-color: #f8f9fa;
-}
-/* Improve responsiveness for button groups */
-@media (max-width: 575.98px) {
-    body,
-    .container-fluid,
-    .layout-content-center,
-    .layout-container {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        width: 100% !important;
-    }
-
-    section,
-    .table-responsive,
-    .nav,
-    .bg-light,
-    .shadow-sm {
-        border-radius: 0 !important;
-    }
-
-    .bg-light,
-    .bg-white {
-        background-color: #fff !important;
-    }
-}
-
 
 /* Section Visibility */
 .deposit-section {
@@ -576,4 +572,399 @@ body {
     padding: 0.25rem 0.5rem;
     font-size: 0.7rem;
     line-height: 1.2;
+}
+/* casio page css */
+:root {
+    --topbar: #243a48;
+    --tabsbar: #243a48;
+    --selcat: #243a48;
+    --search: #e41a1e;
+    --thumb-caption: #243a48;
+}
+
+/* TOP BAR */
+.casino-topbar {
+    background: var(--topbar);
+    min-height: 40px;
+}
+
+/* Search */
+.search-box input {
+    height: 26px;
+    font-size: 0.75rem;
+    border-radius: 0;
+}
+
+.search-box button {
+    height: 26px;
+    font-size: 0.75rem;
+    border-radius: 0;
+    padding: 0 0.5rem;
+    background: var(--search);
+    color: #fff;
+}
+
+/* PRIMARY TABS */
+.tabs-strip {
+    background: var(--tabsbar);
+    white-space: nowrap;
+    overflow-x: auto;
+    margin: 6px 0;
+    padding: 0;
+}
+
+.tabs-strip::-webkit-scrollbar {
+    height: 6px;
+}
+
+.tabs-strip::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 10px;
+}
+
+.tabs-strip::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* ul inline flex */
+.tabs-strip ul {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+}
+
+/* nav links styling */
+.tabs-strip .nav-link {
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 0.45rem 1rem;
+    border-radius: 0;
+    background: var(--tabsbar);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.tabs-strip .nav-link.active {
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+}
+
+/* CATEGORY STRIP */
+.cat-strip {
+    background: #fff;
+    border-top: 1px solid #cfd4d6;
+    border-bottom: 1px solid #cfd4d6;
+    white-space: nowrap;
+    overflow-x: auto;
+    margin: 0;
+    padding: 0.2rem 0;
+}
+
+.cat-pill {
+    border: 1px solid #cfd4d6;
+    border-radius: 0;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-width: 110px;
+    height: 32px;
+    justify-content: center;
+    background: #fff;
+    color: #000;
+}
+
+.cat-pill.active {
+    background: var(--selcat);
+    color: #fff;
+    border-color: var(--selcat);
+}
+
+.icon-20 {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+.cat-strip::-webkit-scrollbar {
+    height: 6px;
+}
+
+.cat-strip::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 10px;
+}
+
+.cat-strip::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.cat-strip .cat-wrapper {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0 4px;
+    gap: 4px;
+}
+
+/* GAME GRID */
+.game-thumb {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border: 1px solid #cfd4d6;
+    border-radius: 0;
+}
+
+.thumb-caption {
+    background: var(--thumb-caption);
+    color: #fff;
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.25rem;
+    margin-top: 1px;
+}
+
+.row.g-0 > [class^="col"] {
+    padding: 1px;
+}
+
+/* this is for sports-book */
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* For desktop - height */
+@media (min-width: 992px) {
+    .carousel-item img {
+        height: 200px;
+        object-fit: cover;
+    }
+}
+
+/* Referral Code & Link */
+#referralCode,
+#referralCode:focus,
+#referralLink:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: inherit !important;
+    border: none !important;
+}
+
+/* Additional Css */
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+body::-webkit-scrollbar,
+div::-webkit-scrollbar,
+ul::-webkit-scrollbar {
+    -ms-overflow-style: none;
+    /* display: none; */
+    width: 2px;
+    background: transparent;
+}
+
+.button__Qkvay {
+    display: none !important;
+}
+
+.chat_support_btn {
+    z-index: 1111;
+}
+
+.p_eye {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
+.row {
+    margin: 0px;
+    justify-content: center;
+}
+
+.row > * {
+    padding: 0px;
+    margin: 0px;
+}
+
+body,
+body a,
+body p,
+body div,
+body h1,
+body h2,
+body h3,
+body h4 {
+    color: inherit;
+    background-color: inherit;
+}
+
+.form-control,
+.form-control:focus,
+.form-control:hover {
+    box-shadow: none;
+    border: none;
+}
+
+/* Light Theme */
+
+.light {
+    .header {
+        background-color: #007bff;
+    }
+}
+
+/* Dark theme */
+
+.nav-link {
+    color: #fff;
+    background: #292d2e;
+    margin: 0 2px 0 2px;
+}
+
+.app_dark,
+body {
+    background: #323740;
+    color: #333;
+}
+.app_col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app_col > * {
+    margin: 0;
+    padding: 0;
+}
+.app_row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.app_dark, body.app_dark {
+    
+    footer, .app_card_box {
+        background: #292d2e;
+    }
+
+    .app_color {
+        color: #333;
+    }
+
+    .app_bar {
+        background: #323740;
+        color: #fff;
+    }
+
+    .app_bar_1 {
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        color: #fff;
+    }
+
+    .aap_bar_gradient {
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .app_btn, a.btn, input{
+        background: #292d2e;
+        color: #fff;
+        border: 1px solid #fff;
+    }
+
+    .nav-link {
+        color: #fff;
+        background: #292d2e;
+        margin: 0 2px 0 2px;
+    }
+
+    .list-group-item {
+        color: #fff;
+        background: #1a1c1c;
+        border: 1px solid #4e5052;
+        border-radius: 6px;
+    }
+
+    .app_content {
+        color: #fff;
+        background: #292d2e;
+        background-color: #292d2e;
+        border: none;
+    }
+
+    ::placeholder {
+        color: #fff;
+        opacity: 1; /* Firefox */
+    }
+
+    ::-ms-input-placeholder {
+        /* Edge 12-18 */
+        color: #fff;
+    }
+
+    .table > :not(caption) > * > * {
+        background: #3e3e3e;
+        color: white;
+        font-size:  0.75rem
+    }
+}
+/* additional css */
+.modal-header-dark {
+    background-color: #292d2e;
+    color: white;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.modal-body-dark {
+    background-color: #3e3e3e;
+    color: white;
+}
+.form-group-button {
+    margin-bottom: 6px;
+    margin-right: 12px;
+}
+
+
+.app_toast {
+    opacity: 1;
+    position: fixed;
+    top: 5%;
+    right: -100%;
+    min-width: 200px;
+    max-width: 250px;
+}
+
+.app_toast .toast_div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }

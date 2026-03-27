@@ -4,37 +4,47 @@
 <head>
     <meta charset="UTF-8" />
     <title>Register Page</title>
-    <link rel="stylesheet" href="{{ asset('css') }}/style.css">
-    <link rel="stylesheet" href="{{ asset('css') }}/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{asset('css')}}/tailwind.min.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <script src="{{ asset('js') }}/jquery-3.7.1.min.js"></script>
+    <script src="{{asset('js')}}/tailwind.min.js"></script>
+    <script src="//code.jivosite.com/widget/O2AMREX4Ch" async></script>
 </head>
 
-<body class="vh-100 d-flex align-items-center justify-content-center"
+<body class="min-vh-100 d-flex align-items-center justify-content-center"
     style="background: linear-gradient(135deg, #0d1c80, #00c6ff);">
 
-    <div class="container">
+    <div class="container px-2 px-sm-3 px-md-4">
         <div class="row justify-content-center">
-            <div class="col-md-10 col-lg-8 rounded-4 shadow-lg overflow-hidden" style="background: #0a2345;">
-                <div class="row g-0">
+            <div class="col-12 col-sm-11 col-md-10 col-lg-8 col-xl-7 rounded-4 shadow-lg overflow-hidden"
+                style="background: #0a2345;">
+                <div class="row g-0 flex-column flex-md-row">
 
-                    <!-- Left side with logo/image -->
-                    <div class="col-md-5 d-flex flex-column align-items-center justify-content-center text-center p-4 text-white"
+                    <!-- Left Side (Image) -->
+                    <div class="col-md-5 d-flex flex-column align-items-center justify-content-center text-center p-4 text-white d-none d-md-block h-100"
                         style="background: linear-gradient(180deg, #001f4d, #0a2345);">
                         <img src="{{ asset('images/loginImg2.webp') }}" alt="Sports" class="img-fluid"
                             style="max-height: 280px;" />
                     </div>
 
-                    <!-- Right side with form -->
+
+                    <!-- Right Side (Form) -->
                     <div class="col-md-7 p-4 text-white" style="background: #0a2345;">
-                        <form id="RegisterForm">
-                            <!-- Phone -->
+                        <form id="RegisterForm" value="register">
+
+                            <!-- Phone Number -->
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-white border-end-0">
                                     <i class="bi bi-phone"></i> +91
                                 </span>
-                                <input type="text" class="form-control border-start-0" name="phone"
-                                    placeholder="Enter Phone Number" />
-                                <button class="btn btn-dark" type="button">Get OTP</button>
+                                <input type="text" class="form-control border-start-0 shadow-none" name="phone"
+                                    placeholder="Enter Phone Number" maxlength="10" />
+                                <a class="btn btn-dark getOtp" type="button">Get OTP</a>
                             </div>
 
                             <!-- OTP -->
@@ -42,19 +52,27 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-key"></i>
                                 </span>
-                                <input type="text" class="form-control" name="otp" placeholder="Enter OTP" />
+                                <input type="text" class="form-control shadow-none" name="otp" placeholder="Enter OTP" maxlength="6" />
                             </div>
-                            <div class="text-end mb-3">
-                                <a href="#" class="small text-info">Want to set UserID?</a>
+                            <!-- UserId -->
+                            <div class="input-group mb-3 user_id_input" style="display:none;">
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-key"></i>
+                                </span>
+                                <input type="text" class="form-control shadow-none" name="user_id" value="{{time().rand(000, 999)}}" />
                             </div>
+                            <!-- <div class="text-end mb-3">
+                                <a href="javascript:void(0)" class="small text-info set_user_id">Want to set UserID?</a>
+                            </div> -->
 
                             <!-- Password -->
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-lock"></i>
                                 </span>
-                                <input type="password" class="form-control" name="password"
-                                    placeholder="Enter Password" />
+                                <input type="password" class="form-control shadow-none" name="password"
+                                    placeholder="Enter Password" disabled />
+                                <a href="javascript:void(0)" class="btn btn-outline-secondary p_eye" type="button" style="font-size: 12px;">👁️</a>
                             </div>
 
                             <!-- Confirm Password -->
@@ -62,24 +80,39 @@
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-lock"></i>
                                 </span>
-                                <input type="password" class="form-control" name="confirm_password"
-                                    placeholder="Enter Confirm Password" />
+                                <input type="password" class="form-control shadow-none" name="confirm_password"
+                                    placeholder="Enter Confirm Password" disabled />
+                                <a href="javascript:void(0)" class="btn btn-outline-secondary p_eye" type="button" style="font-size: 12px;">👁️</a>
                             </div>
-                            <div class="text-end mb-3">
+                            <!-- UserId -->
+                            <div class="input-group mb-3 referral_code_input" style="display:none;">
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-key"></i>
+                                </span>
+                                <input type="text" class="form-control shadow-none" name="referral_code" value="{{Session::get('referral_code')}}" placeholder='Please Enter Referral Code' />
+                            </div>
+                            <div class="text-end mb-3 have_referral_code">
                                 <a href="#" class="small text-info">Have a referral code?</a>
                             </div>
 
                             <!-- Register -->
-                            <button type="submit" class="btn btn-dark w-100 mb-3">Register</button>
+                            <a class="btn btn-dark w-100 mb-3 registerUser">Register</a>
 
-                            <div class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</div>
+                            <!-- Info Text -->
+                            <!-- <div class="text-center small mb-2">Get Your Ready-Made ID From WhatsApp</div> -->
 
-                            <!-- WhatsApp -->
-                            <button type="button" class="btn btn-success w-100 mb-3">📱 WhatsApp Now</button>
+                            <!-- WhatsApp Button -->
+                            <a href="javascript:void(0)" class="btn btn-success w-100 mb-3 chat_support !flex flex-row justify-center items-center gap-2">
+                                <div class="support_icon min-w-min">
+                                    <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset="">
+                                </div>
+                                <div class="support_text min-w-min">Support</div>
+                                <!-- <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset=""> Support -->
+                            </a>
 
-                            <!-- Login -->
+                            <!-- Login Link -->
                             <div class="text-center small">
-                                Already have an account? <a href="#" class="fw-bold text-info">LogIn</a>
+                                Already have an account? <a href="login" class="fw-bold text-info">LogIn</a>
                             </div>
                         </form>
                     </div>
@@ -88,6 +121,94 @@
             </div>
         </div>
     </div>
+    
+    @include('includes.ajax_call')
+    @include('js')
+
+    <script>
+
+        let otpVerified = false;
+
+        let data = {
+            phone: $('input[name=phone]').val(),
+            otp: '',
+            otpTimer: null,
+            otpTimeLeft: 60,
+            localStorage: $('form').attr('value')
+        };
+
+        function registerUser() {
+
+            if (!testLocalStorage(data.localStorage+'user_otp')) return false;
+
+            let phoneRegex = '/^\d{10}$/';
+            let phone = $('input[name=phone]').val();
+            let user_id = $('input[name=user_id]').val();
+            let password = $('input[name=password]').val();
+            let confirm_password = $('input[name=confirm_password]').val();
+            let referral_code = $('input[name=referral_code]').val();
+
+            let pdata = {
+                phone: phone,
+                user_id: user_id,
+                password: password,
+                confirm_password: confirm_password,
+                referral_code: referral_code
+            }
+
+            // if (!phone.match(phoneRegex)) {
+            //     return false;
+            // } else 
+
+            if (password.length < 6) {
+                alert('Please enter strong password');
+                return false;
+            } else if (password != confirm_password) {
+                alert('please confirm correct password');
+                return false;
+            } else {
+                callApi('post', 'register', pdata, register_loginResponse);
+            }
+        }
+
+        // Register User End
+
+        $('a.registerUser').click(function(e) {
+            registerUser();
+        });
+
+
+        $('.set_user_id').click(function(){
+            // if (!otpVerified) {
+            //     alert('Please verify OTP first');
+            //     return false;
+            // }
+            $('.user_id_input').show();
+            $(this).hide();
+        });
+        
+        $('.have_referral_code').click(function(){
+            // if (!otpVerified) {
+            //     alert('Please verify OTP first');
+            //     return false;
+            // }
+            $('.referral_code_input').show();
+            $(this).hide();
+        });
+
+        $('input[name=password]').on('keyup',function(e) {
+
+            if (!testLocalStorage(data.localStorage+'user_otp')) {
+                $(this).val('');
+                return false;
+            }
+
+            if (!otpVerified) {
+                e.preventDefault();
+                alert('Please verify OTP first');
+            }
+        });
+    </script>
 </body>
 
 </html>

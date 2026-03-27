@@ -1,77 +1,34 @@
+
+    @if(!isset($userAdmin))
+    <div class="chat_support_btn chat_support fixed right-0 bottom-[80px] btn rounded-md !bg-gray-900 !p-1 text-white !flex flex-row justify-center items-center gap-2" style="display:none;">
+        <div class="support_icon min-w-min">
+            <img src="{{asset('images')}}/icons/support.png" width="20" alt="" srcset="">
+        </div>
+        <div class="support_text min-w-min">Support</div>
+    </div>
+    @endif
+
 <script>
-    function callApi(type = null, url = null, data = null, action = null, beforeAction = null, catchError = null) {
-        // if(type.tpLowerCase() != 'get'){
-        $.ajax({
-            type: type,
-            url: `{{ url('/') }}/${url}`,
-            data: data,
-            beforeSend: () => {
-                if (beforeAction) beforeAction();
-            },
-            success: (response) => {
-                if (action) {
-                    action(response);
-                } else {
-                    return response;
-                }
-            },
-            error: (error) => {
-                if (catchError) catchError();
-            }
-        });
-        // }
+
+    function testLocalStorage(key = null) {
+        if (!localStorage.getItem(key)) {
+            alert(`First get ${key}`);
+            return false;
+        }
+        return true;
     }
-
-    // Register User start
-
-    function registerUser() {
-        let phoneRegex = '/^\d{10}$/';
-        let phone = $('input[name=phone]');
-        let password = $('input[name=password]');
-        let confirm_password = $('input[name=confirm_password]');
-
-        let data = {
-            phone: phone,
-            password: password,
-            confirm_password: confirm_password
-        }
-
-        if (!phone.match(phoneRegex)) {
-            return false;
-        } else if (password.length < 6 || password != confirm_password) {
-            return false;
-        } else {
-            callApi('post', 'register', data, register_loginResponse);
-        }
-    }
-
-    // Register User End
-
-    // Login User Start
-
-    function loginUser() {
-        let phoneRegex = '/^\d{10}$/';
-        let phone = $('input[name=phone]');
-        let password = $('input[name=password]');
-
-        let data = {
-            phone: phone,
-            password: password
-        }
-
-        if (!phone.match(phoneRegex)) {
-            return false;
-        } else if (password.length < 6) {
-            return false;
-        } else {
-            callApi('post', 'login', data, register_loginResponse);
-        }
-    }
-
-    // Login User End
 
     function register_loginResponse(response) {
-        if (response == True) {
+        if (response == true) {
+            window.location.href = "/";
+        } else {
+            alert(response.error);
+        }
+    }
+
+    
+    function ajax_response_reload(response) {
+        if (response.response_code == '200') {
             window.location.href = "/";
         } else {
             alert(response.error);
@@ -86,34 +43,25 @@
     //     loginUser();
     // });
 
-    $('a').click(function(e) {
-        let formType = $(this).data('formType');
-
-        if (formType == 'register') {
-            registerUser();
-        } else if (formType == 'login') {
-            loginUser();
-        }
-    });
-
     function gameList(data){
         
-        $(`.game_list[data-provider=${data.provider}]`).html('');
+        $(`.game_list[data-provider=${data.provider}]`).next().find('a.load-more-btn').attr('data-game_index',data.game_index);
+        let imgSrc = '';
+        Object.entries(data.games).forEach((value, key) => {
 
-        Object.entries(data.games).forEach((value,key) => {
+            imgSrc = (value[1].img)?value[1].img:'imgLoading.jpg';
+            
+            
             $(`.game_list[data-provider=${data.provider}]`).append(`
-                <div class="col-6 col-md-3">
-                    <a href='javascript:void(0)' class="launch_game d-block" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
-                    <img src="${value[1].img}" alt="${value[1].title}" class="img-fluid w-100">
-                    <div class="bg-dark text-white py-1">${value[1].title}</div>
-                    </a>
+                <div href='javascript:void(0)' class="launch_game col-3 col-md-1 p-[1px] cursor-pointer" data-game_id="${value[1].providerId}" data-game_link="${value[1].link}">
+                    <img src="{{asset("images")}}/gamesImg/${imgSrc}" alt="${value[1].title}" srcset="" class="w-100" onerror="this.onerror=null; $(this).parent().remove()">
                 </div>
             `);
 
         });
 
     }
-    
+
 
     function loadGames(sectionClass) {
         if ($(`.${sectionClass}`).length == 1) {
@@ -121,53 +69,57 @@
         }
     }
 
+
+
+
+    // ============
+    // Launch Games
+
+    function launchGame(data) {
         
-
-
-// ============
-// Launch Games
-
-    function launchGame(data){
-        
-        window.location.href = data;
+        if(data.error_code==101){
+            window.location.href = data.url;
+        } else{
+            window.location.href = "{{route('login')}}";
+        }
     }
 
-    $('body').on('click','.launch_game',function(e){
-        let data ={};
-        
+    $('body').on('click', '.launch_game', function(e) {
+        let data = {};
+
         data.game_id = $(this).attr('data-game_id');
         // data.game_link = $(this).attr('data-game_link');
-            
-        callApi('post','launchGame',data,launchGame);
+
+        callApi('post', 'launchGame', data, launchGame);
     });
 
-    
-// ============
-// Payment Part
 
-    function paymentRequest(data){
+    // ============
+    // Payment Part
+
+    function paymentRequest(data) {
         console.log('data for payment--', data);
-        
+
     }
 
-    $('body').on('click','.pay_in_out',function(e){
-        let data ={};
-        
+    $('body').on('click', '.pay_in_out', function(e) {
+        let data = {};
+
         // data.payment_type = $(this).attr('data-payment_type');
         // data.payment_type = 'order';
         data.payment_type = 'deposit';
         data.money = '156.00';
         // data.game_link = $(this).attr('data-game_link');
-            
-        callApi('post','paymentRequest',data,paymentRequest);
+
+        callApi('post', 'paymentRequest', data, paymentRequest);
     });
 
 
 
 
-// ===============
-// Front-end part 
-// ===============
+    // ===============
+    // Front-end part 
+    // ===============
 
 
     // Loader function
@@ -182,6 +134,8 @@
     }
     // Header panel
     $(document).ready(function() {
+        $('.footer_height').height($('.app_footer').height());
+        
         $('#myAccountBtn').on('click', function(e) {
             e.preventDefault();
             console.log("My Account clicked!");
@@ -192,123 +146,188 @@
             }
         });
     });
-    // for deposit-withdrawal page
-    // Elements
-    const depositRadio = document.getElementById('deposit');
-    const withdrawalRadio = document.getElementById('withdrawal');
-    const depositSection = document.getElementById('depositSection');
-    const withdrawalSection = document.getElementById('withdrawalSection');
-    const depositAmount = document.getElementById('depositAmount');
 
-    // Switch sections
-    function switchSection() {
-        if (depositRadio.checked) {
-            depositSection.classList.remove('inactive');
-            withdrawalSection.classList.remove('active');
-        } else {
-            depositSection.classList.add('inactive');
-            withdrawalSection.classList.add('active');
+
+    //reload page for all pages
+    const breakpoints = {
+        mobile: 768
+    };
+
+    let resizeTimer;
+    let lastMode = window.innerWidth < breakpoints.mobile ? 'mobile' : 'desktop';
+
+    function responsiveReloadHandler() {
+        clearTimeout(resizeTimer);
+
+        resizeTimer = setTimeout(() => {
+            const currentMode = window.innerWidth < breakpoints.mobile ? 'mobile' : 'desktop';
+
+            if (currentMode !== lastMode) {
+                console.log(`Mode changed from ${lastMode} to ${currentMode}. Reloading...`);
+                location.reload();
+            }
+
+            lastMode = currentMode;
+        }, 100);
+    }
+
+    window.addEventListener('resize', () => {
+        console.log('Window resized');
+        responsiveReloadHandler();
+    });
+
+    
+    $('.chat_support').click(function(){
+        $('.chat_support_btn').hide();
+        $('.button__Qkvay').trigger('click');
+    });
+
+    $('body').on('click','.closeIcon__sAHIm',function(){
+        $('.chat_support_btn').show();
+    });
+    
+    $('jdiv').on('click','.closeBox__T4hRn',function(){
+        $('.chat_support_btn').show();
+    });
+
+    setTimeout(() => {
+        $('.chat_support_btn').show();
+    }, 2000);
+
+
+    $('.p_eye').click(function(){
+        element = $(this).siblings('input');
+        if(element.attr('type')=='password'){
+            element.attr('type', 'text');
+        } else{
+            element.attr('type', 'password');            
+        }
+    });
+
+
+
+    
+        // Get Otp
+
+        $('a.getOtp').click(function(e) {
+
+            if($('input[name=phone]').val().length < 10){
+                alert('Please Enter Correct Number');
+                return false;
+            }
+
+            if (otpVerified || $(this).prop('disabled')) {
+                return false;
+            }
+            $('input[name=user_id]').val($('input[name=phone]').val());
+            let data = {};
+            data.phone = $('input[name=phone]').val();
+            data.otptype = $('form').attr('value');
+            if(data.otptype == 'register'){
+                callApi('get', 'getOtp', data, getOtp);
+            } else if(data.otptype == 'login'){
+                callApi('get', 'getOtp', data, getOtp);
+            }
+            
+            startOtpCountdown(this);
+        });
+
+
+        function startOtpCountdown(button) {
+
+            $(button).prop('disabled', true).text(`Retry in ${data.otpTimeLeft}s`);
+
+            data.otpTimer = setInterval(() => {
+                data.otpTimeLeft--;
+
+                if (data.otpTimeLeft > 0) {
+                    $(button).text(`Retry in ${data.otpTimeLeft}s`);
+                } else {
+                    if (!otpVerified) {
+                        $(button).prop('disabled', false).text('Get OTP');
+                    }
+                    clearInterval(data.otpTimer);
+                }
+            }, 1000);
+
+        }
+
+        function verifyOtp(response) {
+            if (response.err_code == 101) {
+                otpVerified = true;
+
+                $('input[name=password]').prop('disabled', false);
+                $('input[name=confirm_password]').prop('disabled', false);
+
+                $('a.getOtp').prop('disabled', true).text('OTP Verified');
+
+                if (data.otpTimer) {
+                    clearInterval(data.otpTimer);
+                    data.otpTimer = null;
+                }
+            } else {
+                alert('Invalid OTP');
+            }
+        }
+
+        function getOtp(response) {
+            if(data.localStorage){
+                localStorage.setItem(data.localStorage+'user_otp', response.phone);
+            } else{
+                localStorage.setItem('user_localstorage_data', response);
+            }
+
+        }
+
+        $(document).ready(function() {
+            localStorage.clear();
+        });
+
+        $('input[name=otp]').on('keyup',function(e) {
+            if (!testLocalStorage(data.localStorage+'user_otp')) {
+                $(this).val('');
+                return false;
+            }
+            
+            if ($(this).val().length == 6) {
+                let data = {};
+                data.otp = $(this).val();
+                data.phone = $('input[name=phone]').val();
+                data.otptype = $(this).parents('form').attr('value');
+
+                callApi('get', 'verifyOtp', data, verifyOtp);
+            }
+        });
+
+        
+    // toast js start
+        
+        function responseToast(msg,background){
+            $('.app_toast .toast-body').html(msg);
+            $('.app_toast').css('right','1%');
+            $('.app_toast').addClass(background);
+            $('.app_toast').fadeIn('slow',function(){
+                setTimeout(() => {
+                    $('.app_toast').fadeOut('slow');
+                }, 2000);
+            });
+        }
+    // toast js end
+    
+    function ajaxResponseModal(response){
+        if(response.message){
+            if(response.response_code == 200){
+                responseToast(response.message,'bg-success');
+                setTimeout(() => {
+                        window.location.href = '{{url()->current()}}';
+                }, 1000);
+            } else{
+                responseToast(response.message,'bg-danger');
+            }
+        } else{
+            responseToast(response,'bg-warning');
         }
     }
 
-    // Event listeners
-    [depositRadio, withdrawalRadio].forEach(radio =>
-        radio.addEventListener('change', switchSection)
-    );
-
-    // Amount buttons
-    document.querySelectorAll('.amount-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            depositAmount.value = this.dataset.amount;
-        });
-    });
-
-    // Input validation
-    depositAmount.addEventListener('input', function() {
-        document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('active'));
-        this.classList.toggle('is-invalid', this.value < 100 || this.value > 50000);
-    });
-
-    // Button actions
-    document.querySelector('.btn-submit').onclick = () => {
-        const amount = depositAmount.value;
-        alert(amount >= 100 && amount <= 50000 ?
-            `Deposit request for ₹${amount} submitted!` :
-            'Enter valid amount (100-50000)');
-    };
-
-    document.querySelector('.btn-success').onclick = () =>
-        alert('Add Account functionality');
-
-    document.querySelector('.btn-edit').onclick = () =>
-        alert('Edit Stake functionality');
-
-    document.querySelector('.back-btn').onclick = () =>
-        confirm('Go back?') && window.history.back();
-
-    // Initialize
-    switchSection();
-    // for wallet page
-    document.addEventListener('DOMContentLoaded', function() {
-        const walletEditBtn = document.getElementById('walletEditStakeBtn');
-        const walletModal = document.getElementById('walletEditModal');
-        const walletModalInput = document.getElementById('walletModalInputAmount');
-        const walletCancelBtn = document.getElementById('walletCancelModalBtn');
-        const walletSaveBtn = document.getElementById('walletSaveModalBtn');
-        const walletInput = document.getElementById('walletAmount');
-        const walletAmountBtns = document.querySelectorAll('.wallet-amount-btn');
-        const walletModalAmountBtns = document.querySelectorAll('.wallet-modal-amount-btn');
-
-        walletEditBtn.addEventListener('click', () => {
-            walletModalInput.value = walletInput.value || '';
-            walletModal.style.display = 'flex'; // show modal
-        });
-
-        walletCancelBtn.addEventListener('click', () => {
-            walletModal.style.display = 'none'; // hide modal
-            walletModalAmountBtns.forEach(btn => btn.classList.remove('active'));
-        });
-
-        walletModalAmountBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                walletModalAmountBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                walletModalInput.value = btn.getAttribute('data-modal-amount');
-            });
-        });
-
-        walletSaveBtn.addEventListener('click', () => {
-            const amount = walletModalInput.value.trim();
-            if (!amount || isNaN(amount) || amount < 100 || amount > 50000) {
-                alert("Please enter a valid amount between 100 and 50000.");
-                return;
-            }
-
-            walletInput.value = amount;
-
-            walletAmountBtns.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-amount') === amount) {
-                    btn.classList.add('active');
-                }
-            });
-
-            walletModal.style.display = 'none';
-            walletModalAmountBtns.forEach(btn => btn.classList.remove('active'));
-        });
-
-        walletInput.addEventListener('input', () => {
-            walletAmountBtns.forEach(btn => btn.classList.remove('active'));
-        });
-
-        walletAmountBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                walletAmountBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                walletInput.value = btn.getAttribute('data-amount');
-            });
-        });
-    });
 </script>
+

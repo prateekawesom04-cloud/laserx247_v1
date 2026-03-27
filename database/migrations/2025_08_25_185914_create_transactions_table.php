@@ -13,10 +13,18 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('transaction_uid');
+            $table->string('user_uid');
+            $table->string('order_sn');
+            $table->string('wallet_before')->nullable();
             $table->string('transfer_amount');
-            $table->string('wallet_before');
-            $table->string('wallet_after');
+            $table->string('ip');
+            $table->tinyInteger('status');
+            $table->tinyInteger('payment_type');
+            $table->tinyInteger('manual');
+            $table->string('currency');
+            $table->string('remark');
+            $table->string('payment_proof')->nullable();
+            $table->json('additional_data');
             $table->timestamps();
         });
     }
